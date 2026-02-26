@@ -1,0 +1,24 @@
+---
+import FeatureCard from '../components/FeatureCard.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Test FeatureCard">
+  <div class="p-8 grid gap-8">
+    <FeatureCard
+      icon="mdi:account-group-outline"
+      title="Test Title 1"
+      data-testid="feature-card-1"
+    >
+      This is the first test description.
+    </FeatureCard>
+
+    <FeatureCard
+      icon="mdi:earth"
+      title="Test Title 2"
+      data-testid="feature-card-2"
+    >
+      This is the second test description with different content.
+    </FeatureCard>
+  </div>
+</Layout>

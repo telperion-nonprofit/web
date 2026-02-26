@@ -1,22 +1,28 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-interface Props {
+import type { HTMLAttributes } from 'astro/types';
+
+interface Props extends HTMLAttributes<'div'> {
   title: string;
   icon: string;
 }
 
-const { title, icon } = Astro.props;
+const { title, icon, class: className, ...attrs } = Astro.props;
 ---
 
 <!-- 
   Aplikace velmi jemného Glassmorphism efektu na kartu:
-  - bg-cream/40: Mírně vyšší krytí, aby text zůstal perfektně čitelný přes ostřejší pozadí
-  - backdrop-blur-sm: Velmi nízké rozmazání (obrysy lístků budou krásně zřetelné)
-  - border border-dark-green/10: Jemný tmavý rámeček
+  - glass-card: Sjednocený Glassmorphism efekt (krytí, rozmazání, rámeček)
   - shadow-lg: Stín pro oddělení od pozadí
 -->
-<div class="bg-cream/40 backdrop-blur-sm border border-dark-green/10 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group">
+<div
+  class:list={[
+    "bg-cream/40 backdrop-blur-sm border border-dark-green/10 rounded-3xl p-8 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden group",
+    className
+  ]}
+  {...attrs}
+>
   
   <!-- Jemný barevný akcent při najetí myší (volitelné, vypadá to skvěle) -->
   <div class="absolute top-0 left-0 w-full h-1 bg-brand-green/50 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>

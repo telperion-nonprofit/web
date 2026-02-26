@@ -1,0 +1,43 @@
+---
+import type { MenuItem } from '../../types';
+
+interface Props {
+  item: MenuItem;
+}
+
+const { item } = Astro.props;
+---
+
+<li class="relative group">
+  {item.subItems ? (
+    <>
+      <button class="flex items-center gap-1 text-dark-green hover:text-brand-green hover:bg-cream/50 px-4 py-2 rounded-full font-medium transition-all duration-200">
+        {item.name}
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      {/* Dropdown - Sladěno, o něco méně průhledné pro překryv textů */}
+      <div class="absolute left-0 top-full mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0">
+        <div class="bg-cream/80 backdrop-blur-sm border border-dark-green/10 rounded-2xl shadow-xl overflow-hidden py-2">
+          {item.subItems.map((subItem) => (
+            <a
+              href={subItem.url}
+              class="block px-5 py-2.5 text-sm text-dark-green font-medium hover:bg-cream/90 hover:text-brand-green transition-colors"
+            >
+              {subItem.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </>
+  ) : (
+    <a
+      href={item.url}
+      class="text-dark-green hover:text-brand-green hover:bg-cream/50 px-4 py-2 rounded-full font-medium transition-all duration-200"
+    >
+      {item.name}
+    </a>
+  )}
+</li>
