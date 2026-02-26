@@ -5,7 +5,7 @@ test.describe('Layout Component', () => {
     await page.goto('/test/layout-default');
 
     // Check the title
-    await expect(page).toHaveTitle('Telperion');
+    await expect(page).toHaveTitle('| Telperion');
 
     // Check the language attribute
     await expect(page.locator('html')).toHaveAttribute('lang', 'cs');
