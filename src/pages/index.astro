@@ -5,36 +5,48 @@ import FeatureCard from '../components/FeatureCard.astro';
 
 <Layout title="Domů" description="Informujeme o tématech spojených s životním prostředím. Vzděláváme a přibližujeme udržitelný způsob života mladé generaci.">
   
-  <section class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+  <!-- HERO SEKCE -->
+  <section class="relative pt-12 pb-12 md:pt-16 md:pb-16 overflow-hidden">
     <div class="container mx-auto px-4 text-center max-w-4xl">
-      <span class="inline-block py-1 px-3 rounded-full bg-cream text-dark-green text-sm font-bold mb-6 tracking-wide border border-brand-green">
+      <span class="inline-block py-1 px-3 rounded-full bg-cream/80 backdrop-blur-sm text-dark-green text-sm font-bold mb-6 tracking-wide border border-brand-green/30">
         Vítejte na stránkách Telperionu!
       </span>
       <h1 class="text-5xl md:text-7xl font-serif font-bold text-brand-green mb-6 leading-tight">
         Mladí učí <span class="italic">o klimatu</span>
       </h1>
-      <p class="text-lg md:text-xl text-dark-green mb-10 leading-relaxed max-w-2xl mx-auto">
+      <p class="text-lg md:text-xl text-dark-green mb-10 leading-relaxed max-w-2xl mx-auto font-medium">
         Informujeme o tématech spojených s životním prostředím. Vzděláváme a přibližujeme udržitelný způsob života mladé generaci.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-        <a href="/programy" class="w-full sm:w-auto bg-cream text-dark-green px-8 py-4 rounded-full font-bold text-lg border border-brand-green hover:bg-brand-green/10 transition transform hover:-translate-y-0.5 shadow-xl shadow-brand-green/20">
+        <a href="/programy" class="w-full sm:w-auto bg-brand-green text-cream px-8 py-4 rounded-full font-bold text-lg hover:bg-dark-green transition transform hover:-translate-y-0.5 shadow-xl shadow-brand-green/20">
           Programy pro školy
         </a>
-        <a href="/o-nas" class="w-full sm:w-auto bg-cream text-dark-green border border-brand-green px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-green/10 transition">
+        <a href="/o-nas" class="w-full sm:w-auto bg-cream/50 backdrop-blur-sm text-dark-green border border-brand-green/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/60 transition">
           Přidat se k nám
         </a>
       </div>
     </div>
   </section>
 
-  <section class="py-20">
+  <!-- JEMNÁ DĚLÍCÍ ČÁRA -->
+  <div class="container mx-auto px-4">
+    <!-- 
+      max-w-4xl: omezí šířku čáry (stejně široká jako text v hero sekci)
+      mx-auto: vycentruje čáru
+      border-dark-green/10: velmi jemná barva ladící s glassmorphismem karet
+    -->
+    <hr class="max-w-4xl mx-auto border-t border-dark-green/10" />
+  </div>
+
+  <!-- SEKCE: PROČ TO FUNGUJE? -->
+  <section class="py-16 md:py-20">
     <div class="container mx-auto px-4">
       
       <div class="text-center mb-16 max-w-3xl mx-auto">
         <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-4">
           Proč to funguje?
         </h2>
-        <p class="text-dark-green text-lg">
+        <p class="text-dark-green text-lg font-medium">
           Věříme, že o klimatu se dá mluvit bez strašení a složitých grafů. Náš přístup stavíme na dialogu a faktech.
         </p>
       </div>

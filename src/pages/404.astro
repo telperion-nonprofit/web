@@ -1,0 +1,42 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Stránka nenalezena (404)">
+  <section class="min-h-[70vh] flex items-center justify-center py-20">
+    <div class="container mx-auto px-4 text-center max-w-2xl">
+      
+      <!-- Velké, dominantní číslo 404 -->
+      <h1 class="text-8xl md:text-9xl font-serif font-bold text-brand-green/20 mb-4 select-none">
+        404
+      </h1>
+      
+      <!-- Hlavní nadpis -->
+      <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-6">
+        Jejda! Tady rostou jen stromy.
+      </h2>
+      
+      <!-- Vysvětlující text -->
+      <p class="text-lg text-dark-green mb-10 leading-relaxed">
+        Stránka, kterou hledáte, tu bohužel není. Možná byla přesunuta, smazána, čeká na vytvoření, nebo jste se jen překlepli v adrese.
+      </p>
+      
+      <!-- Tlačítka pro návrat -->
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a 
+          href="/" 
+          class="w-full sm:w-auto bg-brand-green text-cream px-8 py-3.5 rounded-full font-bold text-lg hover:bg-dark-green transition-colors shadow-lg shadow-brand-green/20"
+        >
+          Zpět na hlavní stránku
+        </a>
+        <a 
+          href="/kontakty" 
+          class="w-full sm:w-auto bg-cream/40 backdrop-blur-sm text-dark-green border border-dark-green/20 px-8 py-3.5 rounded-full font-bold text-lg hover:bg-cream/60 transition-colors"
+        >
+          Napsat nám
+        </a>
+      </div>
+      
+    </div>
+  </section>
+</Layout>
