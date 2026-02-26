@@ -1,6 +1,7 @@
 ---
 import '@fontsource-variable/manrope';
 import '@fontsource-variable/playfair-display';
+import '@fontsource-variable/playfair-display/wght-italic.css';
 import '../styles/global.css';
 import { Image } from 'astro:assets';
 import leaves from '../assets/leaves.svg';
@@ -23,7 +24,7 @@ const { title, description = "Mladí učí o klimatu. Vzdělávací programy pro
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+
 		<title>{title} | Telperion</title>
 	</head>
 	
@@ -33,10 +34,10 @@ const { title, description = "Mladí učí o klimatu. Vzdělávací programy pro
 			
 			<!-- LÍSTKY ZŮSTÁVAJÍ -->
 			<div class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0">
-				<Image src={leaves} alt="" />
+				<Image src={leaves} alt="" fetchpriority="high" loading="eager" />
 			</div>
 			<div class="absolute bottom-0 left-0 rotate-180 w-64 md:w-96 opacity-90 pointer-events-none z-0">
-				<Image src={leaves} alt="" />
+				<Image src={leaves} alt="" loading="lazy" />
 			</div>
 
             <!-- VLOŽENÝ NAVBAR -->
