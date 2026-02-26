@@ -1,5 +1,9 @@
 ---
-const menuItems = [
+import type { MenuItem } from '../types';
+import DesktopMenuItem from './navbar/DesktopMenuItem.astro';
+import MobileMenuItem from './navbar/MobileMenuItem.astro';
+
+const menuItems: MenuItem[] = [
   { name: 'Domů', url: '/' },
   { 
     name: 'Programy', 
@@ -18,11 +22,9 @@ const menuItems = [
   
   <!-- 
     Sjednocený jemný Glassmorphism s FeatureCards:
-    - bg-cream/40: Vyšší krytí pro čitelnost
-    - backdrop-blur-sm: Jemné rozmazání pro zachování obrysů lístků
-    - border-dark-green/10: Jemný rámeček
+    - glass-card: Sjednocený Glassmorphism efekt (krytí, rozmazání, rámeček)
   -->
-  <div class="mx-auto max-w-6xl bg-cream/40 backdrop-blur-sm border border-dark-green/10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-full px-6 py-3">
+  <div class="mx-auto max-w-6xl glass-card shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-full px-6 py-3">
     <div class="flex items-center justify-between">
       
       <!-- Logo -->
@@ -38,39 +40,7 @@ const menuItems = [
       <nav class="hidden md:block">
         <ul class="flex items-center space-x-1 lg:space-x-4">
           {menuItems.map((item) => (
-            <li class="relative group">
-              {item.subItems ? (
-                <>
-                  <button class="flex items-center gap-1 text-dark-green hover:text-brand-green hover:bg-cream/50 px-4 py-2 rounded-full font-medium transition-all duration-200">
-                    {item.name}
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                    </svg>
-                  </button>
-                  
-                  {/* Dropdown - Sladěno, o něco méně průhledné pro překryv textů */}
-                  <div class="absolute left-0 top-full mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0">
-                    <div class="bg-cream/80 backdrop-blur-sm border border-dark-green/10 rounded-2xl shadow-xl overflow-hidden py-2">
-                      {item.subItems.map((subItem) => (
-                        <a 
-                          href={subItem.url} 
-                          class="block px-5 py-2.5 text-sm text-dark-green font-medium hover:bg-cream/90 hover:text-brand-green transition-colors"
-                        >
-                          {subItem.name}
-                        </a>
-                      ))}
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <a 
-                  href={item.url} 
-                  class="text-dark-green hover:text-brand-green hover:bg-cream/50 px-4 py-2 rounded-full font-medium transition-all duration-200"
-                >
-                  {item.name}
-                </a>
-              )}
-            </li>
+            <DesktopMenuItem item={item} />
           ))}
         </ul>
       </nav>
@@ -84,9 +54,14 @@ const menuItems = [
 
       <!-- Tlačítko pro mobilní menu (Hamburger) -->
       <div class="md:hidden flex items-center">
-        <button id="mobile-menu-btn" class="text-dark-green hover:text-brand-green focus:outline-none p-2 bg-cream/50 rounded-full transition-colors" aria-label="Otevřít menu">
-          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <button id="mobile-menu-btn" class="group text-dark-green hover:text-brand-green focus:outline-none p-2 bg-cream/50 rounded-full transition-colors" aria-label="Otevřít menu" aria-expanded="false">
+          <!-- Hamburger Icon -->
+          <svg class="hamburger-icon h-6 w-6 block group-aria-expanded:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <!-- Close Icon -->
+          <svg class="close-icon h-6 w-6 hidden group-aria-expanded:block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -97,24 +72,7 @@ const menuItems = [
   <div id="mobile-menu" class="hidden md:hidden mt-4 mx-auto max-w-6xl">
     <div class="bg-cream/90 backdrop-blur-sm border border-dark-green/10 rounded-3xl shadow-xl overflow-hidden px-4 pt-4 pb-6 space-y-2">
       {menuItems.map((item) => (
-        <div class="block border-b border-dark-green/5 last:border-0 pb-2 last:pb-0">
-          {item.subItems ? (
-            <>
-              <div class="px-4 py-3 text-sm font-bold text-brand-green uppercase tracking-wider">{item.name}</div>
-              <div class="space-y-1">
-                {item.subItems.map((subItem) => (
-                  <a href={subItem.url} class="block px-4 py-3 text-base font-medium text-dark-green hover:bg-cream/80 rounded-2xl transition-colors">
-                    {subItem.name}
-                  </a>
-                ))}
-              </div>
-            </>
-          ) : (
-            <a href={item.url} class="block px-4 py-3 text-base font-medium text-dark-green hover:bg-cream/80 rounded-2xl transition-colors">
-              {item.name}
-            </a>
-          )}
-        </div>
+        <MobileMenuItem item={item} />
       ))}
       <div class="pt-4">
         <a href="/poptavka" class="block w-full text-center bg-brand-green text-cream px-6 py-3.5 rounded-full font-bold hover:bg-dark-green transition-colors shadow-lg shadow-brand-green/20">
@@ -128,15 +86,12 @@ const menuItems = [
 <script>
   const btn = document.getElementById('mobile-menu-btn');
   const menu = document.getElementById('mobile-menu');
+  const openIcon = document.getElementById('menu-icon-open');
+  const closeIcon = document.getElementById('menu-icon-close');
 
   btn?.addEventListener('click', () => {
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', (!isExpanded).toString());
     menu?.classList.toggle('hidden');
-    
-    const svg = btn.querySelector('svg');
-    if (menu?.classList.contains('hidden')) {
-      svg!.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
-    } else {
-      svg!.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
-    }
   });
 </script>
