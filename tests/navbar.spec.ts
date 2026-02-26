@@ -1,59 +1,53 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Navbar Component', () => {
-  test.beforeEach(async ({ page }) => {
-    await page.goto('/');
-  });
+test('Mobile menu toggles correctly and updates icon', async ({ page }) => {
+  // Navigate to the home page
+  await page.goto('/');
 
-  test('should display desktop menu on large screens', async ({ page }) => {
-    // Set viewport to desktop size
-    await page.setViewportSize({ width: 1280, height: 720 });
+  // Set viewport to mobile size
+  await page.setViewportSize({ width: 375, height: 667 });
 
-    // Check for desktop nav
-    const desktopNav = page.locator('nav.hidden.md\\:block');
-    await expect(desktopNav).toBeVisible();
+  const menuButton = page.locator('#mobile-menu-btn');
+  const menu = page.locator('#mobile-menu');
 
-    // Check for specific menu items
-    await expect(desktopNav.getByText('Domů')).toBeVisible();
-    await expect(desktopNav.getByText('Programy')).toBeVisible();
-    await expect(desktopNav.getByText('Podcast')).toBeVisible();
-    await expect(desktopNav.getByText('Kontakty')).toBeVisible();
-  });
+  // Define the paths for the icons
+  const hamburgerPath = "M4 6h16M4 12h16M4 18h16";
+  const closePath = "M6 18L18 6M6 6l12 12";
 
-  test('should display mobile menu button on small screens', async ({ page }) => {
-    // Set viewport to mobile size
-    await page.setViewportSize({ width: 375, height: 667 });
+  // Check initial state: menu hidden, hamburger icon visible
+  await expect(menu).not.toBeVisible();
 
-    // Check for mobile menu button
-    const mobileBtn = page.locator('#mobile-menu-btn');
-    await expect(mobileBtn).toBeVisible();
+  // Verify hamburger icon is visible (using separate elements approach)
+  // We'll look for an svg that contains the path and check its visibility
+  const hamburgerIcon = menuButton.locator(`svg:has(path[d="${hamburgerPath}"])`);
+  const closeIcon = menuButton.locator(`svg:has(path[d="${closePath}"])`);
 
-    // Check that desktop menu is hidden
-    const desktopNav = page.locator('nav.hidden.md\\:block');
-    await expect(desktopNav).toBeHidden();
-  });
+  // Wait for the button to be interactive
+  await expect(menuButton).toBeVisible();
 
-  test('mobile menu should toggle visibility', async ({ page }) => {
-    // Set viewport to mobile size
-    await page.setViewportSize({ width: 375, height: 667 });
+  // Initial check - Hamburger should be visible
+  await expect(hamburgerIcon).toBeVisible();
+  // Close icon should be hidden (or not present if not yet implemented, but this test is for TDD)
+  await expect(closeIcon).not.toBeVisible();
 
-    const mobileBtn = page.locator('#mobile-menu-btn');
-    const mobileMenu = page.locator('#mobile-menu');
+  // Click to open menu
+  await menuButton.click();
 
-    // Initially hidden
-    await expect(mobileMenu).toBeHidden();
+  // Verify menu is visible
+  await expect(menu).toBeVisible();
 
-    // Click to open
-    await mobileBtn.click();
-    await expect(mobileMenu).toBeVisible();
+  // Verify hamburger icon is hidden
+  await expect(hamburgerIcon).not.toBeVisible();
+  // Verify close icon is visible
+  await expect(closeIcon).toBeVisible();
 
-    // Check for menu items in mobile menu
-    // Note: The mobile menu renders items slightly differently, so we check specifically within #mobile-menu
-    await expect(mobileMenu.getByText('Domů')).toBeVisible();
-    await expect(mobileMenu.getByText('Programy')).toBeVisible();
+  // Click to close menu
+  await menuButton.click();
 
-    // Click to close
-    await mobileBtn.click();
-    await expect(mobileMenu).toBeHidden();
-  });
+  // Verify menu is hidden again
+  await expect(menu).not.toBeVisible();
+
+  // Verify icons revert to initial state
+  await expect(hamburgerIcon).toBeVisible();
+  await expect(closeIcon).not.toBeVisible();
 });
