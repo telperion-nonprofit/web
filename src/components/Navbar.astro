@@ -84,9 +84,10 @@ const menuItems = [
 
       <!-- Tlačítko pro mobilní menu (Hamburger) -->
       <div class="md:hidden flex items-center">
-        <button id="mobile-menu-btn" class="text-dark-green hover:text-brand-green focus:outline-none p-2 bg-cream/50 rounded-full transition-colors" aria-label="Otevřít menu">
+        <button id="mobile-menu-btn" class="group text-dark-green hover:text-brand-green focus:outline-none p-2 bg-cream/50 rounded-full transition-colors" aria-label="Otevřít menu" aria-expanded="false">
           <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <path class="block group-aria-expanded:hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            <path class="hidden group-aria-expanded:block" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
       </div>
@@ -130,13 +131,8 @@ const menuItems = [
   const menu = document.getElementById('mobile-menu');
 
   btn?.addEventListener('click', () => {
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!isExpanded));
     menu?.classList.toggle('hidden');
-    
-    const svg = btn.querySelector('svg');
-    if (menu?.classList.contains('hidden')) {
-      svg!.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
-    } else {
-      svg!.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
-    }
   });
 </script>
