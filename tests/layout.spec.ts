@@ -5,7 +5,7 @@ test.describe('Layout Component', () => {
     await page.goto('/test/layout-default');
 
     // Check the title
-    await expect(page).toHaveTitle('Mladí učí o klimatu');
+    await expect(page).toHaveTitle('Telperion');
 
     // Check the language attribute
     await expect(page.locator('html')).toHaveAttribute('lang', 'cs');
@@ -19,7 +19,7 @@ test.describe('Layout Component', () => {
     await page.goto('/test/layout-custom');
 
     // Check the title
-    await expect(page).toHaveTitle('Test Title | Mladí učí o klimatu');
+    await expect(page).toHaveTitle('Test Title | Telperion');
 
     // Check the language attribute
     await expect(page.locator('html')).toHaveAttribute('lang', 'cs');

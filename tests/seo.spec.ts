@@ -5,7 +5,7 @@ test.describe('SEO', () => {
     await page.goto('/');
 
     // Check title
-    await expect(page).toHaveTitle('Domů | Mladí učí o klimatu');
+    await expect(page).toHaveTitle('Domů | Telperion');
 
     // Check meta description
     const description = page.locator('meta[name="description"]');
@@ -13,7 +13,7 @@ test.describe('SEO', () => {
 
     // Check Open Graph tags
     const ogTitle = page.locator('meta[property="og:title"]');
-    await expect(ogTitle).toHaveAttribute('content', 'Domů | Mladí učí o klimatu');
+    await expect(ogTitle).toHaveAttribute('content', 'Domů | Telperion');
 
     const ogDescription = page.locator('meta[property="og:description"]');
     await expect(ogDescription).toHaveAttribute('content', 'Informujeme o tématech spojených s životním prostředím. Vzděláváme a přibližujeme udržitelný způsob života mladé generaci.');
