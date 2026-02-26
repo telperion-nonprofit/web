@@ -1,11 +1,12 @@
 ---
-import Analytics from '@vercel/analytics/astro'
-import  SpeedInsights  from "@vercel/speed-insights/astro"
 import '@fontsource-variable/manrope';
 import '@fontsource-variable/playfair-display';
 import '../styles/global.css';
 import { Image } from 'astro:assets';
 import leaves from '../assets/leaves.svg';
+
+// IMPORTUJEME NAVBAR
+import Navbar from '../components/Navbar.astro';
 
 interface Props {
 	title: string;
@@ -13,8 +14,6 @@ interface Props {
 }
 
 const { title, description = "Mladí učí o klimatu. Vzdělávací programy pro školy a veřejnost." } = Astro.props;
-
-const pageTitle = title ? `${title} | Mladí učí o klimatu` : "Mladí učí o klimatu";
 ---
 
 <!doctype html>
@@ -24,28 +23,29 @@ const pageTitle = title ? `${title} | Mladí učí o klimatu` : "Mladí učí o 
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta property="og:title" content={pageTitle} />
-		<meta property="og:description" content={description} />
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content={Astro.url} />
-		<title>{pageTitle}</title>
-		<Analytics />
-		<SpeedInsights />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title} | Telperion</title>
 	</head>
 	
 	<body class="bg-cream text-dark-green font-sans antialiased">
 		
 		<div class="relative overflow-hidden flex flex-col min-h-screen">
 			
-			<div class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none">
+			<!-- LÍSTKY ZŮSTÁVAJÍ -->
+			<div class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0">
+				<Image src={leaves} alt="" />
+			</div>
+			<div class="absolute bottom-0 left-0 rotate-180 w-64 md:w-96 opacity-90 pointer-events-none z-0">
 				<Image src={leaves} alt="" />
 			</div>
 
-			<div class="absolute bottom-0 left-0 rotate-180 w-64 md:w-96 opacity-90 pointer-events-none">
-				<Image src={leaves} alt="" />
-			</div>
+            <!-- VLOŽENÝ NAVBAR -->
+            <Navbar />
 
-			<main class="flex-grow relative">
+			<!-- 
+                Změna: Přidáno pt-24 (padding top), aby obsah nezačínal POD navbarem 
+            -->
+			<main class="flex-grow relative z-10 pt-24">
 				<slot />
 			</main>
 			

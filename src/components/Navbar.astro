@@ -1,0 +1,142 @@
+---
+const menuItems = [
+  { name: 'Domů', url: '/' },
+  { 
+    name: 'Programy', 
+    url: '#',
+    subItems: [
+      { name: 'Pro školy', url: '/programy/pro-skoly' },
+      { name: 'Pro skauty', url: '/programy/pro-skauty' },
+    ]
+  },
+  { name: 'Podcast', url: '/podcast' },
+  { name: 'Kontakty', url: '/kontakty' },
+];
+---
+
+<header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-300">
+  
+  <!-- 
+    Upravený Glassmorphism:
+    - bg-cream/30: Vyšší průhlednost (jen 30 % výplně)
+    - backdrop-blur-2xl: Extrémní rozmazání pozadí
+    - border-dark-green/10: Jemný, ale viditelný tmavší rámeček
+  -->
+  <div class="mx-auto max-w-6xl bg-cream/30 backdrop-blur-2xl border border-dark-green/10 shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-full px-6 py-3">
+    <div class="flex items-center justify-between">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="/" class="flex items-center gap-2 group">
+          <span class="font-serif text-xl md:text-2xl font-bold text-brand-green tracking-wide group-hover:text-dark-green transition-colors">
+            Telperion
+          </span>
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <nav class="hidden md:block">
+        <ul class="flex items-center space-x-1 lg:space-x-4">
+          {menuItems.map((item) => (
+            <li class="relative group">
+              {item.subItems ? (
+                <>
+                  <button class="flex items-center gap-1 text-dark-green hover:text-brand-green hover:bg-cream/50 px-4 py-2 rounded-full font-medium transition-all duration-200">
+                    {item.name}
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  
+                  {/* Dropdown - Sladěno s navbarem */}
+                  <div class="absolute left-0 top-full mt-2 w-48 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0">
+                    <div class="bg-cream/70 backdrop-blur-2xl border border-dark-green/10 rounded-2xl shadow-xl overflow-hidden py-2">
+                      {item.subItems.map((subItem) => (
+                        <a 
+                          href={subItem.url} 
+                          class="block px-5 py-2.5 text-sm text-dark-green font-medium hover:bg-cream/80 hover:text-brand-green transition-colors"
+                        >
+                          {subItem.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <a 
+                  href={item.url} 
+                  class="text-dark-green hover:text-brand-green hover:bg-cream/50 px-4 py-2 rounded-full font-medium transition-all duration-200"
+                >
+                  {item.name}
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      <!-- CTA Tlačítko -->
+      <div class="hidden md:block">
+        <a href="/poptavka" class="bg-brand-green text-cream px-6 py-2.5 rounded-full font-bold text-sm hover:bg-dark-green transition-colors shadow-lg shadow-brand-green/20">
+          Poptat program
+        </a>
+      </div>
+
+      <!-- Tlačítko pro mobilní menu (Hamburger) -->
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-btn" class="text-dark-green hover:text-brand-green focus:outline-none p-2 bg-cream/50 rounded-full transition-colors" aria-label="Otevřít menu">
+          <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobilní Menu -->
+  <div id="mobile-menu" class="hidden md:hidden mt-4 mx-auto max-w-6xl">
+    <div class="bg-cream/90 backdrop-blur-2xl border border-dark-green/10 rounded-3xl shadow-xl overflow-hidden px-4 pt-4 pb-6 space-y-2">
+      {menuItems.map((item) => (
+        <div class="block border-b border-dark-green/5 last:border-0 pb-2 last:pb-0">
+          {item.subItems ? (
+            <>
+              <div class="px-4 py-3 text-sm font-bold text-brand-green uppercase tracking-wider">{item.name}</div>
+              <div class="space-y-1">
+                {item.subItems.map((subItem) => (
+                  <a href={subItem.url} class="block px-4 py-3 text-base font-medium text-dark-green hover:bg-cream/80 rounded-2xl transition-colors">
+                    {subItem.name}
+                  </a>
+                ))}
+              </div>
+            </>
+          ) : (
+            <a href={item.url} class="block px-4 py-3 text-base font-medium text-dark-green hover:bg-cream/80 rounded-2xl transition-colors">
+              {item.name}
+            </a>
+          )}
+        </div>
+      ))}
+      <div class="pt-4">
+        <a href="/poptavka" class="block w-full text-center bg-brand-green text-cream px-6 py-3.5 rounded-full font-bold hover:bg-dark-green transition-colors shadow-lg shadow-brand-green/20">
+          Poptat program
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn?.addEventListener('click', () => {
+    menu?.classList.toggle('hidden');
+    
+    const svg = btn.querySelector('svg');
+    if (menu?.classList.contains('hidden')) {
+      svg!.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+    } else {
+      svg!.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
+    }
+  });
+</script>
