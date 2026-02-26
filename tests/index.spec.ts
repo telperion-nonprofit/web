@@ -6,7 +6,7 @@ test.describe('Home Page', () => {
     await page.goto('/');
 
     // Check the title
-    await expect(page).toHaveTitle(/Domů | Mladí učí o klimatu/);
+    await expect(page).toHaveTitle(/Domů | Telperion/);
 
     // Check for the main heading
     const heading = page.getByRole('heading', { level: 1 });

@@ -28,4 +28,10 @@ test.describe('Layout Component', () => {
     const heading = page.getByRole('heading', { level: 1 });
     await expect(heading).toHaveText('Custom Layout Content');
   });
+
+  test('should have lazy loading on footer image', async ({ page }) => {
+    await page.goto('/test/layout-default');
+    const footerImage = page.locator('div.absolute.bottom-0 img');
+    await expect(footerImage).toHaveAttribute('loading', 'lazy');
+  });
 });
