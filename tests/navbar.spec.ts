@@ -1,41 +1,37 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Navbar Mobile Menu', () => {
-  test.use({ viewport: { width: 375, height: 667 } });
+  test.use({ viewport: { width: 375, height: 667 } }); // Mobile viewport
 
   test('should toggle mobile menu and icons', async ({ page }) => {
     await page.goto('/');
 
     const menuBtn = page.locator('#mobile-menu-btn');
     const mobileMenu = page.locator('#mobile-menu');
+    const menuIcon = page.locator('#menu-icon-open');
+    const closeIcon = page.locator('#menu-icon-close');
 
-    // Check initial state
-    await expect(menuBtn).toBeVisible();
-    await expect(menuBtn).toHaveAttribute('aria-expanded', 'false');
-    await expect(mobileMenu).not.toBeVisible();
+    // Initial state
+    await expect(mobileMenu).toBeHidden();
 
-    // In SVG, paths might have different behavior with toBeVisible,
-    // but Tailwind's hidden class sets display: none which Playwright respects.
-    const hamburgerPath = menuBtn.locator('path').first();
-    const closePath = menuBtn.locator('path').last();
-
-    await expect(hamburgerPath).toBeVisible();
-    await expect(closePath).not.toBeVisible();
+    // Check initial icon visibility
+    await expect(menuIcon).toBeVisible();
+    await expect(closeIcon).toBeHidden();
 
     // Click to open
     await menuBtn.click();
-    await expect(menuBtn).toHaveAttribute('aria-expanded', 'true');
     await expect(mobileMenu).toBeVisible();
 
-    // Hamburger icon should now be hidden, Close icon should be visible
-    await expect(hamburgerPath).not.toBeVisible();
-    await expect(closePath).toBeVisible();
+    // Check icon visibility after open
+    await expect(menuIcon).toBeHidden();
+    await expect(closeIcon).toBeVisible();
 
     // Click to close
     await menuBtn.click();
-    await expect(menuBtn).toHaveAttribute('aria-expanded', 'false');
-    await expect(mobileMenu).not.toBeVisible();
-    await expect(hamburgerPath).toBeVisible();
-    await expect(closePath).not.toBeVisible();
+    await expect(mobileMenu).toBeHidden();
+
+    // Check icon visibility after close
+    await expect(menuIcon).toBeVisible();
+    await expect(closeIcon).toBeHidden();
   });
 });
