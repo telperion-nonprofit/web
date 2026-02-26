@@ -1,0 +1,28 @@
+---
+import type { MenuItem } from '../../types';
+
+interface Props {
+  item: MenuItem;
+}
+
+const { item } = Astro.props;
+---
+
+<div class="block border-b border-dark-green/5 last:border-0 pb-2 last:pb-0">
+  {item.subItems ? (
+    <>
+      <div class="px-4 py-3 text-sm font-bold text-brand-green uppercase tracking-wider">{item.name}</div>
+      <div class="space-y-1">
+        {item.subItems.map((subItem) => (
+          <a href={subItem.url} class="block px-4 py-3 text-base font-medium text-dark-green hover:bg-cream/80 rounded-2xl transition-colors">
+            {subItem.name}
+          </a>
+        ))}
+      </div>
+    </>
+  ) : (
+    <a href={item.url} class="block px-4 py-3 text-base font-medium text-dark-green hover:bg-cream/80 rounded-2xl transition-colors">
+      {item.name}
+    </a>
+  )}
+</div>
