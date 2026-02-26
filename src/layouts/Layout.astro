@@ -9,11 +9,12 @@ import leaves from '../assets/leaves.svg';
 import Navbar from '../components/Navbar.astro';
 
 interface Props {
-	title: string;
+	title?: string;
 	description?: string;
 }
 
 const { title, description = "Mladí učí o klimatu. Vzdělávací programy pro školy a veřejnost." } = Astro.props;
+const pageTitle = title ? `${title} | Mladí učí o klimatu` : "Mladí učí o klimatu";
 ---
 
 <!doctype html>
@@ -23,8 +24,10 @@ const { title, description = "Mladí učí o klimatu. Vzdělávací programy pro
 		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title} | Telperion</title>
+		<title>{pageTitle}</title>
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
 	</head>
 	
 	<body class="bg-cream text-dark-green font-sans antialiased">

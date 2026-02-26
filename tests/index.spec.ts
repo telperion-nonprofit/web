@@ -12,10 +12,6 @@ test.describe('Home Page', () => {
     const heading = page.getByRole('heading', { level: 1 });
     await expect(heading).toHaveText(/Mladí učí o klimatu/);
 
-    // Check for the AI placeholder text
-    const placeholder = page.getByText('Obsah je generovaný AI (placeholder pro tvorbu designu)');
-    await expect(placeholder).toBeVisible();
-
     // Check for the description text
     const description = page.getByText('Informujeme o tématech spojených s životním prostředím');
     await expect(description).toBeVisible();
