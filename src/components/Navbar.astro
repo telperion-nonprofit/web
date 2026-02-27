@@ -23,16 +23,13 @@ const menuItems: MenuItem[] = [
 <header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none">
   
   <div class="relative mx-auto max-w-6xl px-6 py-3 pointer-events-auto">
-    <!-- 
-      TRIK ZDE: Skleněné pozadí je oddělené do samostatného podkladového divu. 
-      Tím pádem už neblokuje blur prvkům, které se nacházejí v navigaci (jako je náš dropdown)!
-    -->
+    <!-- Skleněné pozadí -->
     <div class="absolute inset-0 glass-card shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-full -z-10 pointer-events-none"></div>
     
-    <div class="relative z-10 flex items-center justify-between">
+    <div class="relative z-10 flex items-center justify-between h-10 md:h-12">
       
-      <!-- Logo -->
-      <div class="flex-shrink-0">
+      <!-- Logo (vlevo) -->
+      <div class="flex-shrink-0 z-20">
         <a href="/" class="flex items-center gap-2 group">
           <Image 
             src={logoImg} 
@@ -42,24 +39,31 @@ const menuItems: MenuItem[] = [
         </a>
       </div>
 
-      <!-- Desktop Menu -->
-      <nav class="hidden md:block">
-        <ul class="flex items-center space-x-1 lg:space-x-4">
+      <!-- Desktop Menu (absolutně vycentrované) -->
+      <!-- 
+        Změna pro vycentrování:
+        - absolute inset-x-0: roztáhne nav přes celou šířku
+        - flex justify-center: vycentruje obsah uvnitř
+        - pointer-events-none: aby absolutní vrstva neblokovala logo/tlačítko pod ní
+        - pointer-events-auto na ul: aby šlo na odkazy klikat
+      -->
+      <nav class="hidden md:flex absolute inset-x-0 top-0 bottom-0 justify-center items-center pointer-events-none z-10">
+        <ul class="flex items-center space-x-1 lg:space-x-4 pointer-events-auto">
           {menuItems.map((item) => (
             <DesktopMenuItem item={item} />
           ))}
         </ul>
       </nav>
 
-      <!-- CTA Tlačítko -->
-      <div class="hidden md:block">
+      <!-- CTA Tlačítko (vpravo) -->
+      <div class="hidden md:block z-20">
         <a href="/poptavka" class="bg-brand-green text-cream px-6 py-2.5 rounded-full font-bold text-sm hover:bg-dark-green transition-colors shadow-lg shadow-brand-green/20">
           Poptat program
         </a>
       </div>
 
       <!-- Tlačítko pro mobilní menu (Hamburger) -->
-      <div class="md:hidden flex items-center">
+      <div class="md:hidden flex items-center z-20">
         <button id="mobile-menu-btn" class="group text-dark-green hover:text-brand-green focus:outline-none p-2 bg-cream/50 rounded-full transition-colors" aria-label="Otevřít menu" aria-expanded="false">
           <svg class="hamburger-icon h-6 w-6 block group-aria-expanded:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -74,7 +78,6 @@ const menuItems: MenuItem[] = [
 
   <!-- Mobilní Menu -->
   <div id="mobile-menu" class="hidden md:hidden mt-4 mx-auto max-w-6xl pointer-events-auto">
-    <!-- Mobilní menu rovnou používá glass-card pro sjednocení -->
     <div class="glass-card rounded-3xl shadow-xl overflow-hidden px-4 pt-4 pb-6 space-y-2">
       {menuItems.map((item) => (
         <MobileMenuItem item={item} />
