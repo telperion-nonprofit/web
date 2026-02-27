@@ -3,16 +3,14 @@ const currentYear = new Date().getFullYear();
 ---
 
 <!-- 
-  Změny: Odstraněno obrovské odsazení "pt-16" a "mt-auto".
-  Nyní má footer jen malý margin top (mt-8), takže se přirozeně a blízko 
-  napojí na obsah jakékoliv stránky.
+  Změna: Smazán margin-top (mt-8). 
+  Patička je teď připravená se nalepit hned pod obsah.
 -->
-<footer class="mt-8 pb-6 px-4 sm:px-6 lg:px-8 pointer-events-none">
+<footer class="pb-6 px-4 sm:px-6 lg:px-8 pointer-events-none">
   <div class="mx-auto max-w-fit pointer-events-auto glass-card shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-full px-8 py-3 transition-transform hover:-translate-y-1 duration-300">
     <div class="flex items-center justify-center text-center">
       <p class="text-sm text-dark-green font-medium tracking-wide">
-        &copy; {currentYear} Telperion z.s. | Všechna práva vyhrazena.
-      </p>
+        &copy; {currentYear} Telperion z.s.
     </div>
   </div>
 </footer>
