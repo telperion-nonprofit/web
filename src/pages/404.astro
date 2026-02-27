@@ -3,7 +3,12 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Stránka nenalezena (404)">
-  <section class="min-h-[70vh] flex items-center justify-center py-20">
+  <!-- 
+    Změny pro zrušení scrollbaru:
+    - h-[80vh]: Sekce zabere přesně 80 % výšky okna (zbytek padne na navbar/okraje)
+    - odstraněno py-20: Už nepřidáváme extra pixely, které by stránku protáhly
+  -->
+  <section class="h-[80vh] flex items-center justify-center">
     <div class="container mx-auto px-4 text-center max-w-2xl">
       
       <!-- Velké, dominantní číslo 404 -->
