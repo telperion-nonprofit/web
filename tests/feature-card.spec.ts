@@ -34,6 +34,5 @@ test.describe('FeatureCard Component', () => {
     // Check for some of the glassmorphism and layout classes
     await expect(card1).toHaveClass(/glass-card/);
     await expect(card1).toHaveClass(/rounded-3xl/);
-    // Note: Since `glass-card` encapsulates bg-cream/40 and backdrop-blur-sm, we just check for `glass-card`.
   });
 });

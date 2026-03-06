@@ -18,7 +18,7 @@ test.describe('Home Page', () => {
 
     // Check for navigation links
     const programyLink = page.getByRole('link', { name: 'Programy pro školy' });
-    await expect(programyLink).toHaveAttribute('href', '/programy');
+    await expect(programyLink).toHaveAttribute('href', '/programy/pro-skoly');
 
     const oNasLink = page.getByRole('link', { name: 'Přidat se k nám' });
     await expect(oNasLink).toHaveAttribute('href', '/o-nas');
