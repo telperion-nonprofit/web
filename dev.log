@@ -1,0 +1,45 @@
+
+> telperion-web@0.1.0 dev
+> astro dev
+
+10:21:42 [types] Generated 1ms
+10:21:42 [content] Syncing content
+10:21:42 [content] Synced content
+
+ astro  v5.18.0 ready in 1558 ms
+
+┃ Local    http://localhost:4321/
+┃ Network  use --host to expose
+
+10:21:42 watching for file changes...
+10:21:54 [200] / 106ms
+10:21:54 [200] / 10ms
+10:21:56 [200] /test-feature-card 14ms
+10:21:56 [200] /test-feature-card 11ms
+10:21:57 [200] /_image 92ms
+10:21:57 [200] /_image 92ms
+10:21:57 [200] /_image 210ms
+10:21:57 [200] /_image 212ms
+10:22:02 [watch] playwright-report/index.html
+10:22:28 [watch] src/components/FeatureCard.astro
+10:22:28 [watch] src/components/FeatureCard.astro
+10:22:32 [watch] src/components/FeatureCard.astro
+10:22:32 [watch] src/components/FeatureCard.astro
+10:22:44 [200] / 33ms
+10:22:44 [200] / 12ms
+10:22:45 [200] /test-feature-card 12ms
+10:22:45 [200] /test-feature-card 16ms
+10:22:46 [200] /_image 40ms
+10:22:46 [200] /_image 35ms
+10:22:46 [200] /_image 272ms
+10:22:46 [200] /_image 100ms
+10:23:04 [watch] tests/feature-card.spec.ts
+10:23:04 [watch] tests/feature-card.spec.ts
+10:23:10 [200] / 21ms
+10:23:10 [200] / 9ms
+10:23:12 [200] /test-feature-card 10ms
+10:23:12 [200] /test-feature-card 9ms
+10:23:12 [200] /_image 13ms
+10:23:12 [200] /_image 78ms
+10:23:12 [200] /_image 18ms
+10:23:12 [200] /_image 92ms
