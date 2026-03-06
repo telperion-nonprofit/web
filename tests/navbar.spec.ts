@@ -17,13 +17,14 @@ test.describe('Navbar Component', () => {
 
     test('should display main navigation items', async ({ page }) => {
       // Scope to desktop nav
-      const nav = page.locator('nav.hidden.md\\:block');
+      const nav = page.locator('nav.hidden.md\\:flex');
       await expect(nav).toBeVisible();
 
       const expectedLinks = [
         { name: 'Domů', href: '/' },
         // Programy is a button, handled separately
         { name: 'Podcast', href: '/podcast' },
+        { name: 'O nás', href: '/o-nas' },
         { name: 'Kontakty', href: '/kontakty' },
       ];
 
@@ -39,7 +40,7 @@ test.describe('Navbar Component', () => {
     });
 
     test('should show dropdown on hover', async ({ page }) => {
-      const nav = page.locator('nav.hidden.md\\:block');
+      const nav = page.locator('nav.hidden.md\\:flex');
       const programyButton = nav.getByRole('button', { name: 'Programy' });
 
       // Hover to trigger dropdown
@@ -47,7 +48,8 @@ test.describe('Navbar Component', () => {
 
       const subItems = [
         { name: 'Pro školy', href: '/programy/pro-skoly' },
-        { name: 'Pro skauty', href: '/programy/pro-skauty' },
+        { name: 'Pro veřejnost', href: '/programy/pro-verejnost' },
+        { name: 'Další programy', href: '/programy/dalsi-programy' },
       ];
 
       for (const item of subItems) {
@@ -86,7 +88,7 @@ test.describe('Navbar Component', () => {
     });
 
     test('should hide desktop navigation', async ({ page }) => {
-      const desktopNav = page.locator('nav.hidden.md\\:block');
+      const desktopNav = page.locator('nav.hidden.md\\:flex');
       await expect(desktopNav).toBeHidden();
     });
 
@@ -104,9 +106,9 @@ test.describe('Navbar Component', () => {
       // Check menu items
       const expectedLinks = [
         'Domů',
-        'Pro školy',
-        'Pro skauty',
+        'Programy',
         'Podcast',
+        'O nás',
         'Kontakty'
       ];
 

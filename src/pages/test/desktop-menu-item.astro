@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import DesktopMenuItem from '../../components/navbar/DesktopMenuItem.astro';
+import type { MenuItem } from '../../types';
+
+const normalItem: MenuItem = {
+  name: 'Normal Link',
+  url: '/normal-link'
+};
+
+const dropdownItem: MenuItem = {
+  name: 'Dropdown',
+  url: '#',
+  subItems: [
+    { name: 'Subitem 1', url: '/sub-1' },
+    { name: 'Subitem 2', url: '/sub-2' }
+  ]
+};
+---
+
+<Layout title="Desktop Menu Item Test">
+  <div class="p-8">
+    <h1 class="text-3xl font-bold mb-8">Desktop Menu Item Test</h1>
+
+    <!-- Use a simple nav wrapper like in the real app to trigger any group-hover correctly if needed -->
+    <nav class="flex gap-8 bg-white p-4 rounded-xl shadow">
+      <ul class="flex items-center gap-4">
+        <!-- Normal item without dropdown -->
+        <DesktopMenuItem item={normalItem} />
+
+        <!-- Item with dropdown -->
+        <DesktopMenuItem item={dropdownItem} />
+      </ul>
+    </nav>
+
+    <!-- Add some space below so the dropdown doesn't get cut off -->
+    <div class="h-64 mt-8 bg-gray-50 border-dashed border-2 border-gray-200 p-4 text-gray-400">
+      Space below to allow dropdown expansion
+    </div>
+  </div>
+</Layout>
