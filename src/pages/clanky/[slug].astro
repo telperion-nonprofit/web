@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import { Icon } from 'astro-icon/components';
+
+export async function getStaticPaths() {
+  const clanky = await getCollection('clanky');
+  return clanky.map(clanek => ({
+    params: { slug: clanek.slug },
+    props: { clanek },
+  }));
+}
+
+const { clanek } = Astro.props;
+const { Content } = await clanek.render();
+---
+
+<Layout title={clanek.data.title} description={clanek.data.description}>
+  <article class="max-w-3xl mx-auto px-4 py-12 md:py-20">
+    <div class="mb-8 text-center">
+      <a href="/clanky" class="inline-flex items-center gap-2 text-brand-green hover:text-dark-green font-bold mb-6 transition-colors group">
+        <Icon name="mdi:arrow-left" class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" />
+        Zpět na články
+      </a>
+
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-4">
+        {clanek.data.title}
+      </h1>
+
+      <div class="flex items-center justify-center gap-4 text-dark-green/60 font-medium">
+        <div class="flex items-center gap-2">
+          <Icon name="mdi:calendar-blank" class="w-4 h-4" />
+          <time datetime={clanek.data.pubDate?.toISOString()}>
+            {clanek.data.pubDate?.toLocaleDateString('cs-CZ', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </time>
+        </div>
+        <span class="w-1 h-1 rounded-full bg-dark-green/30"></span>
+        <span class="text-brand-green font-bold">{clanek.data.author}</span>
+      </div>
+    </div>
+
+    <!-- Původní stylování pro obsah článku -->
+    <div class="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-brand-green prose-a:text-brand-green hover:prose-a:text-dark-green prose-p:text-dark-green/80 prose-li:text-dark-green/80 prose-strong:text-dark-green bg-white/50 backdrop-blur-sm p-8 md:p-12 rounded-3xl shadow-xl shadow-brand-green/5 border border-brand-green/10">
+      <Content />
+    </div>
+  </article>
+</Layout>

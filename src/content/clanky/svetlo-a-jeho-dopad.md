@@ -1,3 +1,9 @@
+---
+title: "Světlo a jeho dopad"
+description: "Světlo používáme snad každý, ale lze s ním i šetřit. Světlo totiž dokáže škodit lidem i ostatním živočichům. Proč? Jak svítit a používat světlo správně?"
+pubDate: 2024-05-24
+author: "Telperion"
+---
 Aby se vytvořilo světlo, je potřeba nějaká energie, většinou elektrická. Světlo používáme snad každý, ale lze s ním i šetřit. Světlo totiž dokáže škodit lidem i ostatním živočichům. Proč? Jak svítit a používat světlo správně?
 
 Je to energie, kterou používá snad každý z nás, svítíme si doma z lustru, světla v autě nebo malou ruční baterkou. Bereme to jako samozřejmost, vždyť nám stačí jen zvednout ruku a zmáčknout vypínač nebo otočit knoflíkem. Je potřeba si ale uvědomit, že to rozhodně samozřejmost není. Asi miliarda lidí na světě nemá k elektrické energii přístup vůbec. Aby se vám rozsvítilo v pokoji světlo, je třeba udělat spoustu kroků. Svítí se elektřinou, ale ta se musí někde vyrobit, k tomu je potřeba nějaký zdroj, obnovitelný nebo neobnovitelný (viz. článek Energetika), atd. Vývoj svícení je dlouhý. S vývojem nových světel se stále snižuje poměr tepla a zvyšuje poměr světla. Dnes již fungují efektivní úsporné žárovky, které vyrobí hodně světla za málo energie.
