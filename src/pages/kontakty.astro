@@ -61,7 +61,7 @@ const teamMembers = [
 <Layout title="Náš tým a Kontakty">
   
   <!-- HLAVIČKA STRÁNKY -->
-  <section class="relative pt-12 pb-8 md:pt-16 md:pb-12 overflow-hidden text-center">
+  <section class="relative pt-12 pb-8 md:pt-16 md:pb-8 overflow-hidden text-center">
     <div class="container mx-auto px-4 max-w-4xl">
       <span class="inline-block py-1 px-3 rounded-full bg-cream/80 backdrop-blur-sm text-dark-green text-sm font-bold mb-6 tracking-wide border border-brand-green/30">
         Náš tým
@@ -76,7 +76,7 @@ const teamMembers = [
   </section>
 
   <!-- GRID VIZITEK -->
-  <section class="pb-16 md:pb-24">
+  <section class="pb-8 md:pb-8">
     <div class="container mx-auto px-4 max-w-6xl">
       
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -130,6 +130,47 @@ const teamMembers = [
 
           </div>
         ))}
+      </div>
+
+      <!-- ÚDAJE O SPOLKU (Sídlo, IČO, Účet) -->
+      <div class="mt-16 md:mt-24 max-w-4xl mx-auto">
+        <div class="glass-card rounded-3xl p-8 sm:p-12 text-center md:text-left border border-brand-green/20">
+          <h2 class="text-3xl font-serif font-bold text-brand-green mb-8 text-center">Údaje o spolku</h2>
+
+          <div class="grid md:grid-cols-3 gap-8">
+
+            <div class="flex flex-col items-center md:items-start">
+              <div class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20">
+                <Icon name="mdi:office-building-marker" class="w-6 h-6" />
+              </div>
+              <h3 class="text-lg font-bold text-brand-green mb-2">Sídlo spolku</h3>
+              <p class="text-dark-green/80 text-sm font-medium">
+                [DOPLNIT SÍDLO]
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center md:items-start">
+              <div class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20">
+                <Icon name="mdi:identifier" class="w-6 h-6" />
+              </div>
+              <h3 class="text-lg font-bold text-brand-green mb-2">IČO</h3>
+              <p class="text-dark-green/80 text-sm font-medium">
+                [DOPLNIT IČO]
+              </p>
+            </div>
+
+            <div class="flex flex-col items-center md:items-start">
+              <div class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20">
+                <Icon name="mdi:bank-outline" class="w-6 h-6" />
+              </div>
+              <h3 class="text-lg font-bold text-brand-green mb-2">Transparentní účet</h3>
+              <p class="text-dark-green/80 text-sm font-medium break-all">
+                [DOPLNIT ČÍSLO ÚČTU]
+              </p>
+            </div>
+
+          </div>
+        </div>
       </div>
 
     </div>
