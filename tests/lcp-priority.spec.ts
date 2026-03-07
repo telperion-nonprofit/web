@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
 test.describe('LCP Optimization', () => {
   test('should have fetchpriority="high" on the top-right leaves image', async ({ page }) => {

@@ -29,7 +29,7 @@ Přitom stačí jen vysázet **smíšený les, různého věku**. Každý druh r
 
 ## Jde to i jinak
 
-Říkáte si, že háček je asi v penězích. Z takového lesa nemůže být takový příjem jako z monokultury. Ale opak je pravdou, jak dokázal *Ing. Peter Wohlleben*. Ano, vstupní investice na změnu lesa je o něco vyšší, ale ve výsledku se vám to vrátí. Budete mít kvalitnější dřevo, různě druhové, zdravější a pravidelně.
+Říkáte si, že háček je asi v penězích. Z takového lesa nemůže být takový příjem jako z monokultury. Ale opak je pravdou, jak dokázal _Ing. Peter Wohlleben_. Ano, vstupní investice na změnu lesa je o něco vyšší, ale ve výsledku se vám to vrátí. Budete mít kvalitnější dřevo, různě druhové, zdravější a pravidelně.
 
 No tak sláva. To je dobrá zpráva, ne? Ano, je. Stačí zapojit rozum a nebát se vstoupit do neznámých vod a snažit se dělat věci správně. Přitom stačí jen malé změny, nemusíte to hned lámat přes koleno a být v tom extrémní. Stačí jen po malých krocích.
 

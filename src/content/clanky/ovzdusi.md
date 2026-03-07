@@ -23,6 +23,7 @@ Jsou dva hlavní původci znečištění ovzduší spalováním uhlí. Prvním z
 Škodlivost takového topení se dá měřit například podle množství zmíněných mikročástic na metr krychlový. Zatímco nad komínem uhelné elektrárny v ČR je možné naměřit maximálně cca 300 částic na metr krychlový, tak nad špatně topícím komínem domu v našich obcích může být krátkodobě až 700 částic na metr krychlový.
 
 Množství škodlivých částic při spalování ovlivňuje několik faktorů:
+
 - druh kotle
 - palivo
 - efektivita spalování (tj. při jaké teplotě a možnosti přístupu vzduchu se dané palivo spaluje)

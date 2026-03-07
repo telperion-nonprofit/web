@@ -25,7 +25,7 @@ Aby to ale fungovalo, musí se do toho zapojit všichni: můžeme šířit pově
 - Větší použité spotřebiče je možné odevzdat ve sběrném dvoře.
 - Oblečení z druhé ruky není ostuda; na výrobu nového je třeba mj. mnoho vody.
 - Kupujte potraviny od místních farmářů (ovoce, zelenina, mléčné výrobky).
-- Kupujte bez obalu a do opakovaně využitelné nádoby či tašky (např. látkové). Obchodů je stále více, např. *Bezobalu.cz*.
+- Kupujte bez obalu a do opakovaně využitelné nádoby či tašky (např. látkové). Obchodů je stále více, např. _Bezobalu.cz_.
 
 ## Dopady naší doby
 

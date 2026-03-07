@@ -10,6 +10,7 @@ Welcome to the open-source repository for the **Telperion z.s.** website. This p
 This repository is publicly available as a portfolio piece to showcase modern web development practices, architectural decision-making, and technical implementation.
 
 ## 🌟 Live Project
+
 - **Production Site:** [Insert Live Website Link Here]
 - **Organization Info:** [Insert Organization Link Here]
 
@@ -31,11 +32,13 @@ This project leverages a modern frontend stack to prioritize performance, develo
 - **Typography:** Self-hosted fonts ('Manrope' and 'Playfair Display') via `@fontsource-variable` to optimize loading and prevent layout shifts.
 
 ### Technical Highlights
+
 - **Performance Optimized:** Strict enforcement of Core Web Vitals best practices. Images contributing to Largest Contentful Paint (LCP) utilize `fetchpriority="high"` and `loading="eager"`.
 - **Security Focused:** Relies on SSG to minimize the attack surface. Security headers and removal of framework generator tags are verified via automated tests.
 - **Accessibility (a11y):** Uses semantic HTML5, ARIA attributes for state management (e.g., `aria-expanded` for mobile menus instead of innerHTML manipulation), and maintains high contrast ratios.
 
 ## 🎨 Graphic Guidelines & UI Consistency
+
 To maintain a high-quality, Apple HIG / MDN-inspired aesthetic, the project adheres to strict design logic:
 
 - **Typography & Scale:** Headings use `font-serif` ('Playfair Display') and `text-brand-green` for distinct hierarchy. Body text uses `font-sans` ('Manrope') with generous line height (`leading-relaxed`) and color `text-dark-green/90` or `/80` to soften contrast slightly without compromising readability.
@@ -58,6 +61,7 @@ Ensure you have [Node.js](https://nodejs.org/) installed. The project supports `
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone [Insert Repository URL Here]
    cd telperion-web
@@ -73,22 +77,26 @@ Ensure you have [Node.js](https://nodejs.org/) installed. The project supports `
 The `package.json` includes the following scripts:
 
 - **Start Development Server:**
+
   ```bash
   npm run dev
   ```
-  *Starts the local Astro development server at `http://localhost:4321`.*
+
+  _Starts the local Astro development server at `http://localhost:4321`._
 
 - **Build for Production:**
+
   ```bash
   npm run build
   ```
-  *Generates the static site output in the `dist/` directory.*
+
+  _Generates the static site output in the `dist/` directory._
 
 - **Preview Production Build:**
   ```bash
   npm run preview
   ```
-  *Locally previews the generated static site.*
+  _Locally previews the generated static site._
 
 ## 🧪 Testing
 
@@ -97,6 +105,7 @@ The project uses Playwright for robust integration and E2E testing.
 To run the test suite:
 
 1. Ensure all dependencies are installed, including Playwright browsers:
+
    ```bash
    npx playwright install --with-deps
    ```
@@ -116,4 +125,5 @@ For inquiries regarding the project, architecture, or the organization, please r
 - **LinkedIn / Social:** [Insert Social Link Here]
 
 ---
-*Developed with ❤️ for a sustainable future.*
+
+_Developed with ❤️ for a sustainable future._

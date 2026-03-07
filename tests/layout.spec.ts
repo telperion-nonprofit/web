@@ -1,8 +1,10 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test.describe('Layout Component', () => {
-  test('should render with default title when no title prop is provided', async ({ page }) => {
-    await page.goto('/test/layout-default');
+test.describe("Layout Component", () => {
+  test("should render with default title when no title prop is provided", async ({
+    page,
+  }) => {
+    await page.goto("/test/layout-default");
 
     await expect(page).toHaveTitle('| Telperion');
 
@@ -12,8 +14,10 @@ test.describe('Layout Component', () => {
     await expect(heading).toHaveText('Default Layout Content');
   });
 
-  test('should render with custom title when title prop is provided', async ({ page }) => {
-    await page.goto('/test/layout-custom');
+  test("should render with custom title when title prop is provided", async ({
+    page,
+  }) => {
+    await page.goto("/test/layout-custom");
 
     await expect(page).toHaveTitle('Test Title | Telperion');
 
@@ -23,9 +27,9 @@ test.describe('Layout Component', () => {
     await expect(heading).toHaveText('Custom Layout Content');
   });
 
-  test('should have eager loading on bottom image', async ({ page }) => {
-    await page.goto('/test/layout-default');
-    const footerImage = page.locator('div.absolute.bottom-0 img');
-    await expect(footerImage).toHaveAttribute('loading', 'eager');
+  test("should have eager loading on bottom image", async ({ page }) => {
+    await page.goto("/test/layout-default");
+    const footerImage = page.locator("div.absolute.bottom-0 img");
+    await expect(footerImage).toHaveAttribute("loading", "eager");
   });
 });

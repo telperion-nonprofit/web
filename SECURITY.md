@@ -4,11 +4,11 @@ Security is a priority for us. This document outlines our security policy and ho
 
 ## Supported Versions
 
-Currently, the project is in the alpha phase of development. 
+Currently, the project is in the alpha phase of development.
 
-| Version | Supported          |
-| ------- | ------------------ |
-| < 1.0.0 | :x: (Alpha / Dev)  |
+| Version | Supported         |
+| ------- | ----------------- |
+| < 1.0.0 | :x: (Alpha / Dev) |
 
 Once the project reaches a stable release, this table will be updated.
 
@@ -20,4 +20,4 @@ We heavily rely on static site generation (SSG), which significantly reduces the
 2. Kindly send an e-mail to **anna.zezulka@proton.me** with details about the vulnerability, steps to reproduce it, and potential impact.
 3. We will acknowledge your report and strive to fix the issue as quickly as possible.
 
-*Note: This is a non-profit project. We do not offer a paid Bug Bounty program, but we will gladly give you credit in our repository for any valid, impactful security reports.*
+_Note: This is a non-profit project. We do not offer a paid Bug Bounty program, but we will gladly give you credit in our repository for any valid, impactful security reports._

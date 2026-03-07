@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
 test.describe('Home Page', () => {
   test('should load and display core content', async ({ page }) => {
@@ -15,12 +15,12 @@ test.describe('Home Page', () => {
     const programyLink = page.getByRole('link', { name: 'Programy pro školy' });
     await expect(programyLink).toHaveAttribute('href', '/programy/pro-skoly');
 
-    const oNasLink = page.getByRole('link', { name: 'Náš tým' });
-    await expect(oNasLink).toHaveAttribute('href', '/kontakty');
+    const oNasLink = page.getByRole("link", { name: "Náš tým" });
+    await expect(oNasLink).toHaveAttribute("href", "/kontakty");
   });
 
-  test('should have interactive elements', async ({ page }) => {
-    await page.goto('/');
+  test("should have interactive elements", async ({ page }) => {
+    await page.goto("/");
 
     const whySectionHeading = page.getByRole('heading', { name: 'Proč to funguje?', level: 2 });
     await expect(whySectionHeading).toBeVisible();
@@ -28,8 +28,8 @@ test.describe('Home Page', () => {
     const cards = page.locator('.grid > div');
     await expect(cards).toHaveCount(3);
 
-    await expect(page.getByText('Rovnocenný přístup')).toBeVisible();
-    await expect(page.getByText('Ověřená fakta')).toBeVisible();
-    await expect(page.getByText('Interaktivita')).toBeVisible();
+    await expect(page.getByText("Rovnocenný přístup")).toBeVisible();
+    await expect(page.getByText("Ověřená fakta")).toBeVisible();
+    await expect(page.getByText("Interaktivita")).toBeVisible();
   });
 });

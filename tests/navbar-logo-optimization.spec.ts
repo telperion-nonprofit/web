@@ -1,8 +1,10 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from "@playwright/test";
 
-test.describe('Navbar Logo Optimization', () => {
-  test('should have fetchpriority="high" and loading="eager" on the navbar logo', async ({ page }) => {
-    await page.goto('/');
+test.describe("Navbar Logo Optimization", () => {
+  test('should have fetchpriority="high" and loading="eager" on the navbar logo', async ({
+    page,
+  }) => {
+    await page.goto("/");
 
     const navbarLogo = page.locator('header img[alt="Telperion Logo"]');
 
