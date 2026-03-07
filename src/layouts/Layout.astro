@@ -67,7 +67,7 @@ const pageTitle = title
 
     <Modal />
     <script>
-      import { Tolgee, FormatSimple, DevTools } from "@tolgee/web";
+      import { Tolgee, FormatSimple, DevTools, BackendFetch } from "@tolgee/web";
 
       // 1. Zjistíme, jestli si uživatel jazyk už ručně nepřepnul v minulosti
       let savedLanguage = localStorage.getItem("zvoleny-jazyk");
@@ -82,21 +82,24 @@ const pageTitle = title
           browserLang === "cs" || browserLang === "sk" ? "cs" : "en";
       }
 
-      // 3. Spuštění samotného Tolgee s chytrým jazykem
       const tolgee = Tolgee()
-        .use(DevTools())
-        .use(FormatSimple())
-        .init({
-          apiKey: import.meta.env.PUBLIC_TOLGEE_API_KEY,
-          apiUrl: "https://app.tolgee.io",
-          language: savedLanguage, // Aktuální jazyk (detekovaný, nebo z paměti)
-          defaultLanguage: "en", // Záložní jazyk, pokud nějaký překlad chybí
-          observerType: "text",
-          observerOptions: { inputPrefix: "[[", inputSuffix: "]]" },
-        });
+    .use(FormatSimple())
+    .use(BackendFetch()) // Načte soubory z /i18n/
+    .init({
+      // API klíč použijeme JEN lokálně pro Alt+Klik překládání
+      apiKey: import.meta.env.PUBLIC_TOLGEE_API_KEY,
+      apiUrl: 'https://app.tolgee.io',
+      language: localStorage.getItem('zvoleny-jazyk') || 'en',
+      defaultLanguage: 'en',
+      observerType: 'text',
+      observerOptions: { inputPrefix: '[[', inputSuffix: ']]' },
+      // Cesta k lokálním souborům, které jste právě stáhli
+      staticData: {
+        // Zde můžete případně importovat JSONy přímo, pokud nechcete fetchovat
+      }
+    });
 
-      // 4. Potvrzení do konzole, že vše běží
-      tolgee.run().then(() => {
+  tolgee.run().then(() => {
         console.log("Tolgee bylo úspěšně spuštěno v jazyce:", savedLanguage);
       });
     </script>
