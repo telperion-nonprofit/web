@@ -8,10 +8,17 @@ const currentYear = new Date().getFullYear();
 -->.
 <footer class="pb-6 px-4 sm:px-6 lg:px-8 pointer-events-none w-full">
   <div class="mx-auto max-w-fit pointer-events-auto glass-card shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-full px-8 py-3 transition-transform hover:-translate-y-1 duration-300">
-    <div class="flex items-center justify-center text-center">
+    <div class="flex flex-col md:flex-row items-center justify-center gap-3 text-center">
       <p class="text-sm text-dark-green font-medium tracking-wide">
         &copy; {currentYear} Telperion z.s
       </p>
+
+      <div class="flex items-center">
+        <div class="scale-75 opacity-90 hover:opacity-100 transition-opacity origin-center md:origin-left">
+          <div id="wcb" class="carbonbadge"></div>
+          <script src="https://unpkg.com/website-carbon-badges@1.1.3/b.min.js" defer></script>
+        </div>
+      </div>
     </div>
   </div>
 </footer>
