@@ -6,15 +6,15 @@ test.describe("FeatureCard Component", () => {
   }) => {
     await page.goto("/test-feature-card");
 
-    const card1 = page.getByTestId('feature-card-1');
+    const card1 = page.getByTestId("feature-card-1");
     await expect(card1).toBeVisible();
     await expect(card1.locator("h3")).toHaveText("Test Title 1");
     await expect(card1).toContainText("This is the first test description.");
 
-    const icon1 = card1.locator('svg');
+    const icon1 = card1.locator("svg");
     await expect(icon1).toBeVisible();
 
-    const card2 = page.getByTestId('feature-card-2');
+    const card2 = page.getByTestId("feature-card-2");
     await expect(card2).toBeVisible();
     await expect(card2.locator("h3")).toHaveText("Test Title 2");
     await expect(card2).toContainText(

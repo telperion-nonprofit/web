@@ -6,12 +6,12 @@ test.describe("Layout Component", () => {
   }) => {
     await page.goto("/test/layout-default");
 
-    await expect(page).toHaveTitle('| Telperion');
+    await expect(page).toHaveTitle("| Telperion");
 
-    await expect(page.locator('html')).toHaveAttribute('lang', 'cs');
+    await expect(page.locator("html")).toHaveAttribute("lang", "cs");
 
-    const heading = page.getByRole('heading', { level: 1 });
-    await expect(heading).toHaveText('Default Layout Content');
+    const heading = page.getByRole("heading", { level: 1 });
+    await expect(heading).toHaveText("Default Layout Content");
   });
 
   test("should render with custom title when title prop is provided", async ({
@@ -19,12 +19,12 @@ test.describe("Layout Component", () => {
   }) => {
     await page.goto("/test/layout-custom");
 
-    await expect(page).toHaveTitle('Test Title | Telperion');
+    await expect(page).toHaveTitle("Test Title | Telperion");
 
-    await expect(page.locator('html')).toHaveAttribute('lang', 'cs');
+    await expect(page.locator("html")).toHaveAttribute("lang", "cs");
 
-    const heading = page.getByRole('heading', { level: 1 });
-    await expect(heading).toHaveText('Custom Layout Content');
+    const heading = page.getByRole("heading", { level: 1 });
+    await expect(heading).toHaveText("Custom Layout Content");
   });
 
   test("should have eager loading on bottom image", async ({ page }) => {

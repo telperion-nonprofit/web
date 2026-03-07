@@ -10,7 +10,7 @@ test.describe("Navbar Logo Optimization", () => {
 
     await expect(navbarLogo).toBeVisible();
 
-    await expect(navbarLogo).toHaveAttribute('fetchpriority', 'high');
-    await expect(navbarLogo).toHaveAttribute('loading', 'eager');
+    await expect(navbarLogo).toHaveAttribute("fetchpriority", "high");
+    await expect(navbarLogo).toHaveAttribute("loading", "eager");
   });
 });

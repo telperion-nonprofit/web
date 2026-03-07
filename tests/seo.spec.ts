@@ -6,7 +6,7 @@ test.describe("SEO", () => {
   }) => {
     await page.goto("/");
 
-    await expect(page).toHaveTitle('Domů | Telperion');
+    await expect(page).toHaveTitle("Domů | Telperion");
 
     const description = page.locator('meta[name="description"]');
     await expect(description).toHaveAttribute(
