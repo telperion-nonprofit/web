@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Load API key from .env
+if [ -f "$(git rev-parse --show-toplevel)/.env" ]; then
+  export TOLGEE_API_KEY=$(grep '^PUBLIC_TOLGEE_API_KEY=' "$(git rev-parse --show-toplevel)/.env" | cut -d'=' -f2)
+fi
+
+echo "Pulling latest translations from Tolgee..."
+npx @tolgee/cli pull --api-key "$TOLGEE_API_KEY"
+if ! git diff --quiet src/i18n/; then
+  echo "Translations updated — please commit the changes and push again."
+  exit 1
+fi

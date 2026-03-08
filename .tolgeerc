@@ -1,0 +1,15 @@
+{
+  "apiUrl": "https://app.tolgee.io",
+  "push": {
+    "files": [
+      {
+        "path": "./src/i18n/*.json",
+        "format": "JSON_TOLGEE"
+      }
+    ]
+  },
+  "pull": {
+    "path": "./src/i18n",
+    "format": "JSON_TOLGEE"
+  }
+}
