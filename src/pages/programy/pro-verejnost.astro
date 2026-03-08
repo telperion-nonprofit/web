@@ -4,15 +4,14 @@ import { Icon } from "astro-icon/components";
 import SectionBadge from "../../components/SectionBadge.astro";
 ---
 
-<Layout title="Pro veřejnost a skauty">
+<Layout title="[[public.page_title]]">
   <section class="pt-12 pb-8 text-center px-4 max-w-3xl mx-auto">
-    <SectionBadge> Veřejnost & Skauting </SectionBadge>
+    <SectionBadge> [[public.badge]] </SectionBadge>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
-      Klima pro <span class="italic">každého</span>
+      [[public.title_main]] <span class="italic">[[public.title_highlight]]</span>
     </h1>
     <p class="text-lg text-dark-green/80 font-medium">
-      Vzděláváme i mimo školní lavice. Nabízíme víkendovky pro skautské oddíly i
-      intenzivní workshopy pro širokou veřejnost.
+      [[public.subtitle]]
     </p>
   </section>
 
@@ -23,18 +22,17 @@ import SectionBadge from "../../components/SectionBadge.astro";
       <div class="md:w-1/3 shrink-0">
         <div class="bg-brand-green text-white rounded-2xl p-6 shadow-lg">
           <h3 class="text-2xl font-serif font-bold mb-4 !text-white">
-            Skautská klima víkendovka
+            [[public.scouts.title]]
           </h3>
           <ul class="space-y-3 text-sm font-medium text-white">
             <li class="flex items-center gap-2">
-              <Icon name="mdi:calendar-weekend" class="w-5 h-5" /> Pátek až Neděle
+              <Icon name="mdi:calendar-weekend" class="w-5 h-5" /> [[public.scouts.tag_duration]]
             </li>
             <li class="flex items-center gap-2">
-              <Icon name="mdi:account-group" class="w-5 h-5" /> Až 100 účastníků
+              <Icon name="mdi:account-group" class="w-5 h-5" /> [[public.scouts.tag_participants]]
             </li>
             <li class="flex items-start gap-2">
-              <Icon name="mdi:pine-tree" class="w-5 h-5 shrink-0" /> Vlčata, světlušky,
-              skauti, roveři
+              <Icon name="mdi:pine-tree" class="w-5 h-5 shrink-0" /> [[public.scouts.tag_groups]]
             </li>
           </ul>
         </div>
@@ -44,22 +42,15 @@ import SectionBadge from "../../components/SectionBadge.astro";
         class="md:w-2/3 space-y-4 text-dark-green/80 text-sm leading-relaxed text-justify"
       >
         <p>
-          Podobně jako Klimatické dny jdeme od obecných znalostí až po konkrétní
-          řešení úměrně věku účastníků.
+          [[public.scouts.desc_p1]]
         </p>
         <p>
-          <strong>U nejmenších</strong> se věnujeme senzitivitě k přírodě a základům
-          její ochrany. <strong>Se skauty a skautkami</strong> využíváme dětskou verzi
-          workshopu Klimatická mozaika, který vysvětluje změnu klimatu od příčin po
-          důsledky. Jelikož program děláme na míru, máme sadu tematických workshopů
-          podle zájmu.
+          <strong>[[public.scouts.desc_p2_youngest]]</strong> [[public.scouts.desc_p2_youngest_text]]
+          <strong>[[public.scouts.desc_p2_scouts]]</strong> [[public.scouts.desc_p2_scouts_text]]
         </p>
         <p>
-          Pracujeme s již zformovanou skupinou. Snažíme se, aby na našem
-          programu mohli dál jako družina nebo oddíl stavět ve své běžné
-          činnosti. <strong>Pro rovery, rangers a vedoucí</strong> máme informační
-          blok o programech, které mohou sami realizovat. Dle zájmu nabízíme i dospěláckou
-          verzi Mozaiky nebo Base Camp od centra TEREZA.
+          [[public.scouts.desc_p3_before]]
+          <strong>[[public.scouts.desc_p3_bold]]</strong> [[public.scouts.desc_p3_after]]
         </p>
       </div>
     </div>
@@ -69,36 +60,30 @@ import SectionBadge from "../../components/SectionBadge.astro";
     >
       <div class="md:w-1/3 shrink-0">
         <h3 class="text-2xl font-serif font-bold text-brand-green mb-4">
-          Climate Fresk pro veřejnost
+          [[public.fresk.title]]
         </h3>
         <ul class="space-y-3 text-sm text-dark-green font-medium">
           <li class="flex items-center gap-2">
-            <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" /> 3 hodiny
+            <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" /> [[public.fresk.tag_duration]]
           </li>
           <li class="flex items-center gap-2">
-            <Icon name="mdi:account-check" class="w-5 h-5 text-brand-green" /> 15+
-            let
+            <Icon name="mdi:account-check" class="w-5 h-5 text-brand-green" /> [[public.fresk.tag_age]]
           </li>
           <li class="flex items-center gap-2">
             <Icon
               name="mdi:account-multiple"
               class="w-5 h-5 text-brand-green"
-            /> Dle domluvy
+            /> [[public.fresk.tag_capacity]]
           </li>
         </ul>
       </div>
 
       <div class="md:w-2/3 text-dark-green/80 text-sm leading-relaxed">
         <p>
-          Zažijte celosvětově populární workshop, který už absolvoval více než
-          milion lidí. Pomocí sady karet založených na zprávách IPCC si společně
-          s lektorem sestavíte vizuální mapu příčin a následků klimatické krize.
+          [[public.fresk.desc_p1]]
         </p>
         <p class="mt-4">
-          Program je ideální jak pro úplné začátečníky, tak pro klimatické
-          nadšence, kteří si chtějí utřídit myšlenky a najít motivaci k akci. <em
-            >(Další detaily rádi doplníme po domluvě)</em
-          >.
+          [[public.fresk.desc_p2_before]] <em>[[public.fresk.desc_p2_note]]</em>.
         </p>
       </div>
     </div>

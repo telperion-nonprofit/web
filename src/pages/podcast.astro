@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 import SectionBadge from "../components/SectionBadge.astro";
 ---
 
-<Layout title="Podcast">
+<Layout title="[[podcast.page_title]]">
   <section class="min-h-[70vh] flex items-center pt-12 pb-8 px-4">
     <div class="container mx-auto max-w-4xl">
       <div
@@ -23,45 +23,44 @@ import SectionBadge from "../components/SectionBadge.astro";
 
         <div class="relative z-10 flex flex-col items-center">
           <SectionBadge class="uppercase tracking-widest">
-            Připravujeme
+            [[podcast.badge]]
           </SectionBadge>
 
           <h1
             class="text-5xl md:text-7xl font-serif font-bold text-brand-green mb-6 leading-tight"
           >
-            Telperion <span class="italic">Podcast</span>
+            [[podcast.title_main]] <span class="italic">[[podcast.title_highlight]]</span>
           </h1>
 
           <p
             class="text-lg md:text-xl text-dark-green/80 font-medium max-w-2xl mb-10 leading-relaxed"
           >
-            Něco velkého se chystá! Brzy pro vás spustíme náš vlastní podcast.
-            Rozhovory, fakta bez strašení a udržitelnost z pohledu mladých.
-            <strong>Ladicí práce finišují, těšte se.</strong>
+            [[podcast.description]]
+            <strong>[[podcast.description_highlight]]</strong>
           </p>
 
           <div class="flex flex-col items-center space-y-4 mb-12">
             <p
               class="text-sm font-bold text-dark-green uppercase tracking-wide"
             >
-              Najdete nás brzy na:
+              [[podcast.platforms_label]]
             </p>
             <div class="flex gap-6">
               <div
                 class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-dark-green/40 shadow-sm border border-dark-green/10 cursor-not-allowed"
-                title="Spotify (Již brzy)"
+                title="[[podcast.platform.spotify]]"
               >
                 <Icon name="mdi:spotify" class="w-6 h-6" />
               </div>
               <div
                 class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-dark-green/40 shadow-sm border border-dark-green/10 cursor-not-allowed"
-                title="Apple Podcasts (Již brzy)"
+                title="[[podcast.platform.apple]]"
               >
                 <Icon name="mdi:apple" class="w-6 h-6" />
               </div>
               <div
                 class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-dark-green/40 shadow-sm border border-dark-green/10 cursor-not-allowed"
-                title="YouTube (Již brzy)"
+                title="[[podcast.platform.youtube]]"
               >
                 <Icon name="mdi:youtube" class="w-6 h-6" />
               </div>
@@ -74,7 +73,7 @@ import SectionBadge from "../components/SectionBadge.astro";
             class="bg-brand-green text-cream px-8 py-4 rounded-full font-bold text-lg hover:bg-dark-green transition-transform transform hover:-translate-y-0.5 shadow-lg shadow-brand-green/20 flex items-center gap-2"
           >
             <Icon name="mdi:bell-outline" class="w-5 h-5" />
-            Napište nám své nápady
+            [[podcast.button]]
           </button>
         </div>
       </div>

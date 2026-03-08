@@ -3,19 +3,18 @@ import Layout from "../../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 ---
 
-<Layout title="Další programy">
+<Layout title="[[other.page_title]]">
   <section class="pt-12 pb-8 text-center px-4 max-w-3xl mx-auto">
     <span
       class="inline-block py-1 px-3 rounded-full bg-brand-green/10 text-brand-green text-sm font-bold mb-4 tracking-wide"
     >
-      Nové formáty
+      [[other.badge]]
     </span>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
-      Další <span class="italic">programy</span>
+      [[other.title_main]] <span class="italic">[[other.title_highlight]]</span>
     </h1>
     <p class="text-lg text-dark-green/80 font-medium">
-      Neustále vyvíjíme nové formáty a učíme se. Zde najdete programy, které
-      momentálně připravujeme nebo rozjíždíme.
+      [[other.subtitle]]
     </p>
   </section>
 
@@ -32,12 +31,12 @@ import { Icon } from "astro-icon/components";
 
         <div class="flex-grow">
           <h3 class="text-2xl font-serif font-bold text-brand-green mb-2">
-            Program: Slow vs. Fast Fashion
+            [[other.fashion.title]]
           </h3>
           <p
             class="text-sm font-bold text-dark-green/50 mb-4 uppercase tracking-wide"
           >
-            Připravují: Martin a Lucka
+            [[other.fashion.authors]]
           </p>
 
           <div
@@ -46,17 +45,12 @@ import { Icon } from "astro-icon/components";
             <p
               class="text-sm text-dark-green/80 font-medium flex items-center gap-2"
             >
-              <Icon name="mdi:hammer-wrench" class="w-5 h-5 text-brand-green" /> Program
-              je momentálně ve fázi vývoje a testování.
+              <Icon name="mdi:hammer-wrench" class="w-5 h-5 text-brand-green" /> [[other.fashion.status]]
             </p>
           </div>
 
           <p class="text-dark-green/80 text-sm leading-relaxed">
-            Módní průmysl je jedním z největších znečišťovatelů naší planety. V
-            tomto připravovaném programu se zaměříme na rozdíl mezi rychlou a
-            udržitelnou módou. Budeme zkoumat, z čeho se oblečení vyrábí, jakou
-            cestu urazí do naší skříně a jak můžeme jako spotřebitelé dělat
-            lepší a zodpovědnější rozhodnutí.
+            [[other.fashion.description]]
           </p>
         </div>
       </div>
@@ -75,18 +69,18 @@ import { Icon } from "astro-icon/components";
         <div class="flex-grow">
           <div class="flex items-center justify-between mb-2">
             <h3 class="text-2xl font-serif font-bold text-brand-green">
-              Program: Klima v Kostce
+              [[other.klima.title]]
             </h3>
             <span
               class="bg-brand-green text-white text-[10px] font-bold uppercase px-3 py-1 rounded-full animate-pulse"
             >
-              Ve vývoji
+              [[other.klima.badge]]
             </span>
           </div>
           <p
             class="text-sm font-bold text-dark-green/50 mb-4 uppercase tracking-wide"
           >
-            Připravuje: Martin
+            [[other.klima.author]]
           </p>
 
           <div
@@ -98,13 +92,12 @@ import { Icon } from "astro-icon/components";
               <Icon
                 name="mdi:calendar-clock"
                 class="w-5 h-5 text-brand-green"
-              /> Máte se brzy na co těšit!
+              /> [[other.klima.status]]
             </p>
           </div>
 
           <p class="text-dark-green/80 text-sm leading-relaxed">
-            Martin momentálně připravuje zcela nový formát. Rychlý, úderný a
-            nabitý informacemi.
+            [[other.klima.description]]
           </p>
         </div>
       </div>

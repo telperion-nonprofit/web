@@ -4,28 +4,27 @@ import { Icon } from "astro-icon/components";
 import SectionBadge from "../../components/SectionBadge.astro";
 
 const realizace = [
-  "Gymnázium Přírodní škola, Praha",
-  "BIGY, České Budějovice",
-  "Škola Sv. Augustina, Praha",
-  "ZŠ Klausova, Praha",
-  "ZŠ Osmička, Roudnice nad Labem",
-  "ZŠ Klíček, Praha",
-  "ZŠ T. Stolzové, Kostelec nad Labem",
-  "ZŠ Pod Žvahovem, Praha",
-  "Gymnázium TGM, Litvínov",
-  "MŠ a ZŠ Adélka, Mašovice",
+  "[[schools.realizations.1]]",
+  "[[schools.realizations.2]]",
+  "[[schools.realizations.3]]",
+  "[[schools.realizations.4]]",
+  "[[schools.realizations.5]]",
+  "[[schools.realizations.6]]",
+  "[[schools.realizations.7]]",
+  "[[schools.realizations.8]]",
+  "[[schools.realizations.9]]",
+  "[[schools.realizations.10]]",
 ];
 ---
 
-<Layout title="Programy pro školy">
+<Layout title="[[schools.page_title]]">
   <section class="pt-12 pb-8 text-center px-4 max-w-3xl mx-auto">
-    <SectionBadge> Pro základní a střední školy </SectionBadge>
+    <SectionBadge> [[schools.badge]] </SectionBadge>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
-      Přinášíme klima do <span class="italic">lavic</span>
+      [[schools.title_main]] <span class="italic">[[schools.title_highlight]]</span>
     </h1>
     <p class="text-lg text-dark-green/80 font-medium">
-      Komplexní, interaktivní a vrstevnické programy, které žákům pomohou
-      pochopit souvislosti a najít vlastní roli v ochraně přírody.
+      [[schools.subtitle]]
     </p>
   </section>
 
@@ -36,30 +35,27 @@ const realizace = [
       >
         <div>
           <h2 class="text-3xl font-serif font-bold text-brand-green mb-2">
-            Klimatické dny
+            [[schools.climate_days.title]]
           </h2>
           <p class="text-dark-green font-medium">
-            Náš vlajkový dvoudenní program
+            [[schools.climate_days.subtitle]]
           </p>
         </div>
         <div class="flex flex-wrap gap-3">
           <span
             class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
           >
-            <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" /> 2 dny
-            (12 vyuč. hodin)
+            <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" /> [[schools.climate_days.tag_duration]]
           </span>
           <span
             class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
           >
-            <Icon name="mdi:account-group" class="w-5 h-5 text-brand-green" /> Až
-            80 účastníků
+            <Icon name="mdi:account-group" class="w-5 h-5 text-brand-green" /> [[schools.climate_days.tag_participants]]
           </span>
           <span
             class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
           >
-            <Icon name="mdi:school-outline" class="w-5 h-5 text-brand-green" /> 2.
-            stupeň ZŠ a nižší gymnázia
+            <Icon name="mdi:school-outline" class="w-5 h-5 text-brand-green" /> [[schools.climate_days.tag_level]]
           </span>
         </div>
       </div>
@@ -67,21 +63,13 @@ const realizace = [
       <div class="grid lg:grid-cols-2 gap-12 mb-12">
         <div class="space-y-4 text-dark-green/80 leading-relaxed text-justify">
           <p>
-            V tomto balíčku účastníci získají komplexní pochopení změny klimatu,
-            setkají se s experty z české klimatické scény a najdou konkrétní
-            způsoby, jak se s krizí vypořádat.
+            [[schools.climate_days.desc_p1]]
           </p>
           <p>
-            Vycházíme z principu <strong>vrstevnického učení</strong>. Jako
-            převážně studentská organizace poskytujeme žákům jedinečnou
-            perspektivu – nepoučujeme, ale diskutujeme s nimi jako rovný s
-            rovným.
+            [[schools.climate_days.desc_p2_before]] <strong>[[schools.climate_days.desc_p2_bold]]</strong>[[schools.climate_days.desc_p2_after]]
           </p>
           <p>
-            Program systematicky vyhodnocujeme pomocí sociologické analýzy.
-            Sledujeme, jak účastníci porozuměli tématům a jak se změnily jejich
-            postoje. Chceme, aby žáci odcházeli s vědomím, že jejich kroky mají
-            smysl.
+            [[schools.climate_days.desc_p3]]
           </p>
         </div>
 
@@ -96,13 +84,10 @@ const realizace = [
                 class="bg-brand-green text-white w-6 h-6 flex items-center justify-center rounded-full text-sm"
                 >1</span
               >
-              Den první: Pochopení
+              [[schools.climate_days.day1_title]]
             </h4>
             <p class="text-sm text-dark-green/80">
-              Zaměřujeme se na komplexní pochopení krize pomocí osvědčené
-              metodiky Klimatická mozaika. Žáci objevují, proč je změna klimatu
-              naléhavá a jak souvisí s jejich životem. Součástí je i bezpečný
-              prostor pro vyjádření emocí.
+              [[schools.climate_days.day1_desc]]
             </p>
           </div>
           <div>
@@ -113,13 +98,10 @@ const realizace = [
                 class="bg-brand-green text-white w-6 h-6 flex items-center justify-center rounded-full text-sm"
                 >2</span
               >
-              Den druhý: Akce
+              [[schools.climate_days.day2_title]]
             </h4>
             <p class="text-sm text-dark-green/80">
-              Žáci zkoumají cesty k zapojení. Probádají úpravu osobní stopy i
-              boj s klimatem na úrovni obcí a států (adaptace a mitigace).
-              Pomocí workshopů trénují kritické myšlení a tvoří vlastní návrhy
-              řešení.
+              [[schools.climate_days.day2_desc]]
             </p>
           </div>
         </div>
@@ -129,7 +111,7 @@ const realizace = [
         <h4
           class="text-sm uppercase tracking-wider font-bold text-dark-green/50 mb-4"
         >
-          Kde už program proběhl
+          [[schools.realizations_title]]
         </h4>
         <div class="flex flex-wrap gap-2">
           {
@@ -142,7 +124,7 @@ const realizace = [
           <span
             class="text-xs font-bold px-3 py-1.5 text-brand-green italic flex items-center"
           >
-            ... a brzy snad i u vás!
+            [[schools.realizations_more]]
           </span>
         </div>
       </div>
@@ -151,7 +133,7 @@ const realizace = [
 
   <section class="px-4 pb-8 container mx-auto max-w-2xl">
     <h3 class="text-2xl font-serif font-bold text-brand-green mb-6 text-center">
-      Další školní formáty
+      [[schools.other_formats.title]]
     </h3>
 
     <div class="grid gap-8">
@@ -159,22 +141,20 @@ const realizace = [
         class="bg-white/60 backdrop-blur-sm rounded-3xl p-8 border border-white transform-gpu will-change-transform transition-transform hover:-translate-y-1 hover:shadow-lg"
       >
         <h3 class="text-xl font-bold text-brand-green mb-3">
-          Climate Fresk Junior
+          [[schools.other_formats.fresk.title]]
         </h3>
         <div class="flex gap-4 mb-4">
           <span
             class="text-xs font-bold bg-cream px-2 py-1 rounded-md text-dark-green"
-            ><Icon name="mdi:clock-outline" class="inline w-4 h-4 mr-1" /> 120 minut</span
+            ><Icon name="mdi:clock-outline" class="inline w-4 h-4 mr-1" /> [[schools.other_formats.fresk.duration]]</span
           >
           <span
             class="text-xs font-bold bg-cream px-2 py-1 rounded-md text-dark-green"
-            >Ideální na 3 vyuč. hodiny</span
+            >[[schools.other_formats.fresk.ideal]]</span
           >
         </div>
         <p class="text-dark-green/80 text-sm">
-          Zjednodušená, ale vysoce efektivní verze známé francouzské metodiky,
-          přizpůsobená pro mladší publikum. Hravou karetní formou žáci
-          rozklíčují příčiny a následky klimatické změny.
+          [[schools.other_formats.fresk.description]]
         </p>
       </div>
     </div>
