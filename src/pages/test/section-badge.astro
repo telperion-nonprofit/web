@@ -1,0 +1,24 @@
+---
+import SectionBadge from '../../components/SectionBadge.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Test SectionBadge">
+  <div class="p-8 space-y-8">
+    <SectionBadge data-testid="badge-default">
+      Default Badge
+    </SectionBadge>
+
+    <SectionBadge class="custom-class" data-testid="badge-custom-class">
+      Custom Class Badge
+    </SectionBadge>
+
+    <SectionBadge id="badge-with-id" data-testid="badge-with-id">
+      Badge with ID
+    </SectionBadge>
+
+    <SectionBadge data-testid="badge-complex-slot">
+      <span>Complex</span> <strong>Slot</strong>
+    </SectionBadge>
+  </div>
+</Layout>
