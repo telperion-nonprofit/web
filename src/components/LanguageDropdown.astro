@@ -57,17 +57,14 @@ const { mobile = false } = Astro.props;
 </div>
 
 <script>
+  import { getSafeLanguage } from '../utils/lang';
+
   // This script runs once per page load and sets up all language dropdowns
   document.addEventListener('DOMContentLoaded', () => {
     const containers = document.querySelectorAll('.language-dropdown-container');
 
     // Get current language from localStorage or fallback
-    let currentLang = localStorage.getItem('zvoleny-jazyk');
-    if (!currentLang) {
-      const browserLang = navigator.language.slice(0, 2);
-      currentLang = browserLang === 'en' ? 'en' : 'cs-CZ';
-      localStorage.setItem('zvoleny-jazyk', currentLang);
-    }
+    const currentLang = getSafeLanguage();
 
     // Update labels on load
     const labels = document.querySelectorAll('.current-language-label');

@@ -107,9 +107,11 @@ import SectionBadge from '../components/SectionBadge.astro';
 </Layout>
 
 <script>
+  import { getSafeLanguage } from '../utils/lang';
+
   const iframe = document.getElementById('umap-iframe') as HTMLIFrameElement;
   if (iframe) {
-    const lang = localStorage.getItem('zvoleny-jazyk') || 'cs-CZ';
+    const lang = getSafeLanguage();
     const umapLang = lang === 'en' ? 'en' : 'cs-cz';
     iframe.src = iframe.src.replace(/openstreetmap\.fr\/[a-z-]+\/map/, `openstreetmap.fr/${umapLang}/map`);
   }
