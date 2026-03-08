@@ -72,6 +72,18 @@ Ensure you have [Node.js](https://nodejs.org/) installed. The project supports `
    npm install
    ```
 
+3. Create a `.env` file in the project root with your Tolgee credentials:
+   ```bash
+   PUBLIC_TOLGEE_API_URL=https://app.tolgee.io
+   PUBLIC_TOLGEE_API_KEY=<your-tolgee-project-api-key>
+   ```
+   This is required for the pre-push hook to pull the latest translations from Tolgee before each `git push`. Without it, the hook will fail.
+
+4. Enable the git hooks:
+   ```bash
+   git config core.hooksPath .githooks
+   ```
+
 ### Development Scripts
 
 The `package.json` includes the following scripts:
