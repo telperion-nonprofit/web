@@ -67,40 +67,36 @@ const pageTitle = title
 
     <Modal />
     <script>
-      import { Tolgee, FormatSimple, DevTools, BackendFetch } from "@tolgee/web";
+      import { Tolgee, FormatSimple, ObserverPlugin } from "@tolgee/web";
+      import enTranslations from "../i18n/en.json";
+      import csTranslations from "../i18n/cs-CZ.json";
 
       // 1. Zjistíme, jestli si uživatel jazyk už ručně nepřepnul v minulosti
       let savedLanguage = localStorage.getItem("zvoleny-jazyk");
 
       // 2. Pokud u nás uživatel ještě nikdy nebyl, detekujeme jazyk z jeho prohlížeče
       if (!savedLanguage) {
-        // navigator.language vrací např. "cs-CZ" nebo "en-US". Vezmeme první 2 písmena.
         const browserLang = navigator.language.slice(0, 2);
-
-        // Pokud je prohlížeč v češtině nebo slovenštině, nastavíme češtinu. Pro zbytek světa angličtinu.
         savedLanguage =
-          browserLang === "cs" || browserLang === "sk" ? "cs" : "en";
+          browserLang === "en" ? "en" : "cs-CZ";
       }
 
       const tolgee = Tolgee()
     .use(FormatSimple())
-    .use(BackendFetch()) // Načte soubory z /i18n/
+    .use(ObserverPlugin())
     .init({
-      // API klíč použijeme JEN lokálně pro Alt+Klik překládání
-      apiKey: import.meta.env.PUBLIC_TOLGEE_API_KEY,
-      apiUrl: 'https://app.tolgee.io',
-      language: localStorage.getItem('zvoleny-jazyk') || 'en',
-      defaultLanguage: 'en',
+      language: savedLanguage,
+      defaultLanguage: 'cs-CZ',
       observerType: 'text',
       observerOptions: { inputPrefix: '[[', inputSuffix: ']]' },
-      // Cesta k lokálním souborům, které jste právě stáhli
       staticData: {
-        // Zde můžete případně importovat JSONy přímo, pokud nechcete fetchovat
+        en: enTranslations,
+        "cs-CZ": csTranslations,
       }
     });
 
-  tolgee.run().then(() => {
-        console.log("Tolgee bylo úspěšně spuštěno v jazyce:", savedLanguage);
+  tolgee.run().catch((e) => {
+        console.error("Tolgee initialization failed:", e);
       });
     </script>
   </body>
