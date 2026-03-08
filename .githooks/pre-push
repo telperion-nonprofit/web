@@ -8,6 +8,7 @@ fi
 echo "Pulling latest translations from Tolgee..."
 npx @tolgee/cli pull --api-key "$TOLGEE_API_KEY"
 if ! git diff --quiet src/i18n/; then
-  echo "Translations updated — please commit the changes and push again."
-  exit 1
+  echo "Translations updated — committing changes automatically..."
+  git add src/i18n/
+  git commit -m "chore: update translations from Tolgee"
 fi
