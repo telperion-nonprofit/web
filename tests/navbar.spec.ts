@@ -22,7 +22,7 @@ test.describe("Navbar Component", () => {
         { name: "Domů", href: "/" },
         { name: "Podcast", href: "/podcast" },
         { name: "Články", href: "/clanky" },
-        { name: "Kontakty", href: "/kontakty" },
+        { name: "Kontakt", href: "/kontakty" },
       ];
 
       for (const link of expectedLinks) {
@@ -95,7 +95,7 @@ test.describe("Navbar Component", () => {
         "Programy",
         "Podcast",
         "Články",
-        "Kontakty",
+        "Kontakt",
       ];
 
       for (const name of expectedLinks) {

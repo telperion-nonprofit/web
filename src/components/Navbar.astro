@@ -42,7 +42,7 @@ const menuItems: MenuItem[] = [
         </a>
       </div>
 
-      <nav class="hidden md:flex absolute inset-x-0 top-0 bottom-0 justify-center items-center pointer-events-none z-10">
+      <nav class="hidden md:flex flex-1 justify-center items-center pointer-events-none z-10 px-4">
         <ul class="flex items-center space-x-1 lg:space-x-4 pointer-events-auto">
           {menuItems.map((item) => (
             <DesktopMenuItem item={item} />
@@ -50,7 +50,7 @@ const menuItems: MenuItem[] = [
         </ul>
       </nav>
 
-      <div class="hidden md:flex items-center gap-2 z-20 pointer-events-auto">
+      <div class="hidden md:flex flex-shrink-0 items-center gap-2 z-20 pointer-events-auto">
         <LanguageDropdown />
         <button 
           type="button" 
