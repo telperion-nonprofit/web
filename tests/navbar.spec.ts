@@ -6,6 +6,7 @@ test.describe("Navbar Component", () => {
   });
 
   test.describe("Desktop Viewport", () => {
+    test.skip(({ isMobile }) => isMobile === true, "Desktop tests only");
     test.use({ viewport: { width: 1280, height: 720 } });
 
     test("should display logo and brand name", async ({ page }) => {
@@ -69,6 +70,7 @@ test.describe("Navbar Component", () => {
   });
 
   test.describe("Mobile Viewport", () => {
+    test.skip(({ isMobile }) => isMobile !== true, "Mobile tests only");
     test.use({ viewport: { width: 375, height: 667 } });
 
     test("should display mobile menu button", async ({ page }) => {

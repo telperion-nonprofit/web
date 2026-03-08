@@ -21,7 +21,7 @@ test.describe("Modal Component", () => {
 
       // Dispatch the event to open the modal
       await page.evaluate(() => {
-        document.dispatchEvent(new CustomEvent('open-contact-modal'));
+        document.dispatchEvent(new CustomEvent("open-contact-modal"));
       });
 
       // It shouldn't be hidden anymore
@@ -35,7 +35,7 @@ test.describe("Modal Component", () => {
 
     test("should display form contents when open", async ({ page }) => {
       await page.evaluate(() => {
-        document.dispatchEvent(new CustomEvent('open-contact-modal'));
+        document.dispatchEvent(new CustomEvent("open-contact-modal"));
       });
 
       const modalTitle = page.locator("#modal-title");
@@ -56,7 +56,9 @@ test.describe("Modal Component", () => {
       await expect(page.locator("#message")).toHaveAttribute("required", "");
 
       // Check buttons
-      await expect(page.getByRole("button", { name: /Odeslat zprávu/i })).toBeVisible();
+      await expect(
+        page.getByRole("button", { name: /Odeslat zprávu/i }),
+      ).toBeVisible();
       await expect(page.locator("#cancel-modal-btn")).toBeVisible();
     });
 
@@ -64,7 +66,7 @@ test.describe("Modal Component", () => {
       const modal = page.locator("#contact-modal");
 
       await page.evaluate(() => {
-        document.dispatchEvent(new CustomEvent('open-contact-modal'));
+        document.dispatchEvent(new CustomEvent("open-contact-modal"));
       });
       await expect(modal).not.toHaveClass(/hidden/);
 
@@ -79,7 +81,7 @@ test.describe("Modal Component", () => {
       const modal = page.locator("#contact-modal");
 
       await page.evaluate(() => {
-        document.dispatchEvent(new CustomEvent('open-contact-modal'));
+        document.dispatchEvent(new CustomEvent("open-contact-modal"));
       });
       await expect(modal).not.toHaveClass(/hidden/);
 
@@ -94,7 +96,7 @@ test.describe("Modal Component", () => {
       const modal = page.locator("#contact-modal");
 
       await page.evaluate(() => {
-        document.dispatchEvent(new CustomEvent('open-contact-modal'));
+        document.dispatchEvent(new CustomEvent("open-contact-modal"));
       });
       await expect(modal).not.toHaveClass(/hidden/);
 
@@ -120,7 +122,7 @@ test.describe("Modal Component", () => {
 
       // Open
       await page.evaluate(() => {
-        document.dispatchEvent(new CustomEvent('open-contact-modal'));
+        document.dispatchEvent(new CustomEvent("open-contact-modal"));
       });
       await expect(modal).not.toHaveClass(/hidden/);
 

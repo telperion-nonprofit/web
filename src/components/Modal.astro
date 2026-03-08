@@ -1,67 +1,135 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 ---
 
-<div id="contact-modal" class="fixed inset-0 z-[100] hidden" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-  
-  <div id="modal-backdrop" class="fixed inset-0 bg-dark-green/60 backdrop-blur-sm transition-opacity opacity-0 duration-300"></div>
+<div
+  id="contact-modal"
+  class="fixed inset-0 z-[100] hidden"
+  aria-labelledby="modal-title"
+  role="dialog"
+  aria-modal="true"
+>
+  <div
+    id="modal-backdrop"
+    class="fixed inset-0 bg-dark-green/60 backdrop-blur-sm transition-opacity opacity-0 duration-300"
+  >
+  </div>
 
   <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-    <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
-      
-      <div id="modal-panel" class="relative transform overflow-hidden rounded-3xl bg-cream text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg scale-95 opacity-0 duration-300">
-        
-        <button type="button" id="close-modal-btn" class="absolute right-6 top-6 text-dark-green/50 hover:text-brand-green transition-colors focus:outline-none rounded-full p-1 hover:bg-brand-green/10">
+    <div
+      class="flex min-h-full items-center justify-center p-4 text-center sm:p-0"
+    >
+      <div
+        id="modal-panel"
+        class="relative transform overflow-hidden rounded-3xl bg-cream text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg scale-95 opacity-0 duration-300"
+      >
+        <button
+          type="button"
+          id="close-modal-btn"
+          class="absolute right-6 top-6 text-dark-green/50 hover:text-brand-green transition-colors focus:outline-none rounded-full p-1 hover:bg-brand-green/10"
+        >
           <span class="sr-only">Zavřít</span>
           <Icon name="mdi:close" class="h-6 w-6" />
         </button>
 
         <div class="px-6 pb-4 pt-8 sm:p-8 sm:pb-6">
           <div class="sm:flex sm:items-start">
-            <div class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-green/10 sm:mx-0 sm:h-12 sm:w-12 border border-brand-green/20">
-              <Icon name="mdi:email-fast-outline" class="h-6 w-6 text-brand-green" />
+            <div
+              class="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-brand-green/10 sm:mx-0 sm:h-12 sm:w-12 border border-brand-green/20"
+            >
+              <Icon
+                name="mdi:email-fast-outline"
+                class="h-6 w-6 text-brand-green"
+              />
             </div>
             <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
-              <h3 class="text-2xl font-serif font-bold leading-6 text-brand-green" id="modal-title">Napište nám</h3>
+              <h3
+                class="text-2xl font-serif font-bold leading-6 text-brand-green"
+                id="modal-title"
+              >
+                Napište nám
+              </h3>
               <div class="mt-2">
-                <p class="text-sm text-dark-green/80">Máte zájem o náš program? Zanechte nám zprávu a my se vám co nejdříve ozveme.</p>
+                <p class="text-sm text-dark-green/80">
+                  Máte zájem o náš program? Zanechte nám zprávu a my se vám co
+                  nejdříve ozveme.
+                </p>
               </div>
             </div>
           </div>
 
-          <form action="https://formspree.io/f/xyknzgwp" method="POST" class="mt-6 space-y-4">
-            
+          <form
+            action="https://formspree.io/f/xyknzgwp"
+            method="POST"
+            class="mt-6 space-y-4"
+          >
             <div>
-              <label for="name" class="block text-sm font-medium leading-6 text-dark-green">Vaše jméno nebo název školy</label>
+              <label
+                for="name"
+                class="block text-sm font-medium leading-6 text-dark-green"
+                >Vaše jméno nebo název školy</label
+              >
               <div class="mt-1">
-                <input type="text" name="name" id="name" required class="block w-full rounded-xl border-0 py-2.5 px-4 text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white/50">
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  required
+                  class="block w-full rounded-xl border-0 py-2.5 px-4 text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white/50"
+                />
               </div>
             </div>
 
             <div>
-              <label for="email" class="block text-sm font-medium leading-6 text-dark-green">E-mailová adresa</label>
+              <label
+                for="email"
+                class="block text-sm font-medium leading-6 text-dark-green"
+                >E-mailová adresa</label
+              >
               <div class="mt-1">
-                <input type="email" name="email" id="email" required class="block w-full rounded-xl border-0 py-2.5 px-4 text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white/50">
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  class="block w-full rounded-xl border-0 py-2.5 px-4 text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white/50"
+                />
               </div>
             </div>
 
             <div>
-              <label for="message" class="block text-sm font-medium leading-6 text-dark-green">Vaše zpráva</label>
+              <label
+                for="message"
+                class="block text-sm font-medium leading-6 text-dark-green"
+                >Vaše zpráva</label
+              >
               <div class="mt-1">
-                <textarea id="message" name="message" rows="4" required class="block w-full rounded-xl border-0 py-2.5 px-4 text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white/50 resize-none"></textarea>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="block w-full rounded-xl border-0 py-2.5 px-4 text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white/50 resize-none"
+                ></textarea>
               </div>
             </div>
 
             <div class="mt-6 sm:mt-8 sm:flex sm:flex-row-reverse gap-3">
-              <button type="submit" class="inline-flex w-full justify-center rounded-full bg-brand-green px-6 py-3 text-sm font-bold text-cream shadow-sm hover:bg-dark-green sm:w-auto transition-colors">
+              <button
+                type="submit"
+                class="inline-flex w-full justify-center rounded-full bg-brand-green px-6 py-3 text-sm font-bold text-cream shadow-sm hover:bg-dark-green sm:w-auto transition-colors"
+              >
                 Odeslat zprávu
               </button>
-              <button type="button" id="cancel-modal-btn" class="mt-3 inline-flex w-full justify-center rounded-full bg-white px-6 py-3 text-sm font-bold text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 hover:bg-gray-50 sm:mt-0 sm:w-auto transition-colors">
+              <button
+                type="button"
+                id="cancel-modal-btn"
+                class="mt-3 inline-flex w-full justify-center rounded-full bg-white px-6 py-3 text-sm font-bold text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 hover:bg-gray-50 sm:mt-0 sm:w-auto transition-colors"
+              >
                 Zrušit
               </button>
             </div>
           </form>
-
         </div>
       </div>
     </div>
@@ -69,54 +137,54 @@ import { Icon } from 'astro-icon/components';
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const modal = document.getElementById('contact-modal');
-    const backdrop = document.getElementById('modal-backdrop');
-    const panel = document.getElementById('modal-panel');
-    const closeBtn = document.getElementById('close-modal-btn');
-    const cancelBtn = document.getElementById('cancel-modal-btn');
+  document.addEventListener("DOMContentLoaded", () => {
+    const modal = document.getElementById("contact-modal");
+    const backdrop = document.getElementById("modal-backdrop");
+    const panel = document.getElementById("modal-panel");
+    const closeBtn = document.getElementById("close-modal-btn");
+    const cancelBtn = document.getElementById("cancel-modal-btn");
 
-    if(!modal || !backdrop || !panel) return;
+    if (!modal || !backdrop || !panel) return;
 
     const openModal = () => {
-      modal.classList.remove('hidden');
-      
+      modal.classList.remove("hidden");
+
       setTimeout(() => {
-        backdrop.classList.remove('opacity-0');
-        backdrop.classList.add('opacity-100');
-        
-        panel.classList.remove('opacity-0', 'scale-95');
-        panel.classList.add('opacity-100', 'scale-100');
+        backdrop.classList.remove("opacity-0");
+        backdrop.classList.add("opacity-100");
+
+        panel.classList.remove("opacity-0", "scale-95");
+        panel.classList.add("opacity-100", "scale-100");
       }, 10);
     };
 
     const closeModal = () => {
-      backdrop.classList.remove('opacity-100');
-      backdrop.classList.add('opacity-0');
-      
-      panel.classList.remove('opacity-100', 'scale-100');
-      panel.classList.add('opacity-0', 'scale-95');
+      backdrop.classList.remove("opacity-100");
+      backdrop.classList.add("opacity-0");
+
+      panel.classList.remove("opacity-100", "scale-100");
+      panel.classList.add("opacity-0", "scale-95");
 
       setTimeout(() => {
-        modal.classList.add('hidden');
+        modal.classList.add("hidden");
       }, 300);
     };
 
-    closeBtn?.addEventListener('click', closeModal);
-    cancelBtn?.addEventListener('click', closeModal);
+    closeBtn?.addEventListener("click", closeModal);
+    cancelBtn?.addEventListener("click", closeModal);
 
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal.querySelector('.min-h-full')) {
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal.querySelector(".min-h-full")) {
         closeModal();
       }
     });
 
-    document.addEventListener('open-contact-modal', () => {
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-          mobileMenu.classList.add('hidden');
-          const mobileBtn = document.getElementById('mobile-menu-btn');
-          if(mobileBtn) mobileBtn.setAttribute('aria-expanded', 'false');
+    document.addEventListener("open-contact-modal", () => {
+      const mobileMenu = document.getElementById("mobile-menu");
+      if (mobileMenu && !mobileMenu.classList.contains("hidden")) {
+        mobileMenu.classList.add("hidden");
+        const mobileBtn = document.getElementById("mobile-menu-btn");
+        if (mobileBtn) mobileBtn.setAttribute("aria-expanded", "false");
       }
 
       openModal();

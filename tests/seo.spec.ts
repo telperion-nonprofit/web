@@ -15,7 +15,10 @@ test.describe("SEO", () => {
     );
 
     const ogTitle = page.locator('meta[property="og:title"]');
-    await expect(ogTitle).toHaveAttribute("content", "[[home.page_title]] | Telperion");
+    await expect(ogTitle).toHaveAttribute(
+      "content",
+      "[[home.page_title]] | Telperion",
+    );
 
     const ogDescription = page.locator('meta[property="og:description"]');
     await expect(ogDescription).toHaveAttribute(

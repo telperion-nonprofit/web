@@ -1,8 +1,8 @@
 ---
-import { Icon } from 'astro-icon/components';
-import type { HTMLAttributes } from 'astro/types';
+import { Icon } from "astro-icon/components";
+import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<'div'> {
+interface Props extends HTMLAttributes<"div"> {
   title: string;
   icon: string;
 }
@@ -10,9 +10,16 @@ interface Props extends HTMLAttributes<'div'> {
 const { title, icon, class: className, ...attrs } = Astro.props;
 ---
 
-<div class:list={["glass-card rounded-3xl p-6 sm:p-8 transform-gpu will-change-transform h-full flex flex-col items-start transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-green/10", className]} {...attrs}>
-  
-  <div class="w-14 h-14 rounded-2xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-6 border border-brand-green/20">
+<div
+  class:list={[
+    "glass-card rounded-3xl p-6 sm:p-8 transform-gpu will-change-transform h-full flex flex-col items-start transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-green/10",
+    className,
+  ]}
+  {...attrs}
+>
+  <div
+    class="w-14 h-14 rounded-2xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-6 border border-brand-green/20"
+  >
     <Icon name={icon} class="w-7 h-7" />
   </div>
 
@@ -23,5 +30,4 @@ const { title, icon, class: className, ...attrs } = Astro.props;
   <p class="text-dark-green/80 font-medium leading-relaxed">
     <slot />
   </p>
-
 </div>

@@ -1,5 +1,5 @@
 ---
-import { Icon } from 'astro-icon/components';
+import { Icon } from "astro-icon/components";
 
 interface Props {
   mobile?: boolean;
@@ -8,13 +8,15 @@ interface Props {
 const { mobile = false } = Astro.props;
 ---
 
-<div class={`relative language-dropdown-container ${mobile ? 'w-full' : 'inline-block'}`}>
+<div
+  class={`relative language-dropdown-container ${mobile ? "w-full" : "inline-block"}`}
+>
   <button
     type="button"
     class={`language-toggle flex items-center justify-between gap-2 px-4 py-2 text-sm font-medium transition-colors ${
       mobile
-        ? 'w-full text-dark-green hover:bg-brand-green/5 rounded-lg'
-        : 'text-dark-green hover:text-brand-green rounded-full hover:bg-white/50'
+        ? "w-full text-dark-green hover:bg-brand-green/5 rounded-lg"
+        : "text-dark-green hover:text-brand-green rounded-full hover:bg-white/50"
     }`}
     aria-expanded="false"
     aria-haspopup="true"
@@ -23,14 +25,17 @@ const { mobile = false } = Astro.props;
       <Icon name="mdi:earth" class="w-5 h-5 text-brand-green" />
       <span class="current-language-label">CS</span>
     </div>
-    <Icon name="mdi:chevron-down" class="w-4 h-4 transition-transform duration-200 group-aria-expanded:rotate-180" />
+    <Icon
+      name="mdi:chevron-down"
+      class="w-4 h-4 transition-transform duration-200 group-aria-expanded:rotate-180"
+    />
   </button>
 
   <div
     class={`language-menu hidden absolute z-50 overflow-hidden bg-cream/90 backdrop-blur-md rounded-2xl shadow-xl border border-dark-green/10 transition-all duration-200 ${
       mobile
-        ? 'bottom-full left-0 mb-1 w-full'
-        : 'right-0 mt-2 w-40 origin-top-right'
+        ? "bottom-full left-0 mb-1 w-full"
+        : "right-0 mt-2 w-40 origin-top-right"
     }`}
     role="menu"
     aria-orientation="vertical"
@@ -57,36 +62,38 @@ const { mobile = false } = Astro.props;
 </div>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const containerElements = document.querySelectorAll('.language-dropdown-container');
+  document.addEventListener("DOMContentLoaded", () => {
+    const containerElements = document.querySelectorAll(
+      ".language-dropdown-container",
+    );
 
     // Cache DOM elements per container to avoid repeated querySelectors in global listeners
-    const dropdowns = Array.from(containerElements).map(container => ({
+    const dropdowns = Array.from(containerElements).map((container) => ({
       container,
-      toggle: container.querySelector('.language-toggle'),
-      menu: container.querySelector('.language-menu'),
-      options: container.querySelectorAll('.lang-option')
+      toggle: container.querySelector(".language-toggle"),
+      menu: container.querySelector(".language-menu"),
+      options: container.querySelectorAll(".lang-option"),
     }));
 
-    let currentLang = localStorage.getItem('zvoleny-jazyk');
+    let currentLang = localStorage.getItem("zvoleny-jazyk");
     if (!currentLang) {
       const browserLang = navigator.language.slice(0, 2);
-      currentLang = browserLang === 'en' ? 'en' : 'cs-CZ';
-      localStorage.setItem('zvoleny-jazyk', currentLang);
+      currentLang = browserLang === "en" ? "en" : "cs-CZ";
+      localStorage.setItem("zvoleny-jazyk", currentLang);
     }
 
-    const labels = document.querySelectorAll('.current-language-label');
+    const labels = document.querySelectorAll(".current-language-label");
     for (const label of labels) {
-      label.textContent = currentLang === 'en' ? 'EN' : 'CS';
+      label.textContent = currentLang === "en" ? "EN" : "CS";
     }
 
     // Close all menus when clicking outside
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", (e) => {
       dropdowns.forEach(({ container, toggle, menu }) => {
         if (toggle && menu && !container.contains(e.target as Node)) {
-          toggle.setAttribute('aria-expanded', 'false');
-          menu.classList.add('hidden');
-          toggle.classList.remove('group');
+          toggle.setAttribute("aria-expanded", "false");
+          menu.classList.add("hidden");
+          toggle.classList.remove("group");
         }
       });
     });
@@ -94,36 +101,36 @@ const { mobile = false } = Astro.props;
     // Setup each dropdown
     dropdowns.forEach(({ container, toggle, menu, options }) => {
       if (toggle && menu) {
-        toggle.addEventListener('click', () => {
-          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.addEventListener("click", () => {
+          const isExpanded = toggle.getAttribute("aria-expanded") === "true";
 
           // Close other open menus using the cached elements
-          dropdowns.forEach(otherDropdown => {
+          dropdowns.forEach((otherDropdown) => {
             if (otherDropdown.container !== container) {
               const { toggle: otherToggle, menu: otherMenu } = otherDropdown;
               if (otherToggle && otherMenu) {
-                otherToggle.setAttribute('aria-expanded', 'false');
-                otherMenu.classList.add('hidden');
-                otherToggle.classList.remove('group');
+                otherToggle.setAttribute("aria-expanded", "false");
+                otherMenu.classList.add("hidden");
+                otherToggle.classList.remove("group");
               }
             }
           });
 
-          toggle.setAttribute('aria-expanded', String(!isExpanded));
-          menu.classList.toggle('hidden');
-          toggle.classList.toggle('group');
+          toggle.setAttribute("aria-expanded", String(!isExpanded));
+          menu.classList.toggle("hidden");
+          toggle.classList.toggle("group");
         });
 
         for (const option of options) {
-          option.addEventListener('click', () => {
-            const newLang = option.getAttribute('data-lang');
+          option.addEventListener("click", () => {
+            const newLang = option.getAttribute("data-lang");
             if (newLang && newLang !== currentLang) {
-              localStorage.setItem('zvoleny-jazyk', newLang);
+              localStorage.setItem("zvoleny-jazyk", newLang);
               window.location.reload();
             } else {
-              toggle.setAttribute('aria-expanded', 'false');
-              menu.classList.add('hidden');
-              toggle.classList.remove('group');
+              toggle.setAttribute("aria-expanded", "false");
+              menu.classList.add("hidden");
+              toggle.classList.remove("group");
             }
           });
         }

@@ -1,11 +1,11 @@
 ---
-import { getCollection } from 'astro:content';
-import Layout from '../../layouts/Layout.astro';
-import { Icon } from 'astro-icon/components';
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
 
 export async function getStaticPaths() {
-  const clanky = await getCollection('clanky');
-  return clanky.map(clanek => ({
+  const clanky = await getCollection("clanky");
+  return clanky.map((clanek) => ({
     params: { slug: clanek.slug },
     props: { clanek },
   }));
@@ -18,24 +18,36 @@ const { Content } = await clanek.render();
 <Layout title={clanek.data.title} description={clanek.data.description}>
   <article class="max-w-3xl mx-auto px-4 py-12 md:py-20">
     <div class="mb-8 text-center">
-      <a href="/clanky" class="inline-flex items-center gap-2 text-brand-green hover:text-dark-green font-bold mb-6 transition-colors group">
-        <Icon name="mdi:arrow-left" class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform" />
+      <a
+        href="/clanky"
+        class="inline-flex items-center gap-2 text-brand-green hover:text-dark-green font-bold mb-6 transition-colors group"
+      >
+        <Icon
+          name="mdi:arrow-left"
+          class="w-5 h-5 transform group-hover:-translate-x-1 transition-transform"
+        />
         Zpět na články
       </a>
 
-      <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-4">
+      <h1
+        class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-4"
+      >
         {clanek.data.title}
       </h1>
 
-      <div class="flex items-center justify-center gap-4 text-dark-green/60 font-medium">
+      <div
+        class="flex items-center justify-center gap-4 text-dark-green/60 font-medium"
+      >
         <div class="flex items-center gap-2">
           <Icon name="mdi:calendar-blank" class="w-4 h-4" />
           <time datetime={clanek.data.pubDate?.toISOString()}>
-            {clanek.data.pubDate?.toLocaleDateString('cs-CZ', {
-              year: 'numeric',
-              month: 'long',
-              day: 'numeric',
-            })}
+            {
+              clanek.data.pubDate?.toLocaleDateString("cs-CZ", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+              })
+            }
           </time>
         </div>
         <span class="w-1 h-1 rounded-full bg-dark-green/30"></span>
@@ -43,7 +55,8 @@ const { Content } = await clanek.render();
       </div>
     </div>
 
-    <div class="prose prose-lg md:prose-xl max-w-none
+    <div
+      class="prose prose-lg md:prose-xl max-w-none
                 prose-headings:font-serif prose-headings:font-bold prose-headings:text-brand-green prose-headings:tracking-tight
                 prose-h2:mt-12 prose-h2:mb-6 prose-h2:text-3xl md:prose-h2:text-4xl prose-h2:border-b prose-h2:border-brand-green/10 prose-h2:pb-2
                 prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-2xl md:prose-h3:text-3xl
@@ -54,7 +67,8 @@ const { Content } = await clanek.render();
                 prose-ol:list-decimal prose-ol:pl-6 prose-ol:mb-6
                 prose-blockquote:border-l-4 prose-blockquote:border-brand-green/30 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-dark-green/80 prose-blockquote:bg-brand-green/5 prose-blockquote:py-2 prose-blockquote:rounded-r-xl
                 prose-img:rounded-2xl prose-img:shadow-lg
-                bg-white/60 backdrop-blur-md p-8 md:p-14 lg:p-16 rounded-[2.5rem] shadow-2xl shadow-brand-green/5 border border-white/50">
+                bg-white/60 backdrop-blur-md p-8 md:p-14 lg:p-16 rounded-[2.5rem] shadow-2xl shadow-brand-green/5 border border-white/50"
+    >
       <Content />
     </div>
   </article>

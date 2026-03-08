@@ -1,48 +1,65 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { Icon } from 'astro-icon/components';
-import SectionBadge from '../../components/SectionBadge.astro';
+import Layout from "../../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import SectionBadge from "../../components/SectionBadge.astro";
 
 const realizace = [
-  "Gymnázium Přírodní škola, Praha", "BIGY, České Budějovice", 
-  "Škola Sv. Augustina, Praha", "ZŠ Klausova, Praha", 
-  "ZŠ Osmička, Roudnice nad Labem", "ZŠ Klíček, Praha", 
-  "ZŠ T. Stolzové, Kostelec nad Labem", "ZŠ Pod Žvahovem, Praha", 
-  "Gymnázium TGM, Litvínov", "MŠ a ZŠ Adélka, Mašovice"
+  "Gymnázium Přírodní škola, Praha",
+  "BIGY, České Budějovice",
+  "Škola Sv. Augustina, Praha",
+  "ZŠ Klausova, Praha",
+  "ZŠ Osmička, Roudnice nad Labem",
+  "ZŠ Klíček, Praha",
+  "ZŠ T. Stolzové, Kostelec nad Labem",
+  "ZŠ Pod Žvahovem, Praha",
+  "Gymnázium TGM, Litvínov",
+  "MŠ a ZŠ Adélka, Mašovice",
 ];
 ---
 
 <Layout title="Programy pro školy">
-  
   <section class="pt-12 pb-8 text-center px-4 max-w-3xl mx-auto">
-    <SectionBadge>
-      Pro základní a střední školy
-    </SectionBadge>
+    <SectionBadge> Pro základní a střední školy </SectionBadge>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
       Přinášíme klima do <span class="italic">lavic</span>
     </h1>
     <p class="text-lg text-dark-green/80 font-medium">
-      Komplexní, interaktivní a vrstevnické programy, které žákům pomohou pochopit souvislosti a najít vlastní roli v ochraně přírody.
+      Komplexní, interaktivní a vrstevnické programy, které žákům pomohou
+      pochopit souvislosti a najít vlastní roli v ochraně přírody.
     </p>
   </section>
 
   <section class="px-4 pb-8 container mx-auto max-w-6xl">
     <div class="glass-card rounded-[2.5rem] p-8 md:p-12">
-      
-      <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6 border-b border-brand-green/10 pb-8">
+      <div
+        class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6 border-b border-brand-green/10 pb-8"
+      >
         <div>
-          <h2 class="text-3xl font-serif font-bold text-brand-green mb-2">Klimatické dny</h2>
-          <p class="text-dark-green font-medium">Náš vlajkový dvoudenní program</p>
+          <h2 class="text-3xl font-serif font-bold text-brand-green mb-2">
+            Klimatické dny
+          </h2>
+          <p class="text-dark-green font-medium">
+            Náš vlajkový dvoudenní program
+          </p>
         </div>
         <div class="flex flex-wrap gap-3">
-          <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm">
-            <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" /> 2 dny (12 vyuč. hodin)
+          <span
+            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
+          >
+            <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" /> 2 dny
+            (12 vyuč. hodin)
           </span>
-          <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm">
-            <Icon name="mdi:account-group" class="w-5 h-5 text-brand-green" /> Až 80 účastníků
+          <span
+            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
+          >
+            <Icon name="mdi:account-group" class="w-5 h-5 text-brand-green" /> Až
+            80 účastníků
           </span>
-          <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm">
-            <Icon name="mdi:school-outline" class="w-5 h-5 text-brand-green" /> 2. stupeň ZŠ a nižší gymnázia
+          <span
+            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
+          >
+            <Icon name="mdi:school-outline" class="w-5 h-5 text-brand-green" /> 2.
+            stupeň ZŠ a nižší gymnázia
           </span>
         </div>
       </div>
@@ -50,66 +67,116 @@ const realizace = [
       <div class="grid lg:grid-cols-2 gap-12 mb-12">
         <div class="space-y-4 text-dark-green/80 leading-relaxed text-justify">
           <p>
-            V tomto balíčku účastníci získají komplexní pochopení změny klimatu, setkají se s experty z české klimatické scény a najdou konkrétní způsoby, jak se s krizí vypořádat.
+            V tomto balíčku účastníci získají komplexní pochopení změny klimatu,
+            setkají se s experty z české klimatické scény a najdou konkrétní
+            způsoby, jak se s krizí vypořádat.
           </p>
           <p>
-            Vycházíme z principu <strong>vrstevnického učení</strong>. Jako převážně studentská organizace poskytujeme žákům jedinečnou perspektivu – nepoučujeme, ale diskutujeme s nimi jako rovný s rovným.
+            Vycházíme z principu <strong>vrstevnického učení</strong>. Jako
+            převážně studentská organizace poskytujeme žákům jedinečnou
+            perspektivu – nepoučujeme, ale diskutujeme s nimi jako rovný s
+            rovným.
           </p>
           <p>
-            Program systematicky vyhodnocujeme pomocí sociologické analýzy. Sledujeme, jak účastníci porozuměli tématům a jak se změnily jejich postoje. Chceme, aby žáci odcházeli s vědomím, že jejich kroky mají smysl.
+            Program systematicky vyhodnocujeme pomocí sociologické analýzy.
+            Sledujeme, jak účastníci porozuměli tématům a jak se změnily jejich
+            postoje. Chceme, aby žáci odcházeli s vědomím, že jejich kroky mají
+            smysl.
           </p>
         </div>
 
-        <div class="bg-white/40 rounded-2xl p-6 md:p-8 space-y-6 shadow-sm border border-white/50">
+        <div
+          class="bg-white/40 rounded-2xl p-6 md:p-8 space-y-6 shadow-sm border border-white/50"
+        >
           <div>
-            <h4 class="font-bold text-brand-green text-lg mb-2 flex items-center gap-2">
-              <span class="bg-brand-green text-white w-6 h-6 flex items-center justify-center rounded-full text-sm">1</span> 
+            <h4
+              class="font-bold text-brand-green text-lg mb-2 flex items-center gap-2"
+            >
+              <span
+                class="bg-brand-green text-white w-6 h-6 flex items-center justify-center rounded-full text-sm"
+                >1</span
+              >
               Den první: Pochopení
             </h4>
-            <p class="text-sm text-dark-green/80">Zaměřujeme se na komplexní pochopení krize pomocí osvědčené metodiky Klimatická mozaika. Žáci objevují, proč je změna klimatu naléhavá a jak souvisí s jejich životem. Součástí je i bezpečný prostor pro vyjádření emocí.</p>
+            <p class="text-sm text-dark-green/80">
+              Zaměřujeme se na komplexní pochopení krize pomocí osvědčené
+              metodiky Klimatická mozaika. Žáci objevují, proč je změna klimatu
+              naléhavá a jak souvisí s jejich životem. Součástí je i bezpečný
+              prostor pro vyjádření emocí.
+            </p>
           </div>
           <div>
-            <h4 class="font-bold text-brand-green text-lg mb-2 flex items-center gap-2">
-              <span class="bg-brand-green text-white w-6 h-6 flex items-center justify-center rounded-full text-sm">2</span> 
+            <h4
+              class="font-bold text-brand-green text-lg mb-2 flex items-center gap-2"
+            >
+              <span
+                class="bg-brand-green text-white w-6 h-6 flex items-center justify-center rounded-full text-sm"
+                >2</span
+              >
               Den druhý: Akce
             </h4>
-            <p class="text-sm text-dark-green/80">Žáci zkoumají cesty k zapojení. Probádají úpravu osobní stopy i boj s klimatem na úrovni obcí a států (adaptace a mitigace). Pomocí workshopů trénují kritické myšlení a tvoří vlastní návrhy řešení.</p>
+            <p class="text-sm text-dark-green/80">
+              Žáci zkoumají cesty k zapojení. Probádají úpravu osobní stopy i
+              boj s klimatem na úrovni obcí a států (adaptace a mitigace).
+              Pomocí workshopů trénují kritické myšlení a tvoří vlastní návrhy
+              řešení.
+            </p>
           </div>
         </div>
       </div>
 
       <div class="mt-8">
-        <h4 class="text-sm uppercase tracking-wider font-bold text-dark-green/50 mb-4">Kde už program proběhl</h4>
+        <h4
+          class="text-sm uppercase tracking-wider font-bold text-dark-green/50 mb-4"
+        >
+          Kde už program proběhl
+        </h4>
         <div class="flex flex-wrap gap-2">
-          {realizace.map((skola) => (
-            <span class="text-xs font-medium px-3 py-1.5 bg-brand-green/5 text-dark-green rounded-lg border border-brand-green/10">
-              {skola}
-            </span>
-          ))}
-          <span class="text-xs font-bold px-3 py-1.5 text-brand-green italic flex items-center">
+          {
+            realizace.map((skola) => (
+              <span class="text-xs font-medium px-3 py-1.5 bg-brand-green/5 text-dark-green rounded-lg border border-brand-green/10">
+                {skola}
+              </span>
+            ))
+          }
+          <span
+            class="text-xs font-bold px-3 py-1.5 text-brand-green italic flex items-center"
+          >
             ... a brzy snad i u vás!
           </span>
         </div>
       </div>
-
     </div>
   </section>
 
   <section class="px-4 pb-8 container mx-auto max-w-2xl">
-    <h3 class="text-2xl font-serif font-bold text-brand-green mb-6 text-center">Další školní formáty</h3>
-    
+    <h3 class="text-2xl font-serif font-bold text-brand-green mb-6 text-center">
+      Další školní formáty
+    </h3>
+
     <div class="grid gap-8">
-      <div class="bg-white/60 backdrop-blur-sm rounded-3xl p-8 border border-white transform-gpu will-change-transform transition-transform hover:-translate-y-1 hover:shadow-lg">
-        <h3 class="text-xl font-bold text-brand-green mb-3">Climate Fresk Junior</h3>
+      <div
+        class="bg-white/60 backdrop-blur-sm rounded-3xl p-8 border border-white transform-gpu will-change-transform transition-transform hover:-translate-y-1 hover:shadow-lg"
+      >
+        <h3 class="text-xl font-bold text-brand-green mb-3">
+          Climate Fresk Junior
+        </h3>
         <div class="flex gap-4 mb-4">
-          <span class="text-xs font-bold bg-cream px-2 py-1 rounded-md text-dark-green"><Icon name="mdi:clock-outline" class="inline w-4 h-4 mr-1"/> 120 minut</span>
-          <span class="text-xs font-bold bg-cream px-2 py-1 rounded-md text-dark-green">Ideální na 3 vyuč. hodiny</span>
+          <span
+            class="text-xs font-bold bg-cream px-2 py-1 rounded-md text-dark-green"
+            ><Icon name="mdi:clock-outline" class="inline w-4 h-4 mr-1" /> 120 minut</span
+          >
+          <span
+            class="text-xs font-bold bg-cream px-2 py-1 rounded-md text-dark-green"
+            >Ideální na 3 vyuč. hodiny</span
+          >
         </div>
         <p class="text-dark-green/80 text-sm">
-          Zjednodušená, ale vysoce efektivní verze známé francouzské metodiky, přizpůsobená pro mladší publikum. Hravou karetní formou žáci rozklíčují příčiny a následky klimatické změny.
+          Zjednodušená, ale vysoce efektivní verze známé francouzské metodiky,
+          přizpůsobená pro mladší publikum. Hravou karetní formou žáci
+          rozklíčují příčiny a následky klimatické změny.
         </p>
       </div>
     </div>
   </section>
-
 </Layout>

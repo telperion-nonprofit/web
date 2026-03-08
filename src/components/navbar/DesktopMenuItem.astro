@@ -1,5 +1,5 @@
 ---
-import type { MenuItem } from '../../types';
+import type { MenuItem } from "../../types";
 
 interface Props {
   item: MenuItem;
@@ -9,37 +9,48 @@ const { item } = Astro.props;
 ---
 
 <li class="relative group">
-  {item.subItems ? (
-    <>
-      <button class="flex items-center gap-1 text-dark-green hover:text-brand-green hover:bg-white/30 px-4 py-2 rounded-full font-medium transition-all duration-200">
-        {item.name}
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-      </button>
-      
-      <div class="absolute left-0 top-full mt-2 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0">
-        
-        <div class="bg-cream/90 backdrop-blur-md border border-dark-green/10 rounded-2xl shadow-xl overflow-hidden p-2 flex flex-col gap-1">
-          {item.subItems.map((subItem) => (
-            <a 
-              href={subItem.url} 
-              class="block px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
-            aria-label={subItem.name}
-            >
-              {subItem.name}
-            </a>
-          ))}
-        </div>
+  {
+    item.subItems ? (
+      <>
+        <button class="flex items-center gap-1 text-dark-green hover:text-brand-green hover:bg-white/30 px-4 py-2 rounded-full font-medium transition-all duration-200">
+          {item.name}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </button>
 
-      </div>
-    </>
-  ) : (
-    <a 
-      href={item.url} 
-      class="text-dark-green hover:text-brand-green hover:bg-white/30 px-4 py-2 rounded-full font-medium transition-all duration-200"
-    >
-      {item.name}
-    </a>
-  )}
+        <div class="absolute left-0 top-full mt-2 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0">
+          <div class="bg-cream/90 backdrop-blur-md border border-dark-green/10 rounded-2xl shadow-xl overflow-hidden p-2 flex flex-col gap-1">
+            {item.subItems.map((subItem) => (
+              <a
+                href={subItem.url}
+                class="block px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
+                aria-label={subItem.name}
+              >
+                {subItem.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      </>
+    ) : (
+      <a
+        href={item.url}
+        class="text-dark-green hover:text-brand-green hover:bg-white/30 px-4 py-2 rounded-full font-medium transition-all duration-200"
+      >
+        {item.name}
+      </a>
+    )
+  }
 </li>

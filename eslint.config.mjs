@@ -1,5 +1,5 @@
-import eslintPluginAstro from 'eslint-plugin-astro';
-import tsParser from '@typescript-eslint/parser';
+import eslintPluginAstro from "eslint-plugin-astro";
+import tsParser from "@typescript-eslint/parser";
 
 export default [
   ...eslintPluginAstro.configs.recommended,
@@ -8,5 +8,5 @@ export default [
     languageOptions: {
       parser: tsParser,
     },
-  }
+  },
 ];

@@ -1,20 +1,20 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import DesktopMenuItem from '../../components/navbar/DesktopMenuItem.astro';
-import type { MenuItem } from '../../types';
+import Layout from "../../layouts/Layout.astro";
+import DesktopMenuItem from "../../components/navbar/DesktopMenuItem.astro";
+import type { MenuItem } from "../../types";
 
 const normalItem: MenuItem = {
-  name: 'Normal Link',
-  url: '/normal-link'
+  name: "Normal Link",
+  url: "/normal-link",
 };
 
 const dropdownItem: MenuItem = {
-  name: 'Dropdown',
-  url: '#',
+  name: "Dropdown",
+  url: "#",
   subItems: [
-    { name: 'Subitem 1', url: '/sub-1' },
-    { name: 'Subitem 2', url: '/sub-2' }
-  ]
+    { name: "Subitem 1", url: "/sub-1" },
+    { name: "Subitem 2", url: "/sub-2" },
+  ],
 };
 ---
 
@@ -30,7 +30,9 @@ const dropdownItem: MenuItem = {
       </ul>
     </nav>
 
-    <div class="h-64 mt-8 bg-gray-50 border-dashed border-2 border-gray-200 p-4 text-gray-400">
+    <div
+      class="h-64 mt-8 bg-gray-50 border-dashed border-2 border-gray-200 p-4 text-gray-400"
+    >
       Space below to allow dropdown expansion
     </div>
   </div>

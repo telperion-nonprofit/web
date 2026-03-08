@@ -5,7 +5,9 @@ test.describe("SectionBadge Component", () => {
     await page.goto("/test/section-badge");
   });
 
-  test("should render correctly with default slot content", async ({ page }) => {
+  test("should render correctly with default slot content", async ({
+    page,
+  }) => {
     const badge = page.getByTestId("badge-default");
     await expect(badge).toBeVisible();
     await expect(badge).toHaveText("Default Badge");

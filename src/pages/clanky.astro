@@ -1,71 +1,85 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-import { Icon } from 'astro-icon/components';
-import SectionBadge from '../components/SectionBadge.astro';
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
+import SectionBadge from "../components/SectionBadge.astro";
 
-const vsechnyClanky = await getCollection('clanky');
+const vsechnyClanky = await getCollection("clanky");
 
 const clanky = vsechnyClanky
   .filter((clanek: any) => clanek.data.pubDate)
-  .sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .sort(
+    (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  );
 ---
 
 <Layout title="Články a novinky">
-  
   <section class="pt-12 pb-8 px-4 max-w-4xl mx-auto text-center">
-    <SectionBadge>
-      Náš blog
-    </SectionBadge>
+    <SectionBadge> Náš blog </SectionBadge>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
       Články a <span class="italic">zamyšlení</span>
     </h1>
     <p class="text-lg text-dark-green/80 font-medium">
-      Píšeme o tom, jak komunikovat klimatickou změnu, sdílíme tipy do výuky a reporty z našich proběhlých akcí.
+      Píšeme o tom, jak komunikovat klimatickou změnu, sdílíme tipy do výuky a
+      reporty z našich proběhlých akcí.
     </p>
   </section>
 
   <section class="container mx-auto px-4 pb-8 max-w-5xl">
-    {clanky.length === 0 ? (
-      <div class="text-center py-12 glass-card rounded-3xl">
-        <p class="text-dark-green/60 text-lg">Zatím tu nejsou žádné články. Brzy něco přidáme!</p>
-      </div>
-    ) : (
-      <div class="grid md:grid-cols-2 gap-8">
-        {clanky.map((clanek: any) => (
-          <article class="glass-card rounded-3xl p-8 flex flex-col hover:shadow-xl transition-shadow duration-300 border border-brand-green/10">
-            <div class="flex items-center gap-2 text-sm text-dark-green/60 font-medium mb-4">
-              <Icon name="mdi:calendar-blank" class="w-4 h-4" />
-              <time datetime={clanek.data.pubDate?.toISOString()}>
-                {clanek.data.pubDate?.toLocaleDateString('cs-CZ', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
-              </time>
-            </div>
-            
-            <h2 class="text-2xl font-serif font-bold text-brand-green mb-3 line-clamp-2">
-              <a href={`/clanky/${clanek.slug}`} class="hover:text-dark-green transition-colors">
-                {clanek.data.title}
-              </a>
-            </h2>
-            
-            <p class="text-dark-green/80 mb-6 flex-grow line-clamp-3">
-              {clanek.data.description}
-            </p>
-            
-            <div class="mt-auto pt-4 border-t border-brand-green/10 flex items-center justify-between">
-              <span class="text-sm font-bold text-brand-green">{clanek.data.author}</span>
-              <a href={`/clanky/${clanek.slug}`} class="inline-flex items-center gap-1 text-sm font-bold text-dark-green hover:text-brand-green transition-colors group">
-                Číst dál 
-                <Icon name="mdi:arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
-              </a>
-            </div>
-          </article>
-        ))}
-      </div>
-    )}
-  </section>
+    {
+      clanky.length === 0 ? (
+        <div class="text-center py-12 glass-card rounded-3xl">
+          <p class="text-dark-green/60 text-lg">
+            Zatím tu nejsou žádné články. Brzy něco přidáme!
+          </p>
+        </div>
+      ) : (
+        <div class="grid md:grid-cols-2 gap-8">
+          {clanky.map((clanek: any) => (
+            <article class="glass-card rounded-3xl p-8 flex flex-col hover:shadow-xl transition-shadow duration-300 border border-brand-green/10">
+              <div class="flex items-center gap-2 text-sm text-dark-green/60 font-medium mb-4">
+                <Icon name="mdi:calendar-blank" class="w-4 h-4" />
+                <time datetime={clanek.data.pubDate?.toISOString()}>
+                  {clanek.data.pubDate?.toLocaleDateString("cs-CZ", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </time>
+              </div>
 
+              <h2 class="text-2xl font-serif font-bold text-brand-green mb-3 line-clamp-2">
+                <a
+                  href={`/clanky/${clanek.slug}`}
+                  class="hover:text-dark-green transition-colors"
+                >
+                  {clanek.data.title}
+                </a>
+              </h2>
+
+              <p class="text-dark-green/80 mb-6 flex-grow line-clamp-3">
+                {clanek.data.description}
+              </p>
+
+              <div class="mt-auto pt-4 border-t border-brand-green/10 flex items-center justify-between">
+                <span class="text-sm font-bold text-brand-green">
+                  {clanek.data.author}
+                </span>
+                <a
+                  href={`/clanky/${clanek.slug}`}
+                  class="inline-flex items-center gap-1 text-sm font-bold text-dark-green hover:text-brand-green transition-colors group"
+                >
+                  Číst dál
+                  <Icon
+                    name="mdi:arrow-right"
+                    class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"
+                  />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      )
+    }
+  </section>
 </Layout>

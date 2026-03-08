@@ -1,7 +1,7 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
+import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<'span'> {}
+interface Props extends HTMLAttributes<"span"> {}
 
 const { class: className, ...attrs } = Astro.props;
 ---
@@ -9,7 +9,7 @@ const { class: className, ...attrs } = Astro.props;
 <span
   class:list={[
     "inline-block py-1 px-3 rounded-full bg-cream/80 backdrop-blur-sm text-dark-green text-sm font-bold mb-6 tracking-wide border border-brand-green/30",
-    className
+    className,
   ]}
   {...attrs}
 >
