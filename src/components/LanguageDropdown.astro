@@ -57,7 +57,6 @@ const { mobile = false } = Astro.props;
 </div>
 
 <script>
-  // This script runs once per page load and sets up all language dropdowns
   document.addEventListener('DOMContentLoaded', () => {
     const containerElements = document.querySelectorAll('.language-dropdown-container');
 
@@ -69,7 +68,6 @@ const { mobile = false } = Astro.props;
       options: container.querySelectorAll('.lang-option')
     }));
 
-    // Get current language from localStorage or fallback
     let currentLang = localStorage.getItem('zvoleny-jazyk');
     if (!currentLang) {
       const browserLang = navigator.language.slice(0, 2);
@@ -77,11 +75,10 @@ const { mobile = false } = Astro.props;
       localStorage.setItem('zvoleny-jazyk', currentLang);
     }
 
-    // Update labels on load
     const labels = document.querySelectorAll('.current-language-label');
-    labels.forEach(label => {
+    for (const label of labels) {
       label.textContent = currentLang === 'en' ? 'EN' : 'CS';
-    });
+    }
 
     // Close all menus when clicking outside
     document.addEventListener('click', (e) => {
@@ -89,9 +86,9 @@ const { mobile = false } = Astro.props;
         if (toggle && menu && !container.contains(e.target as Node)) {
           toggle.setAttribute('aria-expanded', 'false');
           menu.classList.add('hidden');
-          toggle.classList.remove('group'); // remove group for icon rotation
+          toggle.classList.remove('group');
         }
-      });
+      }
     });
 
     // Setup each dropdown
@@ -112,28 +109,24 @@ const { mobile = false } = Astro.props;
             }
           });
 
-          // Toggle this menu
-          toggle.setAttribute('aria-expanded', String(!isExpanded));
-          menu.classList.toggle('hidden');
-          toggle.classList.toggle('group');
-        });
+        toggle.setAttribute('aria-expanded', String(!isExpanded));
+        menu.classList.toggle('hidden');
+        toggle.classList.toggle('group');
+      });
 
-        // Handle option clicks
-        options.forEach(option => {
-          option.addEventListener('click', () => {
-            const newLang = option.getAttribute('data-lang');
-            if (newLang && newLang !== currentLang) {
-              localStorage.setItem('zvoleny-jazyk', newLang);
-              window.location.reload();
-            } else {
-              // Just close if selecting current language
-              toggle.setAttribute('aria-expanded', 'false');
-              menu.classList.add('hidden');
-              toggle.classList.remove('group');
-            }
-          });
+      for (const option of options) {
+        option.addEventListener('click', () => {
+          const newLang = option.getAttribute('data-lang');
+          if (newLang && newLang !== currentLang) {
+            localStorage.setItem('zvoleny-jazyk', newLang);
+            window.location.reload();
+          } else {
+            toggle.setAttribute('aria-expanded', 'false');
+            menu.classList.add('hidden');
+            toggle.classList.remove('group');
+          }
         });
       }
-    });
+    }
   });
 </script>
