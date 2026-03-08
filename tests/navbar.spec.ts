@@ -16,7 +16,7 @@ test.describe("Navbar Component", () => {
     });
 
     test("should display main navigation items", async ({ page }) => {
-      const nav = page.locator("nav.hidden.md\\:flex");
+      const nav = page.getByTestId("desktop-nav");
       await expect(nav).toBeVisible();
 
       const expectedLinks = [
@@ -58,7 +58,7 @@ test.describe("Navbar Component", () => {
     test("should display CTA button", async ({ page }) => {
       // Because Tolgee is active, it may show either localized or raw key depending on render phase.
       // Easiest is to search by the known class or a generic element match.
-      const ctaContainer = page.locator("div.hidden.md\\:flex");
+      const ctaContainer = page.getByTestId("desktop-cta");
       const ctaBtn = ctaContainer.locator("button").last();
       await expect(ctaBtn).toBeVisible();
     });

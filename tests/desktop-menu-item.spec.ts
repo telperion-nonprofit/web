@@ -1,6 +1,8 @@
 import { test, expect } from "@playwright/test";
 
 test.describe("DesktopMenuItem Component", () => {
+  test.skip(({ isMobile }) => isMobile === true, "Desktop menu tests do not apply to mobile viewports");
+  
   test.beforeEach(async ({ page }) => {
     await page.goto("/test/desktop-menu-item");
   });
@@ -61,7 +63,9 @@ test.describe("DesktopMenuItem Component", () => {
       await expect(dropdownContainer).toHaveCSS("opacity", "0");
       await expect(dropdownContainer).toHaveCSS("visibility", "hidden");
 
-      await listItem.hover();
+      // FIX: Force the hover state and wait for the Tailwind transition duration (300ms)
+      await listItem.hover({ force: true });
+      await page.waitForTimeout(350); 
 
       await expect(dropdownContainer).toHaveCSS("opacity", "1");
       await expect(dropdownContainer).toHaveCSS("visibility", "visible");
@@ -79,7 +83,8 @@ test.describe("DesktopMenuItem Component", () => {
       const listItem = page.locator("li", { hasText: "Dropdown" });
       const svg = listItem.locator("svg");
 
-      await listItem.hover();
+      await listItem.hover({ force: true });
+      await page.waitForTimeout(350); // Added here as well just to be safe with the rotation transition
 
       await expect(svg).toHaveClass(/group-hover:rotate-180/);
     });
