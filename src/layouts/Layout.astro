@@ -70,18 +70,11 @@ const pageTitle = title
       import { Tolgee, FormatSimple, DevTools, ObserverPlugin } from "@tolgee/web";
       import enTranslations from "../i18n/en.json";
       import csTranslations from "../i18n/cs-CZ.json";
+      import { getSafeLanguage } from "../utils/lang";
 
       const isDev = import.meta.env.DEV;
 
-      // 1. Zjistíme, jestli si uživatel jazyk už ručně nepřepnul v minulosti
-      let savedLanguage = localStorage.getItem("zvoleny-jazyk");
-
-      // 2. Pokud u nás uživatel ještě nikdy nebyl, detekujeme jazyk z jeho prohlížeče
-      if (!savedLanguage) {
-        const browserLang = navigator.language.slice(0, 2);
-        savedLanguage =
-          browserLang === "en" ? "en" : "cs-CZ";
-      }
+      const savedLanguage = getSafeLanguage();
 
       const tolgee = Tolgee()
         .use(FormatSimple())
