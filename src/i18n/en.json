@@ -47,9 +47,9 @@
     },
     "program": {
       "klima_dny": "Climate days",
-      "mozaika_firmy": "Climate Mosaic – Companies\n",
-      "mozaika_junior": "Climate Mosaic – Junior \n",
-      "mozaika_verejnost": "Climate Mosaic – Public \n",
+      "mozaika_firmy": "Climate Fresk – Companies\n",
+      "mozaika_junior": "Climate Fresk – Junior \n",
+      "mozaika_verejnost": "Climate Fresk – Public \n",
       "not_workshop": "Not listed",
       "other": "Other workshop",
       "placeholder": "Select a workshop",
@@ -116,7 +116,7 @@
     "scouts": {
       "desc_p1": "Similar to Climate Days, we move from general knowledge to specific solutions appropriate to the age of the participants.\n\n",
       "desc_p2_scouts": "With Boy Scouts and Girl Scouts",
-      "desc_p2_scouts_text": "we use the children's version of the Climate Mosaic workshop, which explains climate change from its causes to its consequences. Since we tailor the program to your needs, we have a set of themed workshops based on your interests.",
+      "desc_p2_scouts_text": "we use the children's version of the Climate Fresk workshop, which explains climate change from its causes to its consequences. Since we tailor the program to your needs, we have a set of themed workshops based on your interests.",
       "desc_p2_youngest": "For the youngest children",
       "desc_p2_youngest_text": "we focus on sensitivity to nature and the basics of its protection.",
       "desc_p3_after": "we have an information section about programs that they can implement themselves. Depending on interest, we also offer an adult version of Mozaika or Base Camp from the TEREZA center.",
@@ -134,7 +134,7 @@
   "schools": {
     "badge": "For elementary and secondary schools",
     "climate_days": {
-      "day1_desc": "We focus on a comprehensive understanding of the crisis using the proven Climate Mosaic methodology. Students discover why climate change is urgent and how it relates to their lives. It also includes a safe space for expressing emotions.\n\n",
+      "day1_desc": "We focus on a comprehensive understanding of the crisis using the proven Climate Fresk methodology. Students discover why climate change is urgent and how it relates to their lives. It also includes a safe space for expressing emotions.\n\n",
       "day1_title": "Day One: Understanding\n",
       "day2_desc": "Students explore ways to get involved. They examine ways to reduce their personal carbon footprint and combat climate change at the municipal and national levels (adaptation and mitigation). Through workshops, they practice critical thinking and develop their own solutions.\n\n",
       "day2_title": "Day Two: Action\n",
