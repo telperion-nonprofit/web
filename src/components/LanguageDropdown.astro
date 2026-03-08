@@ -58,11 +58,13 @@ const { mobile = false } = Astro.props;
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const containers = document.querySelectorAll('.language-dropdown-container');
-    const dropdowns = Array.from(containers).map(container => ({
+    const containerElements = document.querySelectorAll('.language-dropdown-container');
+
+    // Cache DOM elements per container to avoid repeated querySelectors in global listeners
+    const dropdowns = Array.from(containerElements).map(container => ({
       container,
-      toggle: container.querySelector('.language-toggle') as HTMLElement,
-      menu: container.querySelector('.language-menu') as HTMLElement,
+      toggle: container.querySelector('.language-toggle'),
+      menu: container.querySelector('.language-menu'),
       options: container.querySelectorAll('.lang-option')
     }));
 
@@ -78,19 +80,10 @@ const { mobile = false } = Astro.props;
       label.textContent = currentLang === 'en' ? 'EN' : 'CS';
     }
 
-    const dropdownData = [];
-    for (const container of containers) {
-      const toggle = container.querySelector('.language-toggle');
-      const menu = container.querySelector('.language-menu');
-      const options = container.querySelectorAll('.lang-option');
-      if (toggle && menu) {
-        dropdownData.push({ container, toggle, menu, options });
-      }
-    }
-
+    // Close all menus when clicking outside
     document.addEventListener('click', (e) => {
-      for (const { container, toggle, menu } of dropdownData) {
-        if (!container.contains(e.target as Node)) {
+      dropdowns.forEach(({ container, toggle, menu }) => {
+        if (toggle && menu && !container.contains(e.target as Node)) {
           toggle.setAttribute('aria-expanded', 'false');
           menu.classList.add('hidden');
           toggle.classList.remove('group');
@@ -98,17 +91,23 @@ const { mobile = false } = Astro.props;
       }
     });
 
-    for (const { container, toggle, menu, options } of dropdownData) {
-      toggle.addEventListener('click', () => {
-        const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+    // Setup each dropdown
+    dropdowns.forEach(({ container, toggle, menu, options }) => {
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
 
-        for (const other of dropdownData) {
-          if (other.container !== container) {
-            other.toggle.setAttribute('aria-expanded', 'false');
-            other.menu.classList.add('hidden');
-            other.toggle.classList.remove('group');
-          }
-        }
+          // Close other open menus using the cached elements
+          dropdowns.forEach(otherDropdown => {
+            if (otherDropdown.container !== container) {
+              const { toggle: otherToggle, menu: otherMenu } = otherDropdown;
+              if (otherToggle && otherMenu) {
+                otherToggle.setAttribute('aria-expanded', 'false');
+                otherMenu.classList.add('hidden');
+                otherToggle.classList.remove('group');
+              }
+            }
+          });
 
         toggle.setAttribute('aria-expanded', String(!isExpanded));
         menu.classList.toggle('hidden');
