@@ -32,16 +32,16 @@
     "page_title": "Domů"
   },
   "nav": {
+    "articles": "Články",
     "button": {
       "book": "Poptat program"
     },
+    "contact": "Kontakt",
     "home": "Domů",
-    "programs": "Programy",
-    "programs_schools": "Pro školy",
-    "programs_public": "Pro veřejnost",
-    "programs_other": "Další programy",
     "podcast": "Podcast",
-    "articles": "Články",
-    "contact": "Kontakty"
+    "programs": "Programy",
+    "programs_other": "Další programy",
+    "programs_public": "Pro veřejnost",
+    "programs_schools": "Pro školy"
   }
 }

@@ -32,16 +32,16 @@
     "page_title": "Home"
   },
   "nav": {
+    "articles": "Articles",
     "button": {
       "book": "Book a workshop"
     },
+    "contact": "Contact",
     "home": "Home",
-    "programs": "Programs",
-    "programs_schools": "For schools",
-    "programs_public": "For the public",
-    "programs_other": "Other programs",
     "podcast": "Podcast",
-    "articles": "Articles",
-    "contact": "Contact"
+    "programs": "Workshops",
+    "programs_other": "Other workshops",
+    "programs_public": "For public",
+    "programs_schools": "For schools"
   }
 }
