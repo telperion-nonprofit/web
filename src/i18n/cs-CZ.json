@@ -26,6 +26,7 @@
     },
     "map": {
       "description": "S našimi programy jezdíme za žáky a studenty po celé České republice. Podívejte se, kde všude už Telperion zapustil kořeny.\n\n",
+      "layers_tip": "Pomocí ikony vrstev můžete filtrovat jednotlivé typy programů.",
       "title_highlight": "byli?",
       "title_main": "Kde všude už jsme"
     },

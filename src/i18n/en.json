@@ -26,6 +26,7 @@
     },
     "map": {
       "description": "We take our programs to students throughout the Czech Republic. Take a look at all the places where Telperion has already been.\n",
+      "layers_tip": "Use the layers icon to filter specific workshops.",
       "title_highlight": "been?",
       "title_main": "Where have we already"
     },
