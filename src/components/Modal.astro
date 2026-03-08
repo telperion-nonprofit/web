@@ -60,7 +60,12 @@ import { Icon } from "astro-icon/components";
             method="POST"
             class="mt-6 space-y-4"
           >
-            <input type="hidden" name="language" id="form-language" value="cs" />
+            <input
+              type="hidden"
+              name="language"
+              id="form-language"
+              value="cs"
+            />
             <div>
               <label
                 for="name"
@@ -143,8 +148,7 @@ import { Icon } from "astro-icon/components";
                   <option value="slow-fast-fashion"
                     >[[modal.program.slow_fast_fashion]]</option
                   >
-                  <option value="other-workshop"
-                    >[[modal.program.other]]</option
+                  <option value="other-workshop">[[modal.program.other]]</option
                   >
                   <option value="not-workshop"
                     >[[modal.program.not_workshop]]</option
@@ -194,7 +198,9 @@ import { Icon } from "astro-icon/components";
 
 <script>
   document.addEventListener("DOMContentLoaded", () => {
-    const langField = document.getElementById("form-language") as HTMLInputElement | null;
+    const langField = document.getElementById(
+      "form-language",
+    ) as HTMLInputElement | null;
     if (langField) {
       const saved = localStorage.getItem("zvoleny-jazyk");
       langField.value = saved === "en" ? "en" : "cs";

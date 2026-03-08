@@ -6,6 +6,26 @@ interface Props {
 }
 
 const { mobile = false } = Astro.props;
+
+const pathname = Astro.url.pathname;
+
+// Check if current route is English
+const isEnglish = pathname.startsWith("/en/") || pathname === "/en";
+
+// Determine paths for both languages
+let czPath = pathname;
+let enPath = pathname;
+
+if (isEnglish) {
+  // If we are on an English route, removing /en gives us the CZ path
+  czPath = pathname.replace(/^\/en(\/|$)/, "/") || "/";
+} else {
+  // If we are on a CZ route, prepending /en gives us the EN path
+  // Handle the root path '/' correctly so it becomes '/en/' and not '/en//'
+  enPath = pathname === "/" ? "/en" : `/en${pathname}`;
+}
+
+const currentLabel = isEnglish ? "EN" : "CS";
 ---
 
 <div
@@ -23,7 +43,7 @@ const { mobile = false } = Astro.props;
   >
     <div class="flex items-center gap-2">
       <Icon name="mdi:earth" class="w-5 h-5 text-brand-green" />
-      <span class="current-language-label">CS</span>
+      <span class="current-language-label">{currentLabel}</span>
     </div>
     <Icon
       name="mdi:chevron-down"
@@ -41,22 +61,26 @@ const { mobile = false } = Astro.props;
     aria-orientation="vertical"
   >
     <div class="p-2 flex flex-col gap-1">
-      <button
-        type="button"
+      <a
+        href={czPath}
+        hreflang="cs"
+        lang="cs"
         class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
         data-lang="cs-CZ"
         role="menuitem"
       >
         Čeština
-      </button>
-      <button
-        type="button"
+      </a>
+      <a
+        href={enPath}
+        hreflang="en"
+        lang="en"
         class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
         data-lang="en"
         role="menuitem"
       >
         English
-      </button>
+      </a>
     </div>
   </div>
 </div>
@@ -72,20 +96,7 @@ const { mobile = false } = Astro.props;
       container,
       toggle: container.querySelector(".language-toggle"),
       menu: container.querySelector(".language-menu"),
-      options: container.querySelectorAll(".lang-option"),
     }));
-
-    let currentLang = localStorage.getItem("zvoleny-jazyk");
-    if (!currentLang) {
-      const browserLang = navigator.language.slice(0, 2);
-      currentLang = browserLang === "en" ? "en" : "cs-CZ";
-      localStorage.setItem("zvoleny-jazyk", currentLang);
-    }
-
-    const labels = document.querySelectorAll(".current-language-label");
-    for (const label of labels) {
-      label.textContent = currentLang === "en" ? "EN" : "CS";
-    }
 
     // Close all menus when clicking outside
     document.addEventListener("click", (e) => {
@@ -99,7 +110,7 @@ const { mobile = false } = Astro.props;
     });
 
     // Setup each dropdown
-    dropdowns.forEach(({ container, toggle, menu, options }) => {
+    dropdowns.forEach(({ container, toggle, menu }) => {
       if (toggle && menu) {
         toggle.addEventListener("click", () => {
           const isExpanded = toggle.getAttribute("aria-expanded") === "true";
@@ -120,20 +131,6 @@ const { mobile = false } = Astro.props;
           menu.classList.toggle("hidden");
           toggle.classList.toggle("group");
         });
-
-        for (const option of options) {
-          option.addEventListener("click", () => {
-            const newLang = option.getAttribute("data-lang");
-            if (newLang && newLang !== currentLang) {
-              localStorage.setItem("zvoleny-jazyk", newLang);
-              window.location.reload();
-            } else {
-              toggle.setAttribute("aria-expanded", "false");
-              menu.classList.add("hidden");
-              toggle.classList.remove("group");
-            }
-          });
-        }
       }
     });
   });
