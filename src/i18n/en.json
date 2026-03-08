@@ -17,7 +17,7 @@
       "title": "Why does it work?"
     },
     "hero": {
-      "badge": "\uD83D\uDEA7 Webpage is under construction\n",
+      "badge": "✨ Welcome to the updated Telperion website!",
       "button_programs": "School workshops",
       "button_team": "Our team",
       "description": "We inform about enviroment and teach sustainable living to the young generation.",
@@ -57,5 +57,111 @@
     "programs_other": "Other workshops",
     "programs_public": "For public",
     "programs_schools": "For schools"
+  },
+  "other": {
+    "badge": "New formats\n",
+    "fashion": {
+      "authors": "Prepared by: Martin and Lucie\n\n",
+      "description": "The fashion industry is one of the biggest polluters on our planet. In this upcoming program, we will focus on the difference between fast fashion and sustainable fashion. We will examine what clothes are made of, how they make their way into our closets, and how we as consumers can make better and more responsible decisions.\n\n",
+      "status": "The program is currently in the development and testing phase.\n\n",
+      "title": "Program: Slow vs. Fast Fashion\n"
+    },
+    "klima": {
+      "author": "Prepared by: Martin\n\n",
+      "badge": "In development\n",
+      "description": "Martin is currently preparing a completely new format. Fast, punchy, and packed with information.\n\n",
+      "status": "You have something to look forward to soon!\n\n",
+      "title": "Program: Climate in a Nutshell\n"
+    },
+    "page_title": "Other workshops",
+    "subtitle": "We are constantly developing new formats and learning. Here you will find programs that we are currently preparing or launching.\n\n",
+    "title_highlight": "workshops",
+    "title_main": "Other"
+  },
+  "podcast": {
+    "badge": "Coming soon",
+    "button": "Share your ideas with us",
+    "description": "Something big is coming! We will soon be launching our own podcast. Interviews, facts without fearmongering, and sustainability from a young person's perspective.",
+    "description_highlight": "The final work is coming to an end, stay tuned.",
+    "page_title": "Podcast",
+    "platforms_label": "You will find us soon at:",
+    "title_highlight": "Podcast",
+    "title_main": "Telperion\n"
+  },
+  "public": {
+    "badge": "Public & Scouting\n",
+    "fresk": {
+      "desc_p1": "Experience a globally popular workshop that has already been attended by more than a million people. Using a set of cards based on IPCC reports, you will work with the instructor to create a visual map of the causes and consequences of the climate crisis.",
+      "desc_p2_before": "The program is ideal for both complete beginners and climate enthusiasts who want to organize their thoughts and find motivation for action. ",
+      "desc_p2_note": "(We will be happy to provide further details upon request)",
+      "tag_age": "15+ years\n",
+      "tag_capacity": "As agreed\n",
+      "tag_duration": "3 hours\n",
+      "title": "Climate Fresk for the public"
+    },
+    "page_title": "For public and scouts",
+    "scouts": {
+      "desc_p1": "Similar to Climate Days, we move from general knowledge to specific solutions appropriate to the age of the participants.\n\n",
+      "desc_p2_scouts": "With Boy Scouts and Girl Scouts",
+      "desc_p2_scouts_text": "we use the children's version of the Climate Mosaic workshop, which explains climate change from its causes to its consequences. Since we tailor the program to your needs, we have a set of themed workshops based on your interests.",
+      "desc_p2_youngest": "For the youngest children",
+      "desc_p2_youngest_text": "we focus on sensitivity to nature and the basics of its protection.",
+      "desc_p3_after": "we have an information section about programs that they can implement themselves. Depending on interest, we also offer an adult version of Mozaika or Base Camp from the TEREZA center.",
+      "desc_p3_before": "We work with an already formed group. We strive to ensure that our program can be used as a basis for their regular activities as a group or club.",
+      "desc_p3_bold": "For rovers, rangers, and leaders",
+      "tag_duration": "Friday to Sunday\n",
+      "tag_groups": "Cubs, Brownies, Scouts, Rovers\n",
+      "tag_participants": "Up to 100 participants\n",
+      "title": "Scout climate weekend\n"
+    },
+    "subtitle": "We also educate outside the classroom. We offer weekend trips for scout troops and intensive workshops for the general public.\n\n",
+    "title_highlight": "everyone",
+    "title_main": "Climate for"
+  },
+  "schools": {
+    "badge": "For elementary and secondary schools",
+    "climate_days": {
+      "day1_desc": "We focus on a comprehensive understanding of the crisis using the proven Climate Mosaic methodology. Students discover why climate change is urgent and how it relates to their lives. It also includes a safe space for expressing emotions.\n\n",
+      "day1_title": "Day One: Understanding\n",
+      "day2_desc": "Students explore ways to get involved. They examine ways to reduce their personal carbon footprint and combat climate change at the municipal and national levels (adaptation and mitigation). Through workshops, they practice critical thinking and develop their own solutions.\n\n",
+      "day2_title": "Day Two: Action\n",
+      "desc_p1": "In this package, participants will gain a comprehensive understanding of climate change, meet experts from the Czech climate scene, and find specific ways to deal with the crisis.",
+      "desc_p2_after": "As a predominantly student-run organization, we offer students a unique perspective—we don't lecture them, but discuss things with them as equals.",
+      "desc_p2_before": "We proceed from the principle of",
+      "desc_p2_bold": "peer learning",
+      "desc_p3": "We systematically evaluate the program using sociological analysis. We monitor how participants understood the topics and how their attitudes changed. We want students to leave knowing that their actions have meaning.\n\n",
+      "subtitle": "Our flagship two-day program",
+      "tag_duration": "2 days (12 teaching hours)",
+      "tag_level": "Secondary school (grades 5-9) and lower secondary school\n",
+      "tag_participants": "Up to 80 participants",
+      "title": "Climate Days"
+    },
+    "other_formats": {
+      "fresk": {
+        "description": "A simplified but highly effective version of the well-known French methodology, adapted for a younger audience. Through a playful card game, students decipher the causes and consequences of climate change.\n\n",
+        "duration": " 120 minutes\n",
+        "ideal": "Ideal for 3 teaching hours\n",
+        "title": "Climate Fresk Junior\n"
+      },
+      "title": "Other school formats\n"
+    },
+    "page_title": "For schools",
+    "realizations": {
+      "1": "Natural Science High School, Prague\n",
+      "10": "Adélka Kindergarten and Elementary School, Mašovice\n",
+      "2": "BIGY, České Budějovice\n",
+      "3": "St. Augustine School, Prague\n",
+      "4": "Klausova Elementary School, Prague\n",
+      "5": "Elementary School Osmička, Roudnice nad Labem\n",
+      "6": "Klíček Elementary School, Prague\n",
+      "7": "T. Stolzová Elementary School, Kostelec nad Labem\n",
+      "8": "Pod Žvahovem Elementary School, Prague\n",
+      "9": "TGM High School, Litvínov\n"
+    },
+    "realizations_more": "... and soon, hopefully, at your place too!\n",
+    "realizations_title": "Where the program has already taken place\n",
+    "subtitle": "Comprehensive, interactive, and peer-to-peer programs that help students understand the bigger picture and find their own role in protecting nature.",
+    "title_highlight": "benches",
+    "title_main": "We bring climate to"
   }
 }

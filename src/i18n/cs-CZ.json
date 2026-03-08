@@ -17,7 +17,7 @@
       "title": "Proč to funguje?"
     },
     "hero": {
-      "badge": "\uD83D\uDEA7 Naše nové stránky právě klíčí",
+      "badge": "✨ Vítejte na aktualizovaných stránkách Telperionu!",
       "button_programs": "Programy pro školy",
       "button_team": "Náš tým",
       "description": "Informujeme o tématech spojených s životním prostředím. Vzděláváme a přibližujeme udržitelný způsob života mladé generaci.\n\n",
@@ -57,5 +57,111 @@
     "programs_other": "Další programy",
     "programs_public": "Pro veřejnost",
     "programs_schools": "Pro školy"
+  },
+  "other": {
+    "badge": "Nové formáty\n",
+    "fashion": {
+      "authors": "Připravují: Martin a Lucka\n\n",
+      "description": "Módní průmysl je jedním z největších znečišťovatelů naší planety. V tomto připravovaném programu se zaměříme na rozdíl mezi rychlou a udržitelnou módou. Budeme zkoumat, z čeho se oblečení vyrábí, jakou cestu urazí do naší skříně a jak můžeme jako spotřebitelé dělat lepší a zodpovědnější rozhodnutí.\n\n",
+      "status": "Program je momentálně ve fázi vývoje a testování.\n\n",
+      "title": "Program: Slow vs. Fast Fashion\n"
+    },
+    "klima": {
+      "author": "Připravuje: Martin\n\n",
+      "badge": "Ve vývoji\n",
+      "description": "Martin momentálně připravuje zcela nový formát. Rychlý, úderný a nabitý informacemi.\n\n",
+      "status": "Máte se brzy na co těšit!\n\n",
+      "title": "Program: Klima v Kostce\n"
+    },
+    "page_title": "Další programy",
+    "subtitle": "Neustále vyvíjíme nové formáty a učíme se. Zde najdete programy, které momentálně připravujeme nebo rozjíždíme.\n\n",
+    "title_highlight": "programy",
+    "title_main": "Další"
+  },
+  "podcast": {
+    "badge": "Připravujeme",
+    "button": "Napište nám své nápady",
+    "description": "Něco velkého se chystá! Brzy pro vás spustíme náš vlastní podcast. Rozhovory, fakta bez strašení a udržitelnost z pohledu mladých.",
+    "description_highlight": "Ladicí práce finišují, těšte se.",
+    "page_title": "Podcast",
+    "platforms_label": "Najdete nás brzy na:",
+    "title_highlight": "Podcast",
+    "title_main": "Telperion\n"
+  },
+  "public": {
+    "badge": "Veřejnost & Skauting\n",
+    "fresk": {
+      "desc_p1": "Zažijte celosvětově populární workshop, který už absolvoval více než milion lidí. Pomocí sady karet založených na zprávách IPCC si společně s lektorem sestavíte vizuální mapu příčin a následků klimatické krize.",
+      "desc_p2_before": "Program je ideální jak pro úplné začátečníky, tak pro klimatické nadšence, kteří si chtějí utřídit myšlenky a najít motivaci k akci. ",
+      "desc_p2_note": "(Další detaily rádi doplníme po domluvě)",
+      "tag_age": "15+ let\n",
+      "tag_capacity": "Dle domluvy\n",
+      "tag_duration": "3 hodiny\n",
+      "title": "Climate Fresk pro veřejnost"
+    },
+    "page_title": "Pro veřejnost a skauty",
+    "scouts": {
+      "desc_p1": "Podobně jako Klimatické dny jdeme od obecných znalostí až po konkrétní řešení úměrně věku účastníků.",
+      "desc_p2_scouts": "Se skauty a skautkami",
+      "desc_p2_scouts_text": "využíváme dětskou verzi workshopu Klimatická mozaika, který vysvětluje změnu klimatu od příčin po důsledky. Jelikož program děláme na míru, máme sadu tematických workshopů podle zájmu.",
+      "desc_p2_youngest": "U nejmenších",
+      "desc_p2_youngest_text": "se věnujeme senzitivitě k přírodě a základům její ochrany.",
+      "desc_p3_after": "máme informační blok o programech, které mohou sami realizovat. Dle zájmu nabízíme i dospěláckou verzi Mozaiky nebo Base Camp od centra TEREZA.",
+      "desc_p3_before": "Pracujeme s již zformovanou skupinou. Snažíme se, aby na našem programu mohli dál jako družina nebo oddíl stavět ve své běžné činnosti.",
+      "desc_p3_bold": "Pro rovery, rangers a vedoucí",
+      "tag_duration": "Pátek až Neděle\n",
+      "tag_groups": "Vlčata, světlušky, skauti, roveři\n",
+      "tag_participants": "Až 100 účastníků\n",
+      "title": "Skautská klima víkendovka\n"
+    },
+    "subtitle": "Vzděláváme i mimo školní lavice. Nabízíme víkendovky pro skautské oddíly i intenzivní workshopy pro širokou veřejnost.",
+    "title_highlight": "každého",
+    "title_main": "Klima pro"
+  },
+  "schools": {
+    "badge": "Pro základní a střední školy",
+    "climate_days": {
+      "day1_desc": "Zaměřujeme se na komplexní pochopení krize pomocí osvědčené metodiky Klimatická mozaika. Žáci objevují, proč je změna klimatu naléhavá a jak souvisí s jejich životem. Součástí je i bezpečný prostor pro vyjádření emocí.\n\n",
+      "day1_title": "Den první: Pochopení\n",
+      "day2_desc": "Žáci zkoumají cesty k zapojení. Probádají úpravu osobní stopy i boj s klimatem na úrovni obcí a států (adaptace a mitigace). Pomocí workshopů trénují kritické myšlení a tvoří vlastní návrhy řešení.\n\n",
+      "day2_title": "Den druhý: Akce\n",
+      "desc_p1": "V tomto balíčku účastníci získají komplexní pochopení změny klimatu, setkají se s experty z české klimatické scény a najdou konkrétní způsoby, jak se s krizí vypořádat.",
+      "desc_p2_after": "Jako převážně studentská organizace poskytujeme žákům jedinečnou perspektivu – nepoučujeme, ale diskutujeme s nimi jako rovný s rovným.",
+      "desc_p2_before": "Vycházíme z principu",
+      "desc_p2_bold": "vrstevnického učení",
+      "desc_p3": "Program systematicky vyhodnocujeme pomocí sociologické analýzy. Sledujeme, jak účastníci porozuměli tématům a jak se změnily jejich postoje. Chceme, aby žáci odcházeli s vědomím, že jejich kroky mají smysl.\n",
+      "subtitle": "Náš vlajkový dvoudenní program",
+      "tag_duration": "2 dny (12 vyuč. hodin)",
+      "tag_level": "2. stupeň ZŠ a nižší gymnázia",
+      "tag_participants": "Až 80 účastníků",
+      "title": "Klimatické dny"
+    },
+    "other_formats": {
+      "fresk": {
+        "description": "Zjednodušená, ale vysoce efektivní verze známé francouzské metodiky, přizpůsobená pro mladší publikum. Hravou karetní formou žáci rozklíčují příčiny a následky klimatické změny.\n\n",
+        "duration": " 120 minut\n",
+        "ideal": "Ideální na 3 vyuč. hodiny\n",
+        "title": "Climate Fresk Junior"
+      },
+      "title": "Další školní formáty\n"
+    },
+    "page_title": "Pro školy",
+    "realizations": {
+      "1": "Gymnázium Přírodní škola, Praha\n",
+      "10": "MŠ a ZŠ Adélka, Mašovice\n",
+      "2": "BIGY, České Budějovice\n",
+      "3": "Škola Sv. Augustina, Praha\n",
+      "4": "ZŠ Klausova, Praha\n",
+      "5": "ZŠ Osmička, Roudnice nad Labem\n",
+      "6": "ZŠ Klíček, Praha\n",
+      "7": "ZŠ T. Stolzové, Kostelec nad Labem\n",
+      "8": "ZŠ Pod Žvahovem, Praha\n",
+      "9": "Gymnázium TGM, Litvínov\n"
+    },
+    "realizations_more": "... a brzy snad i u vás!\n",
+    "realizations_title": "Kde už program proběhl\n",
+    "subtitle": "Komplexní, interaktivní a vrstevnické programy, které žákům pomohou pochopit souvislosti a najít vlastní roli v ochraně přírody.\n\n",
+    "title_highlight": "lavic",
+    "title_main": "Přinášíme klima do"
   }
 }
