@@ -7,25 +7,12 @@ interface Props {
 
 const { mobile = false } = Astro.props;
 
-const pathname = Astro.url.pathname;
+const currentPath = Astro.url.pathname;
+const isEn = currentPath === "/en" || currentPath.startsWith("/en/");
+const currentLabel = isEn ? "EN" : "CS";
 
-// Check if current route is English
-const isEnglish = pathname.startsWith("/en/") || pathname === "/en";
-
-// Determine paths for both languages
-let czPath = pathname;
-let enPath = pathname;
-
-if (isEnglish) {
-  // If we are on an English route, removing /en gives us the CZ path
-  czPath = pathname.replace(/^\/en(\/|$)/, "/") || "/";
-} else {
-  // If we are on a CZ route, prepending /en gives us the EN path
-  // Handle the root path '/' correctly so it becomes '/en/' and not '/en//'
-  enPath = pathname === "/" ? "/en" : `/en${pathname}`;
-}
-
-const currentLabel = isEnglish ? "EN" : "CS";
+const csPath = currentPath.replace(/^\/en(?=\/|$)/, "") || "/";
+const enPath = isEn ? currentPath : `/en${currentPath === "/" ? "" : currentPath}`;
 ---
 
 <div
@@ -62,21 +49,15 @@ const currentLabel = isEnglish ? "EN" : "CS";
   >
     <div class="p-2 flex flex-col gap-1">
       <a
-        href={czPath}
-        hreflang="cs"
-        lang="cs"
+        href={csPath}
         class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
-        data-lang="cs-CZ"
         role="menuitem"
       >
         Čeština
       </a>
       <a
         href={enPath}
-        hreflang="en"
-        lang="en"
         class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
-        data-lang="en"
         role="menuitem"
       >
         English
@@ -93,9 +74,9 @@ const currentLabel = isEnglish ? "EN" : "CS";
 
     // Cache DOM elements per container to avoid repeated querySelectors in global listeners
     const dropdowns = Array.from(containerElements).map((container) => ({
-      container,
-      toggle: container.querySelector(".language-toggle"),
-      menu: container.querySelector(".language-menu"),
+      container: container as HTMLElement,
+      toggle: container.querySelector(".language-toggle") as HTMLButtonElement | null,
+      menu: container.querySelector(".language-menu") as HTMLElement | null,
     }));
 
     // Close all menus when clicking outside
