@@ -34,7 +34,7 @@ test.describe("Home Page", () => {
     await expect(cards).toHaveCount(3);
 
     await expect(page.getByText("Rovnocenný přístup")).toBeVisible();
-    await expect(page.getByText("Ověřená fakta")).toBeVisible();
+    await expect(page.getByText("Ověřené informace")).toBeVisible();
     await expect(page.getByText("Interaktivita")).toBeVisible();
   });
 });

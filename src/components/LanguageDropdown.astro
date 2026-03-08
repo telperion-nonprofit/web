@@ -1,0 +1,139 @@
+---
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  mobile?: boolean;
+}
+
+const { mobile = false } = Astro.props;
+---
+
+<div class={`relative language-dropdown-container ${mobile ? 'w-full' : 'inline-block'}`}>
+  <button
+    type="button"
+    class={`language-toggle flex items-center justify-between gap-2 px-4 py-2 text-sm font-medium transition-colors ${
+      mobile
+        ? 'w-full text-dark-green hover:bg-brand-green/5 rounded-lg'
+        : 'text-dark-green hover:text-brand-green rounded-full hover:bg-white/50'
+    }`}
+    aria-expanded="false"
+    aria-haspopup="true"
+  >
+    <div class="flex items-center gap-2">
+      <Icon name="mdi:earth" class="w-5 h-5 text-brand-green" />
+      <span class="current-language-label">CS</span>
+    </div>
+    <Icon name="mdi:chevron-down" class="w-4 h-4 transition-transform duration-200 group-aria-expanded:rotate-180" />
+  </button>
+
+  <div
+    class={`language-menu hidden absolute z-50 overflow-hidden glass-card rounded-2xl shadow-lg border border-brand-green/10 transition-all duration-200 ${
+      mobile
+        ? 'relative w-full mt-1'
+        : 'right-0 mt-2 w-40 origin-top-right'
+    }`}
+    role="menu"
+    aria-orientation="vertical"
+  >
+    <div class="py-1">
+      <button
+        type="button"
+        class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green hover:bg-brand-green/10 transition-colors"
+        data-lang="cs-CZ"
+        role="menuitem"
+      >
+        Čeština
+      </button>
+      <button
+        type="button"
+        class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green hover:bg-brand-green/10 transition-colors"
+        data-lang="en"
+        role="menuitem"
+      >
+        English
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // This script runs once per page load and sets up all language dropdowns
+  document.addEventListener('DOMContentLoaded', () => {
+    const containers = document.querySelectorAll('.language-dropdown-container');
+
+    // Get current language from localStorage or fallback
+    let currentLang = localStorage.getItem('zvoleny-jazyk');
+    if (!currentLang) {
+      const browserLang = navigator.language.slice(0, 2);
+      currentLang = browserLang === 'en' ? 'en' : 'cs-CZ';
+      localStorage.setItem('zvoleny-jazyk', currentLang);
+    }
+
+    // Update labels on load
+    const labels = document.querySelectorAll('.current-language-label');
+    labels.forEach(label => {
+      label.textContent = currentLang === 'en' ? 'EN' : 'CS';
+    });
+
+    // Close all menus when clicking outside
+    document.addEventListener('click', (e) => {
+      containers.forEach(container => {
+        const toggle = container.querySelector('.language-toggle');
+        const menu = container.querySelector('.language-menu');
+
+        if (toggle && menu && !container.contains(e.target as Node)) {
+          toggle.setAttribute('aria-expanded', 'false');
+          menu.classList.add('hidden');
+          toggle.classList.remove('group'); // remove group for icon rotation
+        }
+      });
+    });
+
+    // Setup each dropdown
+    containers.forEach(container => {
+      const toggle = container.querySelector('.language-toggle');
+      const menu = container.querySelector('.language-menu');
+      const options = container.querySelectorAll('.lang-option');
+
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => {
+          const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+
+          // Close other open menus
+          containers.forEach(c => {
+            if (c !== container) {
+              const otherToggle = c.querySelector('.language-toggle');
+              const otherMenu = c.querySelector('.language-menu');
+              if (otherToggle && otherMenu) {
+                otherToggle.setAttribute('aria-expanded', 'false');
+                otherMenu.classList.add('hidden');
+                otherToggle.classList.remove('group');
+              }
+            }
+          });
+
+          // Toggle this menu
+          toggle.setAttribute('aria-expanded', String(!isExpanded));
+          menu.classList.toggle('hidden');
+          toggle.classList.toggle('group');
+        });
+
+        // Handle option clicks
+        options.forEach(option => {
+          option.addEventListener('click', () => {
+            const newLang = option.getAttribute('data-lang');
+            if (newLang && newLang !== currentLang) {
+              localStorage.setItem('zvoleny-jazyk', newLang);
+              window.location.reload();
+            } else {
+              // Just close if selecting current language
+              toggle.setAttribute('aria-expanded', 'false');
+              menu.classList.add('hidden');
+              toggle.classList.remove('group');
+            }
+          });
+        });
+      }
+    });
+  });
+</script>
