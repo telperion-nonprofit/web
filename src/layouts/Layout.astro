@@ -67,9 +67,11 @@ const pageTitle = title
 
     <Modal />
     <script>
-      import { Tolgee, FormatSimple, DevTools } from "@tolgee/web";
+      import { Tolgee, FormatSimple, DevTools, ObserverPlugin } from "@tolgee/web";
       import enTranslations from "../i18n/en.json";
       import csTranslations from "../i18n/cs-CZ.json";
+
+      const isDev = import.meta.env.DEV;
 
       // 1. Zjistíme, jestli si uživatel jazyk už ručně nepřepnul v minulosti
       let savedLanguage = localStorage.getItem("zvoleny-jazyk");
@@ -83,12 +85,14 @@ const pageTitle = title
 
       const tolgee = Tolgee()
         .use(FormatSimple())
-        .use(DevTools())
+        .use(isDev ? DevTools() : ObserverPlugin())
         .init({
           language: savedLanguage,
           defaultLanguage: 'cs-CZ',
-          apiKey: import.meta.env.PUBLIC_TOLGEE_API_KEY,
-          apiUrl: import.meta.env.PUBLIC_TOLGEE_API_URL,
+          ...(isDev && {
+            apiKey: import.meta.env.PUBLIC_TOLGEE_API_KEY,
+            apiUrl: import.meta.env.PUBLIC_TOLGEE_API_URL,
+          }),
           observerType: 'text',
           observerOptions: { inputPrefix: '[[', inputSuffix: ']]' },
           staticData: {
