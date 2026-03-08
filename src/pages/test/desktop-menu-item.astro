@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import DesktopMenuItem from "../../components/navbar/DesktopMenuItem.astro";
+import DesktopMenuItemComponent from "../../components/navbar/DesktopMenuItem.astro";
 import type { MenuItem } from "../../types";
 
 const normalItem: MenuItem = {
@@ -24,9 +24,9 @@ const dropdownItem: MenuItem = {
 
     <nav class="flex gap-8 bg-white p-4 rounded-xl shadow">
       <ul class="flex items-center gap-4">
-        <DesktopMenuItem item={normalItem} />
+        <DesktopMenuItemComponent item={normalItem} />
 
-        <DesktopMenuItem item={dropdownItem} />
+        <DesktopMenuItemComponent item={dropdownItem} />
       </ul>
     </nav>
 

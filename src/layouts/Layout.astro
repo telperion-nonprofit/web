@@ -41,13 +41,19 @@ const pageTitle = title
     <SpeedInsights />
     <style>
       body.tolgee-loading {
-        visibility: hidden;
+        opacity: 0;
       }
       body.tolgee-ready {
-        visibility: visible;
+        opacity: 1;
       }
     </style>
-    <noscript><style>body.tolgee-loading { visibility: visible; }</style></noscript>
+    <noscript
+      ><style>
+        body.tolgee-loading {
+          opacity: 1;
+        }
+      </style></noscript
+    >
   </head>
 
   <body class="bg-cream text-dark-green font-sans antialiased tolgee-loading">
@@ -138,5 +144,6 @@ const pageTitle = title
           document.body.classList.add("tolgee-ready");
         });
     </script>
+
   </body>
 </html>
