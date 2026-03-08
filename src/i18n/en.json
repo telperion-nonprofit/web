@@ -41,7 +41,20 @@
     "label": {
       "email": "E-mail address",
       "message": "Your message",
-      "name": "Your name or school name"
+      "name": "Your name or school name",
+      "phone": "Phone number",
+      "program": "Workshop"
+    },
+    "program": {
+      "klima_dny": "Climate days",
+      "mozaika_firmy": "Climate Mosaic – Companies\n",
+      "mozaika_junior": "Climate Mosaic – Junior \n",
+      "mozaika_verejnost": "Climate Mosaic – Public \n",
+      "not_workshop": "Not listed",
+      "other": "Other workshop",
+      "placeholder": "Select a workshop",
+      "skautska_vikendovka": "Scout Climate Weekend\n",
+      "slow_fast_fashion": "Slow vs. Fast Fashion workshop"
     },
     "title": "Leave us a message"
   },

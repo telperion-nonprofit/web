@@ -41,7 +41,20 @@
     "label": {
       "email": "E-mailová adresa\n",
       "message": "Vaše zpráva\n",
-      "name": "Vaše jméno nebo název školy\n"
+      "name": "Vaše jméno nebo název školy\n",
+      "phone": "Telefonní číslo",
+      "program": "Program"
+    },
+    "program": {
+      "klima_dny": "Klima dny",
+      "mozaika_firmy": "Klimatická mozaika - Firmy",
+      "mozaika_junior": "Klimatická mozaika - Junior",
+      "mozaika_verejnost": "Klimatická mozaika - Veřejnost",
+      "not_workshop": "Neuvedeno",
+      "other": "Jiný program",
+      "placeholder": "Zvolte program",
+      "skautska_vikendovka": "Skautská klima víkendovka\n",
+      "slow_fast_fashion": "Program Slow vs. Fast fashion"
     },
     "title": "Napiště nám"
   },
