@@ -59,6 +59,12 @@ const { mobile = false } = Astro.props;
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const containers = document.querySelectorAll('.language-dropdown-container');
+    const dropdowns = Array.from(containers).map(container => ({
+      container,
+      toggle: container.querySelector('.language-toggle') as HTMLElement,
+      menu: container.querySelector('.language-menu') as HTMLElement,
+      options: container.querySelectorAll('.lang-option')
+    }));
 
     let currentLang = localStorage.getItem('zvoleny-jazyk');
     if (!currentLang) {
