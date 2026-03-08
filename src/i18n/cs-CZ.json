@@ -32,6 +32,19 @@
     },
     "page_title": "Domů"
   },
+  "modal": {
+    "button": {
+      "cancel": "Zrušit",
+      "submit": "Odeslat zprávu"
+    },
+    "description": "Máte zájem o náš program? Zanechte nám zprávu a my se vám co nejdříve ozveme.\n\n",
+    "label": {
+      "email": "E-mailová adresa\n",
+      "message": "Vaše zpráva\n",
+      "name": "Vaše jméno nebo název školy\n"
+    },
+    "title": "Napiště nám"
+  },
   "nav": {
     "articles": "Články",
     "button": {

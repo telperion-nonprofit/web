@@ -32,6 +32,19 @@
     },
     "page_title": "Home"
   },
+  "modal": {
+    "button": {
+      "cancel": "Cancel",
+      "submit": "Submit"
+    },
+    "description": "Are you interested in our workshops? Leave us a message and we will get in touch soon.",
+    "label": {
+      "email": "E-mail address",
+      "message": "Your message",
+      "name": "Your name or school name"
+    },
+    "title": "Leave us a message"
+  },
   "nav": {
     "articles": "Articles",
     "button": {
