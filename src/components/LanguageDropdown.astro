@@ -62,6 +62,12 @@ const { mobile = false } = Astro.props;
   // This script runs once per page load and sets up all language dropdowns
   document.addEventListener('DOMContentLoaded', () => {
     const containers = document.querySelectorAll('.language-dropdown-container');
+    const dropdowns = Array.from(containers).map(container => ({
+      container,
+      toggle: container.querySelector('.language-toggle') as HTMLElement,
+      menu: container.querySelector('.language-menu') as HTMLElement,
+      options: container.querySelectorAll('.lang-option')
+    }));
 
     // Get current language from localStorage or fallback
     const currentLang = getSafeLanguage();
@@ -74,10 +80,7 @@ const { mobile = false } = Astro.props;
 
     // Close all menus when clicking outside
     document.addEventListener('click', (e) => {
-      containers.forEach(container => {
-        const toggle = container.querySelector('.language-toggle');
-        const menu = container.querySelector('.language-menu');
-
+      dropdowns.forEach(({ container, toggle, menu }) => {
         if (toggle && menu && !container.contains(e.target as Node)) {
           toggle.setAttribute('aria-expanded', 'false');
           menu.classList.add('hidden');
@@ -87,24 +90,18 @@ const { mobile = false } = Astro.props;
     });
 
     // Setup each dropdown
-    containers.forEach(container => {
-      const toggle = container.querySelector('.language-toggle');
-      const menu = container.querySelector('.language-menu');
-      const options = container.querySelectorAll('.lang-option');
-
+    dropdowns.forEach(({ container, toggle, menu, options }) => {
       if (toggle && menu) {
         toggle.addEventListener('click', () => {
           const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
 
           // Close other open menus
-          containers.forEach(c => {
-            if (c !== container) {
-              const otherToggle = c.querySelector('.language-toggle');
-              const otherMenu = c.querySelector('.language-menu');
-              if (otherToggle && otherMenu) {
-                otherToggle.setAttribute('aria-expanded', 'false');
-                otherMenu.classList.add('hidden');
-                otherToggle.classList.remove('group');
+          dropdowns.forEach(other => {
+            if (other.container !== container) {
+              if (other.toggle && other.menu) {
+                other.toggle.setAttribute('aria-expanded', 'false');
+                other.menu.classList.add('hidden');
+                other.toggle.classList.remove('group');
               }
             }
           });
