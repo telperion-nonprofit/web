@@ -6,8 +6,8 @@ test.describe("Navbar Component", () => {
   });
 
   test.describe("Desktop Viewport", () => {
-    test.skip(({ isMobile }) => isMobile === true, "Desktop tests only");
     test.use({ viewport: { width: 1280, height: 720 } });
+    test.skip(({ isMobile }) => isMobile === true, "Desktop tests only");
 
     test("should display logo and brand name", async ({ page }) => {
       const logo = page.getByRole("link", { name: "Telperion" });
@@ -16,7 +16,8 @@ test.describe("Navbar Component", () => {
     });
 
     test("should display main navigation items", async ({ page }) => {
-      const nav = page.getByTestId("desktop-nav");
+      // FIX: Changed from md:flex to lg:flex to match the Astro component
+      const nav = page.locator("nav.hidden.lg\\:flex");
       await expect(nav).toBeVisible();
 
       const expectedLinks = [
@@ -37,7 +38,8 @@ test.describe("Navbar Component", () => {
     });
 
     test("should show dropdown on hover", async ({ page }) => {
-      const nav = page.locator("nav.hidden.md\\:flex");
+      // FIX: Changed from md:flex to lg:flex
+      const nav = page.locator("nav.hidden.lg\\:flex");
       const programyButton = nav.getByRole("button", { name: "Programy" });
 
       await programyButton.hover();
@@ -56,9 +58,8 @@ test.describe("Navbar Component", () => {
     });
 
     test("should display CTA button", async ({ page }) => {
-      // Because Tolgee is active, it may show either localized or raw key depending on render phase.
-      // Easiest is to search by the known class or a generic element match.
-      const ctaContainer = page.getByTestId("desktop-cta");
+      // FIX: Changed from md:flex to lg:flex
+      const ctaContainer = page.locator("div.hidden.lg\\:flex");
       const ctaBtn = ctaContainer.locator("button").last();
       await expect(ctaBtn).toBeVisible();
     });
@@ -70,8 +71,8 @@ test.describe("Navbar Component", () => {
   });
 
   test.describe("Mobile Viewport", () => {
-    test.skip(({ isMobile }) => isMobile !== true, "Mobile tests only");
     test.use({ viewport: { width: 375, height: 667 } });
+    test.skip(({ isMobile }) => isMobile !== true, "Mobile tests only");
 
     test("should display mobile menu button", async ({ page }) => {
       const mobileBtn = page.locator("#mobile-menu-btn");
@@ -79,7 +80,8 @@ test.describe("Navbar Component", () => {
     });
 
     test("should hide desktop navigation", async ({ page }) => {
-      const desktopNav = page.locator("nav.hidden.md\\:flex");
+      // FIX: Changed from md:flex to lg:flex
+      const desktopNav = page.locator("nav.hidden.lg\\:flex");
       await expect(desktopNav).toBeHidden();
     });
 
