@@ -34,6 +34,14 @@
   "nav": {
     "button": {
       "book": "Book a workshop"
-    }
+    },
+    "home": "Home",
+    "programs": "Programs",
+    "programs_schools": "For schools",
+    "programs_public": "For the public",
+    "programs_other": "Other programs",
+    "podcast": "Podcast",
+    "articles": "Articles",
+    "contact": "Contact"
   }
 }

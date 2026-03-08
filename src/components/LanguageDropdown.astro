@@ -27,7 +27,7 @@ const { mobile = false } = Astro.props;
   </button>
 
   <div
-    class={`language-menu hidden absolute z-50 overflow-hidden glass-card rounded-2xl shadow-lg border border-brand-green/10 transition-all duration-200 ${
+    class={`language-menu hidden absolute z-50 overflow-hidden bg-cream/90 backdrop-blur-md rounded-2xl shadow-xl border border-dark-green/10 transition-all duration-200 ${
       mobile
         ? 'relative w-full mt-1'
         : 'right-0 mt-2 w-40 origin-top-right'
@@ -35,10 +35,10 @@ const { mobile = false } = Astro.props;
     role="menu"
     aria-orientation="vertical"
   >
-    <div class="py-1">
+    <div class="p-2 flex flex-col gap-1">
       <button
         type="button"
-        class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green hover:bg-brand-green/10 transition-colors"
+        class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
         data-lang="cs-CZ"
         role="menuitem"
       >
@@ -46,7 +46,7 @@ const { mobile = false } = Astro.props;
       </button>
       <button
         type="button"
-        class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green hover:bg-brand-green/10 transition-colors"
+        class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
         data-lang="en"
         role="menuitem"
       >

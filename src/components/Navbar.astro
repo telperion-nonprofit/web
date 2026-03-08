@@ -7,19 +7,19 @@ import { Image } from 'astro:assets';
 import logoImg from '../assets/logo.png';
 
 const menuItems: MenuItem[] = [
-  { name: 'Domů', url: '/' },
+  { name: '[[nav.home]]', url: '/' },
   { 
-    name: 'Programy', 
+    name: '[[nav.programs]]', 
     url: '#',
     subItems: [
-      { name: 'Pro školy', url: '/programy/pro-skoly' },
-      { name: 'Pro veřejnost', url: '/programy/pro-verejnost' },
-      { name: 'Další programy', url: '/programy/dalsi-programy' },
+      { name: '[[nav.programs_schools]]', url: '/programy/pro-skoly' },
+      { name: '[[nav.programs_public]]', url: '/programy/pro-verejnost' },
+      { name: '[[nav.programs_other]]', url: '/programy/dalsi-programy' },
     ]
   },
-  { name: 'Podcast', url: '/podcast' },
-  { name: 'Články', url: '/clanky' },
-  { name: 'Kontakty', url: '/kontakty' },
+  { name: '[[nav.podcast]]', url: '/podcast' },
+  { name: '[[nav.articles]]', url: '/clanky' },
+  { name: '[[nav.contact]]', url: '/kontakty' },
 ];
 ---
 
@@ -92,7 +92,7 @@ const menuItems: MenuItem[] = [
           onclick="document.dispatchEvent(new CustomEvent('open-contact-modal'))" 
           class="block w-full text-center bg-brand-green text-cream px-6 py-3.5 rounded-full font-bold hover:bg-dark-green transition-colors focus:outline-none focus:ring-2 focus:ring-brand-green focus:ring-offset-2 shadow-lg shadow-brand-green/20"
         >
-          Poptat program
+          [[nav.button.book]]
         </button>
       </div>
     </div>

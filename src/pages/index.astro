@@ -47,6 +47,7 @@ import SectionBadge from '../components/SectionBadge.astro';
       <div class="relative w-full aspect-square sm:aspect-video md:aspect-[21/9] rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 bg-brand-green/5">
         
         <iframe 
+          id="umap-iframe"
           class="absolute left-0 top-0 w-full border-0"
           style="height: calc(100% + 40px);"
           allowfullscreen 
@@ -104,3 +105,12 @@ import SectionBadge from '../components/SectionBadge.astro';
   </section>
 
 </Layout>
+
+<script>
+  const iframe = document.getElementById('umap-iframe') as HTMLIFrameElement;
+  if (iframe) {
+    const lang = localStorage.getItem('zvoleny-jazyk') || 'cs-CZ';
+    const umapLang = lang === 'en' ? 'en' : 'cs-cz';
+    iframe.src = iframe.src.replace(/openstreetmap\.fr\/[a-z-]+\/map/, `openstreetmap.fr/${umapLang}/map`);
+  }
+</script>
