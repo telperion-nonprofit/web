@@ -8,8 +8,7 @@ import teamPhoto from "../assets/team.jpg";
 const teamMembers = [
   {
     name: "Jakub Nekvasil",
-    role: "Předseda spolku, Program Re:generace, Koordinace Climate Fresk komunity pro Česko, Facilitace programů",
-    bio: "Zakladatel Telperionu, student septimy na Gymnáziu Přírodní škola. Věnuji se environmentálnímu vzdělávání a klimatické motivaci. Jsem lokální koordinátor modelu Živá krajina a za program Klimatické dny jsem se dostal do finále ceny Josefa Vavrouška za Ekozásek roku 2023. Mým cílem je spojit společnost k řešení změny klimatu.",
+    role: "Předseda spolku, Program Re:generace, Koordinace Climate Fresk komunity pro česko, Facilitace programů",
     email: "jakub.nekvasil@telperion.cz",
     phone: "+420 776 059 998",
     image: null,
@@ -17,7 +16,6 @@ const teamMembers = [
   {
     name: "Damia Veselá",
     role: "Místopředsedkyně spolku, administrativa spolku, program Klima víkendovka pro skauty",
-    bio: "Pocházím z Kostelce nad Labem, věnuji se lektorování programu Base Camp a jako dobrovolnice vedu naši neziskovku Telperion. Připravuji se na studium psychologie. Baví mě skauting, práce s lidmi, vytváření grafiky, ruční práce a turistika. Nadchla mě Klimatická mozaika, kterou jsem absolvovala na telperionském teambuildingu.",
     email: "damia.vesela@telperion.cz",
     phone: "+420 608 168 078",
     image: null,
@@ -25,7 +23,6 @@ const teamMembers = [
   {
     name: "Anna Zezulka",
     role: "Webová vývojářka, Grafička",
-    bio: "",
     email: "anna.zezulka@telperion.cz",
     phone: "",
     image: null,
@@ -33,15 +30,13 @@ const teamMembers = [
   {
     name: "Martin Jirků",
     role: "Interní fungování, Komunikace, Spolupráce",
-    bio: "",
     email: "martin.jirku@telperion.cz",
     phone: "+420 734 465 698",
     image: null,
   },
   {
     name: "Magdaléna Klímová",
-    role: "Klimatické dny",
-    bio: "",
+    role: "Koordinátorka programu Klimatické dny",
     email: "magdalena.klimova@telperion.cz",
     phone: "",
     image: null,
@@ -49,24 +44,42 @@ const teamMembers = [
   {
     name: "Lucie Kubášová",
     role: "Koordinátorka Climate Fresk",
-    bio: "Pocházím z Litvínova, kde studuji na gymnáziu. Angažuji se ve školním parlamentu a ve spolku Živý Litvínov. Mezi mé největší záliby patří věda, hokej a čtení. Ke Climate Fresk jsem se dostala skrz Telperion a od svého vyškolení už sama realizuji workshopy.",
     email: "lucie.kubasova@telperion.cz",
     phone: "+420 792 474 847",
     image: null,
   },
   {
-    name: "Joly",
+    name: "Klára Adámková",
+    role: "Facilitace programu (Climate fresk)",
+    email: "klara.adamkova@telperion.cz",
+    phone: "+420 734 695 714",
+    image: null,
+  },
+  {
+    name: "Valeriia Tsyhanchuk",
     role: "",
-    bio: "Pocházím z Prahy a studuji v 9. ročníku. Baví mě práce s dětmi, ochrana přírody, počítačová grafika, psaní básní, skauting a vymýšlení deskových her. K facilitování Climate Fresk jsem se dostala díky Telperionu, který pořádal workshop u nás na škole, a dost mě oslovil.",
-    email: "",
+    email: "valeriia.tsyhanchuk@telperion.cz",
+    phone: "+420 723 394 013",
+    image: null,
+  },
+  {
+    name: "Jolana Balcarová",
+    role: "Lektorka Klimatických dnů, grafika, vývoj deskovky o jídle",
+    email: "jolana.balcarova@telperion.cz",
     phone: "",
     image: null,
   },
   {
-    name: "Hana",
-    role: "",
-    bio: "Studuji na Wichterlově gymnáziu v Ostravě. Mimo Telperion, kde jsem se dozvěděla o Climate Fresk, působím ve školní redakci, dobrovolničím a jsem jedna ze zakladatelek vietnamské komunity „Bạn Bè“. Ráda relaxuji u knih a seriálů, nebo na procházkách se svými pejsky.",
-    email: "",
+    name: "Sofia Grycová",
+    role: "Grafika, lektorka Klimatických dnů",
+    email: "sofia.grycova@telperion.cz",
+    phone: "",
+    image: null,
+  },
+  {
+    name: "David Bartoš",
+    role: "Lektor klima dnů, facilitace climate fresk",
+    email: "david.bartos@telperion.cz",
     phone: "",
     image: null,
   },
@@ -126,12 +139,6 @@ const teamMembers = [
                   {member.role}
                 </p>
               </div>
-
-              <hr class="border-t border-brand-green/10 w-12 mx-auto mb-4" />
-
-              <p class="text-dark-green/80 text-sm leading-relaxed mb-8 flex-grow text-center">
-                {member.bio}
-              </p>
 
               <div class="flex flex-col gap-2 mt-auto">
                 {member.email && (
