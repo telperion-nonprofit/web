@@ -25,11 +25,12 @@ const realizace = [
   <section class="pt-12 pb-8 text-center px-4 max-w-3xl mx-auto">
     <SectionBadge> {t("schools.badge")} </SectionBadge>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
-      {t("schools.title_main")} <span class="italic"
-        >{t("schools.title_highlight")}</span
-      >
+      {t("schools.title_main")}
+      <span class="italic">{t("schools.title_highlight")}</span>
     </h1>
-    <p class="text-lg text-dark-green/80 font-medium">{t("schools.subtitle")}</p>
+    <p class="text-lg text-dark-green/80 font-medium">
+      {t("schools.subtitle")}
+    </p>
   </section>
 
   <section class="px-4 pb-8 container mx-auto max-w-6xl">
@@ -49,17 +50,20 @@ const realizace = [
           <span
             class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
           >
-            <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" /> {t("schools.climate_days.tag_duration")}
+            <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" />
+            {t("schools.climate_days.tag_duration")}
           </span>
           <span
             class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
           >
-            <Icon name="mdi:account-group" class="w-5 h-5 text-brand-green" /> {t("schools.climate_days.tag_participants")}
+            <Icon name="mdi:account-group" class="w-5 h-5 text-brand-green" />
+            {t("schools.climate_days.tag_participants")}
           </span>
           <span
             class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
           >
-            <Icon name="mdi:school-outline" class="w-5 h-5 text-brand-green" /> {t("schools.climate_days.tag_level")}
+            <Icon name="mdi:school-outline" class="w-5 h-5 text-brand-green" />
+            {t("schools.climate_days.tag_level")}
           </span>
         </div>
       </div>
@@ -68,9 +72,10 @@ const realizace = [
         <div class="space-y-4 text-dark-green/80 leading-relaxed text-justify">
           <p>{t("schools.climate_days.desc_p1")}</p>
           <p>
-            {t("schools.climate_days.desc_p2_before")} <strong
-              >{t("schools.climate_days.desc_p2_bold")}</strong
-            >{t("schools.climate_days.desc_p2_after")}
+            {t("schools.climate_days.desc_p2_before")}
+            <strong>{t("schools.climate_days.desc_p2_bold")}</strong>{
+              t("schools.climate_days.desc_p2_after")
+            }
           </p>
           <p>{t("schools.climate_days.desc_p3")}</p>
         </div>
@@ -148,7 +153,8 @@ const realizace = [
         <div class="flex gap-4 mb-4">
           <span
             class="text-xs font-bold bg-cream px-2 py-1 rounded-md text-dark-green"
-            ><Icon name="mdi:clock-outline" class="inline w-4 h-4 mr-1" /> {t("schools.other_formats.fresk.duration")}</span
+            ><Icon name="mdi:clock-outline" class="inline w-4 h-4 mr-1" />
+            {t("schools.other_formats.fresk.duration")}</span
           >
           <span
             class="text-xs font-bold bg-cream px-2 py-1 rounded-md text-dark-green"

@@ -24,8 +24,14 @@ const menuItems: MenuItem[] = [
     url: "#",
     subItems: [
       { name: t("nav.programs_schools"), url: getUrl("/programy/pro-skoly") },
-      { name: t("nav.programs_public"), url: getUrl("/programy/pro-verejnost") },
-      { name: t("nav.programs_other"), url: getUrl("/programy/dalsi-programy") },
+      {
+        name: t("nav.programs_public"),
+        url: getUrl("/programy/pro-verejnost"),
+      },
+      {
+        name: t("nav.programs_other"),
+        url: getUrl("/programy/dalsi-programy"),
+      },
     ],
   },
   { name: t("nav.podcast"), url: getUrl("/podcast") },

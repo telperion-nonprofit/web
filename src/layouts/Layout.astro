@@ -29,7 +29,9 @@ const {
 } = Astro.props;
 
 const translatedTitle = title ? replacePlaceholders(title, lang) : undefined;
-const translatedDesc = description ? replacePlaceholders(description, lang) : undefined;
+const translatedDesc = description
+  ? replacePlaceholders(description, lang)
+  : undefined;
 ---
 
 <!doctype html>
@@ -39,10 +41,15 @@ const translatedDesc = description ? replacePlaceholders(description, lang) : un
     <meta name="description" content={translatedDesc} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/png" href="/favicon.ico" />
-    <meta property="og:title" content={`${translatedTitle || 'Domů'} | Telperion`} />
+    <meta
+      property="og:title"
+      content={`${translatedTitle || "Domů"} | Telperion`}
+    />
     <meta property="og:description" content={translatedDesc} />
     <meta property="og:type" content="website" />
-    <title>{translatedTitle ? `${translatedTitle} | Telperion` : 'Telperion'}</title>
+    <title>
+      {translatedTitle ? `${translatedTitle} | Telperion` : "Telperion"}
+    </title>
     <Analytics />
     <SpeedInsights />
   </head>
@@ -108,13 +115,9 @@ const translatedDesc = description ? replacePlaceholders(description, lang) : un
           },
         });
 
-      tolgee
-        .run()
-        .catch((e) => {
-          console.error("Tolgee initialization failed:", e);
-        });
+      tolgee.run().catch((e) => {
+        console.error("Tolgee initialization failed:", e);
+      });
     </script>
-
-
   </body>
 </html>

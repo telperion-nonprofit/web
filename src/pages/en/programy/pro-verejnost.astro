@@ -12,9 +12,8 @@ import SectionBadge from "../../../components/SectionBadge.astro";
   <section class="pt-12 pb-8 text-center px-4 max-w-3xl mx-auto">
     <SectionBadge> {t("public.badge")} </SectionBadge>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
-      {t("public.title_main")} <span class="italic"
-        >{t("public.title_highlight")}</span
-      >
+      {t("public.title_main")}
+      <span class="italic">{t("public.title_highlight")}</span>
     </h1>
     <p class="text-lg text-dark-green/80 font-medium">{t("public.subtitle")}</p>
   </section>
@@ -30,13 +29,16 @@ import SectionBadge from "../../../components/SectionBadge.astro";
           </h3>
           <ul class="space-y-3 text-sm font-medium text-white">
             <li class="flex items-center gap-2">
-              <Icon name="mdi:calendar-weekend" class="w-5 h-5" /> {t("public.scouts.tag_duration")}
+              <Icon name="mdi:calendar-weekend" class="w-5 h-5" />
+              {t("public.scouts.tag_duration")}
             </li>
             <li class="flex items-center gap-2">
-              <Icon name="mdi:account-group" class="w-5 h-5" /> {t("public.scouts.tag_participants")}
+              <Icon name="mdi:account-group" class="w-5 h-5" />
+              {t("public.scouts.tag_participants")}
             </li>
             <li class="flex items-start gap-2">
-              <Icon name="mdi:pine-tree" class="w-5 h-5 shrink-0" /> {t("public.scouts.tag_groups")}
+              <Icon name="mdi:pine-tree" class="w-5 h-5 shrink-0" />
+              {t("public.scouts.tag_groups")}
             </li>
           </ul>
         </div>
@@ -47,12 +49,15 @@ import SectionBadge from "../../../components/SectionBadge.astro";
       >
         <p>{t("public.scouts.desc_p1")}</p>
         <p>
-          <strong>{t("public.scouts.desc_p2_youngest")}</strong> {t("public.scouts.desc_p2_youngest_text")}
-          <strong>{t("public.scouts.desc_p2_scouts")}</strong> {t("public.scouts.desc_p2_scouts_text")}
+          <strong>{t("public.scouts.desc_p2_youngest")}</strong>
+          {t("public.scouts.desc_p2_youngest_text")}
+          <strong>{t("public.scouts.desc_p2_scouts")}</strong>
+          {t("public.scouts.desc_p2_scouts_text")}
         </p>
         <p>
           {t("public.scouts.desc_p3_before")}
-          <strong>{t("public.scouts.desc_p3_bold")}</strong> {t("public.scouts.desc_p3_after")}
+          <strong>{t("public.scouts.desc_p3_bold")}</strong>
+          {t("public.scouts.desc_p3_after")}
         </p>
       </div>
     </div>
@@ -66,16 +71,19 @@ import SectionBadge from "../../../components/SectionBadge.astro";
         </h3>
         <ul class="space-y-3 text-sm text-dark-green font-medium">
           <li class="flex items-center gap-2">
-            <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" /> {t("public.fresk.tag_duration")}
+            <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" />
+            {t("public.fresk.tag_duration")}
           </li>
           <li class="flex items-center gap-2">
-            <Icon name="mdi:account-check" class="w-5 h-5 text-brand-green" /> {t("public.fresk.tag_age")}
+            <Icon name="mdi:account-check" class="w-5 h-5 text-brand-green" />
+            {t("public.fresk.tag_age")}
           </li>
           <li class="flex items-center gap-2">
             <Icon
               name="mdi:account-multiple"
               class="w-5 h-5 text-brand-green"
-            /> {t("public.fresk.tag_capacity")}
+            />
+            {t("public.fresk.tag_capacity")}
           </li>
         </ul>
       </div>
@@ -83,8 +91,8 @@ import SectionBadge from "../../../components/SectionBadge.astro";
       <div class="md:w-2/3 text-dark-green/80 text-sm leading-relaxed">
         <p>{t("public.fresk.desc_p1")}</p>
         <p class="mt-4">
-          {t("public.fresk.desc_p2_before")} <em>{t("public.fresk.desc_p2_note")}</em
-          >.
+          {t("public.fresk.desc_p2_before")}
+          <em>{t("public.fresk.desc_p2_note")}</em>.
         </p>
       </div>
     </div>

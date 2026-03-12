@@ -61,7 +61,8 @@
   "nav": {
     "articles": "Articles",
     "button": {
-      "book": "Book a workshop"
+      "book": "Book a workshop",
+      "donate": "Donate"
     },
     "contact": "Contact",
     "home": "Home",

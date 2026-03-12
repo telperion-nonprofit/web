@@ -36,9 +36,8 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
       <h1
         class="text-5xl md:text-7xl font-serif font-bold text-brand-green mb-6 leading-tight"
       >
-        {t("home.hero.title_main")} <span class="italic"
-          >{t("home.hero.title_highlight")}</span
-        >
+        {t("home.hero.title_main")}
+        <span class="italic">{t("home.hero.title_highlight")}</span>
       </h1>
       <p
         class="text-lg md:text-xl text-dark-green mb-10 leading-relaxed max-w-2xl mx-auto font-medium"
@@ -73,9 +72,8 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
         <h2
           class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-4"
         >
-          {t("home.map.title_main")} <span class="italic"
-            >{t("home.map.title_highlight")}</span
-          >
+          {t("home.map.title_main")}
+          <span class="italic">{t("home.map.title_highlight")}</span>
         </h2>
         <p class="text-dark-green text-lg font-medium">
           {t("home.map.description")}
@@ -130,7 +128,11 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
   <section class="pt-12 pb-8 md:pt-16 md:pb-8">
     <div class="container mx-auto px-6 md:px-12 lg:px-16 max-w-6xl">
       <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
-        <button type="button" class="lightbox-trigger rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 cursor-zoom-in" data-full-src={teamPhoto.src}>
+        <button
+          type="button"
+          class="lightbox-trigger rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 cursor-zoom-in"
+          data-full-src={teamPhoto.src}
+        >
           <Image
             src={teamPhoto}
             alt={t("home.hero.button_team")}
@@ -139,7 +141,11 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </button>
-        <button type="button" class="lightbox-trigger rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 cursor-zoom-in" data-full-src={jakubPresentingPhoto.src}>
+        <button
+          type="button"
+          class="lightbox-trigger rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 cursor-zoom-in"
+          data-full-src={jakubPresentingPhoto.src}
+        >
           <Image
             src={jakubPresentingPhoto}
             alt="Jakub presenting"
@@ -148,7 +154,11 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </button>
-        <button type="button" class="lightbox-trigger rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 cursor-zoom-in" data-full-src={teamworkPhoto.src}>
+        <button
+          type="button"
+          class="lightbox-trigger rounded-3xl overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 cursor-zoom-in"
+          data-full-src={teamworkPhoto.src}
+        >
           <Image
             src={teamworkPhoto}
             alt={t("home.hero.button_programs")}
@@ -208,62 +218,112 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
   <section class="pt-16 pb-20 md:pt-20 md:pb-24">
     <div class="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
       <div class="text-center mb-16 max-w-3xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-4">
+        <h2
+          class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-4"
+        >
           Co o nás <span class="italic">říkají ostatní?</span>
         </h2>
         <p class="text-dark-green text-lg font-medium">
-          Zpětná vazba od účastníků a partnerů našich programů je pro nás důležitá.
+          Zpětná vazba od účastníků a partnerů našich programů je pro nás
+          důležitá.
         </p>
       </div>
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        
         <!-- Recenze 1 -->
-        <div class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative">
-          <svg class="absolute top-6 right-8 w-10 h-10 text-brand-green/10" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        <div
+          class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative"
+        >
+          <svg
+            class="absolute top-6 right-8 w-10 h-10 text-brand-green/10"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+            ></path>
           </svg>
-          <p class="text-dark-green/90 leading-relaxed italic mb-8 flex-grow relative z-10">
-            "Díky Jakubovi a celému Telperionu za super Klima dny na Biskupském gymnáziu v ČB! Organizace a příprava byla na profesionálním levelu. Studenti si odnesli mnoho nových poznatků a akce je dovedla k hlubšímu zamyšlení nad klimatickou krizí. Doufám, že je Klima dny inspirovaly i k další ekologické činnosti."
+          <p
+            class="text-dark-green/90 leading-relaxed italic mb-8 flex-grow relative z-10"
+          >
+            "Díky Jakubovi a celému Telperionu za super Klima dny na Biskupském
+            gymnáziu v ČB! Organizace a příprava byla na profesionálním levelu.
+            Studenti si odnesli mnoho nových poznatků a akce je dovedla k
+            hlubšímu zamyšlení nad klimatickou krizí. Doufám, že je Klima dny
+            inspirovaly i k další ekologické činnosti."
           </p>
           <div class="mt-auto pt-6 border-t border-brand-green/10">
             <h4 class="font-bold text-brand-green text-lg">Karolína Bittová</h4>
-            <span class="text-sm text-dark-green/60 font-medium">21. 06. 2023</span>
+            <span class="text-sm text-dark-green/60 font-medium"
+              >21. 06. 2023</span
+            >
           </div>
         </div>
 
         <!-- Recenze 2 -->
-        <div class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative">
-          <svg class="absolute top-6 right-8 w-10 h-10 text-brand-green/10" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        <div
+          class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative"
+        >
+          <svg
+            class="absolute top-6 right-8 w-10 h-10 text-brand-green/10"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+            ></path>
           </svg>
-          <p class="text-dark-green/90 leading-relaxed italic mb-8 flex-grow relative z-10">
-            "Jakubovu iniciativu znám jako přednášející na Klimatických dnech v minulém roce - přijde mi důležité, aby téma ochrany klimatu a životního prostředí vnášeli do školního prostředí právě studující a navíc mají tah na dlouhodobější akce, což Klimatické dny, zdá se, nyní budou a úspěšně se šířit. Ocenění práce na školách, kde se klíčová témata pro naši budoucnost prosazují jen pomalu, si podle mne zaslouží ocenění."
+          <p
+            class="text-dark-green/90 leading-relaxed italic mb-8 flex-grow relative z-10"
+          >
+            "Jakubovu iniciativu znám jako přednášející na Klimatických dnech v
+            minulém roce - přijde mi důležité, aby téma ochrany klimatu a
+            životního prostředí vnášeli do školního prostředí právě studující a
+            navíc mají tah na dlouhodobější akce, což Klimatické dny, zdá se,
+            nyní budou a úspěšně se šířit. Ocenění práce na školách, kde se
+            klíčová témata pro naši budoucnost prosazují jen pomalu, si podle
+            mne zaslouží ocenění."
           </p>
           <div class="mt-auto pt-6 border-t border-brand-green/10">
             <h4 class="font-bold text-brand-green text-lg">Anna Kárníková</h4>
-            <span class="text-sm text-dark-green/60 font-medium">04. 05. 2023</span>
+            <span class="text-sm text-dark-green/60 font-medium"
+              >04. 05. 2023</span
+            >
           </div>
         </div>
 
         <!-- Recenze 3 -->
-        <div class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative">
-          <svg class="absolute top-6 right-8 w-10 h-10 text-brand-green/10" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+        <div
+          class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative"
+        >
+          <svg
+            class="absolute top-6 right-8 w-10 h-10 text-brand-green/10"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
+            ></path>
           </svg>
-          <p class="text-dark-green/90 leading-relaxed italic mb-8 flex-grow relative z-10">
-            "Jakuba znám přímo z akce Klimatické dny, kde jsem v roce 2022 vedla jeden z programů. Od té doby často zmiňuji jeho iniciativu jako skvělý počin, který každoročně podněcuje studenty napříč věkovými kategoriemi k hlubšímu přemýšlení o souvislostech komplikovaného vztahu mezi člověkem a jeho životním prostředím."
+          <p
+            class="text-dark-green/90 leading-relaxed italic mb-8 flex-grow relative z-10"
+          >
+            "Jakuba znám přímo z akce Klimatické dny, kde jsem v roce 2022 vedla
+            jeden z programů. Od té doby často zmiňuji jeho iniciativu jako
+            skvělý počin, který každoročně podněcuje studenty napříč věkovými
+            kategoriemi k hlubšímu přemýšlení o souvislostech komplikovaného
+            vztahu mezi člověkem a jeho životním prostředím."
           </p>
           <div class="mt-auto pt-6 border-t border-brand-green/10">
             <h4 class="font-bold text-brand-green text-lg">Magdalena Davis</h4>
-            <span class="text-sm text-dark-green/60 font-medium">20. 04. 2023</span>
+            <span class="text-sm text-dark-green/60 font-medium"
+              >20. 04. 2023</span
+            >
           </div>
         </div>
-
       </div>
     </div>
   </section>
-
 </Layout>
 
 <div
@@ -273,7 +333,11 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
   aria-modal="true"
   aria-label="Photo lightbox"
 >
-  <div id="lightbox-backdrop" class="absolute inset-0 bg-dark-green/70 backdrop-blur-sm transition-opacity duration-300 opacity-0"></div>
+  <div
+    id="lightbox-backdrop"
+    class="absolute inset-0 bg-dark-green/70 backdrop-blur-sm transition-opacity duration-300 opacity-0"
+  >
+  </div>
   <img
     id="lightbox-img"
     src=""
@@ -286,8 +350,18 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
     class="absolute top-4 right-4 z-20 text-cream/80 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10"
     aria-label="Close"
   >
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-      <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-8 w-8"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="2"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M6 18L18 6M6 6l12 12"></path>
     </svg>
   </button>
 </div>
@@ -306,9 +380,15 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
   }
 
   const lightbox = document.getElementById("photo-lightbox") as HTMLDivElement;
-  const lightboxImg = document.getElementById("lightbox-img") as HTMLImageElement;
-  const lightboxBackdrop = document.getElementById("lightbox-backdrop") as HTMLDivElement;
-  const lightboxClose = document.getElementById("lightbox-close") as HTMLButtonElement;
+  const lightboxImg = document.getElementById(
+    "lightbox-img",
+  ) as HTMLImageElement;
+  const lightboxBackdrop = document.getElementById(
+    "lightbox-backdrop",
+  ) as HTMLDivElement;
+  const lightboxClose = document.getElementById(
+    "lightbox-close",
+  ) as HTMLButtonElement;
 
   function openLightbox(src: string, alt: string) {
     lightboxImg.src = src;

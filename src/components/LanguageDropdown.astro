@@ -12,7 +12,9 @@ const isEn = currentPath === "/en" || currentPath.startsWith("/en/");
 const currentLabel = isEn ? "EN" : "CS";
 
 const csPath = currentPath.replace(/^\/en(?=\/|$)/, "") || "/";
-const enPath = isEn ? currentPath : `/en${currentPath === "/" ? "" : currentPath}`;
+const enPath = isEn
+  ? currentPath
+  : `/en${currentPath === "/" ? "" : currentPath}`;
 ---
 
 <div
@@ -75,7 +77,9 @@ const enPath = isEn ? currentPath : `/en${currentPath === "/" ? "" : currentPath
     // Cache DOM elements per container to avoid repeated querySelectors in global listeners
     const dropdowns = Array.from(containerElements).map((container) => ({
       container: container as HTMLElement,
-      toggle: container.querySelector(".language-toggle") as HTMLButtonElement | null,
+      toggle: container.querySelector(
+        ".language-toggle",
+      ) as HTMLButtonElement | null,
       menu: container.querySelector(".language-menu") as HTMLElement | null,
     }));
 

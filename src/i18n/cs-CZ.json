@@ -61,7 +61,8 @@
   "nav": {
     "articles": "Články",
     "button": {
-      "book": "Poptat program"
+      "book": "Poptat program",
+      "donate": "Přispět"
     },
     "contact": "Kontakt",
     "home": "Domů",
