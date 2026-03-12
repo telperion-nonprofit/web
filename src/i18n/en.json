@@ -61,8 +61,7 @@
   "nav": {
     "articles": "Articles",
     "button": {
-      "book": "Book a workshop",
-      "donate": "Donate"
+      "book": "Book a workshop"
     },
     "contact": "Contact",
     "home": "Home",
@@ -71,12 +70,6 @@
     "programs_other": "Other workshops",
     "programs_public": "For public and businesses",
     "programs_schools": "For schools"
-  },
-  "donation_modal": {
-    "title": "Support Us",
-    "description": "Your support helps us continue educating about climate. Thank you!",
-    "account_number": "Account Number",
-    "transparent_account_link": "View Transparent Account"
   },
   "other": {
     "badge": "New formats\n",
