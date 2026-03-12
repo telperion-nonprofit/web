@@ -114,7 +114,7 @@ test.describe("Navbar Component", () => {
       }
 
       const mobileCta = mobileMenu.getByRole("button", {
-        name: "Poptat program",
+        name: "Přispět",
       });
       await expect(mobileCta).toBeVisible();
 
