@@ -4,7 +4,7 @@ test.describe("FeatureCard Component", () => {
   test("should render correctly with provided props and slot content", async ({
     page,
   }) => {
-    await page.goto("/test-feature-card");
+    await page.goto("/test/feature-card");
 
     const card1 = page.getByTestId("feature-card-1");
     await expect(card1).toBeVisible();
@@ -26,7 +26,7 @@ test.describe("FeatureCard Component", () => {
   });
 
   test("should have the expected CSS classes for styling", async ({ page }) => {
-    await page.goto("/test-feature-card");
+    await page.goto("/test/feature-card");
 
     const card1 = page.getByTestId("feature-card-1");
 
