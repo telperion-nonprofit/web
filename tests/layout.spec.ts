@@ -8,7 +8,7 @@ test.describe("Layout Component", () => {
 
     await expect(page).toHaveTitle("Telperion");
 
-    await expect(page.locator("html")).toHaveAttribute("lang", "cs");
+    await expect(page.locator("html")).toHaveAttribute("lang", "cs-CZ");
 
     const heading = page.getByRole("heading", { level: 1 });
     await expect(heading).toHaveText("Default Layout Content");
@@ -22,7 +22,7 @@ test.describe("Layout Component", () => {
 
     await expect(page).toHaveTitle("Náš tým a Kontakty | Telperion");
 
-    await expect(page.locator("html")).toHaveAttribute("lang", "cs");
+    await expect(page.locator("html")).toHaveAttribute("lang", "cs-CZ");
   });
 
   test("should have eager loading on bottom image", async ({ page }) => {

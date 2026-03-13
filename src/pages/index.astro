@@ -4,6 +4,7 @@ import type { Locale } from "../utils/i18n";
 const lang = (Astro.currentLocale as Locale) || "cs";
 const t = useTranslations(lang);
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { routeMap } from "../utils/lang";
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
@@ -53,7 +54,7 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
           {t("nav.button.book")}
         </button>
         <a
-          href={getRelativeLocaleUrl(lang, "/programy/pro-skoly")}
+          href={lang === "en" ? (routeMap["/programy/pro-skoly"] || getRelativeLocaleUrl(lang, "/programy/pro-skoly")) : getRelativeLocaleUrl(lang, "/programy/pro-skoly")}
           class="w-full sm:w-auto bg-cream/50 backdrop-blur-sm text-dark-green border border-brand-green/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/60 transition"
         >
           {t("home.hero.button_programs")}
