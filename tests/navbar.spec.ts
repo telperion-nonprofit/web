@@ -16,7 +16,6 @@ test.describe("Navbar Component", () => {
     });
 
     test("should display main navigation items", async ({ page }) => {
-      // FIX: Changed from md:flex to lg:flex to match the Astro component
       const nav = page.locator("nav.hidden.lg\\:flex");
       await expect(nav).toBeVisible();
 
@@ -37,7 +36,6 @@ test.describe("Navbar Component", () => {
       await expect(programyButton).toBeVisible();
     });
 
-    // Add browserName here as well
     test("should show dropdown on hover", async ({ page, browserName }) => {
       // Skip for Firefox
       test.skip(
@@ -64,7 +62,6 @@ test.describe("Navbar Component", () => {
     });
 
     test("should display CTA button", async ({ page }) => {
-      // FIX: Changed from md:flex to lg:flex
       const ctaContainer = page.locator("div.hidden.lg\\:flex");
       const ctaBtn = ctaContainer.locator("button").last();
       await expect(ctaBtn).toBeVisible();
@@ -86,7 +83,6 @@ test.describe("Navbar Component", () => {
     });
 
     test("should hide desktop navigation", async ({ page }) => {
-      // FIX: Changed from md:flex to lg:flex
       const desktopNav = page.locator("nav.hidden.lg\\:flex");
       await expect(desktopNav).toBeHidden();
     });
