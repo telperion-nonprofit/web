@@ -4,92 +4,10 @@ import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import SectionBadge from "../components/SectionBadge.astro";
 import teamPhoto from "../assets/team.jpg";
-import jakubNekvasilPhoto from "../assets/team/jakub_nekvasil.jpg";
-import damiaVeselaPhoto from "../assets/team/damia_vesela.jpg";
-import martinJirkuPhoto from "../assets/team/martin_jirku.jpg";
-import magdalenaKlimovaPhoto from "../assets/team/magdalena_klimova.jpg";
-import lucieKubasovaPhoto from "../assets/team/lucie_kubasova.jpg";
-import jolanaBalcarovaPhoto from "../assets/team/jolana_balcarova.jpg";
+import { useTranslations } from "../utils/i18n";
+import { teamMembers } from "../data/team";
 
-const teamMembers = [
-  {
-    name: "Jakub Nekvasil",
-    role: "Předseda spolku, Program Re:generace, Koordinace Climate Fresk komunity pro česko, Facilitace programů",
-    email: "jakub.nekvasil@telperion.cz",
-    phone: "+420 776 059 998",
-    image: jakubNekvasilPhoto,
-  },
-  {
-    name: "Damia Veselá",
-    role: "Místopředsedkyně spolku, administrativa spolku, program Klima víkendovka pro skauty",
-    email: "damia.vesela@telperion.cz",
-    phone: "+420 608 168 078",
-    image: damiaVeselaPhoto,
-  },
-  {
-    name: "Anna Zezulka",
-    role: "Webová vývojářka, IT specialistka, Grafická designérka",
-    email: "anna.zezulka@telperion.cz",
-    phone: "",
-    image: null,
-  },
-  {
-    name: "Martin Jirků",
-    role: "Interní fungování, Komunikace, Spolupráce",
-    email: "martin.jirku@telperion.cz",
-    phone: "+420 734 465 698",
-    image: martinJirkuPhoto,
-  },
-  {
-    name: "Magdaléna Klímová",
-    role: "Koordinátorka programu Klimatické dny",
-    email: "magdalena.klimova@telperion.cz",
-    phone: "",
-    image: magdalenaKlimovaPhoto,
-  },
-  {
-    name: "Lucie Kubášová",
-    role: "Koordinátorka Climate Fresk",
-    email: "lucie.kubasova@telperion.cz",
-    phone: "+420 792 474 847",
-    image: lucieKubasovaPhoto,
-  },
-  {
-    name: "Klára Adámková",
-    role: "Facilitace programu (Climate fresk)",
-    email: "klara.adamkova@telperion.cz",
-    phone: "+420 734 695 714",
-    image: null,
-  },
-  {
-    name: "Valeriia Tsyhanchuk",
-    role: "LEKTORKA KLIMA DNŮ, FACILITACE CLIMATE FRESK",
-    email: "valeriia.tsyhanchuk@telperion.cz",
-    phone: "+420 723 394 013",
-    image: null,
-  },
-  {
-    name: "Jolana Balcarová",
-    role: "Lektorka Klimatických dnů, grafika, vývoj deskovky o jídle",
-    email: "jolana.balcarova@telperion.cz",
-    phone: "",
-    image: jolanaBalcarovaPhoto,
-  },
-  {
-    name: "Sofia Grycová",
-    role: "Grafika, lektorka Klimatických dnů",
-    email: "sofia.grycova@telperion.cz",
-    phone: "",
-    image: null,
-  },
-  {
-    name: "David Bartoš",
-    role: "Lektor klima dnů, facilitace climate fresk",
-    email: "david.bartos@telperion.cz",
-    phone: "",
-    image: null,
-  },
-];
+const t = useTranslations(Astro.url.pathname);
 ---
 
 <Layout title="Náš tým a Kontakty">
@@ -165,7 +83,7 @@ const teamMembers = [
                   {member.name}
                 </h3>
                 <p class="text-sm font-bold text-dark-green/60 uppercase tracking-wider">
-                  {member.role}
+                  {t(member.roleKey)}
                 </p>
               </div>
 

@@ -168,7 +168,6 @@
     "page_title": "Pro školy",
     "realizations": {
       "1": "Gymnázium Přírodní škola, Praha\n",
-      "10": "MŠ a ZŠ Adélka, Mašovice\n",
       "2": "BIGY, České Budějovice\n",
       "3": "Škola Sv. Augustina, Praha\n",
       "4": "ZŠ Klausova, Praha\n",
@@ -176,12 +175,48 @@
       "6": "ZŠ Klíček, Praha\n",
       "7": "ZŠ T. Stolzové, Kostelec nad Labem\n",
       "8": "ZŠ Pod Žvahovem, Praha\n",
-      "9": "Gymnázium TGM, Litvínov\n"
+      "9": "Gymnázium TGM, Litvínov\n",
+      "10": "MŠ a ZŠ Adélka, Mašovice\n"
     },
     "realizations_more": "... a brzy snad i u vás!\n",
     "realizations_title": "Kde už program proběhl\n",
     "subtitle": "Komplexní, interaktivní a vrstevnické programy, které žákům pomohou pochopit souvislosti a najít vlastní roli v ochraně přírody.\n\n",
     "title_highlight": "lavic",
     "title_main": "Přinášíme klima do"
+  },
+  "team": {
+    "jakub": {
+      "role": "Předseda spolku, Program Re:generace, Koordinace Climate Fresk komunity pro česko, Facilitace programů"
+    },
+    "damia": {
+      "role": "Místopředsedkyně spolku, administrativa spolku, program Klima víkendovka pro skauty"
+    },
+    "anna": {
+      "role": "Webová vývojářka, IT specialistka, Grafická designérka"
+    },
+    "martin": {
+      "role": "Interní fungování, Komunikace, Spolupráce"
+    },
+    "magdalena": {
+      "role": "Koordinátorka programu Klimatické dny"
+    },
+    "lucie": {
+      "role": "Koordinátorka Climate Fresk"
+    },
+    "klara": {
+      "role": "Facilitace programu (Climate fresk)"
+    },
+    "valeriia": {
+      "role": "LEKTORKA KLIMA DNŮ, FACILITACE CLIMATE FRESK"
+    },
+    "jolana": {
+      "role": "Lektorka Klimatických dnů, grafika, vývoj deskovky o jídle"
+    },
+    "sofia": {
+      "role": "Grafika, lektorka Klimatických dnů"
+    },
+    "david": {
+      "role": "Lektor klima dnů, facilitace climate fresk"
+    }
   }
 }

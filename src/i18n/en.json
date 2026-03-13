@@ -168,7 +168,6 @@
     "page_title": "For schools",
     "realizations": {
       "1": "Natural Science High School, Prague\n",
-      "10": "Adélka Kindergarten and Elementary School, Mašovice\n",
       "2": "BIGY, České Budějovice\n",
       "3": "St. Augustine School, Prague\n",
       "4": "Klausova Elementary School, Prague\n",
@@ -176,12 +175,48 @@
       "6": "Klíček Elementary School, Prague\n",
       "7": "T. Stolzová Elementary School, Kostelec nad Labem\n",
       "8": "Pod Žvahovem Elementary School, Prague\n",
-      "9": "TGM High School, Litvínov\n"
+      "9": "TGM High School, Litvínov\n",
+      "10": "Adélka Kindergarten and Elementary School, Mašovice\n"
     },
     "realizations_more": "... and soon, hopefully, at your place too!\n",
     "realizations_title": "Where the program has already taken place\n",
     "subtitle": "Comprehensive, interactive, and peer-to-peer programs that help students understand the bigger picture and find their own role in protecting nature.",
     "title_highlight": "classrooms",
     "title_main": "We bring climate to"
+  },
+  "team": {
+    "jakub": {
+      "role": "President, Re:generation Program, Climate Fresk Community Coordination for CZ, Facilitator"
+    },
+    "damia": {
+      "role": "Vice President, Administration, Climate Weekend for Scouts Program"
+    },
+    "anna": {
+      "role": "IT specialist"
+    },
+    "martin": {
+      "role": "Internal Operations, Communication, Partnerships"
+    },
+    "magdalena": {
+      "role": "Climate Days Program Coordinator"
+    },
+    "lucie": {
+      "role": "Climate Fresk Coordinator"
+    },
+    "klara": {
+      "role": "Program Facilitation (Climate Fresk)"
+    },
+    "valeriia": {
+      "role": "CLIMATE DAYS INSTRUCTOR, CLIMATE FRESK FACILITATION"
+    },
+    "jolana": {
+      "role": "Climate Days Instructor, Graphics, Board Game Development"
+    },
+    "sofia": {
+      "role": "Graphics, Climate Days Instructor"
+    },
+    "david": {
+      "role": "Climate Days Instructor, Climate Fresk Facilitator"
+    }
   }
 }
