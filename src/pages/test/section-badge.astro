@@ -1,23 +1,29 @@
 ---
-import SectionBadge from "../../components/SectionBadge.astro";
+import SectionBadgeComponent from "../../components/SectionBadge.astro";
 import Layout from "../../layouts/Layout.astro";
+
+if (import.meta.env.PROD) {
+  return Astro.redirect("/", 302);
+}
 ---
 
-<Layout title="Test SectionBadge">
+<Layout title="Test SectionBadge" noindex={true}>
   <div class="p-8 space-y-8">
-    <SectionBadge data-testid="badge-default"> Default Badge </SectionBadge>
+    <SectionBadgeComponent data-testid="badge-default">
+      Default Badge
+    </SectionBadgeComponent>
 
-    <SectionBadge class="custom-class" data-testid="badge-custom-class">
+    <SectionBadgeComponent class="custom-class" data-testid="badge-custom-class">
       Custom Class Badge
-    </SectionBadge>
+    </SectionBadgeComponent>
 
-    <SectionBadge id="badge-with-id" data-testid="badge-with-id">
+    <SectionBadgeComponent id="badge-with-id" data-testid="badge-with-id">
       Badge with ID
-    </SectionBadge>
+    </SectionBadgeComponent>
 
-    <SectionBadge data-testid="badge-complex-slot">
+    <SectionBadgeComponent data-testid="badge-complex-slot">
       <span>Complex</span>
       <strong>Slot</strong>
-    </SectionBadge>
+    </SectionBadgeComponent>
   </div>
 </Layout>

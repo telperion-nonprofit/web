@@ -14,7 +14,22 @@ export default defineConfig({
       strategy: "pathname",
     },
   },
-  integrations: [icon(), react(), sitemap()],
+  integrations: [
+    icon(),
+    react(),
+    sitemap({
+      filter: (page) => {
+        const { pathname } = new URL(page);
+
+        // Exclude non-indexable routes from production sitemap.
+        return ![
+          /^\/test(\/|$)/,
+          /\/404\/?$/,
+          /\/500\/?$/,
+        ].some((pattern) => pattern.test(pathname));
+      },
+    }),
+  ],
   vite: {
     plugins: [tailwindcss()],
   },

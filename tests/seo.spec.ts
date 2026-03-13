@@ -26,4 +26,22 @@ test.describe("SEO", () => {
     const ogType = page.locator('meta[property="og:type"]');
     await expect(ogType).toHaveAttribute("content", "website");
   });
+
+  test("production sitemap should exclude QA and 404 URLs", async ({
+    request,
+  }) => {
+    const response = await request.get("/sitemap-0.xml");
+
+    test.skip(
+      response.status() === 404,
+      "Sitemap is generated only for build/preview, not astro dev.",
+    );
+
+    expect(response.ok()).toBeTruthy();
+    const xml = await response.text();
+
+    expect(xml).not.toContain("/test/");
+    expect(xml).not.toContain("/404/");
+    expect(xml).not.toContain("/en/404/");
+  });
 });

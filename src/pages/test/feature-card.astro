@@ -1,24 +1,28 @@
 ---
-import FeatureCard from "../../components/FeatureCard.astro";
+import FeatureCardComponent from "../../components/FeatureCard.astro";
 import Layout from "../../layouts/Layout.astro";
+
+if (import.meta.env.PROD) {
+  return Astro.redirect("/", 302);
+}
 ---
 
-<Layout title="Test FeatureCard">
+<Layout title="Test FeatureCard" noindex={true}>
   <div class="p-8 grid gap-8">
-    <FeatureCard
+    <FeatureCardComponent
       icon="mdi:account-group-outline"
       title="Test Title 1"
       data-testid="feature-card-1"
     >
       This is the first test description.
-    </FeatureCard>
+    </FeatureCardComponent>
 
-    <FeatureCard
+    <FeatureCardComponent
       icon="mdi:earth"
       title="Test Title 2"
       data-testid="feature-card-2"
     >
       This is the second test description with different content.
-    </FeatureCard>
+    </FeatureCardComponent>
   </div>
 </Layout>

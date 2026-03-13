@@ -20,6 +20,7 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  noindex?: boolean;
 }
 
 const lang = (Astro.currentLocale as Locale) || "cs";
@@ -28,6 +29,7 @@ const {
   title,
   description = "Mladí učí o klimatu. Vzdělávací programy pro školy a veřejnost.",
   image,
+  noindex = false,
 } = Astro.props;
 
 const translatedTitle = title ? replacePlaceholders(title, lang) : undefined;
@@ -62,6 +64,7 @@ const getHreflangUrl = (targetLang: string) => {
 
 const csUrl = getHreflangUrl("cs");
 const enUrl = getHreflangUrl("en");
+const includeAlternateLinks = !noindex;
 ---
 
 <!doctype html>
@@ -70,6 +73,7 @@ const enUrl = getHreflangUrl("en");
     <meta charset="UTF-8" />
     <meta name="description" content={translatedDesc} />
     <meta name="viewport" content="width=device-width" />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/png" href="/favicon.ico" />
     <meta property="og:title" content={`${translatedTitle || "Domů"} | Telperion`} />
     <meta property="og:description" content={translatedDesc} />
@@ -83,9 +87,9 @@ const enUrl = getHreflangUrl("en");
     {image && <meta name="twitter:image" content={new URL(image, Astro.site || "https://www.telperion.cz").href} />}
 
     <link rel="canonical" href={canonicalUrl.href} />
-    <link rel="alternate" hreflang="cs" href={csUrl} />
-    <link rel="alternate" hreflang="en" href={enUrl} />
-    <link rel="alternate" hreflang="x-default" href={csUrl} />
+    {includeAlternateLinks && <link rel="alternate" hreflang="cs" href={csUrl} />}
+    {includeAlternateLinks && <link rel="alternate" hreflang="en" href={enUrl} />}
+    {includeAlternateLinks && <link rel="alternate" hreflang="x-default" href={csUrl} />}
 
     <title>
       {translatedTitle ? `${translatedTitle} | Telperion` : "Telperion"}

@@ -1,7 +1,11 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+
+if (import.meta.env.PROD) {
+  return Astro.redirect("/", 302);
+}
 ---
 
-<Layout>
+<Layout noindex={true}>
   <h1>Default Layout Content</h1>
 </Layout>

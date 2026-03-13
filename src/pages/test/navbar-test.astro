@@ -1,8 +1,12 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+
+if (import.meta.env.PROD) {
+  return Astro.redirect("/", 302);
+}
 ---
 
-<Layout title="Navbar Test">
+<Layout title="Navbar Test" noindex={true}>
   <div class="p-4">
     <h1 class="text-3xl font-bold">Navbar Test Page</h1>
     <p>This page is used to test the Navbar component.</p>

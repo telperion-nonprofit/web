@@ -3,6 +3,10 @@ import Layout from "../../layouts/Layout.astro";
 import DesktopMenuItemComponent from "../../components/navbar/DesktopMenuItem.astro";
 import type { MenuItem } from "../../types";
 
+if (import.meta.env.PROD) {
+  return Astro.redirect("/", 302);
+}
+
 const normalItem: MenuItem = {
   name: "Normal Link",
   url: "/normal-link",
@@ -18,7 +22,7 @@ const dropdownItem: MenuItem = {
 };
 ---
 
-<Layout title="Desktop Menu Item Test">
+<Layout title="Desktop Menu Item Test" noindex={true}>
   <div class="p-8">
     <h1 class="text-3xl font-bold mb-8">Desktop Menu Item Test</h1>
 

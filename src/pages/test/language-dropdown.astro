@@ -1,9 +1,13 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import LanguageDropdown from "../../components/LanguageDropdown.astro";
+import LanguageDropdownComponent from "../../components/LanguageDropdown.astro";
+
+if (import.meta.env.PROD) {
+  return Astro.redirect("/", 302);
+}
 ---
 
-<Layout title="Language Dropdown Test Page">
+<Layout title="Language Dropdown Test Page" noindex={true}>
   <div
     class="p-8 space-y-8 min-h-screen flex flex-col justify-center items-center"
   >
@@ -17,7 +21,7 @@ import LanguageDropdown from "../../components/LanguageDropdown.astro";
     >
       <h2 class="text-xl mb-4">Desktop Version</h2>
       <div class="flex justify-end relative z-50">
-        <LanguageDropdown />
+        <LanguageDropdownComponent />
       </div>
     </div>
 
@@ -27,7 +31,7 @@ import LanguageDropdown from "../../components/LanguageDropdown.astro";
     >
       <h2 class="text-xl mb-4">Mobile Version</h2>
       <div class="relative z-50">
-        <LanguageDropdown mobile={true} />
+        <LanguageDropdownComponent mobile={true} />
       </div>
     </div>
 

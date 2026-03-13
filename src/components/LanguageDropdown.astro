@@ -10,11 +10,16 @@ const { mobile = false } = Astro.props;
 const currentPath = Astro.url.pathname;
 const isEn = currentPath === "/en" || currentPath.startsWith("/en/");
 const currentLabel = isEn ? "EN" : "CS";
+const isStatusPath = /^\/(en\/)?(404|500)\/?$/.test(currentPath);
 
-const csPath = currentPath.replace(/^\/en(?=\/|$)/, "") || "/";
-const enPath = isEn
-  ? currentPath
-  : `/en${currentPath === "/" ? "" : currentPath}`;
+const csPath = isStatusPath
+  ? "/"
+  : currentPath.replace(/^\/en(?=\/|$)/, "") || "/";
+const enPath = isStatusPath
+  ? "/en/"
+  : isEn
+    ? currentPath
+    : `/en${currentPath === "/" ? "" : currentPath}`;
 ---
 
 <div
