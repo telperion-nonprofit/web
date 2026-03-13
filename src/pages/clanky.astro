@@ -8,15 +8,11 @@ const vsechnyClanky = await getCollection("clanky");
 
 const clanky = vsechnyClanky
   .filter((clanek: any) => clanek.data.pubDate)
-  .sort(
-    (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-  );
-
-const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
+  .sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .map((clanek: any) => ({
+    ...clanek,
+    slug: clanek.id.replace(/\.mdx?$/, ""),
+  }));
 ---
 
 <Layout title="Články a novinky">
@@ -52,7 +48,7 @@ const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
 
               <h2 class="text-2xl font-serif font-bold text-brand-green mb-3 line-clamp-2">
                 <a
-                  href={`/clanky/${clanek.id.replace(/\.md$/, '')}`}
+                  href={`/clanky/${clanek.slug}`}
                   class="hover:text-dark-green transition-colors"
                 >
                   {clanek.data.title}
@@ -68,7 +64,7 @@ const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
                   {clanek.data.author}
                 </span>
                 <a
-                  href={`/clanky/${clanek.id.replace(/\.md$/, '')}`}
+                  href={`/clanky/${clanek.slug}`}
                   class="inline-flex items-center gap-1 text-sm font-bold text-dark-green hover:text-brand-green transition-colors group"
                 >
                   Číst dál
