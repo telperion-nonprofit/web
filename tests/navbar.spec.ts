@@ -2,7 +2,11 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Navbar Component", () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto("/test/navbar");
+    // Avoid global promo modal interception by setting sessionStorage state before navigation
+    await page.addInitScript(() => {
+      window.sessionStorage.setItem("climateFreskModalSeen", "true");
+    });
+    await page.goto("/");
   });
 
   test.describe("Desktop Viewport", () => {
