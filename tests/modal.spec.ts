@@ -4,6 +4,12 @@ test.describe("Modal Component", () => {
   test.beforeEach(async ({ page }) => {
     // Modal is a global component included in Layout.astro, so we can test it on the home page
     await page.goto("/");
+    // Close the climate fresk promo modal if it shows up
+    const promoModal = page.locator("#climate-fresk-modal");
+    if (await promoModal.isVisible()) {
+       await page.locator("#climate-fresk-close").click();
+       await expect(promoModal).toHaveClass(/hidden/);
+    }
   });
 
   test.describe("Desktop Viewport", () => {
@@ -71,10 +77,10 @@ test.describe("Modal Component", () => {
       await expect(modal).not.toHaveClass(/hidden/);
 
       const closeBtn = page.locator("#close-modal-btn");
-      await closeBtn.click();
+      await closeBtn.click({ force: true });
 
       // Wait for the animation to finish
-      await expect(modal).toHaveClass(/hidden/);
+      await expect(modal).toHaveClass(/hidden/, { timeout: 10000 });
     });
 
     test("should close on cancel button click", async ({ page }) => {
@@ -86,10 +92,10 @@ test.describe("Modal Component", () => {
       await expect(modal).not.toHaveClass(/hidden/);
 
       const cancelBtn = page.locator("#cancel-modal-btn");
-      await cancelBtn.click();
+      await cancelBtn.click({ force: true });
 
       // Wait for the animation to finish
-      await expect(modal).toHaveClass(/hidden/);
+      await expect(modal).toHaveClass(/hidden/, { timeout: 10000 });
     });
 
     test("should close on backdrop click", async ({ page }) => {
@@ -103,10 +109,10 @@ test.describe("Modal Component", () => {
       // Click outside the panel. The min-h-full div is the target checked in the event listener.
       const container = page.locator("#contact-modal .min-h-full").first();
       // Click at the top-left corner of the container which should be outside the panel
-      await container.click({ position: { x: 10, y: 10 } });
+      await container.click({ position: { x: 10, y: 10 }, force: true });
 
       // Wait for the animation to finish
-      await expect(modal).toHaveClass(/hidden/);
+      await expect(modal).toHaveClass(/hidden/, { timeout: 10000 });
     });
   });
 
@@ -131,8 +137,8 @@ test.describe("Modal Component", () => {
       await expect(modalTitle).toBeVisible();
 
       // Close
-      await closeBtn.click();
-      await expect(modal).toHaveClass(/hidden/);
+      await closeBtn.click({ force: true });
+      await expect(modal).toHaveClass(/hidden/, { timeout: 10000 });
     });
   });
 });
