@@ -1,5 +1,5 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, render } from "astro:content";
 import Layout from "../../../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import { getRelativeLocaleUrl } from "astro:i18n";
@@ -8,13 +8,13 @@ const lang = "en";
 export async function getStaticPaths() {
   const clanky = await getCollection("clanky");
   return clanky.map((clanek) => ({
-    params: { slug: clanek.slug },
+    params: { slug: clanek.id.replace(/\.md$/, '') },
     props: { clanek },
   }));
 }
 
 const { clanek } = Astro.props;
-const { Content } = await clanek.render();
+const { Content } = await render(clanek);
 ---
 
 <Layout title={clanek.data.title} description={clanek.data.description}>
