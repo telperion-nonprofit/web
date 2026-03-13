@@ -41,7 +41,7 @@ function formatDate(date: Date) {
         {
           sortedArticles.map((article) => (
             <a
-              href={`/en/clanky/${article.id.replace(/\.md$/, '')}`}
+              href={`/en/clanky/${article.id.replace(/\.md$/, "")}`}
               class="glass-card rounded-3xl p-6 sm:p-8 transform-gpu will-change-transform flex flex-col group transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-green/10 border border-brand-green/10 h-full"
             >
               <div class="flex items-center gap-3 text-sm text-dark-green/60 font-medium mb-4">

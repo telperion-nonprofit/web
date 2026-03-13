@@ -41,10 +41,12 @@ export function useTranslations(lang: Locale) {
   };
 }
 
+const PLACEHOLDER_REGEX = /\[\[([^\]]+)\]\]/g;
+
 export function replacePlaceholders(text: string, lang: Locale): string {
   if (!text) return text;
   const translator = useTranslations(lang);
-  return text.replace(/\[\[([^\]]+)\]\]/g, (_, key) => {
+  return text.replace(PLACEHOLDER_REGEX, (_, key) => {
     return translator(key);
   });
 }
