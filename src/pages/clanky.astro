@@ -11,6 +11,14 @@ const clanky = vsechnyClanky
   .sort(
     (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
   );
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat("cs-CZ", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(date);
+}
 ---
 
 <Layout title="Články a novinky">
@@ -40,11 +48,7 @@ const clanky = vsechnyClanky
               <div class="flex items-center gap-2 text-sm text-dark-green/60 font-medium mb-4">
                 <Icon name="mdi:calendar-blank" class="w-4 h-4" />
                 <time datetime={clanek.data.pubDate?.toISOString()}>
-                  {clanek.data.pubDate?.toLocaleDateString("cs-CZ", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
+                  {clanek.data.pubDate ? formatDate(clanek.data.pubDate) : ""}
                 </time>
               </div>
 

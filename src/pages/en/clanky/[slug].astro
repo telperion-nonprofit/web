@@ -15,6 +15,14 @@ export async function getStaticPaths() {
 
 const { clanek } = Astro.props;
 const { Content } = await render(clanek);
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  }).format(date);
+}
 ---
 
 <Layout title={clanek.data.title} description={clanek.data.description}>
@@ -43,13 +51,7 @@ const { Content } = await render(clanek);
         <div class="flex items-center gap-2">
           <Icon name="mdi:calendar-blank" class="w-4 h-4" />
           <time datetime={clanek.data.pubDate?.toISOString()}>
-            {
-              clanek.data.pubDate?.toLocaleDateString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-              })
-            }
+            {clanek.data.pubDate ? formatDate(clanek.data.pubDate) : ""}
           </time>
         </div>
         <span class="w-1 h-1 rounded-full bg-dark-green/30"></span>
