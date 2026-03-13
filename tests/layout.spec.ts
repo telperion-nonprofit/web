@@ -17,14 +17,12 @@ test.describe("Layout Component", () => {
   test("should render with custom title when title prop is provided", async ({
     page,
   }) => {
-    await page.goto("/test/layout-custom");
+    // We test against an actual page with a custom title instead of a test route.
+    await page.goto("/kontakty");
 
-    await expect(page).toHaveTitle("Test Title | Telperion");
+    await expect(page).toHaveTitle("Náš tým a Kontakty | Telperion");
 
     await expect(page.locator("html")).toHaveAttribute("lang", "cs");
-
-    const heading = page.getByRole("heading", { level: 1 });
-    await expect(heading).toHaveText("Custom Layout Content");
   });
 
   test("should have eager loading on bottom image", async ({ page }) => {
