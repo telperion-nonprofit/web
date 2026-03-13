@@ -54,7 +54,7 @@ function formatDate(date: Date) {
 
               <h2 class="text-2xl font-serif font-bold text-brand-green mb-3 line-clamp-2">
                 <a
-                  href={`/clanky/${clanek.id.replace(/\.md$/, '')}`}
+                  href={`/clanky/${clanek.id.replace(/\.md$/, "")}`}
                   class="hover:text-dark-green transition-colors"
                 >
                   {clanek.data.title}
@@ -70,7 +70,7 @@ function formatDate(date: Date) {
                   {clanek.data.author}
                 </span>
                 <a
-                  href={`/clanky/${clanek.id.replace(/\.md$/, '')}`}
+                  href={`/clanky/${clanek.id.replace(/\.md$/, "")}`}
                   class="inline-flex items-center gap-1 text-sm font-bold text-dark-green hover:text-brand-green transition-colors group"
                 >
                   Číst dál

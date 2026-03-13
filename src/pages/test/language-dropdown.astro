@@ -1,0 +1,42 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import LanguageDropdown from "../../components/LanguageDropdown.astro";
+---
+
+<Layout title="Language Dropdown Test Page">
+  <div
+    class="p-8 space-y-8 min-h-screen flex flex-col justify-center items-center"
+  >
+    <h1 class="text-3xl font-bold mb-4 w-full text-center">
+      Language Dropdown Test Page
+    </h1>
+
+    <div
+      class="w-full max-w-md p-4 border rounded bg-white"
+      id="desktop-container"
+    >
+      <h2 class="text-xl mb-4">Desktop Version</h2>
+      <div class="flex justify-end relative z-50">
+        <LanguageDropdown />
+      </div>
+    </div>
+
+    <div
+      class="w-full max-w-md p-4 border rounded bg-white mt-8"
+      id="mobile-container"
+    >
+      <h2 class="text-xl mb-4">Mobile Version</h2>
+      <div class="relative z-50">
+        <LanguageDropdown mobile={true} />
+      </div>
+    </div>
+
+    <!-- An area to click outside -->
+    <div
+      id="outside-area"
+      class="w-full h-32 bg-gray-100 mt-8 border rounded flex items-center justify-center"
+    >
+      Click outside area
+    </div>
+  </div>
+</Layout>

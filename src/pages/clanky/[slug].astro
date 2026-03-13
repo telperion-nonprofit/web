@@ -6,7 +6,7 @@ import { Icon } from "astro-icon/components";
 export async function getStaticPaths() {
   const clanky = await getCollection("clanky");
   return clanky.map((clanek) => ({
-    params: { slug: clanek.id.replace(/\.md$/, '') },
+    params: { slug: clanek.id.replace(/\.md$/, "") },
     props: { clanek },
   }));
 }
