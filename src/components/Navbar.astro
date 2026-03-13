@@ -10,10 +10,24 @@ import LanguageDropdown from "./LanguageDropdown.astro";
 import { Image } from "astro:assets";
 import logoImg from "../assets/logo.png";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { routeMap } from "../utils/lang";
 
 const getUrl = (path: string) => {
   if (path === "#") return path;
   if (lang === "cs") return path;
+
+  // If english, check if there's a mapped route
+  if (routeMap[path]) {
+    return routeMap[path];
+  }
+
+  // Handle dynamic slugs (e.g. /clanky/foo) by checking if the path starts with a mapped base route
+  for (const [czBase, enBase] of Object.entries(routeMap)) {
+    if (path.startsWith(`${czBase}/`)) {
+      return path.replace(czBase, enBase);
+    }
+  }
+
   return getRelativeLocaleUrl(lang, path);
 };
 

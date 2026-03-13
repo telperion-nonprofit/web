@@ -4,6 +4,7 @@ import type { Locale } from "../../utils/i18n";
 const lang = (Astro.currentLocale as Locale) || "cs";
 const t = useTranslations(lang);
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { routeMap } from "../../utils/lang";
 import Layout from "../../layouts/Layout.astro";
 import FeatureCard from "../../components/FeatureCard.astro";
 import SectionBadge from "../../components/SectionBadge.astro";
@@ -26,13 +27,13 @@ import SectionBadge from "../../components/SectionBadge.astro";
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
         <a
-          href={getRelativeLocaleUrl(lang, "/programy/pro-skoly")}
+          href={routeMap["/programy/pro-skoly"] || getRelativeLocaleUrl(lang, "/programy/pro-skoly")}
           class="w-full sm:w-auto bg-brand-green text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-dark-green transition transform hover:-translate-y-0.5 shadow-xl shadow-brand-green/20"
         >
           {t("home.hero.button_programs")}
         </a>
         <a
-          href={getRelativeLocaleUrl(lang, "/kontakty")}
+          href={routeMap["/kontakty"] || getRelativeLocaleUrl(lang, "/kontakty")}
           class="w-full sm:w-auto bg-cream/50 backdrop-blur-sm text-dark-green border border-brand-green/30 px-8 py-4 rounded-full font-bold text-lg hover:bg-white/60 transition"
         >
           {t("home.hero.button_team")}

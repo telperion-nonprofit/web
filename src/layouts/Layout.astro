@@ -15,6 +15,7 @@ import DonationModal from "../components/DonationModal.astro";
 
 import { replacePlaceholders } from "../utils/i18n";
 import type { Locale } from "../utils/i18n";
+import { routeMap, getSafeLanguage } from "../utils/lang";
 
 interface Props {
   title?: string;
@@ -24,6 +25,7 @@ interface Props {
 }
 
 const lang = (Astro.currentLocale as Locale) || "cs";
+const htmlLang = lang === "en" ? "en" : "cs-CZ";
 
 const {
   title,
@@ -42,33 +44,70 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site || "https://www.telp
 
 // Helper to create hreflang URLs
 const getHreflangUrl = (targetLang: string) => {
-  const currentPath = Astro.url.pathname;
-  let newPath = currentPath;
+  let currentPath = Astro.url.pathname;
+  if (currentPath !== "/" && currentPath !== "/en/" && currentPath.endsWith("/")) {
+    currentPath = currentPath.slice(0, -1);
+  }
 
   const isEnglishPath = currentPath === '/en' || currentPath.startsWith('/en/');
 
+  let newPath = currentPath;
+
   if (targetLang === "en") {
-    // If not already an English path, add /en prefix
+    // If not already an English path, translate or add /en prefix
     if (!isEnglishPath) {
-      newPath = `/en${currentPath === "/" ? "" : currentPath}`;
+      // Find english path
+      let found = false;
+      for (const [czBase, enBase] of Object.entries(routeMap)) {
+        if (currentPath === czBase) {
+          newPath = enBase;
+          found = true;
+          break;
+        } else if (currentPath.startsWith(`${czBase}/`)) {
+          newPath = currentPath.replace(czBase, enBase);
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) {
+        newPath = `/en${currentPath === "/" ? "" : currentPath}`;
+      }
     }
   } else if (targetLang === "cs") {
-    // If it's an English path, remove /en prefix
+    // If it's an English path, find czech path or remove /en prefix
     if (isEnglishPath) {
-      newPath = currentPath === '/en' ? '/' : currentPath.replace(/^\/en\//, '/');
+      let found = false;
+      for (const [czBase, enBase] of Object.entries(routeMap)) {
+        if (currentPath === enBase) {
+          newPath = czBase;
+          found = true;
+          break;
+        } else if (currentPath.startsWith(`${enBase}/`)) {
+          newPath = currentPath.replace(enBase, czBase);
+          found = true;
+          break;
+        }
+      }
+
+      if (!found) {
+        newPath = currentPath.replace(/^\/en(?=\/|$)/, "") || "/";
+      }
     }
   }
 
   return new URL(newPath, Astro.site || "https://www.telperion.cz").href;
 };
 
+// Use the base domain without language subdirectory for x-default
+const xDefaultUrl = getHreflangUrl("cs");
 const csUrl = getHreflangUrl("cs");
 const enUrl = getHreflangUrl("en");
 const includeAlternateLinks = !noindex;
 ---
 
 <!doctype html>
-<html lang={lang} class="scroll-smooth">
+<html lang={htmlLang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={translatedDesc} />
@@ -89,7 +128,7 @@ const includeAlternateLinks = !noindex;
     <link rel="canonical" href={canonicalUrl.href} />
     {includeAlternateLinks && <link rel="alternate" hreflang="cs" href={csUrl} />}
     {includeAlternateLinks && <link rel="alternate" hreflang="en" href={enUrl} />}
-    {includeAlternateLinks && <link rel="alternate" hreflang="x-default" href={csUrl} />}
+    {includeAlternateLinks && <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />}
 
     <title>
       {translatedTitle ? `${translatedTitle} | Telperion` : "Telperion"}
