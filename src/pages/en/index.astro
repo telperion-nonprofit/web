@@ -65,12 +65,12 @@ import SectionBadge from "../../components/SectionBadge.astro";
         <iframe
           id="umap-iframe"
           title="Telperion Map - Where we operate"
-          class="absolute left-0 top-0 w-full border-0"
+          class="absolute left-0 top-0 w-full border-0 transition-opacity duration-500 opacity-0"
           style="height: calc(100% + 40px);"
           allowfullscreen
           allow="geolocation"
           loading="lazy"
-          src="https://umap.openstreetmap.fr/en/map/mapa-telperionu_1371476?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#7/49.800/15.500"
+          data-src="https://umap.openstreetmap.fr/en/map/mapa-telperionu_1371476?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#7/49.800/15.500"
         >
         </iframe>
 
@@ -150,9 +150,27 @@ import SectionBadge from "../../components/SectionBadge.astro";
   if (iframe) {
     const lang = getSafeLanguage();
     const umapLang = lang === "en" ? "en" : "cs-cz";
-    iframe.src = iframe.src.replace(
+    const dataSrc = iframe.getAttribute("data-src") || "";
+    const newSrc = dataSrc.replace(
       /openstreetmap\.fr\/[a-z-]+\/map/,
       `openstreetmap.fr/${umapLang}/map`,
     );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            iframe.src = newSrc;
+            iframe.onload = () => {
+              iframe.classList.remove("opacity-0");
+            };
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "200px 0px" },
+    );
+
+    observer.observe(iframe);
   }
 </script>

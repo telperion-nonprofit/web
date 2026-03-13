@@ -121,5 +121,4 @@ test.describe("LanguageDropdown Component", () => {
     await expect(desktopMenu).toBeHidden();
     await expect(desktopToggle).toHaveAttribute("aria-expanded", "false");
   });
-
 });

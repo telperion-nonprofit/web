@@ -50,6 +50,8 @@ const translatedDesc = description
     <title>
       {translatedTitle ? `${translatedTitle} | Telperion` : "Telperion"}
     </title>
+    <link rel="preconnect" href="https://umap.openstreetmap.fr" crossorigin />
+    <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin />
     <Analytics />
     <SpeedInsights />
   </head>
@@ -59,12 +61,26 @@ const translatedDesc = description
       <div
         class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0"
       >
-        <Image src={leaves} alt="" fetchpriority="high" loading="eager" width={429} height={317} />
+        <Image
+          src={leaves}
+          alt=""
+          fetchpriority="high"
+          loading="eager"
+          width={429}
+          height={317}
+        />
       </div>
       <div
         class="absolute bottom-0 left-0 rotate-180 w-64 md:w-96 opacity-90 pointer-events-none z-0"
       >
-        <Image src={leaves} alt="" fetchpriority="high" loading="eager" width={429} height={317} />
+        <Image
+          src={leaves}
+          alt=""
+          fetchpriority="high"
+          loading="eager"
+          width={429}
+          height={317}
+        />
       </div>
 
       <Navbar />

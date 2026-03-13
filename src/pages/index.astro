@@ -86,12 +86,12 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
         <iframe
           id="umap-iframe"
           title="Mapa Telperionu - Kde působíme"
-          class="absolute left-0 top-0 w-full border-0"
+          class="absolute left-0 top-0 w-full border-0 transition-opacity duration-500 opacity-0"
           style="height: calc(100% + 40px);"
           allowfullscreen
           allow="geolocation"
           loading="lazy"
-          src="https://umap.openstreetmap.fr/cs-cz/map/mapa-telperionu_1371476?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#7/49.800/15.500"
+          data-src="https://umap.openstreetmap.fr/cs-cz/map/mapa-telperionu_1371476?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#7/49.800/15.500"
         >
         </iframe>
 
@@ -141,6 +141,7 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             class="w-full h-full object-cover"
             widths={[400, 600]}
             sizes="(max-width: 768px) 100vw, 33vw"
+            quality={60}
           />
         </button>
         <button
@@ -154,6 +155,7 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             class="w-full h-full object-cover"
             widths={[400, 600]}
             sizes="(max-width: 768px) 100vw, 33vw"
+            quality={60}
           />
         </button>
         <button
@@ -167,6 +169,7 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             class="w-full h-full object-cover"
             widths={[400, 600]}
             sizes="(max-width: 768px) 100vw, 33vw"
+            quality={60}
           />
         </button>
       </div>
@@ -523,10 +526,28 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
   if (iframe) {
     const lang = getSafeLanguage();
     const umapLang = lang === "en" ? "en" : "cs-cz";
-    iframe.src = iframe.src.replace(
+    const dataSrc = iframe.getAttribute("data-src") || "";
+    const newSrc = dataSrc.replace(
       /openstreetmap\.fr\/[a-z-]+\/map/,
       `openstreetmap.fr/${umapLang}/map`,
     );
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            iframe.src = newSrc;
+            iframe.onload = () => {
+              iframe.classList.remove("opacity-0");
+            };
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: "200px 0px" },
+    );
+
+    observer.observe(iframe);
   }
 
   const lightbox = document.getElementById("photo-lightbox") as HTMLDivElement;

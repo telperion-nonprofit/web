@@ -7,8 +7,8 @@ test.describe("Donation Modal Component", () => {
     // Close the climate fresk promo modal if it shows up
     const promoModal = page.locator("#climate-fresk-modal");
     if (await promoModal.isVisible()) {
-       await page.locator("#climate-fresk-close").click();
-       await expect(promoModal).toHaveClass(/hidden/);
+      await page.locator("#climate-fresk-close").click();
+      await expect(promoModal).toHaveClass(/hidden/);
     }
   });
 
@@ -59,9 +59,7 @@ test.describe("Donation Modal Component", () => {
 
       // Check buttons
       await expect(page.locator("#close-donation-modal-btn")).toBeVisible();
-      await expect(
-        page.locator("#close-donation-modal-confirm"),
-      ).toBeVisible();
+      await expect(page.locator("#close-donation-modal-confirm")).toBeVisible();
     });
 
     test("should close on close button click", async ({ page }) => {
@@ -104,8 +102,8 @@ test.describe("Donation Modal Component", () => {
 
       // Click the backdrop directly to close it by evaluating
       await page.evaluate(() => {
-         const backdrop = document.getElementById("donation-modal-backdrop");
-         backdrop?.click();
+        const backdrop = document.getElementById("donation-modal-backdrop");
+        backdrop?.click();
       });
 
       // Wait for the animation to finish
