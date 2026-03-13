@@ -48,7 +48,7 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
         <button
           type="button"
           onclick="document.dispatchEvent(new CustomEvent('open-contact-modal'))"
-          class="w-full sm:w-auto bg-brand-green text-cream px-8 py-4 rounded-full font-bold text-lg hover:bg-dark-green transition transform hover:-translate-y-0.5 shadow-xl shadow-brand-green/20"
+          class="w-full sm:w-auto bg-brand-green text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-dark-green transition transform hover:-translate-y-0.5 shadow-xl shadow-brand-green/20"
         >
           {t("nav.button.book")}
         </button>
@@ -85,10 +85,12 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
       >
         <iframe
           id="umap-iframe"
+          title="Mapa Telperionu - Kde působíme"
           class="absolute left-0 top-0 w-full border-0"
           style="height: calc(100% + 40px);"
           allowfullscreen
           allow="geolocation"
+          loading="lazy"
           src="https://umap.openstreetmap.fr/cs-cz/map/mapa-telperionu_1371476?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true#7/49.800/15.500"
         >
         </iframe>
@@ -137,7 +139,7 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             src={teamPhoto}
             alt={t("home.hero.button_team")}
             class="w-full h-full object-cover"
-            widths={[480, 768]}
+            widths={[400, 600]}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </button>
@@ -150,7 +152,7 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             src={jakubPresentingPhoto}
             alt="Jakub presenting"
             class="w-full h-full object-cover"
-            widths={[480, 768]}
+            widths={[400, 600]}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </button>
@@ -163,7 +165,7 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             src={teamworkPhoto}
             alt={t("home.hero.button_programs")}
             class="w-full h-full object-cover"
-            widths={[480, 768]}
+            widths={[400, 600]}
             sizes="(max-width: 768px) 100vw, 33vw"
           />
         </button>
@@ -244,7 +246,7 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             ></path>
           </svg>
           <p
-            class="text-dark-green/90 leading-relaxed italic mb-8 flex-grow relative z-10"
+            class="text-dark-green font-medium leading-relaxed italic mb-8 flex-grow relative z-10"
           >
             "Díky Jakubovi a celému Telperionu za super Klima dny na Biskupském
             gymnáziu v ČB! Organizace a příprava byla na profesionálním levelu.
@@ -253,8 +255,8 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             inspirovaly i k další ekologické činnosti."
           </p>
           <div class="mt-auto pt-6 border-t border-brand-green/10">
-            <h4 class="font-bold text-brand-green text-lg">Karolína Bittová</h4>
-            <span class="text-sm text-dark-green/60 font-medium"
+            <h3 class="font-bold text-dark-green text-lg">Karolína Bittová</h3>
+            <span class="text-sm text-dark-green/80 font-medium"
               >21. 06. 2023</span
             >
           </div>
@@ -274,7 +276,7 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             ></path>
           </svg>
           <p
-            class="text-dark-green/90 leading-relaxed italic mb-8 flex-grow relative z-10"
+            class="text-dark-green font-medium leading-relaxed italic mb-8 flex-grow relative z-10"
           >
             "Jakubovu iniciativu znám jako přednášející na Klimatických dnech v
             minulém roce - přijde mi důležité, aby téma ochrany klimatu a
@@ -285,8 +287,8 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             mne zaslouží ocenění."
           </p>
           <div class="mt-auto pt-6 border-t border-brand-green/10">
-            <h4 class="font-bold text-brand-green text-lg">Anna Kárníková</h4>
-            <span class="text-sm text-dark-green/60 font-medium"
+            <h3 class="font-bold text-dark-green text-lg">Anna Kárníková</h3>
+            <span class="text-sm text-dark-green/80 font-medium"
               >04. 05. 2023</span
             >
           </div>
@@ -306,7 +308,7 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             ></path>
           </svg>
           <p
-            class="text-dark-green/90 leading-relaxed italic mb-8 flex-grow relative z-10"
+            class="text-dark-green font-medium leading-relaxed italic mb-8 flex-grow relative z-10"
           >
             "Jakuba znám přímo z akce Klimatické dny, kde jsem v roce 2022 vedla
             jeden z programů. Od té doby často zmiňuji jeho iniciativu jako
@@ -315,8 +317,8 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
             vztahu mezi člověkem a jeho životním prostředím."
           </p>
           <div class="mt-auto pt-6 border-t border-brand-green/10">
-            <h4 class="font-bold text-brand-green text-lg">Magdalena Davis</h4>
-            <span class="text-sm text-dark-green/60 font-medium"
+            <h3 class="font-bold text-dark-green text-lg">Magdalena Davis</h3>
+            <span class="text-sm text-dark-green/80 font-medium"
               >20. 04. 2023</span
             >
           </div>
@@ -411,14 +413,14 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
         href="https://association.climatefresk.org/training_sessions/a78d82d9-32bf-409b-a988-e0c72832d421/show_public?language=en&tenant_token=36bd2274d3982262c0021755"
         target="_blank"
         rel="noopener noreferrer"
-        class="inline-block w-full sm:w-auto bg-brand-green text-cream px-8 py-3 rounded-full font-bold text-lg hover:bg-dark-green transition shadow-lg shadow-brand-green/20 text-center"
+        class="inline-block w-full sm:w-auto bg-brand-green text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-dark-green transition shadow-lg shadow-brand-green/20 text-center"
       >
         Registrovat se
       </a>
       <button
         type="button"
         id="climate-fresk-action-close"
-        class="inline-block w-full sm:w-auto bg-brand-green/10 text-brand-green px-8 py-3 rounded-full font-bold text-lg hover:bg-brand-green/20 transition focus:outline-none"
+        class="inline-block w-full sm:w-auto bg-brand-green/20 text-dark-green px-8 py-3 rounded-full font-bold text-lg hover:bg-brand-green/30 transition focus:outline-none"
       >
         Zavřít
       </button>
