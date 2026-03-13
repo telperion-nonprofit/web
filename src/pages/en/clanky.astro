@@ -14,14 +14,8 @@ const sortedArticles = allArticles
   )
   .map((article) => ({
     ...article,
-    slug: article.id.replace(/\.mdx?$/, ""),
+    slug: article.id.replace(/\.md$/, ""),
   }));
-
-const dateFormatter = new Intl.DateTimeFormat("en-US", {
-  year: "numeric",
-  month: "long",
-  day: "numeric",
-});
 
 function formatDate(date: Date) {
   return dateFormatter.format(date);

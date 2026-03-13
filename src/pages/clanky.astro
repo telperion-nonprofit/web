@@ -8,10 +8,12 @@ const vsechnyClanky = await getCollection("clanky");
 
 const clanky = vsechnyClanky
   .filter((clanek: any) => clanek.data.pubDate)
-  .sort((a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .sort(
+    (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+  )
   .map((clanek: any) => ({
     ...clanek,
-    slug: clanek.id.replace(/\.mdx?$/, ""),
+    slug: clanek.id.replace(/\.md$/, ""),
   }));
 ---
 
