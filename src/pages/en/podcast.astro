@@ -4,7 +4,7 @@ import type { Locale } from "../../utils/i18n";
 const lang = (Astro.currentLocale as Locale) || "cs";
 const t = useTranslations(lang);
 import Layout from "../../layouts/Layout.astro";
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import SectionBadge from "../../components/SectionBadge.astro";
 ---
 

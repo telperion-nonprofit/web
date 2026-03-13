@@ -5,7 +5,7 @@ const lang = (Astro.currentLocale as Locale) || "cs";
 const t = useTranslations(lang);
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { Image } from "astro:assets";
-import { Icon } from "astro-icon";
+import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
 import FeatureCard from "../components/FeatureCard.astro";
 import SectionBadge from "../components/SectionBadge.astro";
