@@ -337,7 +337,8 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
   <div
     id="climate-fresk-backdrop"
     class="absolute inset-0 bg-dark-green/70 backdrop-blur-sm transition-opacity duration-300 opacity-0"
-  ></div>
+  >
+  </div>
   <div
     id="climate-fresk-content"
     class="relative z-10 w-full max-w-2xl bg-cream rounded-3xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto transition-all duration-300 scale-95 opacity-0"
@@ -356,32 +357,56 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
     >
       Workshop Klimatická mozaika
     </h3>
-    <div class="flex flex-wrap gap-4 mb-6 text-sm font-medium text-dark-green/80">
-      <div class="flex items-center gap-1.5"><Icon name="mdi:calendar" class="w-5 h-5" /> 9. dubna 2026</div>
-      <div class="flex items-center gap-1.5"><Icon name="mdi:clock-outline" class="w-5 h-5" /> 15:00 - 19:00</div>
-      <div class="flex items-center gap-1.5"><Icon name="mdi:map-marker" class="w-5 h-5" /> Kumst, Brno</div>
-      <div class="flex items-center gap-1.5"><Icon name="mdi:ticket-outline" class="w-5 h-5" /> Vstup zdarma</div>
+    <div
+      class="flex flex-wrap gap-4 mb-6 text-sm font-medium text-dark-green/80"
+    >
+      <div class="flex items-center gap-1.5">
+        <Icon name="mdi:calendar" class="w-5 h-5" /> 9. dubna 2026
+      </div>
+      <div class="flex items-center gap-1.5">
+        <Icon name="mdi:clock-outline" class="w-5 h-5" /> 15:00 - 19:00
+      </div>
+      <div class="flex items-center gap-1.5">
+        <Icon name="mdi:map-marker" class="w-5 h-5" /> Kumst, Brno
+      </div>
+      <div class="flex items-center gap-1.5">
+        <Icon name="mdi:ticket-outline" class="w-5 h-5" /> Vstup zdarma
+      </div>
     </div>
-    
+
     <div class="space-y-4 text-dark-green font-medium">
       <p>
-        <strong>Největší Klimatická mozaika v Česku je zpět a po roce jedeme do Brna.</strong> Staň se součástí této akce, nauč se něco nového a poznej lidi se stejnými zájmy!
+        <strong
+          >Největší Klimatická mozaika v Česku je zpět a po roce jedeme do Brna.</strong
+        > Staň se součástí této akce, nauč se něco nového a poznej lidi se stejnými
+        zájmy!
       </p>
-      <p>
-        Můžeš se těšit na:
-      </p>
+      <p>Můžeš se těšit na:</p>
       <ul class="list-disc pl-5 space-y-1">
-        <li>Workshop Klimatická mozaika postavený na vědecky podložených datech IPCC</li>
-        <li>Týmovou spolupráci s 42 kartami odhalujícími příčiny a následky změny klimatu</li>
-        <li>Inspiraci jak se zapojit do řešení a setkání s lidmi s podobným smýšlením</li>
+        <li>
+          Workshop Klimatická mozaika postavený na vědecky podložených datech
+          IPCC
+        </li>
+        <li>
+          Týmovou spolupráci s 42 kartami odhalujícími příčiny a následky změny
+          klimatu
+        </li>
+        <li>
+          Inspiraci jak se zapojit do řešení a setkání s lidmi s podobným
+          smýšlením
+        </li>
         <li>Expertízu odborníků a drobné občerstvení</li>
       </ul>
       <p class="text-sm text-dark-green/70 mt-4">
-        ✅ <strong>S sebou nic nepotřebujete</strong>, pouze chuť se zapojit. Workshop je zdarma a účastníci obdrží certifikát o absolvování Climate Fresk. Zbývá 11 volných míst!
+        ✅ <strong>S sebou nic nepotřebujete</strong>, pouze chuť se zapojit.
+        Workshop je zdarma a účastníci obdrží certifikát o absolvování Climate
+        Fresk. Zbývá 11 volných míst!
       </p>
     </div>
-    
-    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
+
+    <div
+      class="mt-8 flex flex-col sm:flex-row gap-4 justify-center sm:justify-start"
+    >
       <a
         href="https://association.climatefresk.org/training_sessions/a78d82d9-32bf-409b-a988-e0c72832d421/show_public?language=en&tenant_token=36bd2274d3982262c0021755"
         target="_blank"
@@ -402,46 +427,48 @@ import jakubPresentingPhoto from "../assets/jakub-presenting.jpg";
 </div>
 
 <script is:inline>
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Event date is April 9, 2026. Setting cutoff to midnight April 10, 2026 for automatic hiding.
-    const eventDate = new Date('2026-04-10T00:00:00+02:00');
+    const eventDate = new Date("2026-04-10T00:00:00+02:00");
     const now = new Date();
-    
-    if (now < eventDate && !sessionStorage.getItem('climateFreskModalSeen')) {
-      const modal = document.getElementById('climate-fresk-modal');
-      const backdrop = document.getElementById('climate-fresk-backdrop');
-      const content = document.getElementById('climate-fresk-content');
-      const closeBtn = document.getElementById('climate-fresk-close');
-      const actionCloseBtn = document.getElementById('climate-fresk-action-close');
-      
+
+    if (now < eventDate && !sessionStorage.getItem("climateFreskModalSeen")) {
+      const modal = document.getElementById("climate-fresk-modal");
+      const backdrop = document.getElementById("climate-fresk-backdrop");
+      const content = document.getElementById("climate-fresk-content");
+      const closeBtn = document.getElementById("climate-fresk-close");
+      const actionCloseBtn = document.getElementById(
+        "climate-fresk-action-close",
+      );
+
       if (modal && backdrop && content) {
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
-        
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+
         setTimeout(() => {
-          backdrop.classList.remove('opacity-0');
-          backdrop.classList.add('opacity-100');
-          content.classList.remove('scale-95', 'opacity-0');
-          content.classList.add('scale-100', 'opacity-100');
+          backdrop.classList.remove("opacity-0");
+          backdrop.classList.add("opacity-100");
+          content.classList.remove("scale-95", "opacity-0");
+          content.classList.add("scale-100", "opacity-100");
         }, 10);
-        
+
         const closeModal = () => {
-          backdrop.classList.remove('opacity-100');
-          backdrop.classList.add('opacity-0');
-          content.classList.remove('scale-100', 'opacity-100');
-          content.classList.add('scale-95', 'opacity-0');
-          
+          backdrop.classList.remove("opacity-100");
+          backdrop.classList.add("opacity-0");
+          content.classList.remove("scale-100", "opacity-100");
+          content.classList.add("scale-95", "opacity-0");
+
           setTimeout(() => {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
+            modal.classList.add("hidden");
+            modal.classList.remove("flex");
           }, 300);
-          
-          sessionStorage.setItem('climateFreskModalSeen', 'true');
+
+          sessionStorage.setItem("climateFreskModalSeen", "true");
         };
-        
-        closeBtn?.addEventListener('click', closeModal);
-        actionCloseBtn?.addEventListener('click', closeModal);
-        backdrop?.addEventListener('click', closeModal);
+
+        closeBtn?.addEventListener("click", closeModal);
+        actionCloseBtn?.addEventListener("click", closeModal);
+        backdrop?.addEventListener("click", closeModal);
       }
     }
   });
