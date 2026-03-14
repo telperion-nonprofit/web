@@ -1,7 +1,12 @@
 {
   "donation_modal": {
     "account_number": "Číslo účtu\n\n",
+    "amount_other": "Jiné",
+    "copied": "Zkopírováno!",
+    "copy_account": "Zkopírovat číslo účtu",
     "description": "Vaše podpora nám pomáhá dál vzdělávat o klimatu. Děkujeme!\n\n",
+    "iban": "CZ0000000000000000000000",
+    "qr_msg": "Dar - Telperion",
     "title": "Podpořte nás",
     "transparent_account_link": "Zobrazit transparentní účet"
   },

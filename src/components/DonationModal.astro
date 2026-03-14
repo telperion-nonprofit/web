@@ -12,6 +12,9 @@ import { Icon } from "astro-icon/components";
   aria-labelledby="donation-modal-title"
   role="dialog"
   aria-modal="true"
+  data-iban={t("donation_modal.iban")}
+  data-qr-msg={t("donation_modal.qr_msg")}
+  data-copied-msg={t("donation_modal.copied")}
 >
   <div
     id="donation-modal-backdrop"
@@ -25,7 +28,7 @@ import { Icon } from "astro-icon/components";
     >
       <div
         id="donation-modal-panel"
-        class="relative transform overflow-hidden rounded-3xl bg-cream text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg scale-95 opacity-0 duration-300"
+        class="relative transform overflow-hidden rounded-3xl glass-card text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-xl scale-95 opacity-0 duration-300"
       >
         <button
           type="button"
@@ -58,20 +61,44 @@ import { Icon } from "astro-icon/components";
             </div>
           </div>
 
-          <div
-            class="mt-6 flex flex-col items-center justify-center p-6 bg-white/50 rounded-2xl border border-brand-green/10"
-          >
-            <p
-              class="text-sm font-bold text-dark-green/60 uppercase tracking-wider mb-2"
-            >
-              {t("donation_modal.account_number")}
-            </p>
-            <div
-              class="text-2xl md:text-3xl font-bold text-brand-green tracking-wide"
-            >
-              2102801318/2010
+          <div class="mt-6 flex flex-col md:flex-row gap-6">
+            <div class="flex-1 space-y-4">
+              <div class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                <button type="button" class="amount-btn w-full rounded-xl bg-white px-3 py-2 text-sm font-semibold text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 hover:bg-brand-green/5 focus:outline-none focus:ring-2 focus:ring-brand-green data-[active=true]:bg-brand-green data-[active=true]:text-white data-[active=true]:ring-brand-green" data-amount="100">100 Kč</button>
+                <button type="button" class="amount-btn w-full rounded-xl bg-white px-3 py-2 text-sm font-semibold text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 hover:bg-brand-green/5 focus:outline-none focus:ring-2 focus:ring-brand-green data-[active=true]:bg-brand-green data-[active=true]:text-white data-[active=true]:ring-brand-green" data-amount="200">200 Kč</button>
+                <button type="button" class="amount-btn w-full rounded-xl bg-white px-3 py-2 text-sm font-semibold text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 hover:bg-brand-green/5 focus:outline-none focus:ring-2 focus:ring-brand-green data-[active=true]:bg-brand-green data-[active=true]:text-white data-[active=true]:ring-brand-green" data-amount="500">500 Kč</button>
+                <button type="button" class="amount-btn w-full rounded-xl bg-white px-3 py-2 text-sm font-semibold text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 hover:bg-brand-green/5 focus:outline-none focus:ring-2 focus:ring-brand-green data-[active=true]:bg-brand-green data-[active=true]:text-white data-[active=true]:ring-brand-green" data-amount="1000">1000 Kč</button>
+                <button type="button" class="amount-btn w-full rounded-xl bg-white px-3 py-2 text-sm font-semibold text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 hover:bg-brand-green/5 focus:outline-none focus:ring-2 focus:ring-brand-green data-[active=true]:bg-brand-green data-[active=true]:text-white data-[active=true]:ring-brand-green sm:col-span-2" data-amount="other">{t("donation_modal.amount_other")}</button>
+              </div>
+
+              <div id="custom-amount-container" class="hidden">
+                <div class="relative rounded-md shadow-sm">
+                  <input type="number" id="custom-amount-input" class="block w-full rounded-xl border-0 py-2.5 pl-4 pr-12 text-dark-green ring-1 ring-inset ring-dark-green/20 placeholder:text-dark-green/40 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white" placeholder="0" min="1" />
+                  <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4">
+                    <span class="text-dark-green/60 sm:text-sm font-medium">Kč</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-2xl border border-brand-green/10 bg-white/50 p-4 text-center">
+                <p class="mb-1 text-xs font-bold uppercase tracking-wider text-dark-green/60">
+                  {t("donation_modal.account_number")}
+                </p>
+                <div class="text-xl font-bold tracking-wide text-brand-green break-all" id="account-number-display">
+                  2102801318/2010
+                </div>
+                <button type="button" id="copy-account-btn" class="mt-2 inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-brand-green hover:bg-brand-green/10 transition-colors">
+                  <Icon name="mdi:content-copy" class="h-4 w-4" />
+                  {t("donation_modal.copy_account")}
+                </button>
+              </div>
             </div>
-            <p class="mt-2 text-sm text-dark-green/70">Fio banka, a.s.</p>
+
+            <div class="flex flex-col items-center justify-center shrink-0">
+              <div class="rounded-2xl bg-white p-4 shadow-sm border border-brand-green/10">
+                <img id="qr-code-img" src="" alt="QR Platba" class="h-48 w-48 object-contain" />
+              </div>
+            </div>
           </div>
 
           <div class="mt-4 text-center text-sm text-dark-green/70">
@@ -86,7 +113,7 @@ import { Icon } from "astro-icon/components";
           </div>
         </div>
         <div
-          class="bg-brand-green/5 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6"
+          class="bg-brand-green/5 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6 border-t border-brand-green/10"
         >
           <button
             type="button"
@@ -102,6 +129,8 @@ import { Icon } from "astro-icon/components";
 </div>
 
 <script>
+  import { generateQRDataURI } from "../utils/qr";
+
   document.addEventListener("astro:page-load", () => {
     setupModal();
   });
@@ -118,7 +147,71 @@ import { Icon } from "astro-icon/components";
     const closeBtn = document.getElementById("close-donation-modal-btn");
     const cancelBtn = document.getElementById("close-donation-modal-confirm");
 
+    const amountBtns = document.querySelectorAll('.amount-btn');
+    const customAmountContainer = document.getElementById('custom-amount-container');
+    const customAmountInput = document.getElementById('custom-amount-input') as HTMLInputElement;
+    const qrCodeImg = document.getElementById('qr-code-img') as HTMLImageElement;
+    const copyAccountBtn = document.getElementById('copy-account-btn');
+    const accountNumberDisplay = document.getElementById('account-number-display');
+
     if (!modal || !backdrop || !panel) return;
+
+    // The static info
+    const iban = modal.getAttribute('data-iban') || "";
+    const qrMessage = modal.getAttribute('data-qr-msg') || "";
+    const copiedMessage = modal.getAttribute('data-copied-msg') || "Zkopírováno!";
+    const accountNumber = "2102801318/2010"; // Domestic
+
+    let currentAmount: number | undefined = undefined;
+
+    const renderQR = async () => {
+      const dataUri = await generateQRDataURI({
+        iban,
+        amount: currentAmount,
+        message: qrMessage
+      });
+      if (qrCodeImg && dataUri) {
+        qrCodeImg.src = dataUri;
+      }
+    };
+
+    const handleAmountSelection = (btn: Element) => {
+      // Clear all active states
+      amountBtns.forEach(b => b.setAttribute('data-active', 'false'));
+      btn.setAttribute('data-active', 'true');
+
+      const amountVal = btn.getAttribute('data-amount');
+
+      if (amountVal === 'other') {
+        customAmountContainer?.classList.remove('hidden');
+        currentAmount = customAmountInput?.value ? parseFloat(customAmountInput.value) : undefined;
+      } else {
+        customAmountContainer?.classList.add('hidden');
+        currentAmount = parseFloat(amountVal || "0");
+      }
+
+      renderQR();
+    };
+
+    amountBtns.forEach(btn => {
+      btn.addEventListener('click', () => handleAmountSelection(btn));
+    });
+
+    customAmountInput?.addEventListener('input', () => {
+      const val = parseFloat(customAmountInput.value);
+      currentAmount = isNaN(val) || val <= 0 ? undefined : val;
+      renderQR();
+    });
+
+    copyAccountBtn?.addEventListener('click', () => {
+      navigator.clipboard.writeText(accountNumber).then(() => {
+        const originalText = copyAccountBtn.innerHTML;
+        copyAccountBtn.innerHTML = `<span class="flex items-center gap-1.5"><svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>${copiedMessage}</span>`;
+        setTimeout(() => {
+          copyAccountBtn.innerHTML = originalText;
+        }, 2000);
+      });
+    });
 
     const openModal = () => {
       modal.classList.remove("hidden");
@@ -129,6 +222,9 @@ import { Icon } from "astro-icon/components";
         panel.classList.add("scale-100", "opacity-100");
       }, 10);
       document.body.style.overflow = "hidden";
+
+      // Initial QR render without amount
+      renderQR();
     };
 
     const closeModal = () => {
@@ -140,6 +236,12 @@ import { Icon } from "astro-icon/components";
         modal.classList.add("hidden");
       }, 300);
       document.body.style.overflow = "";
+
+      // Reset UI state
+      amountBtns.forEach(b => b.setAttribute('data-active', 'false'));
+      customAmountContainer?.classList.add('hidden');
+      if (customAmountInput) customAmountInput.value = '';
+      currentAmount = undefined;
     };
 
     // Listen for custom event

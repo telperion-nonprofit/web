@@ -10,7 +10,7 @@
 }
 
 @layer base {
-  .dark {
+  .dark-disabled {
     --color-cream: #0b210e;
     --color-brand-green: #a3e635;
     --color-dark-green: #f8f4dd;

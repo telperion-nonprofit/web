@@ -49,7 +49,6 @@ test.describe("Donation Modal Component", () => {
 
       // Check account number and bank info
       await expect(page.getByText("2102801318/2010")).toBeVisible();
-      await expect(page.getByText("Fio banka, a.s.")).toBeVisible();
 
       // Check transparent account link
       const transparentLink = page.locator(
