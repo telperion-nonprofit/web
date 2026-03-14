@@ -14,12 +14,14 @@ export async function getStaticPaths() {
 const { clanek } = Astro.props;
 const { Content } = await render(clanek);
 
+const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
 function formatDate(date: Date) {
-  return new Intl.DateTimeFormat("cs-CZ", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(date);
+  return dateFormatter.format(date);
 }
 ---
 

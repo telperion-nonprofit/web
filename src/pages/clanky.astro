@@ -12,12 +12,14 @@ const clanky = vsechnyClanky
     (a: any, b: any) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
   );
 
+const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
 function formatDate(date: Date) {
-  return new Intl.DateTimeFormat("cs-CZ", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(date);
+  return dateFormatter.format(date);
 }
 ---
 

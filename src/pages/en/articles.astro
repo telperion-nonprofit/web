@@ -15,12 +15,14 @@ const sortedArticles = allArticles
   .sort((a, b) => b.time - a.time)
   .map(({ article }) => article);
 
+const dateFormatter = new Intl.DateTimeFormat("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
 function formatDate(date: Date) {
-  return new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(date);
+  return dateFormatter.format(date);
 }
 ---
 
