@@ -1,4 +1,5 @@
 # Telperion z.s.
+anna.zezulka@proton.me
 
 [![Built with Astro](https://astro.badg.es/v2/built-with-astro/tiny.svg)](https://astro.build)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
