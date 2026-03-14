@@ -102,7 +102,6 @@ test.describe("Navbar Component", () => {
 
       const expectedLinks = [
         "Domů",
-        "Programy",
         "Podcast",
         "Články",
         "Kontakt",
@@ -112,6 +111,9 @@ test.describe("Navbar Component", () => {
         const link = mobileMenu.getByRole("link", { name: name });
         await expect(link).toBeVisible();
       }
+
+      const programyButton = mobileMenu.getByRole("button", { name: "Programy" });
+      await expect(programyButton).toBeVisible();
 
       const mobileCta = mobileMenu.locator(
         'button[onclick*="open-donation-modal"]',

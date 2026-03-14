@@ -9,6 +9,14 @@
   --font-serif: "Playfair Display Variable", serif;
 }
 
+@layer base {
+  .dark {
+    --color-cream: #0b210e;
+    --color-brand-green: #a3e635;
+    --color-dark-green: #f8f4dd;
+  }
+}
+
 @utility glass-card {
   @apply bg-cream/40 backdrop-blur-sm border border-dark-green/10;
 }

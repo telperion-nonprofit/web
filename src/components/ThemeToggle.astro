@@ -1,0 +1,38 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  class="text-dark-green hover:text-brand-green hover:bg-brand-green/10 p-2 rounded-full transition-colors focus:outline-none flex items-center justify-center theme-toggle-btn"
+  aria-label="Toggle dark mode"
+>
+  <Icon name="mdi:weather-sunny" class="w-5 h-5 hidden sun-icon" />
+  <Icon name="mdi:weather-night" class="w-5 h-5 moon-icon" />
+</button>
+
+<style>
+  :global(.dark) .sun-icon {
+    display: block !important;
+  }
+  :global(.dark) .moon-icon {
+    display: none !important;
+  }
+</style>
+
+<script>
+  // Setup the event listeners.
+  // We use querySelectorAll in case there are multiple toggles (desktop and mobile).
+  document.addEventListener("DOMContentLoaded", () => {
+    const themeToggles = document.querySelectorAll(".theme-toggle-btn");
+
+    themeToggles.forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+        const isDark = document.documentElement.classList.contains("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+      });
+    });
+  });
+</script>
