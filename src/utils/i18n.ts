@@ -1,5 +1,5 @@
-import cs from "../i18n/cs-CZ.json";
-import en from "../i18n/en.json";
+import cs from "../i18n/cs-CZ.json" with { type: "json" };
+import en from "../i18n/en.json" with { type: "json" };
 
 export const translations = {
   cs,
@@ -30,8 +30,13 @@ function getNestedValue(obj: any, keys: string[]): string | undefined {
   return typeof value === "string" ? value : undefined;
 }
 
+const globalCache = new Map<Locale, Map<string, string>>();
+
 export function useTranslations(lang: Locale) {
-  const cache = new Map<string, string>();
+  if (!globalCache.has(lang)) {
+    globalCache.set(lang, new Map<string, string>());
+  }
+  const cache = globalCache.get(lang)!;
 
   return function t(key: string): string {
     if (cache.has(key)) {
