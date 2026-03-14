@@ -101,7 +101,9 @@ test.describe("Donation Modal Component", () => {
 
       // Click the wrapper directly to close it by evaluating
       await page.evaluate(() => {
-        const wrapper = document.querySelector("#donation-modal .min-h-full") as HTMLElement;
+        const wrapper = document.querySelector(
+          "#donation-modal .min-h-full",
+        ) as HTMLElement;
         wrapper?.click();
       });
 

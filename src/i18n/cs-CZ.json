@@ -12,9 +12,6 @@
   },
   "home": {
     "reviews": {
-      "title_main": "Co o nás",
-      "title_highlight": "říkají ostatní?",
-      "subtitle": "Zpětná vazba od účastníků a partnerů našich programů je pro nás důležitá.",
       "1": {
         "text": "\"Díky Jakubovi a celému Telperionu za super Klima dny na Biskupském gymnáziu v ČB! Organizace a příprava byla na profesionálním levelu. Studenti si odnesli mnoho nových poznatků a akce je dovedla k hlubšímu zamyšlení nad klimatickou krizí. Doufám, že je Klima dny inspirovaly i k další ekologické činnosti.\"",
         "author": "Karolína Bittová",
@@ -29,7 +26,10 @@
         "text": "\"Jakuba znám přímo z akce Klimatické dny, kde jsem v roce 2022 vedla jeden z programů. Od té doby často zmiňuji jeho iniciativu jako skvělý počin, který každoročně podněcuje studenty napříč věkovými kategoriemi k hlubšímu přemýšlení o souvislostech komplikovaného vztahu mezi člověkem a jeho životním prostředím.\"",
         "author": "Magdalena Davis",
         "date": "20. 04. 2023"
-      }
+      },
+      "title_main": "Co o nás",
+      "title_highlight": "říkají ostatní?",
+      "subtitle": "Zpětná vazba od účastníků a partnerů našich programů je pro nás důležitá."
     },
     "fresk_modal": {
       "title": "Workshop Klimatická mozaika",
@@ -211,7 +211,6 @@
     "page_title": "Pro školy",
     "realizations": {
       "1": "Gymnázium Přírodní škola, Praha\n",
-      "10": "MŠ a ZŠ Adélka, Mašovice\n",
       "2": "BIGY, České Budějovice\n",
       "3": "Škola Sv. Augustina, Praha\n",
       "4": "ZŠ Klausova, Praha\n",
@@ -219,7 +218,8 @@
       "6": "ZŠ Klíček, Praha\n",
       "7": "ZŠ T. Stolzové, Kostelec nad Labem\n",
       "8": "ZŠ Pod Žvahovem, Praha\n",
-      "9": "Gymnázium TGM, Litvínov\n"
+      "9": "Gymnázium TGM, Litvínov\n",
+      "10": "MŠ a ZŠ Adélka, Mašovice\n"
     },
     "realizations_more": "... a brzy snad i u vás!\n",
     "realizations_title": "Kde už program proběhl\n",

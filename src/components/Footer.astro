@@ -3,7 +3,10 @@ import { Icon } from "astro-icon/components";
 const currentYear = new Date().getFullYear();
 const lang = Astro.currentLocale || "cs";
 
-const instaLink = lang === "en" ? "https://www.instagram.com/telperion.en/" : "https://www.instagram.com/telperion.cz/";
+const instaLink =
+  lang === "en"
+    ? "https://www.instagram.com/telperion.en/"
+    : "https://www.instagram.com/telperion.cz/";
 ---
 
 <footer class="w-full flex justify-center pb-6 px-4">
@@ -25,28 +28,32 @@ const instaLink = lang === "en" ? "https://www.instagram.com/telperion.en/" : "h
       >
         <Icon name="mdi:instagram" class="w-6 h-6" />
       </a>
-      {lang !== "en" && (
-        <a
-          href="https://www.facebook.com/telperion.cz"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Facebook"
-          class="text-dark-green hover:text-brand-green transition-colors duration-200"
-        >
-          <Icon name="mdi:facebook" class="w-6 h-6" />
-        </a>
-      )}
-      {lang !== "en" && (
-        <a
-          href="https://www.youtube.com/@telperion-cz/"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="YouTube"
-          class="text-dark-green hover:text-brand-green transition-colors duration-200"
-        >
-          <Icon name="mdi:youtube" class="w-6 h-6" />
-        </a>
-      )}
+      {
+        lang !== "en" && (
+          <a
+            href="https://www.facebook.com/telperion.cz"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            class="text-dark-green hover:text-brand-green transition-colors duration-200"
+          >
+            <Icon name="mdi:facebook" class="w-6 h-6" />
+          </a>
+        )
+      }
+      {
+        lang !== "en" && (
+          <a
+            href="https://www.youtube.com/@telperion-cz/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="YouTube"
+            class="text-dark-green hover:text-brand-green transition-colors duration-200"
+          >
+            <Icon name="mdi:youtube" class="w-6 h-6" />
+          </a>
+        )
+      }
       <a
         href="https://github.com/annazez/telperion-web"
         target="_blank"

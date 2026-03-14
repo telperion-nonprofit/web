@@ -176,9 +176,9 @@ const menuItems: MenuItem[] = [
     }
 
     const donateBtns = document.querySelectorAll(".js-donate-btn");
-    donateBtns.forEach(btn => {
+    donateBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        document.dispatchEvent(new CustomEvent('open-donation-modal'));
+        document.dispatchEvent(new CustomEvent("open-donation-modal"));
       });
     });
   });
