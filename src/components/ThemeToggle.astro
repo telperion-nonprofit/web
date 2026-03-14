@@ -27,7 +27,7 @@ import { Icon } from "astro-icon/components";
   document.addEventListener("DOMContentLoaded", () => {
     const themeToggles = document.querySelectorAll(".theme-toggle-btn");
 
-    themeToggles.forEach(btn => {
+    themeToggles.forEach((btn) => {
       btn.addEventListener("click", () => {
         document.documentElement.classList.toggle("dark");
         const isDark = document.documentElement.classList.contains("dark");
