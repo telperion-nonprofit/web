@@ -25,15 +25,17 @@ const instaLink = lang === "en" ? "https://www.instagram.com/telperion.en/" : "h
       >
         <Icon name="mdi:instagram" class="w-6 h-6" />
       </a>
-      <a
-        href="https://www.facebook.com/telperion.cz"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Facebook"
-        class="text-dark-green hover:text-brand-green transition-colors duration-200"
-      >
-        <Icon name="mdi:facebook" class="w-6 h-6" />
-      </a>
+      {lang !== "en" && (
+        <a
+          href="https://www.facebook.com/telperion.cz"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Facebook"
+          class="text-dark-green hover:text-brand-green transition-colors duration-200"
+        >
+          <Icon name="mdi:facebook" class="w-6 h-6" />
+        </a>
+      )}
       {lang !== "en" && (
         <a
           href="https://www.youtube.com/@telperion-cz/"

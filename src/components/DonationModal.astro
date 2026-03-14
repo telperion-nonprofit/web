@@ -28,7 +28,7 @@ import { Icon } from "astro-icon/components";
     >
       <div
         id="donation-modal-panel"
-        class="relative transform overflow-hidden rounded-3xl glass-card text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-xl scale-95 opacity-0 duration-300"
+        class="relative transform overflow-hidden rounded-3xl bg-cream text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-xl scale-95 opacity-0 duration-300"
       >
         <button
           type="button"
@@ -95,7 +95,7 @@ import { Icon } from "astro-icon/components";
             </div>
 
             <div class="flex flex-col items-center justify-center shrink-0">
-              <div class="rounded-2xl bg-white p-4 shadow-sm border border-brand-green/10">
+              <div class="rounded-2xl bg-white p-4 shadow-sm border-2 border-brand-green">
                 <img id="qr-code-img" src="" alt="QR Platba" class="h-48 w-48 object-contain" />
               </div>
             </div>
@@ -253,7 +253,7 @@ import { Icon } from "astro-icon/components";
 
     // Close on click outside
     modal.addEventListener("click", (e) => {
-      if (e.target === modal || e.target === backdrop) {
+      if (e.target === modal.querySelector(".min-h-full")) {
         closeModal();
       }
     });
