@@ -168,6 +168,7 @@
     "page_title": "Pro školy",
     "realizations": {
       "1": "Gymnázium Přírodní škola, Praha\n",
+      "10": "MŠ a ZŠ Adélka, Mašovice\n",
       "2": "BIGY, České Budějovice\n",
       "3": "Škola Sv. Augustina, Praha\n",
       "4": "ZŠ Klausova, Praha\n",
@@ -175,8 +176,7 @@
       "6": "ZŠ Klíček, Praha\n",
       "7": "ZŠ T. Stolzové, Kostelec nad Labem\n",
       "8": "ZŠ Pod Žvahovem, Praha\n",
-      "9": "Gymnázium TGM, Litvínov\n",
-      "10": "MŠ a ZŠ Adélka, Mašovice\n"
+      "9": "Gymnázium TGM, Litvínov\n"
     },
     "realizations_more": "... a brzy snad i u vás!\n",
     "realizations_title": "Kde už program proběhl\n",
@@ -185,38 +185,35 @@
     "title_main": "Přinášíme klima do"
   },
   "team": {
-    "jakub": {
-      "role": "Předseda spolku, Program Re:generace, Koordinace Climate Fresk komunity pro česko, Facilitace programů"
+    "anna": {
+      "role": "Webová vývojářka, IT specialistka, Grafička"
     },
     "damia": {
-      "role": "Místopředsedkyně spolku, administrativa spolku, program Klima víkendovka pro skauty"
+      "role": "Místopředsedkyně spolku, Administrativa spolku, Koordinátorka programu Klima víkendovka pro skauty"
     },
-    "anna": {
-      "role": "Webová vývojářka, IT specialistka, Grafická designérka"
+    "david": {
+      "role\n\n": "Lektor programu Klimatické dny, Facilitátor programu Climate Fresk"
     },
-    "martin": {
-      "role": "Interní fungování, Komunikace, Spolupráce"
+    "jakub": {
+      "role": "Předseda spolku, Koordinátor programu Re:generace, Koordinátor programu Climate Fresk, Facilitátor"
+    },
+    "jolana": {
+      "role": "Lektorka programu Klimatické dny, Grafička, Vývojářka deskových her"
+    },
+    "klara": {
+      "role": "Facilitátorka programu Climate Fresk"
+    },
+    "lucie": {
+      "role": "Koordinátorka programu Climate Fresk"
     },
     "magdalena": {
       "role": "Koordinátorka programu Klimatické dny"
     },
-    "lucie": {
-      "role": "Koordinátorka Climate Fresk"
-    },
-    "klara": {
-      "role": "Facilitace programu (Climate fresk)"
-    },
-    "valeriia": {
-      "role": "LEKTORKA KLIMA DNŮ, FACILITACE CLIMATE FRESK"
-    },
-    "jolana": {
-      "role": "Lektorka Klimatických dnů, grafika, vývoj deskovky o jídle"
+    "martin": {
+      "role": "Interní fungování a operativa, Komunikace a partnerství"
     },
     "sofia": {
-      "role": "Grafika, lektorka Klimatických dnů"
-    },
-    "david": {
-      "role": "Lektor klima dnů, facilitace climate fresk"
+      "role": "Lektorka programu Klimatické dny, Grafička"
     }
   }
 }
