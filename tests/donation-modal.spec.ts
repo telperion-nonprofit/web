@@ -99,10 +99,10 @@ test.describe("Donation Modal Component", () => {
       });
       await expect(modal).not.toHaveClass(/hidden/);
 
-      // Click the backdrop directly to close it by evaluating
+      // Click the wrapper directly to close it by evaluating
       await page.evaluate(() => {
-        const backdrop = document.getElementById("donation-modal-backdrop");
-        backdrop?.click();
+        const wrapper = document.querySelector("#donation-modal .min-h-full") as HTMLElement;
+        wrapper?.click();
       });
 
       // Wait for the animation to finish
