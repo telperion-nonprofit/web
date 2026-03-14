@@ -115,9 +115,7 @@ test.describe("Navbar Component", () => {
       const programyButton = mobileMenu.getByRole("button", { name: "Programy" });
       await expect(programyButton).toBeVisible();
 
-      const mobileCta = mobileMenu.locator(
-        'button[onclick*="open-donation-modal"]',
-      );
+      const mobileCta = mobileMenu.locator("button.js-donate-btn");
       await expect(mobileCta).toBeVisible();
 
       await mobileBtn.click();
