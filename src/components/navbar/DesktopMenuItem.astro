@@ -31,7 +31,7 @@ const { item } = Astro.props;
         </button>
 
         <div class="absolute left-0 top-full mt-2 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0">
-          <div class="bg-cream/90 backdrop-blur-md border border-dark-green/10 rounded-2xl shadow-xl overflow-hidden p-2 flex flex-col gap-1">
+          <div class="glass-card rounded-2xl shadow-xl overflow-hidden p-2 flex flex-col gap-1">
             {item.subItems.map((subItem) => (
               <a
                 href={subItem.url}

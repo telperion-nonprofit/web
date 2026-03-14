@@ -21,7 +21,7 @@ test.describe("SectionBadge Component", () => {
     // so we use regex to check if specific classes are contained within the class list.
     await expect(badge).toHaveClass(/.*inline-block.*/);
     await expect(badge).toHaveClass(/.*rounded-full.*/);
-    await expect(badge).toHaveClass(/.*bg-cream\/80.*/);
+    await expect(badge).toHaveClass(/.*glass-card.*/);
     await expect(badge).toHaveClass(/.*text-dark-green.*/);
   });
 

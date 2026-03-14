@@ -138,32 +138,45 @@ const realizace = [
     </div>
   </section>
 
-  <section class="px-4 pb-8 container mx-auto max-w-2xl">
-    <h3 class="text-2xl font-serif font-bold text-brand-green mb-6 text-center">
-      {t("schools.other_formats.title")}
-    </h3>
-
-    <div class="grid gap-8">
+  <section class="px-4 pb-8 container mx-auto max-w-6xl">
+    <div class="glass-card rounded-[2.5rem] p-8 md:p-12">
       <div
-        class="bg-white/60 backdrop-blur-sm rounded-3xl p-8 border border-white transform-gpu will-change-transform transition-transform hover:-translate-y-1 hover:shadow-lg"
+        class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6 border-b border-brand-green/10 pb-8"
       >
-        <h3 class="text-xl font-bold text-brand-green mb-3">
-          {t("schools.other_formats.fresk.title")}
-        </h3>
-        <div class="flex gap-4 mb-4">
-          <span
-            class="text-xs font-bold bg-cream px-2 py-1 rounded-md text-dark-green"
-            ><Icon name="mdi:clock-outline" class="inline w-4 h-4 mr-1" />
-            {t("schools.other_formats.fresk.duration")}</span
-          >
-          <span
-            class="text-xs font-bold bg-cream px-2 py-1 rounded-md text-dark-green"
-            >{t("schools.other_formats.fresk.ideal")}</span
-          >
+        <div>
+          <h2 class="text-3xl font-serif font-bold text-brand-green mb-2">
+            {t("schools.other_formats.fresk.title")}
+          </h2>
+          <p class="text-dark-green font-medium">
+            Interactive climate change workshop
+          </p>
         </div>
-        <p class="text-dark-green/80 text-sm">
-          {t("schools.other_formats.fresk.description")}
-        </p>
+        <div class="flex flex-wrap gap-3">
+          <span
+            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
+          >
+            <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" />
+            {t("schools.other_formats.fresk.duration")}
+          </span>
+          <span
+            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
+          >
+            <Icon name="mdi:account-group" class="w-5 h-5 text-brand-green" />
+            Ideally for 1 class
+          </span>
+          <span
+            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
+          >
+            <Icon name="mdi:school-outline" class="w-5 h-5 text-brand-green" />
+            {t("schools.other_formats.fresk.ideal")}
+          </span>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-12">
+        <div class="space-y-4 text-dark-green/80 leading-relaxed text-justify">
+          <p>{t("schools.other_formats.fresk.description")}</p>
+        </div>
       </div>
     </div>
   </section>

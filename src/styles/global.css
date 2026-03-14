@@ -13,6 +13,10 @@
   @apply bg-cream/40 backdrop-blur-sm border border-dark-green/10;
 }
 
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background-color: var(--color-cream);
   color: var(--color-dark-green);

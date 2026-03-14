@@ -25,10 +25,15 @@ test.describe("Footer Component", () => {
     await expect(glassCard).toHaveClass(/glass-card/);
   });
 
-  test("should have hover transition effect", async ({ page }) => {
+  test("should have social icons", async ({ page }) => {
     const footerContent = page.locator("footer div.glass-card");
-    await expect(footerContent).toHaveClass(/hover:-translate-y-1/);
-    await expect(footerContent).toHaveClass(/duration-300/);
-    await expect(footerContent).toHaveClass(/transition-transform/);
+    const instagramIcon = footerContent.locator('a[aria-label="Instagram"]');
+    const youtubeIcon = footerContent.locator('a[aria-label="YouTube"]');
+
+    await expect(instagramIcon).toBeVisible();
+    await expect(youtubeIcon).toBeVisible();
+
+    await expect(instagramIcon).toHaveClass(/hover:text-brand-green/);
+    await expect(youtubeIcon).toHaveClass(/hover:text-brand-green/);
   });
 });
