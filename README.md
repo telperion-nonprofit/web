@@ -5,7 +5,7 @@ anna.zezulka@proton.me
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=flat&logo=playwright&logoColor=white)](https://playwright.dev/)
 
-Welcome to the web repository for **Telperion z.s.** We inform about the environment and teach sustainable living to the young generation. Young people teach about climate through educational programs for schools and the public.
+Welcome to the web repository for **Telperion, z.s.** We inform about the environment and teach sustainable living to the young generation. Young people teach about climate through educational programs for schools and the public.
 
 ## 📚 Documentation
 
