@@ -226,44 +226,5 @@ const includeAlternateLinks = !noindex;
 
     <Modal />
     <DonationModal />
-    <script>
-      import {
-        Tolgee,
-        FormatSimple,
-        DevTools,
-        ObserverPlugin,
-      } from "@tolgee/web";
-      import { getSafeLanguage } from "../utils/lang";
-
-      const isDev = import.meta.env.DEV;
-      const savedLanguage = getSafeLanguage();
-
-      const translationsModule =
-        savedLanguage === "en"
-          ? await import("../i18n/en.json")
-          : await import("../i18n/cs-CZ.json");
-      const activeTranslations = translationsModule.default;
-
-      const tolgee = Tolgee()
-        .use(FormatSimple())
-        .use(isDev ? DevTools() : ObserverPlugin())
-        .init({
-          language: savedLanguage,
-          defaultLanguage: "cs-CZ",
-          ...(isDev && {
-            apiKey: import.meta.env.PUBLIC_TOLGEE_API_KEY,
-            apiUrl: import.meta.env.PUBLIC_TOLGEE_API_URL,
-          }),
-          observerType: "text",
-          observerOptions: { inputPrefix: "[[", inputSuffix: "]]" },
-          staticData: {
-            [savedLanguage]: activeTranslations,
-          },
-        });
-
-      tolgee.run().catch((e) => {
-        console.error("Tolgee initialization failed:", e);
-      });
-    </script>
   </body>
 </html>
