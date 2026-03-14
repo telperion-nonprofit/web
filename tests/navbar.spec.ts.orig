@@ -112,7 +112,11 @@ test.describe("Navbar Component", () => {
       });
       await expect(programyButton).toBeVisible();
 
+<<<<<<< Updated upstream
       const mobileCta = mobileMenu.locator(".js-donate-btn");
+=======
+      const mobileCta = mobileMenu.locator("button.js-donate-btn");
+>>>>>>> Stashed changes
       await expect(mobileCta).toBeVisible();
 
       await mobileBtn.click();
