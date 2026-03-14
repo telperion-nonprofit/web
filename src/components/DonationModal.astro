@@ -14,7 +14,6 @@ import { Icon } from "astro-icon/components";
   aria-modal="true"
   data-iban={t("donation_modal.iban")}
   data-qr-msg={t("donation_modal.qr_msg")}
-  data-copied-msg={t("donation_modal.copied")}
 >
   <div
     id="donation-modal-backdrop"
@@ -88,8 +87,14 @@ import { Icon } from "astro-icon/components";
                   2102801318/2010
                 </div>
                 <button type="button" id="copy-account-btn" class="mt-2 inline-flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium text-brand-green hover:bg-brand-green/10 transition-colors">
-                  <Icon name="mdi:content-copy" class="h-4 w-4" />
-                  {t("donation_modal.copy_account")}
+                  <span class="copy-btn-default flex items-center gap-1.5">
+                    <Icon name="mdi:content-copy" class="h-4 w-4" />
+                    {t("donation_modal.copy_account")}
+                  </span>
+                  <span class="copy-btn-success hidden items-center gap-1.5">
+                    <Icon name="mdi:check" class="h-4 w-4" />
+                    {t("donation_modal.copied")}
+                  </span>
                 </button>
               </div>
             </div>
@@ -168,7 +173,6 @@ import { Icon } from "astro-icon/components";
     // The static info
     const iban = modal.getAttribute('data-iban') || "";
     const qrMessage = modal.getAttribute('data-qr-msg') || "";
-    const copiedMessage = modal.getAttribute('data-copied-msg') || "Zkopírováno!";
     const accountNumber = "2102801318/2010"; // Domestic
 
     let currentAmount: number | undefined = undefined;
@@ -213,13 +217,22 @@ import { Icon } from "astro-icon/components";
       renderQR();
     });
 
+    const copyBtnDefault = copyAccountBtn?.querySelector('.copy-btn-default');
+    const copyBtnSuccess = copyAccountBtn?.querySelector('.copy-btn-success');
+
     copyAccountBtn?.addEventListener('click', () => {
       navigator.clipboard.writeText(accountNumber).then(() => {
-        const originalText = copyAccountBtn.innerHTML;
-        copyAccountBtn.innerHTML = `<span class="flex items-center gap-1.5"><svg class="w-4 h-4" viewBox="0 0 24 24"><path fill="currentColor" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>${copiedMessage}</span>`;
-        setTimeout(() => {
-          copyAccountBtn.innerHTML = originalText;
-        }, 2000);
+        if (copyBtnDefault && copyBtnSuccess) {
+          copyBtnDefault.classList.add('hidden');
+          copyBtnSuccess.classList.remove('hidden');
+          copyBtnSuccess.classList.add('flex');
+
+          setTimeout(() => {
+            copyBtnSuccess.classList.add('hidden');
+            copyBtnSuccess.classList.remove('flex');
+            copyBtnDefault.classList.remove('hidden');
+          }, 2000);
+        }
       });
     });
 
