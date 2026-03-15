@@ -61,10 +61,10 @@ test.describe("DesktopMenuItem Component", () => {
 
     // Add browserName to the destructured arguments
     test("dropdown becomes visible on hover", async ({ page, browserName }) => {
-      // Tell Playwright to skip this specific test if the browser is Firefox
+      // Tell Playwright to skip this specific test if the browser is Firefox or WebKit
       test.skip(
-        browserName === "firefox",
-        "Headless Firefox ignores CSS group-hovers",
+        browserName === "firefox" || browserName === "webkit",
+        "Headless Firefox/WebKit ignore CSS group-hovers",
       );
 
       const listItem = page.locator("li", { hasText: "Dropdown" });

@@ -37,9 +37,22 @@ export default defineConfig({
       },
     },
     {
+      name: "webkit",
+      grepInvert: /@unit/,
+      use: {
+        ...devices["Desktop Safari"],
+        viewport: { width: 1440, height: 900 },
+      },
+    },
+    {
       name: "Mobile Chrome",
       grepInvert: /@unit/,
       use: { ...devices["Pixel 5"] },
+    },
+    {
+      name: "Mobile Safari",
+      grepInvert: /@unit/,
+      use: { ...devices["iPhone 13"] },
     },
   ],
   webServer: {
