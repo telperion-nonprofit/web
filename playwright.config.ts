@@ -16,7 +16,13 @@ export default defineConfig({
   },
   projects: [
     {
+      name: "unit",
+      grep: /@unit/,
+      use: { ...devices["Desktop Chrome"] },
+    },
+    {
       name: "chromium",
+      grepInvert: /@unit/,
       use: {
         ...devices["Desktop Chrome"],
         viewport: { width: 1440, height: 900 },
@@ -24,6 +30,7 @@ export default defineConfig({
     },
     {
       name: "firefox",
+      grepInvert: /@unit/,
       use: {
         ...devices["Desktop Firefox"],
         viewport: { width: 1440, height: 900 },
@@ -31,6 +38,7 @@ export default defineConfig({
     },
     {
       name: "Mobile Chrome",
+      grepInvert: /@unit/,
       use: { ...devices["Pixel 5"] },
     },
   ],
