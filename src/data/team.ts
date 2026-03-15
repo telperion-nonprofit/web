@@ -3,6 +3,7 @@ import damiaVeselaPhoto from "../assets/team/damia_vesela.jpg";
 import martinJirkuPhoto from "../assets/team/martin_jirku.jpg";
 import magdalenaKlimovaPhoto from "../assets/team/magdalena_klimova.jpg";
 import lucieKubasovaPhoto from "../assets/team/lucie_kubasova.jpg";
+import annaZezulkaPhoto from "../assets/team/anna_zezulka.jpg";
 import jolanaBalcarovaPhoto from "../assets/team/jolana_balcarova.jpg";
 
 export const teamMembers = [
@@ -25,7 +26,7 @@ export const teamMembers = [
     roleKey: "team.anna.role",
     email: "anna.zezulka@telperion.cz",
     phone: "",
-    image: null,
+    image: annaZezulkaPhoto,
   },
   {
     name: "Martin Jirků",

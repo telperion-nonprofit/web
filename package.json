@@ -10,7 +10,7 @@
     "astro": "astro",
     "test": "npm run test:unit && playwright test",
     "test:ui": "playwright test --ui",
-    "test:unit": "tsx --test tests/unit/",
+    "test:unit": "tsx --test 'tests/unit/**/*.test.ts'",
     "tolgee:extract": "tolgee extract",
     "lint": "eslint .",
     "format": "prettier --write .",
