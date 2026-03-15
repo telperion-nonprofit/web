@@ -1,5 +1,5 @@
-import cs from "../i18n/cs-CZ.json" with { type: "json" };
-import en from "../i18n/en.json" with { type: "json" };
+import cs from "../i18n/cs-CZ.json" assert { type: "json" };
+import en from "../i18n/en.json" assert { type: "json" };
 
 export const translations = {
   cs,
