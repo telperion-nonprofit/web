@@ -13,6 +13,8 @@ import logoImg from "../assets/logo.png";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { routeMap } from "../utils/lang";
 
+const routeMapEntries = Object.entries(routeMap);
+
 const getUrl = (path: string) => {
   if (path === "#") return path;
   if (lang === "cs") return path;
@@ -23,7 +25,7 @@ const getUrl = (path: string) => {
   }
 
   // Handle dynamic slugs (e.g. /clanky/foo) by checking if the path starts with a mapped base route
-  for (const [czBase, enBase] of Object.entries(routeMap)) {
+  for (const [czBase, enBase] of routeMapEntries) {
     if (path.startsWith(`${czBase}/`)) {
       return path.replace(czBase, enBase);
     }
@@ -176,9 +178,9 @@ const menuItems: MenuItem[] = [
     }
 
     const donateBtns = document.querySelectorAll(".js-donate-btn");
-    donateBtns.forEach(btn => {
+    donateBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        document.dispatchEvent(new CustomEvent('open-donation-modal'));
+        document.dispatchEvent(new CustomEvent("open-donation-modal"));
       });
     });
   });
