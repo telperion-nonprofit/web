@@ -45,6 +45,9 @@ const canonicalUrl = new URL(
   Astro.site || "https://www.telperion.cz",
 );
 
+// Compute routeMap entries once per layout render to reuse across getHreflangUrl calls
+const routeMapEntries = Object.entries(routeMap);
+
 // Helper to create hreflang URLs
 const getHreflangUrl = (targetLang: string) => {
   let currentPath = Astro.url.pathname;
@@ -65,7 +68,8 @@ const getHreflangUrl = (targetLang: string) => {
     if (!isEnglishPath) {
       // Find english path
       let found = false;
-      for (const [czBase, enBase] of Object.entries(routeMap)) {
+      for (let i = 0; i < routeMapEntries.length; i++) {
+        const [czBase, enBase] = routeMapEntries[i];
         if (currentPath === czBase) {
           newPath = enBase;
           found = true;
@@ -85,7 +89,8 @@ const getHreflangUrl = (targetLang: string) => {
     // If it's an English path, find czech path or remove /en prefix
     if (isEnglishPath) {
       let found = false;
-      for (const [czBase, enBase] of Object.entries(routeMap)) {
+      for (let i = 0; i < routeMapEntries.length; i++) {
+        const [czBase, enBase] = routeMapEntries[i];
         if (currentPath === enBase) {
           newPath = czBase;
           found = true;
