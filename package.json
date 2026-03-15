@@ -8,7 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "playwright test",
+    "test": "npm run test:unit && playwright test",
     "test:ui": "playwright test --ui",
     "test:unit": "tsx --test tests/unit/",
     "tolgee:extract": "tolgee extract",
