@@ -133,13 +133,17 @@ if (isStatusPath) {
     );
 
     // Cache DOM elements per container to avoid repeated querySelectors in global listeners
-    const dropdowns = Array.from(containerElements).map((container) => ({
-      container: container as HTMLElement,
-      toggle: container.querySelector(
-        ".language-toggle",
-      ) as HTMLButtonElement | null,
-      menu: container.querySelector(".language-menu") as HTMLElement | null,
-    }));
+    const dropdowns = [];
+    for (let i = 0; i < containerElements.length; i++) {
+      const container = containerElements[i] as HTMLElement;
+      dropdowns.push({
+        container,
+        toggle: container.querySelector(
+          ".language-toggle",
+        ) as HTMLButtonElement | null,
+        menu: container.querySelector(".language-menu") as HTMLElement | null,
+      });
+    }
 
     // Close all menus when clicking outside
     document.addEventListener("click", (e) => {
