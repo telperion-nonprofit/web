@@ -1,4 +1,5 @@
 # Telperion, z.s.
+
 anna.zezulka@proton.me
 
 [![Built with Astro](https://astro.badg.es/v2/built-with-astro/tiny.svg)](https://astro.build)
@@ -11,29 +12,32 @@ Welcome to the web repository for **Telperion, z.s.** We inform about the enviro
 
 For detailed technical guidelines, design standards, and architecture decisions, please refer to the `docs/` folder:
 
-*   [Architecture Documentation](docs/ARCHITECTURE.md)
-*   [Design Manual](docs/DESIGN_MANUAL.md)
+- [Architecture Documentation](docs/ARCHITECTURE.md)
+- [Design Manual](docs/DESIGN_MANUAL.md)
 
 ## 🛠️ Tech Stack
 
 This project is built using a modern frontend stack:
 
-*   **Astro** - For blazing fast static site generation (SSG) with zero JavaScript shipped by default.
-*   **Tailwind CSS v4** - For rapid, utility-first styling.
-*   **Tolgee** - For robust localization and translation management.
-*   **Playwright** - For end-to-end (E2E) testing.
+- **Astro** - For blazing fast static site generation (SSG) with zero JavaScript shipped by default.
+- **Tailwind CSS v4** - For rapid, utility-first styling.
+- **Tolgee** - For robust localization and translation management.
+- **Playwright** - For end-to-end (E2E) testing.
 
 ## 🚀 Local Development
 
 1. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 2. **Start the development server:**
+
    ```bash
    npm run dev
    ```
+
    The site will be available at `http://localhost:4321`.
 
 3. **Tolgee Localization Workflow:**
@@ -53,4 +57,5 @@ npx playwright test
 ```
 
 ---
-*Developed for a sustainable future.*
+
+_Developed for a sustainable future._
