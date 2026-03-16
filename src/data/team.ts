@@ -50,38 +50,10 @@ export const teamMembers = [
     image: lucieKubasovaPhoto,
   },
   {
-    name: "Klára Adámková",
-    roleKey: "team.klara.role",
-    email: "klara.adamkova@telperion.cz",
-    phone: "+420 734 695 714",
-    image: null,
-  },
-  {
-    name: "Valeriia Tsyhanchuk",
-    roleKey: "team.valeriia.role",
-    email: "valeriia.tsyhanchuk@telperion.cz",
-    phone: "+420 723 394 013",
-    image: null,
-  },
-  {
     name: "Jolana Balcarová",
     roleKey: "team.jolana.role",
     email: "jolana.balcarova@telperion.cz",
     phone: "",
     image: jolanaBalcarovaPhoto,
-  },
-  {
-    name: "Sofia Grycová",
-    roleKey: "team.sofia.role",
-    email: "sofia.grycova@telperion.cz",
-    phone: "",
-    image: null,
-  },
-  {
-    name: "David Bartoš",
-    roleKey: "team.david.role",
-    email: "david.bartos@telperion.cz",
-    phone: "",
-    image: null,
   },
 ];
