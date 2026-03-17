@@ -8,7 +8,12 @@ const vsechnyClanky = await getCollection("clanky");
 
 const clanky = vsechnyClanky
   .filter((clanek) => clanek.data.pubDate)
-  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  .map((clanek) => ({
+    clanek,
+    time: clanek.data.pubDate!.getTime(),
+  }))
+  .sort((a, b) => b.time - a.time)
+  .map(({ clanek }) => clanek);
 
 const dateFormatter = new Intl.DateTimeFormat("cs-CZ", {
   year: "numeric",
