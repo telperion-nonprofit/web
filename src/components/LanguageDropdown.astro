@@ -96,8 +96,14 @@ if (isStatusPath) {
       ".language-dropdown-container",
     );
 
+    interface DropdownElements {
+      container: HTMLElement;
+      toggle: HTMLButtonElement | null;
+      menu: HTMLElement | null;
+    }
+
     // Cache DOM elements per container to avoid repeated querySelectors in global listeners
-    const dropdowns = [];
+    const dropdowns: DropdownElements[] = [];
     for (let i = 0; i < containerElements.length; i++) {
       const container = containerElements[i] as HTMLElement;
       dropdowns.push({
@@ -109,38 +115,47 @@ if (isStatusPath) {
       });
     }
 
-    // Close all menus when clicking outside
+    let activeDropdown: DropdownElements | null = null;
+
+    // Close active menu when clicking outside
     document.addEventListener("click", (e) => {
-      dropdowns.forEach(({ container, toggle, menu }) => {
+      if (activeDropdown) {
+        const { container, toggle, menu } = activeDropdown;
         if (toggle && menu && !container.contains(e.target as Node)) {
           toggle.setAttribute("aria-expanded", "false");
           menu.classList.add("hidden");
           toggle.classList.remove("group");
+          activeDropdown = null;
         }
-      });
+      }
     });
 
     // Setup each dropdown
-    dropdowns.forEach(({ container, toggle, menu }) => {
+    dropdowns.forEach((dropdown) => {
+      const { container, toggle, menu } = dropdown;
       if (toggle && menu) {
         toggle.addEventListener("click", () => {
           const isExpanded = toggle.getAttribute("aria-expanded") === "true";
 
-          // Close other open menus using the cached elements
-          dropdowns.forEach((otherDropdown) => {
-            if (otherDropdown.container !== container) {
-              const { toggle: otherToggle, menu: otherMenu } = otherDropdown;
-              if (otherToggle && otherMenu) {
-                otherToggle.setAttribute("aria-expanded", "false");
-                otherMenu.classList.add("hidden");
-                otherToggle.classList.remove("group");
-              }
+          // Close previously opened menu if it's different from the current one
+          if (activeDropdown && activeDropdown !== dropdown) {
+            const { toggle: activeToggle, menu: activeMenu } = activeDropdown;
+            if (activeToggle && activeMenu) {
+              activeToggle.setAttribute("aria-expanded", "false");
+              activeMenu.classList.add("hidden");
+              activeToggle.classList.remove("group");
             }
-          });
+          }
 
           toggle.setAttribute("aria-expanded", String(!isExpanded));
           menu.classList.toggle("hidden");
           toggle.classList.toggle("group");
+
+          if (!isExpanded) {
+            activeDropdown = dropdown;
+          } else {
+            activeDropdown = null;
+          }
         });
       }
     });
