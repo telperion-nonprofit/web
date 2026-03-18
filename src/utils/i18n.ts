@@ -1,33 +1,42 @@
 import cs from "../i18n/cs-CZ.json" with { type: "json" };
 import en from "../i18n/en.json" with { type: "json" };
 
-export const translations = {
-  cs,
-  en,
-};
+export type Locale = "cs" | "en";
 
-export type Locale = keyof typeof translations;
+function flattenTranslations(obj: any, prefix = ""): Record<string, string> {
+  const result: Record<string, string> = {};
+
+  if (!obj || typeof obj !== "object") return result;
+
+  for (const key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) {
+      const propName = prefix ? `${prefix}.${key}` : key;
+      const value = obj[key];
+
+      if (typeof value === "string") {
+        result[propName] = value;
+      } else if (typeof value === "object" && value !== null) {
+        const flatObj = flattenTranslations(value, propName);
+        Object.assign(result, flatObj);
+      }
+    }
+  }
+
+  return result;
+}
+
+const flatCs = flattenTranslations(cs);
+const flatEn = flattenTranslations(en);
+
+export const translations = {
+  cs: flatCs,
+  en: flatEn,
+};
 
 export function getLangFromUrl(url: URL): Locale {
   const [, lang] = url.pathname.split("/");
   if (lang === "en") return "en";
   return "cs";
-}
-
-function getNestedValue(obj: any, keys: string[]): string | undefined {
-  if (!obj) return undefined;
-
-  const flatKey = keys.join(".");
-  if (obj[flatKey] !== undefined) {
-    return typeof obj[flatKey] === "string" ? obj[flatKey] : undefined;
-  }
-
-  let value = obj;
-  for (const k of keys) {
-    if (value === undefined || value === null) break;
-    value = value[k];
-  }
-  return typeof value === "string" ? value : undefined;
 }
 
 const globalCache = new Map<Locale, Map<string, string>>();
@@ -43,11 +52,10 @@ export function useTranslations(lang: Locale) {
       return cache.get(key)!;
     }
 
-    const keys = key.split(".");
-    let value = getNestedValue(translations[lang], keys);
+    let value = translations[lang][key];
 
     if (value === undefined && lang === "en") {
-      value = getNestedValue(translations["cs"], keys);
+      value = translations["cs"][key];
     }
 
     const finalValue = value ?? key;
