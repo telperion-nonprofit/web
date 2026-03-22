@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@astrojs/compiler-rs": "^0.1.4",
-    "@astrojs/react": "^5.0.0",
+    "@astrojs/react": "^5.0.1",
     "@astrojs/sitemap": "^3.7.1",
     "@fontsource-variable/manrope": "^5.2.8",
     "@fontsource-variable/playfair-display": "^5.2.8",
