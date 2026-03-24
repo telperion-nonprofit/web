@@ -1,6 +1,30 @@
 import test from "node:test";
 import assert from "node:assert";
-import { replacePlaceholders } from "../../src/utils/i18n.ts";
+import { replacePlaceholders, getLangFromUrl } from "../../src/utils/i18n.ts";
+
+test("getLangFromUrl utility", (t) => {
+  const baseUrl = "https://example.com";
+
+  // Root path
+  assert.strictEqual(getLangFromUrl(new URL("/", baseUrl)), "cs");
+
+  // English root
+  assert.strictEqual(getLangFromUrl(new URL("/en", baseUrl)), "en");
+  assert.strictEqual(getLangFromUrl(new URL("/en/", baseUrl)), "en");
+
+  // English subpaths
+  assert.strictEqual(getLangFromUrl(new URL("/en/about", baseUrl)), "en");
+  assert.strictEqual(getLangFromUrl(new URL("/en/articles/my-post", baseUrl)), "en");
+
+  // Czech paths (no prefix)
+  assert.strictEqual(getLangFromUrl(new URL("/kontakty", baseUrl)), "cs");
+  assert.strictEqual(getLangFromUrl(new URL("/clanky/muj-prispevek", baseUrl)), "cs");
+
+  // Edge cases: paths starting with "en" but not being English prefix
+  assert.strictEqual(getLangFromUrl(new URL("/energetika", baseUrl)), "cs");
+  assert.strictEqual(getLangFromUrl(new URL("/en-us", baseUrl)), "cs");
+  assert.strictEqual(getLangFromUrl(new URL("/entree", baseUrl)), "cs");
+});
 
 test("replacePlaceholders utility - basic replacements", (t) => {
   // Test basic replacement for a known key in English
