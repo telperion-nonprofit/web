@@ -25,7 +25,7 @@ import jakubPresentingPhoto from "../../assets/jakub-presenting.jpg";
         class="inline-block group mb-6 transition-transform hover:-translate-y-0.5"
       >
         <SectionBadge
-          class="!mb-0 !inline-flex items-center gap-2 pl-4 hover:bg-white/80 hover:border-brand-green/50 transition-colors cursor-pointer"
+          class="mb-0! inline-flex! items-center gap-2 pl-4 hover:bg-white/80 hover:border-brand-green/50 transition-colors cursor-pointer"
         >
           <Icon
             name="mdi:arrow-top-right"
@@ -82,7 +82,7 @@ import jakubPresentingPhoto from "../../assets/jakub-presenting.jpg";
       </div>
 
       <div
-        class="relative w-full aspect-square sm:aspect-video md:aspect-[21/9] rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 bg-brand-green/5"
+        class="relative w-full aspect-square sm:aspect-video md:aspect-21/9 rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 bg-brand-green/5"
       >
         <iframe
           id="umap-iframe"
@@ -107,7 +107,7 @@ import jakubPresentingPhoto from "../../assets/jakub-presenting.jpg";
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5 text-brand-green flex-shrink-0"
+          class="h-5 w-5 text-brand-green shrink-0"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -250,7 +250,7 @@ import jakubPresentingPhoto from "../../assets/jakub-presenting.jpg";
             ></path>
           </svg>
           <p
-            class="text-dark-green font-medium leading-relaxed italic mb-8 flex-grow relative z-10"
+            class="text-dark-green font-medium leading-relaxed italic mb-8 grow relative z-10"
           >
             {t("home.reviews.1.text")}
           </p>
@@ -278,7 +278,7 @@ import jakubPresentingPhoto from "../../assets/jakub-presenting.jpg";
             ></path>
           </svg>
           <p
-            class="text-dark-green font-medium leading-relaxed italic mb-8 flex-grow relative z-10"
+            class="text-dark-green font-medium leading-relaxed italic mb-8 grow relative z-10"
           >
             {t("home.reviews.2.text")}
           </p>
@@ -306,7 +306,7 @@ import jakubPresentingPhoto from "../../assets/jakub-presenting.jpg";
             ></path>
           </svg>
           <p
-            class="text-dark-green font-medium leading-relaxed italic mb-8 flex-grow relative z-10"
+            class="text-dark-green font-medium leading-relaxed italic mb-8 grow relative z-10"
           >
             {t("home.reviews.3.text")}
           </p>
@@ -327,7 +327,7 @@ import jakubPresentingPhoto from "../../assets/jakub-presenting.jpg";
 <!-- SEKCE: EVENT MODAL -->
 <div
   id="climate-fresk-modal"
-  class="fixed inset-0 z-[150] hidden items-center justify-center p-4 sm:p-6"
+  class="fixed inset-0 z-150 hidden items-center justify-center p-4 sm:p-6"
   role="dialog"
   aria-modal="true"
   aria-labelledby="climate-fresk-title"
@@ -467,7 +467,7 @@ import jakubPresentingPhoto from "../../assets/jakub-presenting.jpg";
 
 <div
   id="photo-lightbox"
-  class="fixed inset-0 z-[200] hidden items-center justify-center p-6 sm:p-10 md:p-16"
+  class="fixed inset-0 z-200 hidden items-center justify-center p-6 sm:p-10 md:p-16"
   role="dialog"
   aria-modal="true"
   aria-label="Photo lightbox"
