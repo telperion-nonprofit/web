@@ -3,9 +3,11 @@ import tailwindcss from "@tailwindcss/vite";
 import icon from "astro-icon";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
+import vercel from "@astrojs/vercel/static";
 
 export default defineConfig({
   site: "https://www.telperion.cz",
+  adapter: vercel(),
   i18n: {
     defaultLocale: "cs",
     locales: ["cs", "en"],
@@ -20,8 +22,6 @@ export default defineConfig({
     sitemap({
       filter: (page) => {
         const { pathname } = new URL(page);
-
-        // Exclude non-indexable routes from production sitemap.
         return ![/^\/test(\/|$)/, /\/404\/?$/, /\/500\/?$/].some((pattern) =>
           pattern.test(pathname),
         );
