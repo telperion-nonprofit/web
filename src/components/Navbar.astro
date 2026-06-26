@@ -129,6 +129,7 @@ const menuItems: MenuItem[] = [
   <div
     id="mobile-menu"
     class="hidden lg:hidden mt-2 mx-auto max-w-6xl pointer-events-auto origin-top transition-all duration-300 ease-in-out"
+    style="display: none;"
   >
     <div class="glass-card rounded-3xl shadow-lg px-4 pt-4 pb-6 space-y-2">
       {menuItems.map((item) => <MobileMenuItem item={item} />)}
@@ -160,6 +161,10 @@ const menuItems: MenuItem[] = [
         const isExpanded = btn.getAttribute("aria-expanded") === "true";
         btn.setAttribute("aria-expanded", String(!isExpanded));
         menu.classList.toggle("hidden");
+        // Ensure inline style doesn't override the toggle
+        if (menu.style.display === "none") {
+          menu.style.display = "";
+        }
       });
     }
 
