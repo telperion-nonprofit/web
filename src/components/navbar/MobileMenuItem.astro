@@ -26,7 +26,10 @@ const { item } = Astro.props;
             class="w-4 h-4 transition-transform duration-200 group-aria-expanded:rotate-180"
           />
         </button>
-        <div class="mobile-accordion-menu hidden overflow-hidden transition-all duration-200 pl-4 pr-2 py-1 space-y-1">
+        <div
+          class="mobile-accordion-menu hidden overflow-hidden transition-all duration-200 pl-4 pr-2 py-1 space-y-1"
+          style="display: none;"
+        >
           {item.subItems.map((subItem) => (
             <a
               href={subItem.url}
@@ -61,6 +64,10 @@ const { item } = Astro.props;
 
         if (menu) {
           menu.classList.toggle("hidden");
+          // Ensure inline style doesn't override the toggle
+          if ((menu as HTMLElement).style.display === "none") {
+            (menu as HTMLElement).style.display = "";
+          }
         }
       });
     });

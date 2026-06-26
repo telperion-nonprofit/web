@@ -70,6 +70,7 @@ if (isStatusPath) {
     }`}
     role="menu"
     aria-orientation="vertical"
+    style="display: none;"
   >
     <div class="p-2 flex flex-col gap-1">
       <a
@@ -150,6 +151,10 @@ if (isStatusPath) {
           toggle.setAttribute("aria-expanded", String(!isExpanded));
           menu.classList.toggle("hidden");
           toggle.classList.toggle("group");
+
+          if (menu.style.display === "none") {
+            menu.style.display = "";
+          }
 
           if (!isExpanded) {
             activeDropdown = dropdown;
