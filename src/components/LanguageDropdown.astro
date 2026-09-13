@@ -22,20 +22,18 @@ const isEn = currentPath === "/en" || currentPath.startsWith("/en/");
 const currentLabel = isEn ? "EN" : "CS";
 const isStatusPath = /^\/(en\/)?(404|500)\/?$/.test(currentPath);
 
-let csPath = "/";
-let enPath = "/en/";
+let csPath: string;
+let enPath: string;
 
 if (isStatusPath) {
   csPath = "/";
   enPath = "/en/";
+} else if (isEn) {
+  enPath = currentPath;
+  csPath = translatePath(currentPath, "cs");
 } else {
-  if (isEn) {
-    enPath = currentPath;
-    csPath = translatePath(currentPath, "cs");
-  } else {
-    csPath = currentPath || "/";
-    enPath = translatePath(currentPath, "en");
-  }
+  csPath = currentPath || "/";
+  enPath = translatePath(currentPath, "en");
 }
 ---
 
@@ -133,7 +131,7 @@ if (isStatusPath) {
 
     // Setup each dropdown
     dropdowns.forEach((dropdown) => {
-      const { container, toggle, menu } = dropdown;
+      const { toggle, menu } = dropdown;
       if (toggle && menu) {
         toggle.addEventListener("click", () => {
           const isExpanded = toggle.getAttribute("aria-expanded") === "true";

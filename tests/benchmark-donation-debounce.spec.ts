@@ -1,5 +1,11 @@
 import { test, expect } from "@playwright/test";
 
+declare global {
+  interface Window {
+    qrRenderCount: number;
+  }
+}
+
 test.describe("Donation Modal Input Benchmark", () => {
   test("should measure QR code generation count during typing", async ({
     page,
@@ -40,7 +46,7 @@ test.describe("Donation Modal Input Benchmark", () => {
 
     // Setup mutation observer on the image
     await page.evaluate(() => {
-      window["qrRenderCount"] = 0;
+      window.qrRenderCount = 0;
       const img = document.querySelector("#donation-modal #qr-code-img");
       if (!img) return;
       const observer = new MutationObserver((mutations) => {
@@ -49,7 +55,7 @@ test.describe("Donation Modal Input Benchmark", () => {
             mutation.type === "attributes" &&
             mutation.attributeName === "src"
           ) {
-            window["qrRenderCount"]++;
+            window.qrRenderCount++;
           }
         });
       });
@@ -64,7 +70,7 @@ test.describe("Donation Modal Input Benchmark", () => {
     // Wait a bit for the final debounce to trigger if any
     await page.waitForTimeout(500);
 
-    const count = await page.evaluate(() => window["qrRenderCount"]);
+    const count = await page.evaluate(() => window.qrRenderCount);
     console.log(
       `[Benchmark] QR Code Rendered ${count} times during rapid typing of 5 characters.`,
     );

@@ -6,15 +6,16 @@ author: Jakub Nekvasil
 lang: en
 ---
 
-Climate change is currently one of the biggest problems and consists of many of issues mentioned here. If not dealed with, humanity will face a great trouble in the future. In the following article, you will find much information, we will debunk many myths of climate change and introduce a plan on how to deal with this problem. 
-## What is the essence of this issue? 
+Climate change is currently one of the biggest problems and consists of many of issues mentioned here. If not dealed with, humanity will face a great trouble in the future. In the following article, you will find much information, we will debunk many myths of climate change and introduce a plan on how to deal with this problem.
 
-Researchers already proved that every historical mass extinction was accompanied by climate change. Under the impact of natural climate change temperature, humidity, pressure and other factors affecting life on Earth have always been changing. 
+## What is the essence of this issue?
+
+Researchers already proved that every historical mass extinction was accompanied by climate change. Under the impact of natural climate change temperature, humidity, pressure and other factors affecting life on Earth have always been changing.
 
 Since industrial revolution and especially after the WWII humans cause incomparably more rapid and significant climate change. Our case involves releasing of greenhouse gas to the air, mainly CO2 and methane. That increases the so called **Greenhouse effect** and our planent keeps warming.
 
-In the consequence of this warming there are other issues emerging, such as melting of iceberg in Greenland, which slows down the Gulf Stream. 
-If it stopped completely, ice age would begin and weather will do as it pleases. Our planet itself won't be destroyed completely by our attitude. It's probable though that if we continue to change the climate at this rate, humanity will have big trouble to even survive in a few generations. We need to do something now, unless we want to watch ourselves and our children in particular suffer in the consequence of our actions. 
+In the consequence of this warming there are other issues emerging, such as melting of iceberg in Greenland, which slows down the Gulf Stream.
+If it stopped completely, ice age would begin and weather will do as it pleases. Our planet itself won't be destroyed completely by our attitude. It's probable though that if we continue to change the climate at this rate, humanity will have big trouble to even survive in a few generations. We need to do something now, unless we want to watch ourselves and our children in particular suffer in the consequence of our actions.
 
 ## Mitigation of climate change
 
@@ -26,7 +27,7 @@ Next we must surely prevent future release of CO2. There's no other way than tur
 
 We need to act quickly, so we can keep the climate on this planet to the extent that we'll be able to adapt.
 
-Many states announced their climate neutrality until a particular year. The European Union set example and promised a 55% reduction of greenhouse emmissions until 2030 (comparing to 1990) and their climate neutrality until 2050 (they will release no more gas than they can absorb). Other countries like Japan or South Korea, and United States or even China have been joining this initiative. 
+Many states announced their climate neutrality until a particular year. The European Union set example and promised a 55% reduction of greenhouse emmissions until 2030 (comparing to 1990) and their climate neutrality until 2050 (they will release no more gas than they can absorb). Other countries like Japan or South Korea, and United States or even China have been joining this initiative.
 
 ## Adaptation to climate change
 
@@ -38,24 +39,21 @@ Again, EU is a good example. It's got the Adaptation plan already developed and 
 
 ### Smart adaptation
 
-
 For the adaptation to be efficient, it needs to be effective. For it to be effective, we need to know how to do it. Only a slight percentage of funds that needs to be given to mitigation research is pouring there. Almost nothing is being poured to adaptation research. We need to change it and invent a proper and effective solution for the field of adaptation. Also, we must learn to count our financial impact of our actions on the climate change.
 
-We need to improve weather forecast and provide it to farmers and models of future climate trends. The moment we will have it invented, we need to implement it across all areas - such as giving farmers access to the highest-tech cultivated crops resistant to climate change. 
+We need to improve weather forecast and provide it to farmers and models of future climate trends. The moment we will have it invented, we need to implement it across all areas - such as giving farmers access to the highest-tech cultivated crops resistant to climate change.
 
-
-It's more complicated in the case of health - for example, cities across South America were built in high altitude so the mosquito with malaria wouldn't fly there. Climate has changed though and massive epidemic emerge. We have to figure out how to adapt and then implement it, including at a state level. 
+It's more complicated in the case of health - for example, cities across South America were built in high altitude so the mosquito with malaria wouldn't fly there. Climate has changed though and massive epidemic emerge. We have to figure out how to adapt and then implement it, including at a state level.
 
 ### Systematic adaptation
 
-Costs of adaptation need to be implemented to all the budgets: personal, communal and state. The exactly counted money need to be effectively invested on specific projects. 
+Costs of adaptation need to be implemented to all the budgets: personal, communal and state. The exactly counted money need to be effectively invested on specific projects.
 
 Some people need to requalify for another job, for their former work will be no longer possible due to the climate change (miners, steelworkers, etc.).
 
-It's also necessary to protect marshlands and wetlands so they can absorb as much water as they can. Plan from the cities outset, where greenery will be planted and where green roofs will be built, which mitigates heat waves. 
+It's also necessary to protect marshlands and wetlands so they can absorb as much water as they can. Plan from the cities outset, where greenery will be planted and where green roofs will be built, which mitigates heat waves.
 
-We need to do nature-friendly measures and implement them systematically (it's better to absorb water in landscape than to build flood control barriers). 
-
+We need to do nature-friendly measures and implement them systematically (it's better to absorb water in landscape than to build flood control barriers).
 
 ### Rapid adaptation
 
@@ -63,14 +61,12 @@ Time plays against us. Unlike Covid, that we'll hopefully solve soon, no vaccina
 
 For example, the European Union set a goal that until 2050 it will be not only climately neutral but also resistant to climate change consequences. That means thinking far into the future. Plant the trees that will thrive 50 years from now, when they grow up.
 
-
-Insurance is also important, such as one against drought and poor harvest for farmers, one against floods for houses, etc. All the measures need to be implemented as soon and effective as possible. 
-
+Insurance is also important, such as one against drought and poor harvest for farmers, one against floods for houses, etc. All the measures need to be implemented as soon and effective as possible.
 
 ### International adaptation
 
-States must connect their adaptation strategies together. They must learn from each other help each other. If we won't be able to handle water in our countryside, the flood wave in Elbe will be so strong that no measures in Germany would help to stop it. 
+States must connect their adaptation strategies together. They must learn from each other help each other. If we won't be able to handle water in our countryside, the flood wave in Elbe will be so strong that no measures in Germany would help to stop it.
 
-If the droughts in Africa and some parts of Middle East worsen further and famine breaks out, the amount of immigrants trying to get to Europe will increase rapidly. So it's better do all we can for adaptation to climate change everywhere people live. 
+If the droughts in Africa and some parts of Middle East worsen further and famine breaks out, the amount of immigrants trying to get to Europe will increase rapidly. So it's better do all we can for adaptation to climate change everywhere people live.
 
 International cooperation will also be important for mitigation of climate change impacts on human bodies (heat/frost waves, rapid changes in pressure, old-new pathogens, etc.)
