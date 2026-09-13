@@ -10,75 +10,80 @@
  *
  * The Playwright suite runs against `astro dev`, where styles are injected as
  * inline <style> blocks, so it cannot see this. Run this against `dist/`.
+ *
+ * parse5 implements the same spec tree-construction algorithm a browser uses,
+ * so what it reports as "in the head" is what a browser will do — no attempt
+ * to approximate the parse with regexes.
  */
-import { readFile } from "node:fs/promises";
-import { glob } from "node:fs/promises";
+import { readFile, glob } from "node:fs/promises";
+import { parse } from "parse5";
 
-// https://html.spec.whatwg.org/multipage/parsing.html#parsing-main-inhead
-const ALLOWED_IN_HEAD = new Set([
-  "base",
-  "basefont",
-  "bgsound",
-  "link",
-  "meta",
-  "noscript",
-  "script",
-  "style",
-  "template",
-  "title",
-]);
+const elements = (node) =>
+  (node?.childNodes ?? []).filter((child) => Boolean(child.tagName));
 
-function headMarkup(html) {
-  const start = html.indexOf("<head>");
-  const end = html.indexOf("</head>");
-  if (start === -1 || end === -1) return null;
-  return (
-    html
-      .slice(start + "<head>".length, end)
-      // Tag names inside script/style bodies and comments are not markup.
-      .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
-      .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
-      .replace(/<!--[\s\S]*?-->/g, "")
-  );
+const findChild = (node, tagName) =>
+  elements(node).find((child) => child.tagName === tagName);
+
+const attr = (node, name) =>
+  node.attrs?.find((a) => a.name === name)?.value ?? "";
+
+const isStylesheet = (node) =>
+  node.tagName === "link" &&
+  attr(node, "rel").toLowerCase().split(/\s+/).includes("stylesheet");
+
+/** Every element in the subtree, so a stylesheet nested in <body> is found. */
+function* walk(node) {
+  for (const child of elements(node)) {
+    yield child;
+    yield* walk(child);
+  }
 }
 
 const problems = [];
-let pages = 0;
-const skipped = [];
+let checked = 0;
+let redirects = 0;
 
 for await (const file of glob("dist/**/*.html")) {
-  const html = await readFile(file, "utf8");
-  const head = headMarkup(html);
-  if (head === null) {
-    // Pages that never render a Layout (the /test/* fixtures become redirect
-    // stubs in production) have no <head> to check.
-    skipped.push(file);
+  const document = parse(await readFile(file, "utf8"));
+  const html = findChild(document, "html");
+  const head = findChild(html, "head");
+  const body = findChild(html, "body");
+
+  // The /test/* QA fixtures become bare redirect stubs in production; they
+  // render no Layout and carry no styles.
+  const isRedirectStub = elements(head).some(
+    (node) =>
+      node.tagName === "meta" &&
+      attr(node, "http-equiv").toLowerCase() === "refresh",
+  );
+  if (isRedirectStub) {
+    redirects += 1;
     continue;
   }
-  pages += 1;
+  checked += 1;
 
-  const illegal = [
-    ...new Set(
-      [...head.matchAll(/<\s*\/?\s*([a-zA-Z][a-zA-Z0-9-]*)/g)].map((m) =>
-        m[1].toLowerCase(),
-      ),
-    ),
-  ].filter((tag) => !ALLOWED_IN_HEAD.has(tag));
-
-  if (illegal.length > 0) {
+  // Checking the head for illegal elements would be pointless: the parser
+  // reparents them rather than leaving them there, so an offending page has a
+  // *shorter* head, not a malformed one. The symptom is where the stylesheet
+  // ended up.
+  if (!elements(head).some(isStylesheet)) {
     problems.push(
-      `${file}: <${illegal.join(">, <")}> inside <head> — the parser closes ` +
-        `the head there and moves the rest into <body>.`,
+      `${file}: no <link rel="stylesheet"> inside <head> — something before ` +
+        `it (a custom element, a stray tag) is closing the head early.`,
     );
-    continue;
   }
 
-  if (!/<link\b[^>]*rel=["']?stylesheet/i.test(head)) {
-    problems.push(`${file}: no <link rel="stylesheet"> inside <head>.`);
+  const strays = [...walk(body)].filter(isStylesheet);
+  if (strays.length > 0) {
+    problems.push(
+      `${file}: ${strays.length} <link rel="stylesheet"> inside <body> ` +
+        `(${strays.map((node) => attr(node, "href")).join(", ")}) — these do ` +
+        `not reliably block the first paint.`,
+    );
   }
 }
 
-if (pages === 0) {
+if (checked === 0) {
   console.error("No built pages found in dist/. Run `npm run build` first.");
   process.exit(1);
 }
@@ -90,8 +95,6 @@ if (problems.length > 0) {
 }
 
 console.log(
-  `Head integrity OK: ${pages} page(s) keep their stylesheet in <head>` +
-    (skipped.length > 0
-      ? `, ${skipped.length} page(s) without a <head>.`
-      : "."),
+  `Head integrity OK: ${checked} page(s) keep their stylesheet in <head>` +
+    (redirects > 0 ? `, ${redirects} redirect stub(s) skipped.` : "."),
 );

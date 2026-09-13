@@ -18,41 +18,21 @@ const PAGES = [
   "/ochrana-osobnich-udaju",
 ];
 
-// https://html.spec.whatwg.org/multipage/parsing.html#parsing-main-inhead
-const ALLOWED_IN_HEAD = [
-  "BASE",
-  "LINK",
-  "META",
-  "NOSCRIPT",
-  "SCRIPT",
-  "STYLE",
-  "TEMPLATE",
-  "TITLE",
-];
-
 for (const path of PAGES) {
   test(`head survives parsing on ${path}`, async ({ page }) => {
     await page.goto(path);
 
-    const parsed = await page.evaluate((allowed) => {
-      const allowedTags = new Set(allowed);
-      return {
-        illegal: [...document.head.children]
-          .map((el) => el.tagName)
-          .filter((tag) => !allowedTags.has(tag)),
-        styledFromHead:
-          document.head.querySelectorAll('link[rel="stylesheet"], style')
-            .length > 0,
-        stylesheetsInBody: document.body.querySelectorAll(
-          'link[rel="stylesheet"]',
-        ).length,
-      };
-    }, ALLOWED_IN_HEAD);
+    // Looking for illegal elements in document.head would prove nothing: the
+    // parser reparents them into <body> rather than leaving them behind, so an
+    // offending page just has a shorter head. What it takes with it is the
+    // point.
+    const styles = await page.evaluate(() => ({
+      inHead: document.head.querySelectorAll('link[rel="stylesheet"], style')
+        .length,
+      inBody: document.body.querySelectorAll('link[rel="stylesheet"]').length,
+    }));
 
-    // Anything here means the head ended early and the rest of it — including
-    // the stylesheet — was reparented into <body>.
-    expect(parsed.illegal).toEqual([]);
-    expect(parsed.styledFromHead).toBe(true);
-    expect(parsed.stylesheetsInBody).toBe(0);
+    expect(styles.inHead).toBeGreaterThan(0);
+    expect(styles.inBody).toBe(0);
   });
 }
