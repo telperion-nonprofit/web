@@ -1,5 +1,5 @@
 ---
-import { useTranslations, replacePlaceholders } from "../utils/i18n";
+import { useTranslations } from "../utils/i18n";
 import type { Locale } from "../utils/i18n";
 const lang = (Astro.currentLocale as Locale) || "cs";
 const t = useTranslations(lang);
@@ -70,7 +70,7 @@ import { Icon } from "astro-icon/components";
               type="hidden"
               name="language"
               id="form-language"
-              value="cs"
+              value={lang === "en" ? "en" : "cs"}
             />
             <div>
               <label
@@ -144,9 +144,9 @@ import { Icon } from "astro-icon/components";
                   <option value="mozaika-junior"
                     >{t("modal.program.mozaika_junior")}</option
                   >
-                   <option value="mozaika-stredni-skola"
-                     >{t("modal.program.mozaika_stredni_skola")}</option
-                   >
+                  <option value="mozaika-stredni-skola"
+                    >{t("modal.program.mozaika_stredni_skola")}</option
+                  >
                   <option value="mozaika-firmy"
                     >{t("modal.program.mozaika_firmy")}</option
                   >
@@ -214,8 +214,12 @@ import { Icon } from "astro-icon/components";
       "form-language",
     ) as HTMLInputElement | null;
     if (langField) {
+      // Legacy key, no longer written by the site — honour it only if a visitor
+      // still has one, otherwise keep the language rendered for this page.
       const saved = localStorage.getItem("zvoleny-jazyk");
-      langField.value = saved === "en" ? "en" : "cs";
+      if (saved === "en" || saved === "cs") {
+        langField.value = saved;
+      }
     }
 
     const modal = document.getElementById("contact-modal");

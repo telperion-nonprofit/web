@@ -4,7 +4,10 @@ import { useTranslations, translations } from "../src/utils/i18n.ts";
 import en from "../src/i18n/en.json" with { type: "json" };
 
 // Baseline logic
-function getNestedValue(obj: any, keys: string[]): string | undefined {
+function getNestedValue(
+  obj: Record<string, unknown> | undefined,
+  keys: string[],
+): string | undefined {
   if (!obj) return undefined;
 
   const flatKey = keys.join(".");
@@ -12,10 +15,10 @@ function getNestedValue(obj: any, keys: string[]): string | undefined {
     return typeof obj[flatKey] === "string" ? obj[flatKey] : undefined;
   }
 
-  let value = obj;
+  let value: unknown = obj;
   for (const k of keys) {
     if (value === undefined || value === null) break;
-    value = value[k];
+    value = (value as Record<string, unknown>)[k];
   }
   return typeof value === "string" ? value : undefined;
 }
@@ -75,13 +78,13 @@ test("Benchmark getNestedValue vs flattened lookups", () => {
   // Optimized run (using the pre-flattened exports)
   const startOptimized = performance.now();
   for (let i = 0; i < numIterations; i++) {
-    let _1 = translations.en["home.hero.title_main"];
-    let _2 = translations.en["nav.button.donate"];
-    let _3 = translations.en["home.fresk_modal.p1_strong"];
-    let _4 = translations.en["other.badge"];
-    let _5 = translations.en["non.existent.key"];
-    let _6 = translations.en["home.features.card1.text"];
-    let _7 = translations.en["schools.climate_days.day1_desc"];
+    const _1 = translations.en["home.hero.title_main"];
+    const _2 = translations.en["nav.button.donate"];
+    const _3 = translations.en["home.fresk_modal.p1_strong"];
+    const _4 = translations.en["other.badge"];
+    const _5 = translations.en["non.existent.key"];
+    const _6 = translations.en["home.features.card1.text"];
+    const _7 = translations.en["schools.climate_days.day1_desc"];
   }
   const endOptimized = performance.now();
   const optimizedDuration = endOptimized - startOptimized;

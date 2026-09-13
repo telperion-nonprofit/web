@@ -2,7 +2,7 @@ import test from "node:test";
 import assert from "node:assert";
 import { replacePlaceholders, getLangFromUrl } from "../../src/utils/i18n.ts";
 
-test("getLangFromUrl utility", (t) => {
+test("getLangFromUrl utility", () => {
   const baseUrl = "https://example.com";
 
   // Root path
@@ -32,7 +32,7 @@ test("getLangFromUrl utility", (t) => {
   assert.strictEqual(getLangFromUrl(new URL("/entree", baseUrl)), "cs");
 });
 
-test("replacePlaceholders utility - basic replacements", (t) => {
+test("replacePlaceholders utility - basic replacements", () => {
   // Test basic replacement for a known key in English
   const enText = "Support us by visiting: [[donation_modal.title]]";
   assert.strictEqual(
@@ -48,7 +48,7 @@ test("replacePlaceholders utility - basic replacements", (t) => {
   );
 });
 
-test("replacePlaceholders utility - multiple placeholders", (t) => {
+test("replacePlaceholders utility - multiple placeholders", () => {
   const text =
     "Title: [[donation_modal.title]], Amount: [[donation_modal.amount_other]]";
   assert.strictEqual(
@@ -62,7 +62,7 @@ test("replacePlaceholders utility - multiple placeholders", (t) => {
   );
 });
 
-test("replacePlaceholders utility - no placeholders", (t) => {
+test("replacePlaceholders utility - no placeholders", () => {
   const text = "This is a regular string without any brackets.";
   assert.strictEqual(
     replacePlaceholders(text, "en"),
@@ -70,14 +70,20 @@ test("replacePlaceholders utility - no placeholders", (t) => {
   );
 });
 
-test("replacePlaceholders utility - empty strings and falsy values", (t) => {
+test("replacePlaceholders utility - empty strings and falsy values", () => {
   assert.strictEqual(replacePlaceholders("", "en"), "");
   // Type coercion test if not strict string typing from callers
-  assert.strictEqual(replacePlaceholders(undefined as any, "en"), undefined);
-  assert.strictEqual(replacePlaceholders(null as any, "en"), null);
+  assert.strictEqual(
+    replacePlaceholders(undefined as unknown as string, "en"),
+    undefined,
+  );
+  assert.strictEqual(
+    replacePlaceholders(null as unknown as string, "en"),
+    null,
+  );
 });
 
-test("replacePlaceholders utility - missing keys", (t) => {
+test("replacePlaceholders utility - missing keys", () => {
   // For missing keys, useTranslations returns the key itself
   const text = "Missing key: [[unknown.missing_key]]";
   assert.strictEqual(
@@ -86,7 +92,7 @@ test("replacePlaceholders utility - missing keys", (t) => {
   );
 });
 
-test("replacePlaceholders utility - fallback to cs", (t) => {
+test("replacePlaceholders utility - fallback to cs", () => {
   // If an English key is missing but the Czech key exists, it falls back to Czech.
   // We'll simulate this by finding a key that exists in CS but not EN, or we can just
   // assert that normal fallback mechanism provided by useTranslations works here.
@@ -100,7 +106,7 @@ test("replacePlaceholders utility - fallback to cs", (t) => {
   );
 });
 
-test("replacePlaceholders utility - malformed placeholders", (t) => {
+test("replacePlaceholders utility - malformed placeholders", () => {
   // Only exact [[key]] should be matched
   const text1 = "Malformed: [donation_modal.title]";
   assert.strictEqual(
@@ -121,7 +127,7 @@ test("replacePlaceholders utility - malformed placeholders", (t) => {
   );
 });
 
-test("replacePlaceholders utility - consecutive placeholders without spaces", (t) => {
+test("replacePlaceholders utility - consecutive placeholders without spaces", () => {
   const text = "[[donation_modal.amount_other]][[donation_modal.title]]";
   assert.strictEqual(replacePlaceholders(text, "en"), "OtherSupport Us");
 });

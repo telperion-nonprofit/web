@@ -4,8 +4,46 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "05:00"
+      timezone: "Europe/Prague"
+    open-pull-requests-limit: 10
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "build(deps)"
+      prefix-development: "build(deps-dev)"
+      include: "scope"
+    groups:
+      # Patch/minor updates travel together so one green CI run lands the whole
+      # week's batch instead of seven PRs racing each other.
+      production-minor-patch:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
+      development-minor-patch:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
+      # Majors stay ungrouped and are never auto-merged: one PR each, reviewed
+      # by a human.
 
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+      day: "monday"
+      time: "05:00"
+      timezone: "Europe/Prague"
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "build(deps)"
+    groups:
+      github-actions:
+        update-types:
+          - "minor"
+          - "patch"

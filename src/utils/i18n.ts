@@ -3,22 +3,21 @@ import en from "../i18n/en.json" with { type: "json" };
 
 export type Locale = "cs" | "en";
 
-function flattenTranslations(obj: any, prefix = ""): Record<string, string> {
+function flattenTranslations(
+  obj: unknown,
+  prefix = "",
+): Record<string, string> {
   const result: Record<string, string> = {};
 
   if (!obj || typeof obj !== "object") return result;
 
-  for (const key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) {
-      const propName = prefix ? `${prefix}.${key}` : key;
-      const value = obj[key];
+  for (const [key, value] of Object.entries(obj as Record<string, unknown>)) {
+    const propName = prefix ? `${prefix}.${key}` : key;
 
-      if (typeof value === "string") {
-        result[propName] = value;
-      } else if (typeof value === "object" && value !== null) {
-        const flatObj = flattenTranslations(value, propName);
-        Object.assign(result, flatObj);
-      }
+    if (typeof value === "string") {
+      result[propName] = value;
+    } else if (typeof value === "object" && value !== null) {
+      Object.assign(result, flattenTranslations(value, propName));
     }
   }
 

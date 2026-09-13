@@ -41,13 +41,18 @@ const sortedArticles = allArticles
               <div class="flex items-center gap-2 text-sm text-dark-green/60 font-medium mb-4">
                 <Icon name="mdi:calendar-blank" class="w-4 h-4" />
                 <time datetime={article.data.pubDate?.toISOString()}>
-                  {article.data.pubDate ? formatDate(article.data.pubDate, "en") : ""}
+                  {article.data.pubDate
+                    ? formatDate(article.data.pubDate, "en")
+                    : ""}
                 </time>
               </div>
 
               <h2 class="text-2xl font-serif font-bold text-brand-green mb-3 line-clamp-2">
                 <a
-                  href={translatePath(`/clanky/${article.id.replace(/\.md$/, "")}`, lang)}
+                  href={translatePath(
+                    `/clanky/${article.id.replace(/\.md$/, "")}`,
+                    lang,
+                  )}
                   class="hover:text-dark-green transition-colors"
                 >
                   {article.data.title}
@@ -63,7 +68,10 @@ const sortedArticles = allArticles
                   {article.data.author}
                 </span>
                 <a
-                  href={translatePath(`/clanky/${article.id.replace(/\.md$/, "")}`, lang)}
+                  href={translatePath(
+                    `/clanky/${article.id.replace(/\.md$/, "")}`,
+                    lang,
+                  )}
                   class="inline-flex items-center gap-1 text-sm font-bold text-dark-green hover:text-brand-green transition-colors group"
                 >
                   Read more
