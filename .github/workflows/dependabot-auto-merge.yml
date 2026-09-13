@@ -1,0 +1,76 @@
+name: Dependabot auto-merge
+
+# Runs with the base repository's token (pull_request_target) so it can enable
+# auto-merge. It deliberately never checks out or executes the pull request's
+# code — every step only talks to the GitHub API.
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  auto-merge:
+    name: Enable auto-merge for safe updates
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Classify the update
+        id: classify
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          set -euo pipefail
+
+          # Dependabot records what it changed in a trailer on its own commit,
+          # e.g. "update-type: version-update:semver-patch". Grouped updates
+          # carry one entry per dependency.
+          message="$(gh api "repos/${REPO}/commits/${HEAD_SHA}" --jq '.commit.message')"
+          types="$(printf '%s\n' "$message" | grep -o 'version-update:semver-[a-z]*' || true)"
+
+          if [ -z "$types" ]; then
+            echo "No update-type trailer found; leaving this PR to a human."
+            echo "automerge=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "Update types in this PR:"
+          printf '  %s\n' $types
+
+          # Patch and minor merge themselves; a single major anywhere in a
+          # grouped PR holds the whole PR back for review.
+          if printf '%s\n' "$types" | grep -qv -e 'semver-patch$' -e 'semver-minor$'; then
+            echo "automerge=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "automerge=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Approve
+        if: steps.classify.outputs.automerge == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        # Needed only when the branch requires an approving review; harmless
+        # otherwise. Remove this step if you would rather review every bump.
+        run: gh pr review --approve "$PR_URL" || true
+
+      - name: Enable auto-merge
+        if: steps.classify.outputs.automerge == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        # Queues the merge; GitHub performs it once the required checks pass, so
+        # a red CI still blocks the update.
+        run: gh pr merge --auto --squash "$PR_URL"
+
+      - name: Explain why the PR was left alone
+        if: steps.classify.outputs.automerge != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_URL: ${{ github.event.pull_request.html_url }}
+        run: |
+          echo "Major (or unrecognised) update — needs a human review before merging."

@@ -1,30 +1,96 @@
 name: CI
 
-permissions:
-  contents: read
-
 on:
   push:
     branches: [main]
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
+# A new push supersedes the run it interrupted; queued Dependabot batches used
+# to hold each other up for no reason.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  test:
-    timeout-minutes: 60
+  static:
+    name: Lint, types, unit tests & build
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v6
         with:
-          node-version: lts/*
+          node-version-file: .nvmrc
+          cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Run Linter
+      - name: Check formatting
+        run: npm run format:check
+      - name: Run linter
         run: npm run lint
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Run unit tests
+        run: npm run test:unit
       - name: Build Astro
         run: npm run build
-      - name: Install Playwright Browsers
-        run: npx playwright install --with-deps
+      # The Playwright suite runs against `astro dev`, so production-only
+      # regressions in the emitted <head> would otherwise slip through.
+      - name: Check built <head> integrity
+        run: npm run check:head
+
+  e2e:
+    name: E2E (${{ matrix.project }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: static
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - project: chromium
+            browser: chromium
+          - project: firefox
+            browser: firefox
+          - project: webkit
+            browser: webkit
+          - project: Mobile Chrome
+            browser: chromium
+          - project: Mobile Safari
+            browser: webkit
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      # One browser per job instead of all of them in a single serial job.
+      - name: Install Playwright browser
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+      # The `list` reporter prints failures straight into the job log; add an
+      # actions/upload-artifact step for playwright-report/ if you also want the
+      # traces (pin whichever major is current when you add it).
       - name: Run Playwright tests
-        run: npm run test
+        run: npx playwright test --project="${{ matrix.project }}"
+
+  # Single required check for branch protection and Dependabot auto-merge, so
+  # the matrix can grow or shrink without reconfiguring the repository.
+  ci:
+    name: CI
+    if: always()
+    needs: [static, e2e]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify all jobs succeeded
+        run: |
+          if [ "${{ contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled') }}" = "true" ]; then
+            echo "One or more CI jobs failed."
+            exit 1
+          fi
+          echo "All CI jobs passed."

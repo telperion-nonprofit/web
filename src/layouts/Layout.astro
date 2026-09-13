@@ -15,7 +15,7 @@ import DonationModal from "../components/DonationModal.astro";
 
 import { replacePlaceholders } from "../utils/i18n";
 import type { Locale } from "../utils/i18n";
-import { translatePath, getSafeLanguage } from "../utils/lang";
+import { translatePath } from "../utils/lang";
 
 interface Props {
   title?: string;
@@ -72,50 +72,6 @@ const includeAlternateLinks = !noindex;
 <html lang={htmlLang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <style is:inline>
-      /* Keep the navbar stable before the full Tailwind bundle finishes parsing. */
-      [data-navbar-desktop],
-      [data-navbar-desktop-actions] {
-        display: none !important;
-      }
-
-      [data-navbar-mobile-toggle] {
-        display: flex !important;
-      }
-
-      [data-navbar-dropdown] {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      [data-navbar-menu-item]:hover [data-navbar-dropdown] {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      [data-navbar-close-icon] {
-        display: none;
-      }
-
-      #mobile-menu-btn[aria-expanded="true"] [data-navbar-close-icon] {
-        display: block;
-      }
-
-      #mobile-menu-btn[aria-expanded="true"] [data-navbar-hamburger-icon] {
-        display: none;
-      }
-
-      @media (min-width: 64rem) {
-        [data-navbar-desktop],
-        [data-navbar-desktop-actions] {
-          display: flex !important;
-        }
-
-        [data-navbar-mobile-toggle] {
-          display: none !important;
-        }
-      }
-    </style>
     <script is:inline>
       // Temporary theme lockdown: Always Light Mode
       document.documentElement.classList.remove("dark");
@@ -179,8 +135,6 @@ const includeAlternateLinks = !noindex;
     <title>
       {translatedTitle ? `${translatedTitle} | Telperion` : "Telperion"}
     </title>
-    <Analytics />
-    <SpeedInsights />
   </head>
 
   <body class="bg-cream text-dark-green font-sans antialiased">
@@ -223,5 +177,13 @@ const includeAlternateLinks = !noindex;
 
     <Modal />
     <DonationModal />
+
+    {
+      /* Must stay in <body>: these render custom elements, and a non-head element
+        inside <head> implicitly closes it, pushing Astro's stylesheet link into
+        the body where it no longer blocks the first paint (FOUC). */
+    }
+    <Analytics />
+    <SpeedInsights />
   </body>
 </html>

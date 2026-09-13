@@ -8,7 +8,7 @@ lang: en
 
 How the human activity impacts other animals? Prehistoric human regarded animals as a source of food and later as workforce, but they have never caused too much loss and certainly not extinction to any species.
 
-We have distanced from this approach to a large extent though - often times not purposely but yet we kill animals and sometimes entire species. We thereby disrupt many ecosystems. There are many activities, by which people disrupt natural habitat of animals. 
+We have distanced from this approach to a large extent though - often times not purposely but yet we kill animals and sometimes entire species. We thereby disrupt many ecosystems. There are many activities, by which people disrupt natural habitat of animals.
 
 ## Loss of natural habitat and pollution
 
@@ -18,8 +18,7 @@ The scum that we release into rivers and that flows down the sea, are unheard of
 
 **12 thousand tons of garbage** end up in world oceans every year! Garbage islands form on the ocean surface and thick layers of waste at the bottom. This means the end for many animals. Turtles swallow plastic bags confusing them for jellyfish and they choke afterwards. Why! It doesn't take much!
 
-We need to change our attitude and begin to regard our environment and animals respectfully. We exploited animals, we wouldn't be who we are without them. Now it's our turn to protect them from our own deeds. 
-
+We need to change our attitude and begin to regard our environment and animals respectfully. We exploited animals, we wouldn't be who we are without them. Now it's our turn to protect them from our own deeds.
 
 ## What we can do now?
 

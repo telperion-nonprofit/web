@@ -35,18 +35,14 @@ test("Benchmark: Individual vs Delegated Event Listeners", async ({ page }) => {
         // dummy op
         void (btn as HTMLElement).dataset.fullSrc;
         void btn.querySelector("img")?.alt;
+        void (
+          ((btn as HTMLElement).dataset.fullSrc || "") +
           (btn.querySelector("img")?.alt || "")
         );
       });
     });
 
     const end = performance.now();
-
-    // Clean up to be fair
-    triggers.forEach((btn) => {
-      // It's hard to remove anonymous listeners, but we can just measure the attachment time
-      // For a fair test, we mainly care about attachment time anyway
-    });
 
     return end - start;
   });
@@ -79,11 +75,14 @@ test("Benchmark: Individual vs Delegated Event Listeners", async ({ page }) => {
 
     // Simulate the new delegated logic
     document.addEventListener("click", (e) => {
-      const target = (e.target as Element).closest(".lightbox-trigger");
-      void (target as HTMLElement).dataset.fullSrc;
+      const target = (e.target as Element).closest<HTMLElement>(
+        ".lightbox-trigger",
+      );
+      if (!target) return;
+      void target.dataset.fullSrc;
       void target.querySelector("img")?.alt;
       void (
-        ((target as HTMLElement).dataset.fullSrc || "") +
+        (target.dataset.fullSrc || "") +
         (target.querySelector("img")?.alt || "")
       );
     });
