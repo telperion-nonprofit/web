@@ -27,6 +27,15 @@ updates:
         update-types:
           - "minor"
           - "patch"
+      # `dependency-type` only ever matches direct dependencies, so without
+      # this catch-all every transitive bump — which is most of what security
+      # updates touch — arrived as its own pull request.
+      transitive-minor-patch:
+        patterns:
+          - "*"
+        update-types:
+          - "minor"
+          - "patch"
       # Majors stay ungrouped and are never auto-merged: one PR each, reviewed
       # by a human.
 

@@ -17,6 +17,17 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.pull_request.user.login == 'dependabot[bot]'
     steps:
+      # Takes the classifier from the BASE branch, never the pull request's own
+      # code, so a malicious branch cannot substitute its own script. Only that
+      # one path is fetched.
+      - name: Check out the classifier from the base branch
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+          sparse-checkout: scripts/classify-dependabot-update.sh
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
       - name: Classify the update
         id: classify
         env:
@@ -26,28 +37,10 @@ jobs:
         run: |
           set -euo pipefail
 
-          # Dependabot records what it changed in a trailer on its own commit,
-          # e.g. "update-type: version-update:semver-patch". Grouped updates
-          # carry one entry per dependency.
           message="$(gh api "repos/${REPO}/commits/${HEAD_SHA}" --jq '.commit.message')"
-          types="$(printf '%s\n' "$message" | grep -o 'version-update:semver-[a-z]*' || true)"
+          verdict="$(printf '%s' "$message" | bash scripts/classify-dependabot-update.sh)"
 
-          if [ -z "$types" ]; then
-            echo "No update-type trailer found; leaving this PR to a human."
-            echo "automerge=false" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          echo "Update types in this PR:"
-          printf '  %s\n' $types
-
-          # Patch and minor merge themselves; a single major anywhere in a
-          # grouped PR holds the whole PR back for review.
-          if printf '%s\n' "$types" | grep -qv -e 'semver-patch$' -e 'semver-minor$'; then
-            echo "automerge=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "automerge=true" >> "$GITHUB_OUTPUT"
-          fi
+          echo "automerge=${verdict}" >> "$GITHUB_OUTPUT"
 
       - name: Approve
         if: steps.classify.outputs.automerge == 'true'
@@ -73,4 +66,4 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_URL: ${{ github.event.pull_request.html_url }}
         run: |
-          echo "Major (or unrecognised) update — needs a human review before merging."
+          echo "Held for review — see the classifier output above for why."
