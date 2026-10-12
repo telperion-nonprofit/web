@@ -1,0 +1,86 @@
+name: TypeScript 7 readiness
+
+# .github/dependabot.yml holds back TypeScript majors: TypeScript 7 no longer
+# ships the JS compiler API that `astro check` (@astrojs/check) and
+# typescript-eslint load. Dependabot ignore rules never expire, so this asks npm
+# once a week whether those packages accept the latest TypeScript yet and opens
+# an issue when they do. That issue is the cue to delete the ignore rule;
+# Dependabot then proposes the upgrade on its next run.
+on:
+  schedule:
+    # Monday mornings, off the top of the hour when GitHub's scheduler is busiest.
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    name: Check TypeScript 7 support
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out dependabot.yml
+        uses: actions/checkout@v7
+        with:
+          sparse-checkout: .github/dependabot.yml
+          sparse-checkout-cone-mode: false
+          persist-credentials: false
+
+      - name: Ask npm whether the tooling accepts the latest TypeScript
+        id: check
+        run: |
+          set -euo pipefail
+
+          # Once the ignore rule is gone there is nothing left to watch, so a
+          # forgotten copy of this workflow cannot keep reopening the issue.
+          if ! grep -q 'dependency-name: "typescript"' .github/dependabot.yml; then
+            echo "dependabot.yml no longer holds TypeScript back; nothing to watch."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          latest="$(npm view typescript version)"
+          ready=true
+          for pkg in @astrojs/check typescript-eslint @typescript-eslint/parser; do
+            # No typescript peer at all would mean nothing left to block on.
+            range="$(npm view "$pkg" peerDependencies.typescript)"
+            range="${range:-*}"
+            if npx --yes semver@7.8.5 --range "$range" "$latest" > /dev/null; then
+              echo "$pkg accepts typescript $latest (peer: $range)"
+            else
+              echo "$pkg does not accept typescript $latest yet (peer: $range)"
+              ready=false
+            fi
+          done
+
+          echo "latest=$latest" >> "$GITHUB_OUTPUT"
+          echo "ready=$ready" >> "$GITHUB_OUTPUT"
+
+      - name: Open a reminder issue
+        if: steps.check.outputs.ready == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+          LATEST: ${{ steps.check.outputs.latest }}
+        run: |
+          set -euo pipefail
+
+          title="Lift the Dependabot hold on TypeScript majors"
+          open="$(gh issue list --state open --search "\"$title\" in:title" --json number --jq 'length')"
+          if [ "$open" != "0" ]; then
+            echo "Reminder issue is already open."
+            exit 0
+          fi
+
+          gh issue create --title "$title" --body "$(cat <<EOF
+          \`@astrojs/check\`, \`typescript-eslint\` and \`@typescript-eslint/parser\` now accept TypeScript ${LATEST}.
+
+          1. Merge any open Dependabot PRs that move those packages to the releases that accept it.
+          2. Delete the \`typescript\` entry under \`ignore:\` in \`.github/dependabot.yml\`.
+
+          Dependabot then opens the TypeScript upgrade on its next run, and this workflow goes quiet.
+          EOF
+          )"
