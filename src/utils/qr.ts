@@ -15,8 +15,17 @@ export function generateSPDString(options: QRPlatbaOptions): string {
   }
 
   if (message) {
-    // Basic sanitization for SPD message (max 60 chars, remove accents, limit charset if needed, but modern apps support unicode. We will truncate to be safe).
-    spd += `*MSG:${message.substring(0, 60)}`;
+    // `*` separates SPD fields and `\n` would terminate the payload, so strip
+    // both before embedding: otherwise a message could inject its own fields
+    // (including a different ACC). Modern banking apps handle unicode, but the
+    // spec caps MSG at 60 characters.
+    const safeMessage = message
+      .replace(/[*\r\n]/g, " ")
+      .trim()
+      .substring(0, 60);
+    if (safeMessage) {
+      spd += `*MSG:${safeMessage}`;
+    }
   }
 
   return spd;

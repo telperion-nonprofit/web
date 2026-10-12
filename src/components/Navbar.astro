@@ -1,24 +1,15 @@
 ---
-import { useTranslations, replacePlaceholders } from "../utils/i18n";
-import type { Locale } from "../utils/i18n";
-const lang = (Astro.currentLocale as Locale) || "cs";
-const t = useTranslations(lang);
 import type { MenuItem } from "../types";
 import DesktopMenuItem from "./navbar/DesktopMenuItem.astro";
 import MobileMenuItem from "./navbar/MobileMenuItem.astro";
 import LanguageDropdown from "./LanguageDropdown.astro";
-import ThemeToggle from "./ThemeToggle.astro";
 import { Image } from "astro:assets";
 import logoImg from "../assets/logo.png";
-import { getRelativeLocaleUrl } from "astro:i18n";
-import { translatePath } from "../utils/lang";
+import { getLangFromUrl, translatePath, useTranslations } from "../i18n";
 
-const getUrl = (path: string) => {
-  if (path === "#") return path;
-  if (lang === "cs") return path;
-
-  return translatePath(path, "en");
-};
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const getUrl = (path: string) => translatePath(path, lang);
 
 const menuItems: MenuItem[] = [
   { name: t("nav.home"), url: getUrl("/") },

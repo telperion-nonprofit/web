@@ -12,11 +12,15 @@ const { item } = Astro.props;
   {
     item.subItems ? (
       <>
-        <button class="flex items-center gap-1 text-dark-green hover:text-brand-green hover:bg-white/30 px-4 py-2 rounded-full font-medium transition-all duration-200">
+        <button
+          type="button"
+          aria-haspopup="true"
+          class="flex items-center gap-1 text-dark-green hover:text-brand-green hover:bg-white/30 px-4 py-2 rounded-full font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-green"
+        >
           {item.name}
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180"
+            class="h-4 w-4 transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -31,7 +35,7 @@ const { item } = Astro.props;
         </button>
 
         <div
-          class="absolute left-0 top-full mt-2 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0"
+          class="absolute left-0 top-full mt-2 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-300 transform origin-top translate-y-2 group-hover:translate-y-0 group-focus-within:translate-y-0"
           data-navbar-dropdown
         >
           <div class="glass-card rounded-2xl shadow-xl overflow-hidden p-2 flex flex-col gap-1">

@@ -13,9 +13,13 @@ import Footer from "../components/Footer.astro";
 import Modal from "../components/Modal.astro";
 import DonationModal from "../components/DonationModal.astro";
 
-import { replacePlaceholders } from "../utils/i18n";
-import type { Locale } from "../utils/i18n";
-import { translatePath, getSafeLanguage } from "../utils/lang";
+import {
+  getLangFromUrl,
+  htmlLang,
+  translatePath,
+  useTranslations,
+  type Locale,
+} from "../i18n";
 
 interface Props {
   title?: string;
@@ -24,20 +28,15 @@ interface Props {
   noindex?: boolean;
 }
 
-const lang = (Astro.currentLocale as Locale) || "cs";
-const htmlLang = lang === "en" ? "en" : "cs-CZ";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 
 const {
   title,
-  description = "Mladí učí o klimatu. Vzdělávací programy pro školy a veřejnost.",
+  description = t("meta.description"),
   image,
   noindex = false,
 } = Astro.props;
-
-const translatedTitle = title ? replacePlaceholders(title, lang) : undefined;
-const translatedDesc = description
-  ? replacePlaceholders(description, lang)
-  : undefined;
 
 // Create canonical URL without query parameters
 const canonicalUrl = new URL(
@@ -46,7 +45,7 @@ const canonicalUrl = new URL(
 );
 
 // Helper to create hreflang URLs
-const getHreflangUrl = (targetLang: string) => {
+const getHreflangUrl = (targetLang: Locale) => {
   let currentPath = Astro.url.pathname;
   if (
     currentPath !== "/" &&
@@ -56,7 +55,7 @@ const getHreflangUrl = (targetLang: string) => {
     currentPath = currentPath.slice(0, -1);
   }
 
-  const newPath = translatePath(currentPath, targetLang as "en" | "cs");
+  const newPath = translatePath(currentPath, targetLang);
 
   return new URL(newPath, Astro.site || "https://www.telperion.cz").href;
 };
@@ -69,66 +68,22 @@ const includeAlternateLinks = !noindex;
 ---
 
 <!doctype html>
-<html lang={htmlLang} class="scroll-smooth">
+<html lang={htmlLang[lang]} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <style is:inline>
-      /* Keep the navbar stable before the full Tailwind bundle finishes parsing. */
-      [data-navbar-desktop],
-      [data-navbar-desktop-actions] {
-        display: none !important;
-      }
-
-      [data-navbar-mobile-toggle] {
-        display: flex !important;
-      }
-
-      [data-navbar-dropdown] {
-        opacity: 0;
-        visibility: hidden;
-      }
-
-      [data-navbar-menu-item]:hover [data-navbar-dropdown] {
-        opacity: 1;
-        visibility: visible;
-      }
-
-      [data-navbar-close-icon] {
-        display: none;
-      }
-
-      #mobile-menu-btn[aria-expanded="true"] [data-navbar-close-icon] {
-        display: block;
-      }
-
-      #mobile-menu-btn[aria-expanded="true"] [data-navbar-hamburger-icon] {
-        display: none;
-      }
-
-      @media (min-width: 64rem) {
-        [data-navbar-desktop],
-        [data-navbar-desktop-actions] {
-          display: flex !important;
-        }
-
-        [data-navbar-mobile-toggle] {
-          display: none !important;
-        }
-      }
-    </style>
     <script is:inline>
       // Temporary theme lockdown: Always Light Mode
       document.documentElement.classList.remove("dark");
     </script>
-    <meta name="description" content={translatedDesc} />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="icon" type="image/png" href="/favicon.ico" />
     <meta
       property="og:title"
-      content={`${translatedTitle || "Domů"} | Telperion`}
+      content={`${title || t("nav.home")} | Telperion`}
     />
-    <meta property="og:description" content={translatedDesc} />
+    <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl.href} />
     {
@@ -145,9 +100,9 @@ const includeAlternateLinks = !noindex;
     <meta name="twitter:card" content="summary" />
     <meta
       name="twitter:title"
-      content={`${translatedTitle || "Domů"} | Telperion`}
+      content={`${title || t("nav.home")} | Telperion`}
     />
-    <meta name="twitter:description" content={translatedDesc} />
+    <meta name="twitter:description" content={description} />
     {
       image && (
         <meta
@@ -177,10 +132,8 @@ const includeAlternateLinks = !noindex;
     }
 
     <title>
-      {translatedTitle ? `${translatedTitle} | Telperion` : "Telperion"}
+      {title ? `${title} | Telperion` : "Telperion"}
     </title>
-    <Analytics />
-    <SpeedInsights />
   </head>
 
   <body class="bg-cream text-dark-green font-sans antialiased">
@@ -223,5 +176,13 @@ const includeAlternateLinks = !noindex;
 
     <Modal />
     <DonationModal />
+
+    {
+      /* Must stay in <body>: these render custom elements, and a non-head element
+        inside <head> implicitly closes it, pushing Astro's stylesheet link into
+        the body where it no longer blocks the first paint (FOUC). */
+    }
+    <Analytics />
+    <SpeedInsights />
   </body>
 </html>

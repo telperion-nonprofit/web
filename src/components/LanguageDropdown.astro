@@ -1,6 +1,12 @@
 ---
 import { Icon } from "astro-icon/components";
-import { translatePath } from "../utils/lang";
+import {
+  getLangFromUrl,
+  localeNames,
+  locales,
+  translatePath,
+  type Locale,
+} from "../i18n";
 
 interface Props {
   mobile?: boolean;
@@ -18,25 +24,13 @@ if (
   currentPath = currentPath.slice(0, -1);
 }
 
-const isEn = currentPath === "/en" || currentPath.startsWith("/en/");
-const currentLabel = isEn ? "EN" : "CS";
+const lang = getLangFromUrl(Astro.url);
 const isStatusPath = /^\/(en\/)?(404|500)\/?$/.test(currentPath);
 
-let csPath = "/";
-let enPath = "/en/";
-
-if (isStatusPath) {
-  csPath = "/";
-  enPath = "/en/";
-} else {
-  if (isEn) {
-    enPath = currentPath;
-    csPath = translatePath(currentPath, "cs");
-  } else {
-    csPath = currentPath || "/";
-    enPath = translatePath(currentPath, "en");
-  }
-}
+// Status pages have no counterpart, so they link to each locale's home page.
+const statusHomes: Record<Locale, string> = { cs: "/", en: "/en/" };
+const hrefFor = (target: Locale) =>
+  isStatusPath ? statusHomes[target] : translatePath(currentPath, target);
 ---
 
 <div
@@ -54,7 +48,7 @@ if (isStatusPath) {
   >
     <div class="flex items-center gap-2">
       <Icon name="mdi:earth" class="w-5 h-5 text-brand-green" />
-      <span class="current-language-label">{currentLabel}</span>
+      <span class="current-language-label">{lang.toUpperCase()}</span>
     </div>
     <Icon
       name="mdi:chevron-down"
@@ -73,20 +67,17 @@ if (isStatusPath) {
     style="display: none;"
   >
     <div class="p-2 flex flex-col gap-1">
-      <a
-        href={csPath}
-        class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
-        role="menuitem"
-      >
-        Čeština
-      </a>
-      <a
-        href={enPath}
-        class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
-        role="menuitem"
-      >
-        English
-      </a>
+      {
+        locales.map((locale) => (
+          <a
+            href={hrefFor(locale)}
+            class="lang-option flex w-full items-center px-4 py-2.5 text-sm text-dark-green font-medium hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
+            role="menuitem"
+          >
+            {localeNames[locale]}
+          </a>
+        ))
+      }
     </div>
   </div>
 </div>
@@ -133,7 +124,7 @@ if (isStatusPath) {
 
     // Setup each dropdown
     dropdowns.forEach((dropdown) => {
-      const { container, toggle, menu } = dropdown;
+      const { toggle, menu } = dropdown;
       if (toggle && menu) {
         toggle.addEventListener("click", () => {
           const isExpanded = toggle.getAttribute("aria-expanded") === "true";

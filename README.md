@@ -21,7 +21,7 @@ This project is built using a modern frontend stack:
 
 - **Astro** - For blazing fast static site generation (SSG) with zero JavaScript shipped by default.
 - **Tailwind CSS v4** - For rapid, utility-first styling.
-- **Tolgee** - For robust localization and translation management.
+- **Vanilla i18n** - Typed translation dictionaries in `src/i18n/`, resolved at build time.
 - **Playwright** - For end-to-end (E2E) testing.
 
 ## 🚀 Local Development
@@ -40,13 +40,10 @@ This project is built using a modern frontend stack:
 
    The site will be available at `http://localhost:4321`.
 
-3. **Tolgee Localization Workflow:**
-   We use Tolgee to manage translations. You should pull the latest translations from the cloud before pushing new code.
-   First, ensure you have the Tolgee CLI tool or use npx. Then run:
-   ```bash
-   npx tolgee pull --api-key <YOUR_TOLGEE_API_KEY>
-   ```
-   This will update the `src/i18n/cs-CZ.json` and `src/i18n/en.json` dictionaries.
+3. **Translations:**
+   UI strings live in `src/i18n/cs.ts` (Czech, the default) and `src/i18n/en.ts`.
+   Add a key to both files; `npm run typecheck` fails if either locale is missing it.
+   See [Architecture Documentation](docs/ARCHITECTURE.md#internationalisation) for details.
 
 ## 🧪 Testing
 

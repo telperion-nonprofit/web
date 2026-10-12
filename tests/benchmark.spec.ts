@@ -1,5 +1,14 @@
 import { test } from "@playwright/test";
 
+declare global {
+  interface Window {
+    clickToggleBaseline: (index: number) => void;
+    clickOutsideBaseline: (target: HTMLElement | null) => void;
+    clickToggleOptimized: (index: number) => void;
+    clickOutsideOptimized: (target: HTMLElement | null) => void;
+  }
+}
+
 test("LanguageDropdown Initialization Benchmark", async ({ page }) => {
   const numDropdowns = 10000;
 
