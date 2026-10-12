@@ -1,0 +1,84 @@
+name: Claude fix for Dependabot
+
+# When CI fails on a Dependabot npm update, Claude reads the failed log, adapts
+# the code to the new version and pushes the fix to the same branch.
+#
+# - The push uses the Claude GitHub App token (the action's default auth, hence
+#   no `github_token` input). Unlike a GITHUB_TOKEN push, that starts CI again,
+#   and the auto-merge queued by dependabot-auto-merge.yml lands the PR once
+#   `CI` is green.
+# - One attempt per Dependabot push: CI started by Claude's own commit runs as
+#   claude[bot], which the `if` below skips. A fix that is still red waits for
+#   a human.
+# - npm updates only. The Claude GitHub App cannot write workflow files, so it
+#   could not fix a GitHub Actions bump anyway.
+# - Like any job that installs the update, this one runs the new dependency's
+#   code — here with a repository write token and the Claude token present.
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read # read the failed run's log
+  id-token: write # exchanged for the Claude GitHub App token
+
+jobs:
+  fix:
+    name: Fix CI with Claude
+    if: |
+      github.event.workflow_run.conclusion == 'failure' &&
+      github.event.workflow_run.actor.login == 'dependabot[bot]' &&
+      github.event.workflow_run.pull_requests[0] &&
+      startsWith(github.event.workflow_run.head_branch, 'dependabot/npm_and_yarn/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    # A newer Dependabot push to the same branch supersedes this attempt.
+    concurrency:
+      group: claude-fix-${{ github.event.workflow_run.head_branch }}
+      cancel-in-progress: true
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_branch }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Save the failed CI log
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+        run: gh run view "$RUN_ID" --log-failed > "$RUNNER_TEMP/ci-failure.log"
+
+      - name: Fix with Claude
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          # Dependabot started the CI run, and the action refuses runs started
+          # by bots that are not listed here.
+          allowed_bots: "dependabot[bot]"
+          claude_args: >-
+            --max-turns 60
+            --add-dir ${{ runner.temp }}
+            --allowedTools "Read,Edit,Write,Glob,Grep,WebFetch,WebSearch,Bash(npm:*),Bash(npx:*),Bash(git:*),Bash(gh pr comment:*)"
+          prompt: |
+            CI failed on Dependabot pull request #${{ github.event.workflow_run.pull_requests[0].number }} (branch `${{ github.event.workflow_run.head_branch }}`), which updates npm dependencies. The branch is checked out. Make CI pass with the new versions.
+
+            - Failed run: ${{ github.event.workflow_run.html_url }}
+            - Log of the failed steps: ${{ runner.temp }}/ci-failure.log. It is long, so search it rather than reading it whole.
+            - What CI runs: .github/workflows/ci.yml. Follow docs/AI_INSTRUCTIONS.md.
+
+            1. Reproduce: `npm ci`, then the npm script(s) that failed. For a failed E2E project, install only its browser (`npx playwright install --with-deps <browser>`) and run `npx playwright test --project="<project>"`.
+            2. Adapt the code, config or tests to the new version, using the package's changelog or migration guide. If the new version needs companion packages bumped too, update them with npm so package-lock.json stays consistent.
+            3. Re-run everything that failed, plus `npm run format:check`, until it passes.
+            4. Commit (`fix(deps): adapt to <package> <version>`) and `git push origin HEAD`. Never force-push.
+
+            Never revert or pin back the update, add `overrides`, use `--force` or `--legacy-peer-deps`, skip or delete tests, loosen lint or type rules, or edit anything under .github/.
+
+            If it cannot be done cleanly (for example, a peer dependency does not support the new version yet), push nothing. Run `gh pr comment ${{ github.event.workflow_run.pull_requests[0].number }} --body "..."` saying what blocks the update and what would unblock it, then stop.
