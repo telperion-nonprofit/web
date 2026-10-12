@@ -18,7 +18,8 @@ updates:
       # TypeScript 7 is the native (Go) compiler and no longer ships the JS
       # compiler API that `astro check` (@astrojs/check) and typescript-eslint
       # load, so both cap their typescript peer at 6 and `npm ci` fails with
-      # ERESOLVE. Drop this once both declare support for typescript 7.
+      # ERESOLVE. Temporary: the "TypeScript 7 readiness" workflow opens an
+      # issue once both accept TypeScript 7; delete this entry then.
       - dependency-name: "typescript"
         update-types:
           - "version-update:semver-major"
