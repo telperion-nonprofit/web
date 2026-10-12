@@ -1,10 +1,9 @@
 ---
-const currentYear = new Date().getFullYear();
-const lang = Astro.currentLocale || "cs";
+import { getLangFromUrl, translatePath, useTranslations } from "../i18n";
 
-const privacyLink =
-  lang === "en" ? "/en/privacy-policy" : "/ochrana-osobnich-udaju";
-const privacyLabel = lang === "en" ? "Privacy" : "Soukromí";
+const currentYear = new Date().getFullYear();
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <footer class="w-full flex justify-center pb-6 px-4">
@@ -19,10 +18,10 @@ const privacyLabel = lang === "en" ? "Privacy" : "Soukromí";
     <span class="hidden sm:block h-4 w-px bg-dark-green/20" aria-hidden="true"
     ></span>
     <a
-      href={privacyLink}
+      href={translatePath("/ochrana-osobnich-udaju", lang)}
       class="inline-flex items-center min-h-6 px-1 text-sm text-dark-green font-bold hover:text-brand-green transition-colors duration-200"
     >
-      {privacyLabel}
+      {t("footer.privacy")}
     </a>
   </div>
 </footer>
