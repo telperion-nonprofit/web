@@ -14,6 +14,14 @@ updates:
       prefix: "build(deps)"
       prefix-development: "build(deps-dev)"
       include: "scope"
+    ignore:
+      # TypeScript 7 is the native (Go) compiler and no longer ships the JS
+      # compiler API that `astro check` (@astrojs/check) and typescript-eslint
+      # load, so both cap their typescript peer at 6 and `npm ci` fails with
+      # ERESOLVE. Drop this once both declare support for typescript 7.
+      - dependency-name: "typescript"
+        update-types:
+          - "version-update:semver-major"
     groups:
       # Patch/minor updates travel together so one green CI run lands the whole
       # week's batch instead of seven PRs racing each other.
