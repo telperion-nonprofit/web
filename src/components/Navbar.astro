@@ -35,9 +35,7 @@ const menuItems: MenuItem[] = [
 ];
 ---
 
-<header
-  class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none"
->
+<header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-6 lg:px-8 transition-all duration-300 pointer-events-none">
   <div class="relative mx-auto max-w-6xl px-6 py-3 pointer-events-auto">
     <div class="absolute inset-0 glass-card shadow-sm rounded-full -z-10"></div>
 
@@ -60,10 +58,10 @@ const menuItems: MenuItem[] = [
         class="hidden lg:flex flex-1 justify-center items-center pointer-events-none z-10 px-4"
         data-navbar-desktop
       >
-        <ul
-          class="flex items-center space-x-1 lg:space-x-4 pointer-events-auto"
-        >
-          {menuItems.map((item) => <DesktopMenuItem item={item} />)}
+        <ul class="flex items-center space-x-1 lg:space-x-4 pointer-events-auto">
+          {menuItems.map((item) => (
+            <DesktopMenuItem item={item} />
+          ))}
         </ul>
       </nav>
 
@@ -101,7 +99,8 @@ const menuItems: MenuItem[] = [
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"></path>
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
           </svg>
           <svg
             class="close-icon h-6 w-6 hidden group-aria-expanded:block"
@@ -115,7 +114,8 @@ const menuItems: MenuItem[] = [
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"></path>
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
           </svg>
         </button>
       </div>
@@ -128,7 +128,9 @@ const menuItems: MenuItem[] = [
     style="display: none;"
   >
     <div class="glass-card rounded-3xl shadow-lg px-4 pt-4 pb-6 space-y-2">
-      {menuItems.map((item) => <MobileMenuItem item={item} />)}
+      {menuItems.map((item) => (
+        <MobileMenuItem item={item} />
+      ))}
       <div class="pt-4 mt-2 border-t border-brand-green/10 space-y-4">
         <div class="flex items-center gap-4 w-full">
           <div class="flex-grow">

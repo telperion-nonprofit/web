@@ -11,17 +11,11 @@ const t = useTranslations(lang);
 <Layout title={t("podcast.page_title")}>
   <section class="min-h-[70vh] flex items-center pt-12 pb-8 px-4">
     <div class="container mx-auto max-w-4xl">
-      <div
-        class="glass-card rounded-3xl p-8 md:p-16 text-center shadow-xl border border-brand-green/20 relative overflow-hidden"
-      >
-        <div
-          class="absolute -top-10 -right-10 text-brand-green/10 transform rotate-12 pointer-events-none"
-        >
+      <div class="glass-card rounded-3xl p-8 md:p-16 text-center shadow-xl border border-brand-green/20 relative overflow-hidden">
+        <div class="absolute -top-10 -right-10 text-brand-green/10 transform rotate-12 pointer-events-none">
           <Icon name="mdi:microphone-variant" class="w-48 h-48" />
         </div>
-        <div
-          class="absolute -bottom-10 -left-10 text-brand-green/10 transform -rotate-12 pointer-events-none"
-        >
+        <div class="absolute -bottom-10 -left-10 text-brand-green/10 transform -rotate-12 pointer-events-none">
           <Icon name="mdi:headphones" class="w-48 h-48" />
         </div>
 
@@ -30,26 +24,18 @@ const t = useTranslations(lang);
             {t("podcast.badge")}
           </SectionBadge>
 
-          <h1
-            class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6 leading-tight"
-          >
-            {t("podcast.title_main")}
-            {" "}
+          <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6 leading-tight">
+            {t("podcast.title_main")}{" "}
             <span class="italic">{t("podcast.title_highlight")}</span>
           </h1>
 
-          <p
-            class="text-lg md:text-xl text-dark-green/80 font-medium max-w-2xl mb-10 leading-relaxed"
-          >
-            {t("podcast.description")}
-            {" "}
+          <p class="text-lg md:text-xl text-dark-green/80 font-medium max-w-2xl mb-10 leading-relaxed">
+            {t("podcast.description")}{" "}
             <strong>{t("podcast.description_highlight")}</strong>
           </p>
 
           <div class="flex flex-col items-center space-y-4 mb-12">
-            <p
-              class="text-sm font-bold text-dark-green uppercase tracking-wide"
-            >
+            <p class="text-sm font-bold text-dark-green uppercase tracking-wide">
               {t("podcast.platforms_label")}
             </p>
             <div class="flex gap-6">

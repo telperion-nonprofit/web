@@ -86,16 +86,12 @@ const includeAlternateLinks = !noindex;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalUrl.href} />
-    {
-      image && (
-        <meta
-          property="og:image"
-          content={
-            new URL(image, Astro.site || "https://www.telperion.cz").href
-          }
-        />
-      )
-    }
+    {image && (
+      <meta
+        property="og:image"
+        content={new URL(image, Astro.site || "https://www.telperion.cz").href}
+      />
+    )}
 
     <meta name="twitter:card" content="summary" />
     <meta
@@ -103,33 +99,23 @@ const includeAlternateLinks = !noindex;
       content={`${title || t("nav.home")} | Telperion`}
     />
     <meta name="twitter:description" content={description} />
-    {
-      image && (
-        <meta
-          name="twitter:image"
-          content={
-            new URL(image, Astro.site || "https://www.telperion.cz").href
-          }
-        />
-      )
-    }
+    {image && (
+      <meta
+        name="twitter:image"
+        content={new URL(image, Astro.site || "https://www.telperion.cz").href}
+      />
+    )}
 
     <link rel="canonical" href={canonicalUrl.href} />
-    {
-      includeAlternateLinks && (
-        <link rel="alternate" hreflang="cs" href={csUrl} />
-      )
-    }
-    {
-      includeAlternateLinks && (
-        <link rel="alternate" hreflang="en" href={enUrl} />
-      )
-    }
-    {
-      includeAlternateLinks && (
-        <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
-      )
-    }
+    {includeAlternateLinks && (
+      <link rel="alternate" hreflang="cs" href={csUrl} />
+    )}
+    {includeAlternateLinks && (
+      <link rel="alternate" hreflang="en" href={enUrl} />
+    )}
+    {includeAlternateLinks && (
+      <link rel="alternate" hreflang="x-default" href={xDefaultUrl} />
+    )}
 
     <title>
       {title ? `${title} | Telperion` : "Telperion"}
@@ -138,9 +124,7 @@ const includeAlternateLinks = !noindex;
 
   <body class="bg-cream text-dark-green font-sans antialiased">
     <div class="relative overflow-hidden flex flex-col min-h-screen">
-      <div
-        class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0"
-      >
+      <div class="absolute top-0 right-0 w-64 md:w-96 opacity-90 pointer-events-none z-0">
         <Image
           src={leaves}
           alt=""
@@ -150,9 +134,7 @@ const includeAlternateLinks = !noindex;
           height={317}
         />
       </div>
-      <div
-        class="absolute bottom-0 left-0 rotate-180 w-64 md:w-96 opacity-90 pointer-events-none z-0"
-      >
+      <div class="absolute bottom-0 left-0 rotate-180 w-64 md:w-96 opacity-90 pointer-events-none z-0">
         <Image
           src={leaves}
           alt=""
@@ -177,11 +159,9 @@ const includeAlternateLinks = !noindex;
     <Modal />
     <DonationModal />
 
-    {
-      /* Must stay in <body>: these render custom elements, and a non-head element
+    {/* Must stay in <body>: these render custom elements, and a non-head element
         inside <head> implicitly closes it, pushing Astro's stylesheet link into
-        the body where it no longer blocks the first paint (FOUC). */
-    }
+        the body where it no longer blocks the first paint (FOUC). */}
     <Analytics />
     <SpeedInsights />
   </body>

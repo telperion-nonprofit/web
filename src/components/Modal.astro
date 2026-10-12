@@ -16,13 +16,10 @@ const t = useTranslations(lang);
   <div
     id="modal-backdrop"
     class="fixed inset-0 bg-dark-green/60 backdrop-blur-sm transition-opacity opacity-0 duration-300"
-  >
-  </div>
+  ></div>
 
   <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
-    <div
-      class="flex min-h-full items-center justify-center p-4 text-center sm:p-0"
-    >
+    <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
       <div
         id="modal-panel"
         class="relative transform overflow-hidden rounded-3xl bg-cream text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg scale-95 opacity-0 duration-300"
@@ -38,9 +35,7 @@ const t = useTranslations(lang);
 
         <div class="px-6 pb-4 pt-8 sm:p-8 sm:pb-6">
           <div class="sm:flex sm:items-start">
-            <div
-              class="mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-green/10 sm:mx-0 sm:h-12 sm:w-12 border border-brand-green/20"
-            >
+            <div class="mx-auto flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand-green/10 sm:mx-0 sm:h-12 sm:w-12 border border-brand-green/20">
               <Icon
                 name="mdi:email-fast-outline"
                 class="h-6 w-6 text-brand-green"
@@ -76,8 +71,9 @@ const t = useTranslations(lang);
               <label
                 for="name"
                 class="block text-sm font-medium leading-6 text-dark-green"
-                >{t("modal.label.name")}</label
               >
+                {t("modal.label.name")}
+              </label>
               <div class="mt-1">
                 <input
                   type="text"
@@ -93,8 +89,9 @@ const t = useTranslations(lang);
               <label
                 for="email"
                 class="block text-sm font-medium leading-6 text-dark-green"
-                >{t("modal.label.email")}</label
               >
+                {t("modal.label.email")}
+              </label>
               <div class="mt-1">
                 <input
                   type="email"
@@ -110,8 +107,9 @@ const t = useTranslations(lang);
               <label
                 for="phone"
                 class="block text-sm font-medium leading-6 text-dark-green"
-                >{t("modal.label.phone")}</label
               >
+                {t("modal.label.phone")}
+              </label>
               <div class="mt-1">
                 <input
                   type="tel"
@@ -126,8 +124,9 @@ const t = useTranslations(lang);
               <label
                 for="program"
                 class="block text-sm font-medium leading-6 text-dark-green"
-                >{t("modal.label.program")}</label
               >
+                {t("modal.label.program")}
+              </label>
               <div class="mt-1">
                 <select
                   name="program"
@@ -135,36 +134,36 @@ const t = useTranslations(lang);
                   required
                   class="block w-full rounded-xl border-0 py-2.5 px-4 text-dark-green shadow-sm ring-1 ring-inset ring-dark-green/20 focus:ring-2 focus:ring-inset focus:ring-brand-green sm:text-sm sm:leading-6 bg-white/50"
                 >
-                  <option value="" disabled selected
-                    >{t("modal.program.placeholder")}</option
-                  >
-                  <option value="klima-dny"
-                    >{t("modal.program.klima_dny")}</option
-                  >
-                  <option value="mozaika-junior"
-                    >{t("modal.program.mozaika_junior")}</option
-                  >
-                  <option value="mozaika-stredni-skola"
-                    >{t("modal.program.mozaika_stredni_skola")}</option
-                  >
-                  <option value="mozaika-firmy"
-                    >{t("modal.program.mozaika_firmy")}</option
-                  >
-                  <option value="mozaika-verejnost"
-                    >{t("modal.program.mozaika_verejnost")}</option
-                  >
-                  <option value="skautska-vikendovka"
-                    >{t("modal.program.skautska_vikendovka")}</option
-                  >
-                  <option value="slow-fast-fashion"
-                    >{t("modal.program.slow_fast_fashion")}</option
-                  >
-                  <option value="other-workshop"
-                    >{t("modal.program.other")}</option
-                  >
-                  <option value="not-workshop"
-                    >{t("modal.program.not_workshop")}</option
-                  >
+                  <option value="" disabled selected>
+                    {t("modal.program.placeholder")}
+                  </option>
+                  <option value="klima-dny">
+                    {t("modal.program.klima_dny")}
+                  </option>
+                  <option value="mozaika-junior">
+                    {t("modal.program.mozaika_junior")}
+                  </option>
+                  <option value="mozaika-stredni-skola">
+                    {t("modal.program.mozaika_stredni_skola")}
+                  </option>
+                  <option value="mozaika-firmy">
+                    {t("modal.program.mozaika_firmy")}
+                  </option>
+                  <option value="mozaika-verejnost">
+                    {t("modal.program.mozaika_verejnost")}
+                  </option>
+                  <option value="skautska-vikendovka">
+                    {t("modal.program.skautska_vikendovka")}
+                  </option>
+                  <option value="slow-fast-fashion">
+                    {t("modal.program.slow_fast_fashion")}
+                  </option>
+                  <option value="other-workshop">
+                    {t("modal.program.other")}
+                  </option>
+                  <option value="not-workshop">
+                    {t("modal.program.not_workshop")}
+                  </option>
                 </select>
               </div>
             </div>
@@ -173,8 +172,9 @@ const t = useTranslations(lang);
               <label
                 for="message"
                 class="block text-sm font-medium leading-6 text-dark-green"
-                >{t("modal.label.message")}</label
               >
+                {t("modal.label.message")}
+              </label>
               <div class="mt-1">
                 <textarea
                   id="message"

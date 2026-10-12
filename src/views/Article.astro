@@ -30,15 +30,11 @@ const t = useTranslations(lang);
         {t("articles.back")}
       </a>
 
-      <h1
-        class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-4"
-      >
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-4">
         {entry.data.title}
       </h1>
 
-      <div
-        class="flex items-center justify-center gap-4 text-dark-green/60 font-medium"
-      >
+      <div class="flex items-center justify-center gap-4 text-dark-green/60 font-medium">
         <div class="flex items-center gap-2">
           <Icon name="mdi:calendar-blank" class="w-4 h-4" />
           <time datetime={entry.data.pubDate.toISOString()}>
