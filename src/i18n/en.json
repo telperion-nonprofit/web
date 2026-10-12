@@ -244,32 +244,48 @@
     "title_main": "We bring climate to"
   },
   "team": {
-    "anna": {
-      "role": "Web Developer, IT Specialist, Graphic Designer"
+    "anna_zezulka": {
+      "role": "PR, IT"
     },
-    "damia": {
-      "role": "Vice Chair of the Association, Association Administration, Program Coordinator for Scout Climate Weekend"
+    "damia_vesela": {
+      "role": "Projects"
     },
-    "david": {
-      "role": "Trainer of Climate Days program, Program Facilitator Climate Fresk"
+    "david_bartos": {
+      "role": "Instructor"
     },
-    "jakub": {
-      "role": "Chair of the Association, Program Coordinator Re:Generation, Program Coordinator Climate Fresk, Facilitator"
+    "hana_trinh": {
+      "role": "Member"
     },
-    "jolana": {
-      "role": "Climate Days Program Instructor, Graphic Designer, Board Game Developer"
+    "jakub_nekvasil": {
+      "role": "Chair"
     },
-    "klara": {
-      "role": "Program Facilitator Climate Fresk"
+    "jolana_balcarova": {
+      "role": "HR"
     },
-    "lucie": {
-      "role": "Program Coordinator Climate Fresk"
+    "karolina_ciencialova": {
+      "role": "PR"
     },
-    "martin": {
-      "role": "Internal operations and management, Communication and partnership"
+    "klara_adamkova": {
+      "role": "Member"
     },
-    "sofia": {
-      "role": "Climate Days Program Instructor, Graphic Designer"
+    "klara_bodlakova": {
+      "role": "Instructor"
+    },
+    "mykhailo_ovechkin": {
+      "role": "Finance"
+    },
+    "sections": {
+      "leadership": "Leadership",
+      "members": "Members"
+    },
+    "sofia_grycova": {
+      "role": "PR"
+    },
+    "stella_tomanova": {
+      "role": "Instructor"
+    },
+    "valeriia_tsyhanchuk": {
+      "role": "Instructor"
     }
   }
 }
