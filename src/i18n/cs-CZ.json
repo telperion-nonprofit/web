@@ -246,32 +246,48 @@
   },
   "_test_fallback_key": "This is a test fallback value",
   "team": {
-    "anna": {
-      "role": "Webová vývojářka, IT specialistka, Grafička"
+    "anna_zezulka": {
+      "role": "PR, IT"
     },
-    "damia": {
-      "role": "Místopředsedkyně spolku, Administrativa spolku, Koordinátorka programu Klima víkendovka pro skauty"
+    "damia_vesela": {
+      "role": "Projekty"
     },
-    "david": {
-      "role": "Lektor programu Klimatické dny, Facilitátor programu Climate Fresk"
+    "david_bartos": {
+      "role": "Lektor"
     },
-    "jakub": {
-      "role": "Předseda spolku, Koordinátor programu Re:generace, Koordinátor programu Climate Fresk, Facilitátor"
+    "hana_trinh": {
+      "role": "Členka"
     },
-    "jolana": {
-      "role": "Lektorka programu Klimatické dny, Grafička, Vývojářka deskových her"
+    "jakub_nekvasil": {
+      "role": "Předseda"
     },
-    "klara": {
-      "role": "Facilitátorka programu Climate Fresk"
+    "jolana_balcarova": {
+      "role": "HR"
     },
-    "lucie": {
-      "role": "Koordinátorka programu Climate Fresk"
+    "karolina_ciencialova": {
+      "role": "PR"
     },
-    "martin": {
-      "role": "Interní fungování a operativa, Komunikace a partnerství"
+    "klara_adamkova": {
+      "role": "Členka"
     },
-    "sofia": {
-      "role": "Lektorka programu Klimatické dny, Grafička"
+    "klara_bodlakova": {
+      "role": "Lektorka"
+    },
+    "mykhailo_ovechkin": {
+      "role": "Finance"
+    },
+    "sections": {
+      "leadership": "Vedení",
+      "members": "Členové"
+    },
+    "sofia_grycova": {
+      "role": "PR"
+    },
+    "stella_tomanova": {
+      "role": "Lektorka"
+    },
+    "valeriia_tsyhanchuk": {
+      "role": "Lektorka"
     }
   }
 }

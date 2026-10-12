@@ -3,10 +3,11 @@ import Layout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import SectionBadge from "../components/SectionBadge.astro";
+import TeamSection from "../components/TeamSection.astro";
 import teamPhoto from "../assets/team.jpg";
 import { useTranslations } from "../utils/i18n";
 import type { Locale } from "../utils/i18n";
-import { teamMembers } from "../data/team";
+import { leadership, members } from "../data/team";
 
 const lang = (Astro.currentLocale as Locale) || "cs";
 const t = useTranslations(lang);
@@ -59,69 +60,18 @@ const t = useTranslations(lang);
 
   <section class="pb-8 md:pb-8">
     <div class="container mx-auto px-4 max-w-6xl">
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {
-          teamMembers.map((member) => (
-            <div class="glass-card rounded-3xl p-6 sm:p-8 transform-gpu will-change-transform h-full flex flex-col transition-transform duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-brand-green/10">
-              <div class="w-24 h-24 rounded-full bg-brand-green/10 flex items-center justify-center text-brand-green mb-6 mx-auto overflow-hidden border-2 border-brand-green/20">
-                {member.image ? (
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    class="w-full h-full object-cover"
-                    width={96}
-                    height={96}
-                    quality={60}
-                  />
-                ) : (
-                  <span class="text-3xl font-serif font-bold">
-                    {member.name.charAt(0)}
-                  </span>
-                )}
-              </div>
+      <TeamSection
+        title={t("team.sections.leadership")}
+        members={leadership}
+        data-testid="team-leadership"
+      />
 
-              <div class="text-center mb-4">
-                <h3 class="text-2xl font-serif font-bold text-brand-green mb-1">
-                  {member.name}
-                </h3>
-                {t(member.roleKey) !== member.roleKey &&
-                  t(member.roleKey) !== "" && (
-                    <p class="text-sm font-bold text-dark-green/60 uppercase tracking-wider">
-                      {t(member.roleKey)}
-                    </p>
-                  )}
-              </div>
-
-              <div class="flex flex-col gap-2 mt-auto">
-                {member.email && (
-                  <a
-                    href={`mailto:${member.email}`}
-                    class="flex items-center gap-3 text-sm text-dark-green font-medium hover:text-brand-green transition-colors p-2 rounded-xl hover:bg-white/40"
-                  >
-                    <Icon
-                      name="mdi:email-outline"
-                      class="w-5 h-5 text-brand-green flex-shrink-0"
-                    />
-                    <span class="truncate">{member.email}</span>
-                  </a>
-                )}
-                {member.phone && (
-                  <a
-                    href={`tel:${member.phone.replace(/\s+/g, "")}`}
-                    class="flex items-center gap-3 text-sm text-dark-green font-medium hover:text-brand-green transition-colors p-2 rounded-xl hover:bg-white/40"
-                  >
-                    <Icon
-                      name="mdi:phone-outline"
-                      class="w-5 h-5 text-brand-green flex-shrink-0"
-                    />
-                    <span>{member.phone}</span>
-                  </a>
-                )}
-              </div>
-            </div>
-          ))
-        }
-      </div>
+      <TeamSection
+        title={t("team.sections.members")}
+        members={members}
+        class="mt-16 md:mt-20"
+        data-testid="team-members"
+      />
 
       <div class="mt-16 md:mt-24 max-w-6xl mx-auto">
         <div
