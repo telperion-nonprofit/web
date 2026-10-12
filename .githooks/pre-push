@@ -1,18 +1,5 @@
 #!/bin/sh
 
-# Load API key from .env
-if [ -f "$(git rev-parse --show-toplevel)/.env" ]; then
-  export TOLGEE_API_KEY=$(grep '^PUBLIC_TOLGEE_API_KEY=' "$(git rev-parse --show-toplevel)/.env" | cut -d'=' -f2)
-fi
-
-echo "Pulling latest translations from Tolgee..."
-npx @tolgee/cli pull --api-key "$TOLGEE_API_KEY"
-if ! git diff --quiet src/i18n/; then
-  echo "Translations updated — committing changes automatically..."
-  git add src/i18n/
-  git commit -m "chore: update translations from Tolgee"
-fi
-
 echo "Running formatting and tests before push..."
 npm run format:check
 npm run lint

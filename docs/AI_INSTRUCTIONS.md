@@ -4,17 +4,21 @@ This document provides strict rules and guidelines for AI agents working within 
 
 ## Localization Rules
 
-### Always use `t()` from `src/utils/i18n.ts`
+### Always use `t()` from `src/i18n`
 
-When adding new text or translating existing ones, you must use the custom translation hook exported from `src/utils/i18n.ts`. Do not import JSON files directly or use client-side localization tools like `localStorage`.
+When adding new text or translating existing ones, use `useTranslations(getLangFromUrl(Astro.url))` from `src/i18n/index.ts` and its `t()` function. Do not import the dictionaries directly into components, ship them to client-side scripts, or use client-side localization tools like `localStorage`.
 
 ### Never hardcode English strings in Astro files
 
-The default language for the codebase is Czech (`cs-CZ`). You should only see translation keys (e.g., `t('home.hero.title_main')`) or hardcoded Czech strings. Do not hardcode English strings inside `.astro` files (or `.tsx`/`.vue`/etc. files). If you need an English string, place it inside `src/i18n/en.json` and use `t('key')`.
+The default language for the codebase is Czech (`cs`). UI text belongs in the dictionaries and is rendered with `t('key')` (e.g., `t('home.hero.title_main')`). Do not hardcode user-facing strings in `.astro` files; add the key to both `src/i18n/cs.ts` and `src/i18n/en.ts` instead. `npm run typecheck` fails when a key is missing from either file.
+
+### Write each page once
+
+Page markup lives in `src/views/`. The Czech route in `src/pages/` and its English counterpart in `src/pages/en/` only render the shared view. Do not copy a page per language; if a page gets a translated slug, add it to `routeMap` in `src/i18n/index.ts`.
 
 ### Organize translations logically
 
-Group your translations logically inside `src/i18n/cs-CZ.json` and `src/i18n/en.json` using appropriate keys. For instance, data objects should follow a `[feature].[subfeature].[property]` structure (e.g., `team.jakub.role`).
+Group your translations logically inside `src/i18n/cs.ts` and `src/i18n/en.ts`, keeping both files in the same order. Keys follow a `[feature].[subfeature].[property]` structure (e.g., `team.jakub_nekvasil.role`).
 
 ## Testing Rules
 
@@ -34,4 +38,4 @@ Use the established design variables in `src/styles/global.css`, including `--co
 
 ### Avoid Invisible Body anti-patterns
 
-To optimize SEO and LCP metrics, avoid the 'Invisible Body' anti-pattern by ensuring the server-rendered HTML is immediately visible. Do not use Tolgee loading states (e.g., `tolgee-loading` CSS classes or manual opacity manipulation) to hide the body element while waiting for client-side translations.
+To optimize SEO and LCP metrics, avoid the 'Invisible Body' anti-pattern by ensuring the server-rendered HTML is immediately visible. Do not hide the body (e.g., loading classes or manual opacity manipulation) while waiting for client-side scripts; all translations are already in the server-rendered HTML.

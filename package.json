@@ -17,7 +17,6 @@
     "test:unit": "tsx --test 'tests/unit/**/*.test.ts'",
     "test:e2e": "playwright test",
     "typecheck": "astro check",
-    "tolgee:extract": "tolgee extract",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
@@ -31,7 +30,6 @@
     "@iconify-json/mdi": "^1.2.3",
     "@sentry/astro": "^11.6.0",
     "@tailwindcss/vite": "^4.3.3",
-    "@tolgee/web": "^7.2.1",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
     "astro": "^7.3.8",
@@ -43,7 +41,6 @@
     "@astrojs/check": "^0.9.10",
     "@eslint/js": "^10.0.1",
     "@playwright/test": "^1.64.0",
-    "@tolgee/cli": "^2.20.0",
     "@types/qrcode": "^1.5.6",
     "@typescript-eslint/parser": "^8.71.1",
     "eslint": "^10.12.0",

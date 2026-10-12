@@ -1,6 +1,12 @@
 import test from "node:test";
 import assert from "node:assert";
-import { replacePlaceholders, getLangFromUrl } from "../../src/utils/i18n.ts";
+import { cs } from "../../src/i18n/cs.ts";
+import { en } from "../../src/i18n/en.ts";
+import {
+  getLangFromUrl,
+  isLocale,
+  useTranslations,
+} from "../../src/i18n/index.ts";
 
 test("getLangFromUrl utility", () => {
   const baseUrl = "https://example.com";
@@ -32,102 +38,34 @@ test("getLangFromUrl utility", () => {
   assert.strictEqual(getLangFromUrl(new URL("/entree", baseUrl)), "cs");
 });
 
-test("replacePlaceholders utility - basic replacements", () => {
-  // Test basic replacement for a known key in English
-  const enText = "Support us by visiting: [[donation_modal.title]]";
-  assert.strictEqual(
-    replacePlaceholders(enText, "en"),
-    "Support us by visiting: Support Us",
-  );
+test("isLocale accepts only supported locales", () => {
+  assert.strictEqual(isLocale("cs"), true);
+  assert.strictEqual(isLocale("en"), true);
+  assert.strictEqual(isLocale("cs-CZ"), false);
+  assert.strictEqual(isLocale("de"), false);
+  assert.strictEqual(isLocale(undefined), false);
+});
 
-  // Test basic replacement for a known key in Czech
-  const csText = "Podpořte nás: [[donation_modal.title]]";
+test("useTranslations returns the string for the requested locale", () => {
   assert.strictEqual(
-    replacePlaceholders(csText, "cs"),
-    "Podpořte nás: Podpořte nás",
+    useTranslations("cs")("donation_modal.title"),
+    "Podpořte nás",
+  );
+  assert.strictEqual(
+    useTranslations("en")("donation_modal.title"),
+    "Support Us",
   );
 });
 
-test("replacePlaceholders utility - multiple placeholders", () => {
-  const text =
-    "Title: [[donation_modal.title]], Amount: [[donation_modal.amount_other]]";
-  assert.strictEqual(
-    replacePlaceholders(text, "en"),
-    "Title: Support Us, Amount: Other",
-  );
-
-  assert.strictEqual(
-    replacePlaceholders(text, "cs"),
-    "Title: Podpořte nás, Amount: Jiné",
-  );
+test("dictionaries define the same keys", () => {
+  assert.deepStrictEqual(Object.keys(en).sort(), Object.keys(cs).sort());
 });
 
-test("replacePlaceholders utility - no placeholders", () => {
-  const text = "This is a regular string without any brackets.";
-  assert.strictEqual(
-    replacePlaceholders(text, "en"),
-    "This is a regular string without any brackets.",
-  );
-});
-
-test("replacePlaceholders utility - empty strings and falsy values", () => {
-  assert.strictEqual(replacePlaceholders("", "en"), "");
-  // Type coercion test if not strict string typing from callers
-  assert.strictEqual(
-    replacePlaceholders(undefined as unknown as string, "en"),
-    undefined,
-  );
-  assert.strictEqual(
-    replacePlaceholders(null as unknown as string, "en"),
-    null,
-  );
-});
-
-test("replacePlaceholders utility - missing keys", () => {
-  // For missing keys, useTranslations returns the key itself
-  const text = "Missing key: [[unknown.missing_key]]";
-  assert.strictEqual(
-    replacePlaceholders(text, "en"),
-    "Missing key: unknown.missing_key",
-  );
-});
-
-test("replacePlaceholders utility - fallback to cs", () => {
-  // If an English key is missing but the Czech key exists, it falls back to Czech.
-  // We'll simulate this by finding a key that exists in CS but not EN, or we can just
-  // assert that normal fallback mechanism provided by useTranslations works here.
-  // For now, testing basic replacement logic is the main goal.
-
-  // As a proxy, let's verify replacePlaceholders just correctly invokes translator.
-  const text = "Fallback test: [[donation_modal.title]]";
-  assert.strictEqual(
-    replacePlaceholders(text, "en"),
-    "Fallback test: Support Us",
-  );
-});
-
-test("replacePlaceholders utility - malformed placeholders", () => {
-  // Only exact [[key]] should be matched
-  const text1 = "Malformed: [donation_modal.title]";
-  assert.strictEqual(
-    replacePlaceholders(text1, "en"),
-    "Malformed: [donation_modal.title]",
-  );
-
-  const text2 = "Malformed: donation_modal.title]]";
-  assert.strictEqual(
-    replacePlaceholders(text2, "en"),
-    "Malformed: donation_modal.title]]",
-  );
-
-  const text3 = "Malformed: [[donation_modal.title";
-  assert.strictEqual(
-    replacePlaceholders(text3, "en"),
-    "Malformed: [[donation_modal.title",
-  );
-});
-
-test("replacePlaceholders utility - consecutive placeholders without spaces", () => {
-  const text = "[[donation_modal.amount_other]][[donation_modal.title]]";
-  assert.strictEqual(replacePlaceholders(text, "en"), "OtherSupport Us");
+test("dictionary values are non-empty and carry no stray whitespace", () => {
+  for (const [name, dictionary] of Object.entries({ cs, en })) {
+    for (const [key, value] of Object.entries(dictionary)) {
+      assert.ok(value.length > 0, `${name}: ${key} is empty`);
+      assert.strictEqual(value, value.trim(), `${name}: ${key} is not trimmed`);
+    }
+  }
 });

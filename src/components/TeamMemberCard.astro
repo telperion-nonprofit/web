@@ -3,8 +3,7 @@ import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import type { HTMLAttributes } from "astro/types";
 import type { TeamMember } from "../data/team";
-import { useTranslations } from "../utils/i18n";
-import type { Locale } from "../utils/i18n";
+import { getLangFromUrl, useTranslations } from "../i18n";
 
 interface Props extends HTMLAttributes<"div"> {
   member: TeamMember;
@@ -12,8 +11,7 @@ interface Props extends HTMLAttributes<"div"> {
 
 const { member, class: className, ...attrs } = Astro.props;
 
-const lang = (Astro.currentLocale as Locale) || "cs";
-const t = useTranslations(lang);
+const t = useTranslations(getLangFromUrl(Astro.url));
 const role = t(member.roleKey);
 const [emailUser, emailDomain] = member.email.split("@");
 ---
@@ -60,7 +58,7 @@ const [emailUser, emailDomain] = member.email.split("@");
       {member.name}
     </h3>
     {
-      role !== member.roleKey && role !== "" && (
+      role && (
         <p class="text-sm font-bold text-dark-green/60 uppercase tracking-wider">
           {role}
         </p>

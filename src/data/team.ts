@@ -1,4 +1,5 @@
 import type { ImageMetadata } from "astro";
+import type { TranslationKey } from "../i18n";
 import jakubNekvasilPhoto from "../assets/team/jakub_nekvasil.jpg";
 import damiaVeselaPhoto from "../assets/team/damia_vesela.jpg";
 import annaZezulkaPhoto from "../assets/team/anna_zezulka.jpg";
@@ -12,7 +13,7 @@ import karolinaCiencialovaPhoto from "../assets/team/karolina_ciencialova.jpg";
 
 export interface TeamMember {
   name: string;
-  roleKey: string;
+  roleKey: TranslationKey;
   email: string;
   phone?: string;
   // Members without a photo get a generic avatar.

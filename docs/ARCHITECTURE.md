@@ -12,9 +12,26 @@ Astro is used as the core framework for Static Site Generation (SSG). It allows 
 
 Tailwind CSS v4 is used for styling. It provides a utility-first approach to writing CSS, enabling rapid UI development directly within markup files without the need for traditional stylesheets.
 
-### Tolgee Headless Workflow
+### Internationalisation
 
-We utilize Tolgee for localization, but we implement a headless workflow for better performance. Instead of using heavy client-side SDKs to fetch translations dynamically in the browser, we use `tolgee extract` to pull translations into static JSON files (e.g., `src/i18n/cs-CZ.json` and `src/i18n/en.json`). These files are then imported directly into Astro components on the server side via `src/utils/i18n.ts`, ensuring zero client-side overhead for translations.
+Localisation is a small, dependency-free module in `src/i18n/`. Everything is
+resolved at build time, so no translation code or dictionary reaches the
+browser.
+
+- **Routing** — Czech is the default locale and has no URL prefix; English lives
+  under `/en/`. Pages with translated slugs (e.g. `/kontakty` ↔ `/en/contacts`)
+  are listed in `routeMap` in `src/i18n/index.ts`; `translatePath()` maps a path
+  to the other locale and powers the language switcher and `hreflang` links.
+- **Dictionaries** — `src/i18n/cs.ts` and `src/i18n/en.ts` are flat
+  `key → string` objects. `cs.ts` defines the set of keys and `en.ts` is typed
+  against it, so `astro check` fails on a missing, extra or misspelt key.
+- **Lookup** — components call
+  `useTranslations(getLangFromUrl(Astro.url))` and use the returned `t()`.
+  Keys are typed, so `t("typo")` is a type error rather than raw text on the page.
+- **Pages** — each page's markup lives once in `src/views/`. The route files in
+  `src/pages/` (Czech) and `src/pages/en/` (English) only render that view, which
+  picks the locale from the URL. Long-form content (articles, privacy policy)
+  stays written separately per language.
 
 ### Playwright
 

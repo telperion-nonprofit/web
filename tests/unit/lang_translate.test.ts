@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert";
-import { translatePath } from "../../src/utils/lang.ts";
+import { translatePath } from "../../src/i18n/index.ts";
 
 test("translatePath utility - exact matches", () => {
   assert.strictEqual(translatePath("/kontakty", "en"), "/en/contacts");
