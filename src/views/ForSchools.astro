@@ -25,8 +25,7 @@ const realizace = [
   <section class="pt-12 pb-8 text-center px-4 max-w-3xl mx-auto">
     <SectionBadge> {t("schools.badge")} </SectionBadge>
     <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
-      {t("schools.title_main")}
-      {" "}
+      {t("schools.title_main")}{" "}
       <span class="italic">{t("schools.title_highlight")}</span>
     </h1>
     <p class="text-lg text-dark-green/80 font-medium">
@@ -36,9 +35,7 @@ const realizace = [
 
   <section class="px-4 pb-8 container mx-auto max-w-6xl">
     <div class="glass-card rounded-[2.5rem] p-8 md:p-12">
-      <div
-        class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6 border-b border-brand-green/10 pb-8"
-      >
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6 border-b border-brand-green/10 pb-8">
         <div>
           <h2 class="text-3xl font-serif font-bold text-brand-green mb-2">
             {t("schools.climate_days.title")}
@@ -48,21 +45,15 @@ const realizace = [
           </p>
         </div>
         <div class="flex flex-wrap gap-3">
-          <span
-            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
-          >
+          <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm">
             <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" />
             {t("schools.climate_days.tag_duration")}
           </span>
-          <span
-            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
-          >
+          <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm">
             <Icon name="mdi:account-group" class="w-5 h-5 text-brand-green" />
             {t("schools.climate_days.tag_participants")}
           </span>
-          <span
-            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
-          >
+          <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm">
             <Icon name="mdi:school-outline" class="w-5 h-5 text-brand-green" />
             {t("schools.climate_days.tag_level")}
           </span>
@@ -73,25 +64,19 @@ const realizace = [
         <div class="space-y-4 text-dark-green/80 leading-relaxed text-justify">
           <p>{t("schools.climate_days.desc_p1")}</p>
           <p>
-            {t("schools.climate_days.desc_p2_before")}
-            {" "}
-            <strong>{t("schools.climate_days.desc_p2_bold")}</strong>
-            {" "}{t("schools.climate_days.desc_p2_after")}
+            {t("schools.climate_days.desc_p2_before")}{" "}
+            <strong>{t("schools.climate_days.desc_p2_bold")}</strong>{" "}
+            {t("schools.climate_days.desc_p2_after")}
           </p>
           <p>{t("schools.climate_days.desc_p3")}</p>
         </div>
 
-        <div
-          class="bg-white/40 rounded-2xl p-6 md:p-8 space-y-6 shadow-sm border border-white/50"
-        >
+        <div class="bg-white/40 rounded-2xl p-6 md:p-8 space-y-6 shadow-sm border border-white/50">
           <div>
-            <h4
-              class="font-bold text-brand-green text-lg mb-2 flex items-center gap-2"
-            >
-              <span
-                class="bg-brand-green text-white w-6 h-6 flex items-center justify-center rounded-full text-sm"
-                >1</span
-              >
+            <h4 class="font-bold text-brand-green text-lg mb-2 flex items-center gap-2">
+              <span class="bg-brand-green text-white w-6 h-6 flex items-center justify-center rounded-full text-sm">
+                1
+              </span>
               {t("schools.climate_days.day1_title")}
             </h4>
             <p class="text-sm text-dark-green/80">
@@ -99,13 +84,10 @@ const realizace = [
             </p>
           </div>
           <div>
-            <h4
-              class="font-bold text-brand-green text-lg mb-2 flex items-center gap-2"
-            >
-              <span
-                class="bg-brand-green text-white w-6 h-6 flex items-center justify-center rounded-full text-sm"
-                >2</span
-              >
+            <h4 class="font-bold text-brand-green text-lg mb-2 flex items-center gap-2">
+              <span class="bg-brand-green text-white w-6 h-6 flex items-center justify-center rounded-full text-sm">
+                2
+              </span>
               {t("schools.climate_days.day2_title")}
             </h4>
             <p class="text-sm text-dark-green/80">
@@ -116,22 +98,16 @@ const realizace = [
       </div>
 
       <div class="mt-8">
-        <h4
-          class="text-sm uppercase tracking-wider font-bold text-dark-green/50 mb-4"
-        >
+        <h4 class="text-sm uppercase tracking-wider font-bold text-dark-green/50 mb-4">
           {t("schools.realizations_title")}
         </h4>
         <div class="flex flex-wrap gap-2">
-          {
-            realizace.map((skola) => (
-              <span class="text-xs font-medium px-3 py-1.5 bg-brand-green/5 text-dark-green rounded-lg border border-brand-green/10">
-                {skola}
-              </span>
-            ))
-          }
-          <span
-            class="text-xs font-bold px-3 py-1.5 text-brand-green italic flex items-center"
-          >
+          {realizace.map((skola) => (
+            <span class="text-xs font-medium px-3 py-1.5 bg-brand-green/5 text-dark-green rounded-lg border border-brand-green/10">
+              {skola}
+            </span>
+          ))}
+          <span class="text-xs font-bold px-3 py-1.5 text-brand-green italic flex items-center">
             {t("schools.realizations_more")}
           </span>
         </div>
@@ -141,9 +117,7 @@ const realizace = [
 
   <section class="px-4 pb-8 container mx-auto max-w-6xl">
     <div class="glass-card rounded-[2.5rem] p-8 md:p-12">
-      <div
-        class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6 border-b border-brand-green/10 pb-8"
-      >
+      <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6 border-b border-brand-green/10 pb-8">
         <div>
           <h2 class="text-3xl font-serif font-bold text-brand-green mb-2">
             {t("schools.other_formats.fresk.title")}
@@ -153,21 +127,15 @@ const realizace = [
           </p>
         </div>
         <div class="flex flex-wrap gap-3">
-          <span
-            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
-          >
+          <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm">
             <Icon name="mdi:clock-outline" class="w-5 h-5 text-brand-green" />
             {t("schools.other_formats.fresk.duration")}
           </span>
-          <span
-            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
-          >
+          <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm">
             <Icon name="mdi:account-group" class="w-5 h-5 text-brand-green" />
             {t("schools.other_formats.fresk.capacity")}
           </span>
-          <span
-            class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm"
-          >
+          <span class="flex items-center gap-2 bg-white/50 px-4 py-2 rounded-xl text-sm font-bold text-dark-green shadow-sm">
             <Icon name="mdi:school-outline" class="w-5 h-5 text-brand-green" />
             {t("schools.other_formats.fresk.ideal")}
           </span>

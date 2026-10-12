@@ -25,9 +25,7 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
         rel="noopener noreferrer"
         class="inline-block group mb-6 transition-transform hover:-translate-y-0.5"
       >
-        <SectionBadge
-          class="mb-0! inline-flex! items-center gap-2 pl-4 hover:bg-white/80 hover:border-brand-green/50 transition-colors cursor-pointer"
-        >
+        <SectionBadge class="mb-0! inline-flex! items-center gap-2 pl-4 hover:bg-white/80 hover:border-brand-green/50 transition-colors cursor-pointer">
           <Icon
             name="mdi:arrow-top-right"
             class="w-3.5 h-3.5 text-brand-green/70 group-hover:text-brand-green transition-colors"
@@ -35,16 +33,11 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
           {t("home.hero.badge")}
         </SectionBadge>
       </a>
-      <h1
-        class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6 leading-tight"
-      >
-        {t("home.hero.title_main")}
-        {" "}
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6 leading-tight">
+        {t("home.hero.title_main")}{" "}
         <span class="italic">{t("home.hero.title_highlight")}</span>
       </h1>
-      <p
-        class="text-lg md:text-xl text-dark-green mb-10 leading-relaxed max-w-2xl mx-auto font-medium"
-      >
+      <p class="text-lg md:text-xl text-dark-green mb-10 leading-relaxed max-w-2xl mx-auto font-medium">
         {t("home.hero.description")}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -72,11 +65,8 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
   <section class="pt-12 pb-8 md:pt-16 md:pb-8">
     <div class="container mx-auto px-6 md:px-12 lg:px-16 max-w-6xl">
       <div class="text-center mb-10 max-w-3xl mx-auto">
-        <h2
-          class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-4"
-        >
-          {t("home.map.title_main")}
-          {" "}
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-4">
+          {t("home.map.title_main")}{" "}
           <span class="italic">{t("home.map.title_highlight")}</span>
         </h2>
         <p class="text-dark-green text-lg font-medium">
@@ -84,9 +74,7 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
         </p>
       </div>
 
-      <div
-        class="relative w-full aspect-square sm:aspect-video md:aspect-[21/9] rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 bg-brand-green/5"
-      >
+      <div class="relative w-full aspect-square sm:aspect-video md:aspect-[21/9] rounded-3xl md:rounded-[2.5rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 bg-brand-green/5">
         <iframe
           id="umap-iframe"
           title={t("home.map.iframe_title")}
@@ -101,10 +89,7 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
         >
         </iframe>
 
-        <div
-          class="absolute inset-0 bg-brand-green/5 pointer-events-none mix-blend-overlay"
-        >
-        </div>
+        <div class="absolute inset-0 bg-brand-green/5 pointer-events-none mix-blend-overlay"></div>
 
         <div
           id="umap-placeholder"
@@ -117,14 +102,10 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
             >
               <Icon name="mdi:map-marker-radius" class="h-7 w-7" />
             </div>
-            <h3
-              class="mb-3 font-serif text-2xl font-bold text-brand-green md:text-3xl"
-            >
+            <h3 class="mb-3 font-serif text-2xl font-bold text-brand-green md:text-3xl">
               {t("home.map.load_title")}
             </h3>
-            <p
-              class="mb-6 text-sm font-medium leading-relaxed text-dark-green/80 md:text-base"
-            >
+            <p class="mb-6 text-sm font-medium leading-relaxed text-dark-green/80 md:text-base">
               {t("home.map.load_description")}
             </p>
             <button
@@ -140,9 +121,7 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
         </div>
       </div>
 
-      <div
-        class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 text-center text-sm font-medium text-dark-green/80"
-      >
+      <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-2 text-center text-sm font-medium text-dark-green/80">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5 text-brand-green shrink-0"
@@ -222,9 +201,7 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
   <section class="pt-16 pb-12 md:pt-20 md:pb-16">
     <div class="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
       <div class="text-center mb-16 max-w-3xl mx-auto">
-        <h2
-          class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-4"
-        >
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-4">
           {t("home.features.title")}
         </h2>
         <p class="text-dark-green text-lg font-medium">
@@ -262,11 +239,8 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
   <section class="pt-16 pb-20 md:pt-20 md:pb-24">
     <div class="container mx-auto px-6 md:px-12 lg:px-16 max-w-7xl">
       <div class="text-center mb-16 max-w-3xl mx-auto">
-        <h2
-          class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-4"
-        >
-          {t("home.reviews.title_main")}
-          {" "}
+        <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-4">
+          {t("home.reviews.title_main")}{" "}
           <span class="italic">{t("home.reviews.title_highlight")}</span>
         </h2>
         <p class="text-dark-green text-lg font-medium">
@@ -276,86 +250,68 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
 
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- Recenze 1 -->
-        <div
-          class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative"
-        >
+        <div class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative">
           <svg
             class="absolute top-6 right-8 w-10 h-10 text-brand-green/10"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
-            <path
-              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
-            ></path>
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
           </svg>
-          <p
-            class="text-dark-green font-medium leading-relaxed italic mb-8 grow relative z-10"
-          >
+          <p class="text-dark-green font-medium leading-relaxed italic mb-8 grow relative z-10">
             {t("home.reviews.1.text")}
           </p>
           <div class="mt-auto pt-6 border-t border-brand-green/10">
             <h3 class="font-bold text-dark-green text-lg">
               {t("home.reviews.1.author")}
             </h3>
-            <span class="text-sm text-dark-green/80 font-medium"
-              >{t("home.reviews.1.date")}</span
-            >
+            <span class="text-sm text-dark-green/80 font-medium">
+              {t("home.reviews.1.date")}
+            </span>
           </div>
         </div>
 
         <!-- Recenze 2 -->
-        <div
-          class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative"
-        >
+        <div class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative">
           <svg
             class="absolute top-6 right-8 w-10 h-10 text-brand-green/10"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
-            <path
-              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
-            ></path>
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
           </svg>
-          <p
-            class="text-dark-green font-medium leading-relaxed italic mb-8 grow relative z-10"
-          >
+          <p class="text-dark-green font-medium leading-relaxed italic mb-8 grow relative z-10">
             {t("home.reviews.2.text")}
           </p>
           <div class="mt-auto pt-6 border-t border-brand-green/10">
             <h3 class="font-bold text-dark-green text-lg">
               {t("home.reviews.2.author")}
             </h3>
-            <span class="text-sm text-dark-green/80 font-medium"
-              >{t("home.reviews.2.date")}</span
-            >
+            <span class="text-sm text-dark-green/80 font-medium">
+              {t("home.reviews.2.date")}
+            </span>
           </div>
         </div>
 
         <!-- Recenze 3 -->
-        <div
-          class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative"
-        >
+        <div class="glass-card rounded-3xl p-8 flex flex-col shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-brand-green/20 relative">
           <svg
             class="absolute top-6 right-8 w-10 h-10 text-brand-green/10"
             fill="currentColor"
             viewBox="0 0 24 24"
           >
-            <path
-              d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"
-            ></path>
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"></path>
           </svg>
-          <p
-            class="text-dark-green font-medium leading-relaxed italic mb-8 grow relative z-10"
-          >
+          <p class="text-dark-green font-medium leading-relaxed italic mb-8 grow relative z-10">
             {t("home.reviews.3.text")}
           </p>
           <div class="mt-auto pt-6 border-t border-brand-green/10">
             <h3 class="font-bold text-dark-green text-lg">
               {t("home.reviews.3.author")}
             </h3>
-            <span class="text-sm text-dark-green/80 font-medium"
-              >{t("home.reviews.3.date")}</span
-            >
+            <span class="text-sm text-dark-green/80 font-medium">
+              {t("home.reviews.3.date")}
+            </span>
           </div>
         </div>
       </div>
@@ -374,8 +330,7 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
   <div
     id="climate-fresk-backdrop"
     class="absolute inset-0 bg-dark-green/70 backdrop-blur-sm transition-opacity duration-300 opacity-0"
-  >
-  </div>
+  ></div>
   <div
     id="climate-fresk-content"
     class="relative z-10 w-full max-w-2xl bg-cream rounded-3xl shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto transition-all duration-300 scale-95 opacity-0"
@@ -394,9 +349,7 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
     >
       {t("home.fresk_modal.title")}
     </h3>
-    <div
-      class="flex flex-wrap gap-4 mb-6 text-sm font-medium text-dark-green/80"
-    >
+    <div class="flex flex-wrap gap-4 mb-6 text-sm font-medium text-dark-green/80">
       <div class="flex items-center gap-1.5">
         <Icon name="mdi:calendar" class="w-5 h-5" />
         {t("home.fresk_modal.date")}
@@ -417,8 +370,7 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
 
     <div class="space-y-4 text-dark-green font-medium">
       <p>
-        <strong>{t("home.fresk_modal.p1_strong")}</strong>
-        {" "}
+        <strong>{t("home.fresk_modal.p1_strong")}</strong>{" "}
         {t("home.fresk_modal.p1_rest")}
       </p>
       <p>{t("home.fresk_modal.p2")}</p>
@@ -429,15 +381,12 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
         <li>{t("home.fresk_modal.li4")}</li>
       </ul>
       <p class="text-sm text-dark-green/70 mt-4">
-        ✅ <strong>{t("home.fresk_modal.p3_strong")}</strong>{
-          t("home.fresk_modal.p3_rest")
-        }
+        ✅ <strong>{t("home.fresk_modal.p3_strong")}</strong>
+        {t("home.fresk_modal.p3_rest")}
       </p>
     </div>
 
-    <div
-      class="mt-8 flex flex-col sm:flex-row gap-4 justify-center sm:justify-start"
-    >
+    <div class="mt-8 flex flex-col sm:flex-row gap-4 justify-center sm:justify-start">
       <a
         href="https://association.climatefresk.org/training_sessions/a78d82d9-32bf-409b-a988-e0c72832d421/show_public?language=en&tenant_token=36bd2274d3982262c0021755"
         target="_blank"
@@ -515,8 +464,7 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
   <div
     id="lightbox-backdrop"
     class="absolute inset-0 bg-dark-green/70 backdrop-blur-sm transition-opacity duration-300 opacity-0"
-  >
-  </div>
+  ></div>
   <img
     id="lightbox-img"
     src=""
@@ -540,7 +488,8 @@ const umapSrc = `https://umap.openstreetmap.fr/${umapLang}/map/mapa-telperionu_1
       <path
         stroke-linecap="round"
         stroke-linejoin="round"
-        d="M6 18L18 6M6 6l12 12"></path>
+        d="M6 18L18 6M6 6l12 12"
+      ></path>
     </svg>
   </button>
 </div>

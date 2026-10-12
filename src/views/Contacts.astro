@@ -13,21 +13,14 @@ const t = useTranslations(lang);
 ---
 
 <Layout title={t("contacts.page_title")}>
-  <section
-    class="relative pt-12 pb-8 md:pt-16 md:pb-8 overflow-hidden text-center"
-  >
+  <section class="relative pt-12 pb-8 md:pt-16 md:pb-8 overflow-hidden text-center">
     <div class="container mx-auto px-4 max-w-4xl">
       <SectionBadge>{t("contacts.badge")}</SectionBadge>
-      <h1
-        class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6"
-      >
-        {t("contacts.title_main")}
-        {" "}
+      <h1 class="text-4xl md:text-5xl font-serif font-bold text-brand-green mb-6">
+        {t("contacts.title_main")}{" "}
         <span class="italic">{t("contacts.title_highlight")}</span>
       </h1>
-      <p
-        class="text-lg md:text-xl text-dark-green mb-8 leading-relaxed max-w-2xl mx-auto font-medium"
-      >
+      <p class="text-lg md:text-xl text-dark-green mb-8 leading-relaxed max-w-2xl mx-auto font-medium">
         {t("contacts.description")}
       </p>
 
@@ -74,20 +67,14 @@ const t = useTranslations(lang);
       />
 
       <div class="mt-16 md:mt-24 max-w-6xl mx-auto">
-        <div
-          class="glass-card rounded-3xl p-8 sm:p-12 text-center md:text-left"
-        >
-          <h2
-            class="text-3xl font-serif font-bold text-brand-green mb-8 text-center md:col-span-3"
-          >
+        <div class="glass-card rounded-3xl p-8 sm:p-12 text-center md:text-left">
+          <h2 class="text-3xl font-serif font-bold text-brand-green mb-8 text-center md:col-span-3">
             {t("contacts.details.title")}
           </h2>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="flex flex-col items-center md:items-start">
-              <div
-                class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20"
-              >
+              <div class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20">
                 <Icon name="mdi:office-building-marker" class="w-6 h-6" />
               </div>
               <h3 class="text-lg font-bold text-brand-green mb-2">
@@ -99,9 +86,7 @@ const t = useTranslations(lang);
             </div>
 
             <div class="flex flex-col items-center md:items-start">
-              <div
-                class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20"
-              >
+              <div class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20">
                 <Icon name="mdi:identifier" class="w-6 h-6" />
               </div>
               <h3 class="text-lg font-bold text-brand-green mb-2">
@@ -111,9 +96,7 @@ const t = useTranslations(lang);
             </div>
 
             <div class="flex flex-col items-center md:items-start">
-              <div
-                class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20"
-              >
+              <div class="w-12 h-12 rounded-xl bg-brand-green/10 flex items-center justify-center text-brand-green mb-4 border border-brand-green/20">
                 <Icon name="mdi:bank-outline" class="w-6 h-6" />
               </div>
               <h3 class="text-lg font-bold text-brand-green mb-2">
@@ -140,8 +123,7 @@ const t = useTranslations(lang);
   <div
     id="lightbox-backdrop"
     class="absolute inset-0 bg-dark-green/70 backdrop-blur-sm transition-opacity duration-300 opacity-0"
-  >
-  </div>
+  ></div>
   <img
     id="lightbox-img"
     src=""
@@ -165,7 +147,8 @@ const t = useTranslations(lang);
       <path
         stroke-linecap="round"
         stroke-linejoin="round"
-        d="M6 18L18 6M6 6l12 12"></path>
+        d="M6 18L18 6M6 6l12 12"
+      ></path>
     </svg>
   </button>
 </div>

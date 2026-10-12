@@ -9,46 +9,42 @@ interface Props {
 const { item } = Astro.props;
 ---
 
-<div
-  class="block border-b border-dark-green/5 last:border-0 pb-2 last:pb-0 relative mobile-accordion-container"
->
-  {
-    item.subItems ? (
-      <>
-        <button
-          type="button"
-          class="mobile-accordion-toggle group flex items-center justify-between w-full px-4 py-3 text-base font-medium text-dark-green hover:bg-brand-green/5 rounded-lg transition-colors"
-          aria-expanded="false"
-        >
-          {item.name}
-          <Icon
-            name="mdi:chevron-down"
-            class="w-4 h-4 transition-transform duration-200 group-aria-expanded:rotate-180"
-          />
-        </button>
-        <div
-          class="mobile-accordion-menu hidden overflow-hidden transition-all duration-200 pl-4 pr-2 py-1 space-y-1"
-          style="display: none;"
-        >
-          {item.subItems.map((subItem) => (
-            <a
-              href={subItem.url}
-              class="block px-4 py-3 text-sm font-medium text-dark-green hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
-            >
-              {subItem.name}
-            </a>
-          ))}
-        </div>
-      </>
-    ) : (
-      <a
-        href={item.url}
-        class="block px-4 py-3 text-base font-medium text-dark-green hover:bg-cream/80 rounded-2xl transition-colors"
+<div class="block border-b border-dark-green/5 last:border-0 pb-2 last:pb-0 relative mobile-accordion-container">
+  {item.subItems ? (
+    <>
+      <button
+        type="button"
+        class="mobile-accordion-toggle group flex items-center justify-between w-full px-4 py-3 text-base font-medium text-dark-green hover:bg-brand-green/5 rounded-lg transition-colors"
+        aria-expanded="false"
       >
         {item.name}
-      </a>
-    )
-  }
+        <Icon
+          name="mdi:chevron-down"
+          class="w-4 h-4 transition-transform duration-200 group-aria-expanded:rotate-180"
+        />
+      </button>
+      <div
+        class="mobile-accordion-menu hidden overflow-hidden transition-all duration-200 pl-4 pr-2 py-1 space-y-1"
+        style="display: none;"
+      >
+        {item.subItems.map((subItem) => (
+          <a
+            href={subItem.url}
+            class="block px-4 py-3 text-sm font-medium text-dark-green hover:bg-brand-green/10 hover:text-brand-green rounded-xl transition-all duration-200"
+          >
+            {subItem.name}
+          </a>
+        ))}
+      </div>
+    </>
+  ) : (
+    <a
+      href={item.url}
+      class="block px-4 py-3 text-base font-medium text-dark-green hover:bg-cream/80 rounded-2xl transition-colors"
+    >
+      {item.name}
+    </a>
+  )}
 </div>
 
 <script>

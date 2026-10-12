@@ -7,15 +7,13 @@ const t = useTranslations(lang);
 ---
 
 <footer class="w-full flex justify-center pb-6 px-4">
-  <div
-    class="glass-card shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-[2rem] px-6 md:px-8 py-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4"
-  >
-    <p
-      class="text-sm text-dark-green font-medium tracking-wide text-center md:text-left"
-    >
+  <div class="glass-card shadow-[0_8px_30px_rgb(0,0,0,0.06)] rounded-[2rem] px-6 md:px-8 py-4 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+    <p class="text-sm text-dark-green font-medium tracking-wide text-center md:text-left">
       &copy; {currentYear} Telperion z.s.
     </p>
-    <span class="hidden sm:block h-4 w-px bg-dark-green/20" aria-hidden="true"
+    <span
+      class="hidden sm:block h-4 w-px bg-dark-green/20"
+      aria-hidden="true"
     ></span>
     <a
       href={translatePath("/ochrana-osobnich-udaju", lang)}

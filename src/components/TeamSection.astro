@@ -12,21 +12,17 @@ const { title, members, class: className, ...attrs } = Astro.props;
 ---
 
 <section class:list={[className]} {...attrs}>
-  <h2
-    class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-8 text-center"
-  >
+  <h2 class="text-3xl md:text-4xl font-serif font-bold text-brand-green mb-8 text-center">
     {title}
   </h2>
 
   {/* Flex rather than grid so an incomplete last row stays centred. */}
   <div class="flex flex-wrap justify-center gap-8">
-    {
-      members.map((member) => (
-        <TeamMemberCard
-          member={member}
-          class="w-full md:w-[calc((100%-2rem)/2)] lg:w-[calc((100%-4rem)/3)]"
-        />
-      ))
-    }
+    {members.map((member) => (
+      <TeamMemberCard
+        member={member}
+        class="w-full md:w-[calc((100%-2rem)/2)] lg:w-[calc((100%-4rem)/3)]"
+      />
+    ))}
   </div>
 </section>
