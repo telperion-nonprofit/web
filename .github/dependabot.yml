@@ -45,8 +45,8 @@ updates:
         update-types:
           - "minor"
           - "patch"
-      # Majors stay ungrouped and are never auto-merged: one PR each, reviewed
-      # by a human.
+      # Majors stay ungrouped, one PR each, so a breaking update that Claude
+      # has to fix (claude-fix-dependabot.yml) does not hold back the rest.
 
   - package-ecosystem: "github-actions"
     directory: "/"

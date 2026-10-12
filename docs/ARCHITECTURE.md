@@ -67,18 +67,24 @@ re-execute them.
 `.github/dependabot.yml` opens weekly npm and GitHub Actions updates, grouping
 patch and minor bumps so one green CI run lands the whole batch.
 
-`.github/workflows/dependabot-auto-merge.yml` then reads the `update-type`
-trailer from Dependabot's own commit and, for patch and minor updates only,
-approves the PR and enables auto-merge. Major bumps are always left for a human.
-Auto-merge queues the merge — GitHub only performs it once the required checks
-pass, so red CI still blocks an update.
+`.github/workflows/dependabot-auto-merge.yml` then enables auto-merge on every
+Dependabot PR, majors included. Auto-merge queues the merge — GitHub only
+performs it once the required checks pass, so red CI still blocks an update.
 
-Two repository settings have to be on for this to work:
+When CI fails on an npm update, `.github/workflows/claude-fix-dependabot.yml`
+runs Claude Code on the branch: it reads the failed log, adapts the code to the
+new version and pushes the fix, which starts CI again. Claude gets one attempt
+per Dependabot push; if it cannot fix the update cleanly, it comments on the PR
+instead and the PR waits for a human. GitHub Actions updates are not handed to
+Claude, because its GitHub App cannot change workflow files.
+
+This needs, in the repository settings:
 
 1. **Settings → General → Pull Requests → Allow auto-merge.**
-2. A branch protection rule (or ruleset) on `main` with **`CI`** as a required
-   status check. Without a required check there is nothing for auto-merge to
-   wait on.
-
-If the rule also requires an approving review, the workflow's approve step
-covers it; delete that step if every bump should be reviewed by a person.
+2. A ruleset on `main` with **`CI`** as a required status check. Without a
+   required check there is nothing for auto-merge to wait on.
+3. The [Claude GitHub App](https://github.com/apps/claude) installed on the
+   repository. Its pushes start CI; pushes made with `GITHUB_TOKEN` would not.
+4. A `CLAUDE_CODE_OAUTH_TOKEN` secret (**Settings → Secrets and variables →
+   Actions**), created with `claude setup-token`. The token is valid for a
+   year.
