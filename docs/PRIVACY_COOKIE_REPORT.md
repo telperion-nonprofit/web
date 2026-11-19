@@ -28,11 +28,12 @@ Aktivní datové toky:
 - Analytika a výkon: `@vercel/analytics` a `@vercel/speed-insights` jsou vložené
   v `src/layouts/Layout.astro`.
 - Technické sledování chyb: `@sentry/astro` je přidané v `astro.config.mjs`.
-  SDK je vypnuté, dokud není nastavené `PUBLIC_SENTRY_DSN`. Konfigurace vypíná
-  Sentry Session Replay, výchozí performance tracing má sampling `0` a source
-  mapy se uploadují jen při nastavení `SENTRY_AUTH_TOKEN` a Sentry
-  organizace/projektu. Výchozí hodnoty projektu jsou `telperion-zs` /
-  `javascript-astro`.
+  SDK běží jen v prohlížeči a jen v buildech na Vercelu (produkce a preview),
+  ne při lokálním vývoji ani v CI testech. Konfigurace vypíná Sentry Session
+  Replay, neposílá IP adresu, cookies ani údaje o uživateli
+  (`dataCollection`), výchozí performance tracing má sampling `0` a source
+  mapy se uploadují jen při nastavení `SENTRY_AUTH_TOKEN`. Události jdou do projektu
+  `telperion-zs-x4` / `sentry-chestnut-clock` (region EU, `de.sentry.io`).
 - Kontaktní formulář: `src/components/Modal.astro` odesílá jméno, e-mail,
   volitelný telefon, program, jazyk a zprávu na `https://formspree.io/f/xyknzgwp`.
 - Mapa: úvodní stránka má click-to-load iframe z
